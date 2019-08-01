@@ -41,6 +41,7 @@ export class Places extends Component {
       return (
         <div>
           <p>{this.state.places}</p>
+          Places
         </div>
       )
     }

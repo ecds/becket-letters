@@ -41,6 +41,7 @@ export class People extends Component {
       return (
         <div>
           <p>{this.state.people}</p>
+          People
         </div>
       )
     }
