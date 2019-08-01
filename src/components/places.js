@@ -1,24 +1,24 @@
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 
-import axios from "./node_modules/axios";
+import axios from "axios";
 
-export class Letters extends Component {
+export class Places extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       error: null,
       isLoaded: false,
-      letters: []
+      places: []
     };
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/letters.json`)
+    axios.get(`http://localhost:3000/places.json`)
       .then(res => {
-        const letters = res.data.data;
+        const places = res.data.data;
         this.setState({
           isLoaded: true,
-          letters: letters
+          places: places
         });
       })
       .catch((err) => {
@@ -40,11 +40,12 @@ export class Letters extends Component {
     } else {
       return (
         <div>
-          <p>{this.state.letters}</p>
+          <p>{this.state.places}</p>
+          Places
         </div>
       )
     }
   }
 }
 
-export default Letters;
+export default Places;
