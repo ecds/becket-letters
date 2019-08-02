@@ -7,12 +7,12 @@ const columns = [{
   dataField: 'ID',
   text: 'ID',
   sort: true,
-  filter: textFilter()
+  filter: textFilter({delay: 333})
 }, {
   dataField: 'Code',
   text: 'Code',
   sort: true,
-  filter: textFilter()
+  filter: textFilter({delay: 333})
 }, {
   dataField: 'Year',
   text: 'Date',
@@ -22,17 +22,17 @@ const columns = [{
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
   sort: true,
-  filter: textFilter()
+  filter: textFilter({delay: 333})
 }, {
   dataField: 'Reg place sent',
   text: 'Reg place sent',
   sort: true,
-  filter: textFilter()
+  filter: textFilter({delay: 333})
 }, {
   dataField: 'PrimaryLang',
   text: 'PrimaryLang',
   sort: true,
-  filter: textFilter()
+  filter: textFilter({delay: 333})
 }];
 
 export class Letters extends Component {
