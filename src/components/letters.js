@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 const columns = [{
   dataField: 'ID',
@@ -17,7 +18,8 @@ const columns = [{
 }, {
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }, {
   dataField: 'Reg place sent',
   text: 'Reg place sent',
@@ -57,7 +59,7 @@ export class Letters extends Component {
       return (
         <div>
           <h1>Letters</h1>
-          <BootstrapTable keyField='id' data={ this.state.letters } columns={ columns } />
+          <BootstrapTable keyField='id' data={ this.state.letters } columns={ columns } filter={ filterFactory() } />
           {/* {allLetters} */}
         </div>
       )
