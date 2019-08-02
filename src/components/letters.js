@@ -6,15 +6,18 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 const columns = [{
   dataField: 'ID',
   text: 'ID',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }, {
   dataField: 'Code',
   text: 'Code',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }, {
   dataField: 'Year',
   text: 'Date',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }, {
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
@@ -23,11 +26,13 @@ const columns = [{
 }, {
   dataField: 'Reg place sent',
   text: 'Reg place sent',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }, {
   dataField: 'PrimaryLang',
   text: 'PrimaryLang',
-  sort: true
+  sort: true,
+  filter: textFilter()
 }];
 
 export class Letters extends Component {
