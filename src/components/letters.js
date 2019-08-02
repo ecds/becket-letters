@@ -15,8 +15,18 @@ const columns = [{
   sort: true,
   filter: textFilter({delay: 333})
 }, {
+  dataField: 'Month',
+  text: 'Month',
+  sort: true,
+  filter: numberFilter({delay: 333})
+}, {
+  dataField: 'Day',
+  text: 'Day',
+  sort: true,
+  filter: numberFilter({delay: 333})
+}, {
   dataField: 'Year',
-  text: 'Date',
+  text: 'Year',
   sort: true,
   filter: numberFilter({delay: 333})
 }, {
