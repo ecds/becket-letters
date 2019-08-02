@@ -7,7 +7,8 @@ const columns = [{
   dataField: 'ID',
   text: 'ID',
   sort: true,
-  filter: textFilter({delay: 333})
+  filter: textFilter({delay: 333}),
+  expandRow: true
 }, {
   dataField: 'Code',
   text: 'Code',
@@ -17,7 +18,7 @@ const columns = [{
   dataField: 'Year',
   text: 'Date',
   sort: true,
-  filter: numberFilter()
+  filter: numberFilter({delay: 333})
 }, {
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
