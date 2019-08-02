@@ -14,22 +14,12 @@ const columns = [{
   text: 'Code',
   sort: true,
   filter: textFilter({delay: 333})
-}, {
-  dataField: 'Month',
-  text: 'Month',
-  sort: true,
-  filter: numberFilter({delay: 333})
-}, {
-  dataField: 'Day',
-  text: 'Day',
-  sort: true,
-  filter: numberFilter({delay: 333})
-}, {
-  dataField: 'Year',
-  text: 'Year',
-  sort: true,
-  filter: numberFilter({delay: 333})
-}, {
+// }, {
+//   dataField: .map((letter) => <p> {letter.Day}, {letter.Month} </p>),
+//   text: 'Date',
+//   sort: true,
+//   filter: numberFilter({delay: 333})
+},{
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
   sort: true,
