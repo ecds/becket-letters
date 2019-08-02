@@ -28,6 +28,7 @@ export class People extends Component {
       return (
         <div>
           <h1>People</h1>
+          <a href='./letters'>Link to letters</a>
         </div>
       )
     }
