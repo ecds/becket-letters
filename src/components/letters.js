@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 
 const columns = [{
   dataField: 'ID',
@@ -17,7 +17,7 @@ const columns = [{
   dataField: 'Year',
   text: 'Date',
   sort: true,
-  filter: textFilter()
+  filter: numberFilter()
 }, {
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
