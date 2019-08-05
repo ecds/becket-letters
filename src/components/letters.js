@@ -4,29 +4,38 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 
 const columns = [{
-  dataField: 'ID',
-  text: 'ID',
-  sort: true,
-  filter: textFilter({delay: 333}),
-  expandRow: true
-}, {
-  dataField: 'Code',
-  text: 'Code',
+  dataField: 'Addressed from (Actual)',
+  text: 'Addressed from (Actual)',
   sort: true,
   filter: textFilter({delay: 333})
-// }, {
-//   dataField: .map((letter) => <p> {letter.Day}, {letter.Month} </p>),
-//   text: 'Date',
-//   sort: true,
-//   filter: numberFilter({delay: 333})
-},{
+}, {
   dataField: 'Addressed to (Actual)',
   text: 'Addressed to (Actual)',
   sort: true,
   filter: textFilter({delay: 333})
 }, {
+  dataField: 'Day',
+  text: 'Day',
+  sort: true,
+  filter: numberFilter({delay: 333})
+}, {
+  dataField: 'Month',
+  text: 'Month',
+  sort: true,
+  filter: numberFilter({delay: 333})
+}, {
+  dataField: 'Year',
+  text: 'Year',
+  sort: true,
+  filter: numberFilter({delay: 333})
+},{
   dataField: 'Reg place sent',
   text: 'Reg place sent',
+  sort: true,
+  filter: textFilter({delay: 333})
+}, {
+  dataField: 'First Repository',
+  text: 'First Repository',
   sort: true,
   filter: textFilter({delay: 333})
 }, {
