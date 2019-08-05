@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row } from 'react-bootstrap';
-import '../styles/header.css'
+import '../styles/header.css';
 
 export class Header extends Component {
     render() {
