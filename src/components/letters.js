@@ -76,7 +76,6 @@ export class Letters extends Component {
     return (
       <div>
         <Container>
-          <LocationPath />
           <h1>Letters</h1>
           <BootstrapTable keyField='id' data={this.state.letters} columns={columns} filter={filterFactory()} />
           {/* {allLetters} */}
