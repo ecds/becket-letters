@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 import Header from './header';
-import bootstrapTable from "react-bootstrap-table-next/lib/src/bootstrap-table";
+import LocationPath from './location-path';
 
 const columns = [{
   dataField: 'Addressed from (Actual)',
@@ -78,6 +78,7 @@ export class Letters extends Component {
       <div>
         <Header />
         <Container>
+          <LocationPath />
           <h1>Letters</h1>
           <BootstrapTable keyField='id' data={this.state.letters} columns={columns} filter={filterFactory()} />
           {/* {allLetters} */}

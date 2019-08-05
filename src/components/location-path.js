@@ -5,8 +5,8 @@ import '../styles/location-path.css';
 export class LocationPath extends Component {
     render() {
         return (
-            <div>
-                
+            <div className='headerRow4'>
+               Path Here
             </div>
                         )
                     }
