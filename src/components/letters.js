@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container } from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
-import LocationPath from './location-path';
 
 const columns = [{
   dataField: 'Addressed from (Actual)',
