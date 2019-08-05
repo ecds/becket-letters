@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container } from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 
@@ -74,12 +73,9 @@ export class Letters extends Component {
     // const allLetters = this.state.letters.map((letter) => <li>{letter.ID}, {letter.Additional} </li>)
     return (
       <div>
-        <Container>
           <h1>Letters</h1>
           <BootstrapTable keyField='id' data={this.state.letters} columns={columns} filter={filterFactory()} />
           {/* {allLetters} */}
-        </Container>
-
       </div>
     )
   }

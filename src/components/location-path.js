@@ -6,10 +6,10 @@ export class LocationPath extends Component {
     render() {
         return (
             <div className='headerRow4'>
-               Path Here
+                Path Here
             </div>
-                        )
-                    }
-                }
-                
+        )
+    }
+}
+
 export default LocationPath;
