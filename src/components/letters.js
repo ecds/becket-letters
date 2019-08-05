@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container } from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
-import Header from './header';
 import LocationPath from './location-path';
 
 const columns = [{
@@ -76,7 +75,6 @@ export class Letters extends Component {
     // const allLetters = this.state.letters.map((letter) => <li>{letter.ID}, {letter.Additional} </li>)
     return (
       <div>
-        <Header />
         <Container>
           <LocationPath />
           <h1>Letters</h1>

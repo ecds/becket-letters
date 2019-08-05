@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from './header';
 
 export class People extends Component {
   constructor(props, context) {
@@ -28,7 +27,6 @@ export class People extends Component {
   render() {
       return (
         <div>
-          <Header />
           <h1>People</h1>
           <a href='./letters'>Link to letters</a>
         </div>
