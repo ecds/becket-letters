@@ -10,8 +10,24 @@
     font-size: 1em;
 }
 
-.answerCol p:nth-child(even) {
+.results p:nth-child(even) {
     border-left: 4px solid #b1b3b3;
     padding-left: 10px;
     margin-left: 20px;
+}
+
+h4 {
+    text-decoration: underline;
+}
+    
+.authInfo {
+    text-decoration-color: #E6B965;
+}
+
+.moreInfo {
+    text-decoration-color: #DB352A;
+}
+
+.archInfo {
+    text-decoration-color: #82C08A;
 }
