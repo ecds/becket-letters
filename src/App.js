@@ -7,6 +7,7 @@ import People from './components/people';
 import Letters from './components/letters';
 import Header from './components/header';
 import LocationPath from './components/location-path';
+import LetterPg from './components/letter';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route exact path="/people" component={People} />
       <Route exact path="/letters" component={Letters} />
+      <Route exact path="/letterdetais" component={LetterPg} />
       </Container>
     </BrowserRouter>
   );
