@@ -10,59 +10,59 @@ export class LetterPg extends Component {
                     <h2>Letter Name</h2>
                 </Row>
                 <Row>
-                    <p>Letter ID: #ID#</p>
+                    <p>Letter ID: </p><p> #ID#</p>
                 </Row>
                 <Row>
-                    <Col md={10}>
+                    <Col md={9} className='letterPgDetails'>
                         <h3>Details</h3>
                         <Row>
-                            <Col>
-        <p>"ID": 2008,</p>
-        <p>"Code": "SABE [SPRING 1957] ALBO",</p>
-        <p>"Day": 0,</p>
-        <p>"Month": 0,</p>
-        <p>"Year": 57,</p>
-        <p>"Addressed from (Actual)": "",</p>
-        <p>"Reg. Place written": "",</p>
-        <p>"Reg. Place written city": "",</p>
-        <p>"Reg. Place written country": "",</p>
-        <p>"Reg. Place written, second city": "",</p>
-        <p>"Autograph or Typed": "",</p>
-        <p>"PhysDes": "Other",</p>
-        <p>"initialed or signed": "",</p>
-        <p>"Postcard Image": "",</p>
-        <p>"phys descr detail": "",</p>
-        <p>"PhysDes notes": "",</p>
-        <p>"leaves": "?",</p>
-        <p>"sides": "?",</p>
-        <p>"Envelope": "",</p>
-        <p>"Postmark (Actual)": "",</p>
-        <p>"Addressed to (Actual)": "ALAIN BOSQUET",</p>
-        <p>"Reg. recipient": "Alain Bosquet",</p>
-        <p>"Reg place sent": "",</p>
-        <p>"Reg. PlaceSent City": "",</p>
-        <p>"Reg. PlaceSent Country": "",</p>
-        <p>"Additional": "BY BOSQUET - 1996 - REPRINTED FROM LES FRUITS. . .",</p>
-        <p>"First Repository": "BOSQUET",</p>
-        <p>"First Format": "",</p>
-        <p>"Euro or Am?": "",</p>
-        <p>"First Public?": "",</p>
-        <p>"First Collection": "",</p>
-        <p>"Repository information": "",</p>
-        <p>"Second Repository": "",</p>
-        <p>"Second Format": "",</p>
-        <p>"Second Public?": "",</p>
-        <p>"Second Collection": "",</p>
-        <p>"Third Repository": "",</p>
-        <p>"Third Format": "",</p>
-        <p>"Third Public?": "",</p>
-        <p>"Third Collection": "",</p>
-        <p>"OwnerRights": "Beckett",</p>
-        <p>"PrimaryLang": "French",</p>
-        <p>"File": "BOSQUET",</p>
-        <p>"Sender": "Samuel Beckett",</p>
-        <p>"PlacePrevPubl": "LES FRUITS DE L'AN DERNIE",</p>
-        <p>"Verified": "Y"</p>
+                            <Col className='answerCol'>
+                                <p>ID: </p><p> 2008</p>
+                                <p>Code: </p><p> "SABE [SPRING 1957] ALBO"</p>
+                                <p>Day: </p><p> 0</p>
+                                <p>Month: </p><p> 0</p>
+                                <p>Year: </p><p> 57</p>
+                                <p>Addressed from (Actual): </p><p> </p>
+                                <p>Reg. Place written: </p><p> </p>
+                                <p>Reg. Place written city: </p><p> </p>
+                                <p>Reg. Place written country: </p><p> </p>
+                                <p>Reg. Place written, second city: </p><p> </p>
+                                <p>Autograph or Typed: </p><p> </p>
+                                <p>PhysDes: </p><p> "Other"</p>
+                                <p>initialed or signed: </p><p> </p>
+                                <p>Postcard Image: </p><p> </p>
+                                <p>phys descr detail: </p><p> </p>
+                                <p>PhysDes notes: </p><p> </p>
+                                <p>leaves: </p><p> "?"</p>
+                                <p>sides: </p><p> "?"</p>
+                                <p>Envelope: </p><p> </p>
+                                <p>Postmark (Actual): </p><p> </p>
+                                <p>Addressed to (Actual): </p><p> "ALAIN BOSQUET"</p>
+                                <p>Reg. recipient: </p><p> "Alain Bosquet"</p>
+                                <p>Reg place sent: </p><p> </p>
+                                <p>Reg. PlaceSent City: </p><p> </p>
+                                <p>Reg. PlaceSent Country: </p><p> </p>
+                                <p>Additional: </p><p> "BY BOSQUET - 1996 - REPRINTED FROM LES FRUITS. . ."</p>
+                                <p>First Repository: </p><p> "BOSQUET"</p>
+                                <p>First Format: </p><p> </p>
+                                <p>Euro or Am?: </p><p> </p>
+                                <p>First Public?: </p><p> </p>
+                                <p>First Collection: </p><p> </p>
+                                <p>Repository information: </p><p> </p>
+                                <p>Second Repository: </p><p> </p>
+                                <p>Second Format: </p><p> </p>
+                                <p>Second Public?: </p><p> </p>
+                                <p>Second Collection: </p><p> </p>
+                                <p>Third Repository: </p><p> </p>
+                                <p>Third Format: </p><p> </p>
+                                <p>Third Public?: </p><p> </p>
+                                <p>Third Collection: </p><p> </p>
+                                <p>OwnerRights: </p><p> "Beckett"</p>
+                                <p>PrimaryLang: </p><p> "French"</p>
+                                <p>File: </p><p> "BOSQUET"</p>
+                                <p>Sender: </p><p> "Samuel Beckett"</p>
+                                <p>PlacePrevPubl: </p><p> "LES FRUITS DE L'AN DERNIE"</p>
+                                <p>Verified: </p><p> "Y"</p>
                             </Col>
 
                         </Row>
