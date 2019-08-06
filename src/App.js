@@ -18,7 +18,7 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route exact path="/people" component={People} />
       <Route exact path="/letters" component={Letters} />
-      <Route exact path="/letterdetais" component={LetterPg} />
+      <Route exact path="/letterdetails" component={LetterPg} />
       </Container>
     </BrowserRouter>
   );
