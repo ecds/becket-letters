@@ -69,6 +69,8 @@ export class Letters extends Component {
       });
   }
 
+
+
   render() {
     // const allLetters = this.state.letters.map((letter) => <li>{letter.ID}, {letter.Additional} </li>)
     return (
