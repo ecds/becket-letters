@@ -1,0 +1,73 @@
+div * {
+    font-family: serif;
+}
+
+.navPane {
+    background-color: $lightGray;
+    height: 500px;
+    h4 {
+        margin-top: 10px;
+    }
+}
+
+.letterPgDetails {
+    /* border: 2px solid#b1b3b3; */
+    /* margin-left: 20px; */
+    padding: 20px;
+    font-size: 1em;
+    .card {
+        background-color: white;
+        border: none;
+        border-radius: 0;
+        margin-bottom: 3px;
+        .card-header {
+            background-color: $white;
+            border-bottom: none;;
+            border-radius: 0;
+            padding: 2px;
+            cursor: pointer;
+            h4 {
+                line-height: 45px;
+                margin-bottom: 1px;
+                padding-left: 10px;
+            }
+            &:active {
+                background-color: $lightGray;
+            }
+            &:first-child {
+                border-radius: 0;
+            }
+            &.authInfo {
+                border-left: 4px solid $midBlue;
+                background-color: lighten($midBlue, 20%);
+            }
+            &.detInfo {
+                border-left: 4px solid $yellow;
+                background-color: lighten($yellow, 20%);
+            }
+            &.moreInfo {
+                border-left: 4px solid $red;
+                background-color: lighten($red, 20%);
+            }
+
+            &.archInfo {
+                border-left: 4px solid $green;
+                background-color: lighten($green, 20%);
+            }
+        }
+    }
+}
+
+.results p {
+    margin-left: 10px;
+    margin-bottom: 4px;
+    &:nth-child(even) {
+        border-left: 2px solid $darkGray;
+        padding-left: 10px;
+        margin-left: 30px;
+    }
+}
+
+.accordion * {
+    border-radius: 0;
+}
