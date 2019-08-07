@@ -1,33 +1,44 @@
+div * {
+    font-family: serif;
+}
+
 .navPane {
     background-color: #D9D9D6;
-    border: 1px solid #b1b3b3;
+    height: 500px;
+}
+
+.navPane h4 {
+    margin-top: 10px;
 }
 
 .letterPgDetails {
-    border: 3px double #b1b3b3;
+    border: 2px solid#b1b3b3;
+    margin-left: 20px;
     padding: 20px;
-    margin-right: 10px;
     font-size: 1em;
 }
 
-.results p:nth-child(even) {
-    border-left: 4px solid #b1b3b3;
-    padding-left: 10px;
-    margin-left: 20px;
+.results p {
+    margin-left: 10px;
 }
 
-h4 {
-    text-decoration: underline;
+.results p:nth-child(even) {
+    border-left: 2px solid #b1b3b3;
+    padding-left: 10px;
+    margin-left: 30px;
 }
     
 .authInfo {
-    text-decoration-color: #E6B965;
+    border-left: 4px solid #E6B965;
+    padding-left: 10px;
 }
 
 .moreInfo {
-    text-decoration-color: #DB352A;
+    border-left: 4px solid #DB352A;
+    padding-left: 10px;
 }
 
 .archInfo {
-    text-decoration-color: #82C08A;
+    border-left: 4px solid #82C08A;
+    padding-left: 10px;
 }

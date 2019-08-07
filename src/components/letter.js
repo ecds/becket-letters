@@ -10,10 +10,7 @@ export class LetterPg extends Component {
                     <h2>Letter Name</h2>
                 </Row>
                 <Row>
-                    <p>Letter ID: </p><p> #ID#</p>
-                </Row>
-                <Row>
-                    <Col md={9} className='letterPgDetails'>
+                    <Col md={6} className='letterPgDetails'>
                         <h3>Details</h3>
                         <Row>
                             <Col>
@@ -78,7 +75,10 @@ export class LetterPg extends Component {
 
                         </Row>
                     </Col>
-                    <Col md={2} className='navPane'>Navigation Pane</Col>
+                    <Col></Col>
+                    <Col md={2} className='navPane'>
+                        <h4>Navigation</h4>
+                        </Col>
                 </Row>
 
             </div>
