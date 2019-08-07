@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { BrowserRouter, Route } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import Landing from './components/landing';
 import People from './components/people';
 import Letters from './components/letters';
 import Header from './components/header';
-import LocationPath from './components/location-path';
+import LocationPath from './components/breadcrumbs';
 import LetterPg from './components/letter';
 
 function App() {
