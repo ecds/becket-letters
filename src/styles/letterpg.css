@@ -1,0 +1,87 @@
+div * {
+    font-family: serif;
+}
+
+.navPane {
+    background-color: #D9D9D6;
+    height: 500px;
+}
+
+.navPane h4 {
+    margin-top: 10px;
+}
+
+.letterPgDetails {
+    /* border: 2px solid#b1b3b3; */
+    /* margin-left: 20px; */
+    padding: 20px;
+    font-size: 1em;
+}
+
+.results p {
+    margin-left: 10px;
+    margin-bottom: 4px;
+}
+
+.results p:nth-child(even) {
+    border-left: 2px solid #b1b3b3;
+    padding-left: 10px;
+    margin-left: 30px;
+}
+
+.accordion * {
+    border-radius: 0;
+}
+
+.card {
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 3px;
+}
+
+.card-header {
+    background-color: #ffffff00;
+    border-bottom: none;;
+    border-radius: 0;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.card-header h4 {
+    line-height: 45px;
+    margin-bottom: 1px;
+}
+
+.card-header:active {
+    background-color: #D9D9D6;
+}
+
+.card-header:first-child {
+    border-radius: 0;
+}
+
+.accordTitle {
+    line-height: 35px;
+    padding-left: 10px;
+}
+
+.detInfo {
+    border-left: 4px solid #E6B965;
+    background-color: rgba(230, 185, 101, 0.500);
+}
+    
+.authInfo {
+    border-left: 4px solid #007DBA;
+    background-color: rgba(0, 124, 186, 0.500);
+}
+
+.moreInfo {
+    border-left: 4px solid #DB352A;
+    background-color: rgba(219, 54, 42, 0.500);
+}
+
+.archInfo {
+    border-left: 4px solid #82C08A;
+    background-color: rgba(130, 192, 138, 0.500);
+}
