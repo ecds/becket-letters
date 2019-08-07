@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from 'react-bootstrap';
+import { Accordion, Button, Card, Col, Row } from 'react-bootstrap';
 import '../styles/letterpg.css'
 
 export class LetterPg extends Component {
@@ -18,6 +18,28 @@ export class LetterPg extends Component {
                                     <p>ID: </p><p> 2008</p>
                                     <p>Code: </p><p> "SABE [SPRING 1957] ALBO"</p>
                                 </div>
+                                <Accordion>
+                                    <Card>
+                                        <Card.Header>
+                                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                                Click me!
+                                            </Accordion.Toggle>
+                                        </Card.Header>
+                                        <Accordion.Collapse eventKey="0">
+                                            <Card.Body>Hello! I'm the body</Card.Body>
+                                        </Accordion.Collapse>
+                                    </Card>
+                                    <Card>
+                                        <Card.Header>
+                                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                                                Click me!
+                                            </Accordion.Toggle>
+                                        </Card.Header>
+                                        <Accordion.Collapse eventKey="1">
+                                            <Card.Body>Hello! I'm another body</Card.Body>
+                                        </Accordion.Collapse>
+                                    </Card>
+                                </Accordion>
                                 <h4 className='authInfo'>Authorship Information</h4>
                                 <div className='results'>
                                     <p>Day: </p><p> 0</p>
@@ -78,7 +100,7 @@ export class LetterPg extends Component {
                     <Col></Col>
                     <Col md={2} className='navPane'>
                         <h4>Navigation</h4>
-                        </Col>
+                    </Col>
                 </Row>
 
             </div>
