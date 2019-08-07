@@ -20,6 +20,7 @@ div * {
 
 .results p {
     margin-left: 10px;
+    margin-bottom: 4px;
 }
 
 .results p:nth-child(even) {
@@ -28,14 +29,31 @@ div * {
     margin-left: 30px;
 }
 
+.accordion * {
+    border-radius: 0;
+}
+
 .card {
     background-color: white;
     border: none;
+    border-radius: 0;
+    margin-bottom: 3px;
 }
 
 .card-header {
     background-color: #ffffff00;
-    border-bottom: none;
+    border-bottom: none;;
+    border-radius: 0;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.card-header:active {
+    background-color: #D9D9D6;
+}
+
+.card-header:first-child {
+    border-radius: 0;
 }
 
 .accordTitle {

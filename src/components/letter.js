@@ -13,14 +13,11 @@ export class LetterPg extends Component {
                     <Col md={6} className='letterPgDetails'>
                         <Row>
                             <Col>
-                                <div >
-
-                                </div>
                                 <Accordion defaultActiveKey="0">
 
                                     <Card>
-                                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                                            <h4 className='detInfo accordTitle'>Details</h4>
+                                        <Accordion.Toggle className='detInfo' as={Card.Header} eventKey="0">
+                                            <h4 className='accordTitle'>Details</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body className='results'>
@@ -31,8 +28,8 @@ export class LetterPg extends Component {
                                     </Card>
 
                                     <Card>
-                                        <Accordion.Toggle as={Card.Header} eventKey="1">
-                                            <h4 className='authInfo accordTitle'>Authorship Information</h4>
+                                        <Accordion.Toggle className='authInfo' as={Card.Header} eventKey="1">
+                                            <h4 className='accordTitle'>Authorship Information</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="1">
                                             <Card.Body className='results'>
@@ -64,8 +61,8 @@ export class LetterPg extends Component {
                                     </Card>
 
                                     <Card>
-                                        <Accordion.Toggle as={Card.Header} eventKey="2">
-                                            <h4 className='moreInfo accordTitle'>Additional</h4>
+                                        <Accordion.Toggle className='moreInfo' as={Card.Header} eventKey="2">
+                                            <h4 className='accordTitle'>Additional</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="2">
                                             <Card.Body>
@@ -75,8 +72,8 @@ export class LetterPg extends Component {
                                     </Card>
 
                                     <Card>
-                                        <Accordion.Toggle as={Card.Header} eventKey="3">
-                                            <h4 className='archInfo accordTitle'>Archival Info</h4>
+                                        <Accordion.Toggle className='archInfo' as={Card.Header} eventKey="3">
+                                            <h4 className='accordTitle'>Archival Info</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="3">
                                             <Card.Body className='results'>
