@@ -28,24 +28,37 @@ div * {
     margin-left: 30px;
 }
 
-div h4 {
+.card {
+    background-color: white;
+    border: none;
+}
+
+.card-header {
+    background-color: #ffffff00;
+    border-bottom: none;
+}
+
+.accordTitle {
     line-height: 35px;
+    padding-left: 10px;
+}
+
+.detInfo {
+    border-left: 4px solid #E6B965;
+    background-color: rgba(230, 185, 101, 0.500);
 }
     
 .authInfo {
-    border-left: 4px solid #E6B965;
-    background-color: rgba(230, 185, 101, 0.500);
-    padding-left: 10px;
+    border-left: 4px solid #007DBA;
+    background-color: rgba(0, 124, 186, 0.500);
 }
 
 .moreInfo {
     border-left: 4px solid #DB352A;
     background-color: rgba(219, 54, 42, 0.500);
-    padding-left: 10px;
 }
 
 .archInfo {
     border-left: 4px solid #82C08A;
     background-color: rgba(130, 192, 138, 0.500);
-    padding-left: 10px;
 }

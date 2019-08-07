@@ -20,7 +20,7 @@ export class LetterPg extends Component {
 
                                     <Card>
                                         <Accordion.Toggle as={Card.Header} eventKey="0">
-                                            <h4>Details</h4>
+                                            <h4 className='detInfo accordTitle'>Details</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body className='results'>
@@ -32,7 +32,7 @@ export class LetterPg extends Component {
 
                                     <Card>
                                         <Accordion.Toggle as={Card.Header} eventKey="1">
-                                            <h4 className='authInfo'>Authorship Information</h4>
+                                            <h4 className='authInfo accordTitle'>Authorship Information</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="1">
                                             <Card.Body className='results'>
@@ -65,7 +65,7 @@ export class LetterPg extends Component {
 
                                     <Card>
                                         <Accordion.Toggle as={Card.Header} eventKey="2">
-                                            <h4 className='moreInfo'>Additional</h4>
+                                            <h4 className='moreInfo accordTitle'>Additional</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="2">
                                             <Card.Body>
@@ -76,7 +76,7 @@ export class LetterPg extends Component {
 
                                     <Card>
                                         <Accordion.Toggle as={Card.Header} eventKey="3">
-                                            <h4 className='archInfo'>Archival Info</h4>
+                                            <h4 className='archInfo accordTitle'>Archival Info</h4>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey="3">
                                             <Card.Body className='results'>
