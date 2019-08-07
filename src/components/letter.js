@@ -13,7 +13,7 @@ export class LetterPg extends Component {
                     <Col md={6} className='letterPgDetails'>
                         <Row>
                             <Col>
-                                <Accordion defaultActiveKey="0">
+                                <Accordion defaultActiveKey="1">
 
                                     <Card>
                                         <Accordion.Toggle className='detInfo' as={Card.Header} eventKey="0">
