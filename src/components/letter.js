@@ -16,11 +16,8 @@ export class LetterPg extends Component {
     axios.all([
       axios.get('2008.json')])
       .then(axios.spread((getLetterData) => {
-        console.log(getLetterData)
         const letter = getLetterData.data;
         this.setState({ letter });
-        console.log(letter)
-        console.log(this.state.letter[0]['PrimaryLang'])
         this.setState({ isLoaded: true })
       }))
       .catch((err) => {
