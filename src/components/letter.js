@@ -74,7 +74,7 @@ export class LetterPg extends Component {
                                             </Accordion.Toggle>
                                             <Accordion.Collapse eventKey="1">
                                                 <Card.Body className='results'>
-                                                    <Table borderless striped>
+                                                    <Table borderless striped hover>
                                                         <tbody>
                                                             <tr>
                                                                 <td>Day</td>
@@ -180,7 +180,7 @@ export class LetterPg extends Component {
                                             </Accordion.Toggle>
                                             <Accordion.Collapse eventKey="2">
                                                 <Card.Body>
-                                                    <Table borderless hover>
+                                                    <Table borderless striped hover>
                                                         <tbody>
                                                             <tr>
                                                                 <td>{this.state.letter[0].Additional}</td>
@@ -197,26 +197,90 @@ export class LetterPg extends Component {
                                             </Accordion.Toggle>
                                             <Accordion.Collapse eventKey="3">
                                                 <Card.Body className='results'>
-                                                    <p>First Repository: </p><p>{this.state.letter[0]['First Repository']}</p>
-                                                    <p>First Format: </p><p>{this.state.letter[0]['First Format']}</p>
-                                                    <p>Euro or Am?: </p><p>{this.state.letter[0]['Euro or Am?']}</p>
-                                                    <p>First Public?: </p><p>{this.state.letter[0]['First Public?']}</p>
-                                                    <p>First Collection: </p><p>{this.state.letter[0]['First Collection']}</p>
-                                                    <p>Repository information: </p><p>{this.state.letter[0]['Repository information']}</p>
-                                                    <p>Second Repository: </p><p>{this.state.letter[0]['Second Repository']}</p>
-                                                    <p>Second Format: </p><p>{this.state.letter[0]['Second Format']}</p>
-                                                    <p>Second Public?: </p><p>{this.state.letter[0]['Second Public?']}</p>
-                                                    <p>Second Collection: </p><p>{this.state.letter[0]['Second Collection']}</p>
-                                                    <p>Third Repository: </p><p>{this.state.letter[0]['Third Repository']}</p>
-                                                    <p>Third Format: </p><p>{this.state.letter[0]['Third Format']}</p>
-                                                    <p>Third Public?: </p><p>{this.state.letter[0]['Third Public?']}</p>
-                                                    <p>Third Collection: </p><p>{this.state.letter[0]['Third Collection']}</p>
-                                                    <p>OwnerRights: </p><p>{this.state.letter[0].OwnerRights}</p>
-                                                    <p>PrimaryLang: </p><p>{this.state.letter[0].PrimaryLang}</p>
-                                                    <p>File: </p><p>{this.state.letter[0].File}</p>
-                                                    <p>Sender: </p><p>{this.state.letter[0].Sender}</p>
-                                                    <p>PlacePrevPubl: </p><p>{this.state.letter[0].PlacePrevPubl}</p>
-                                                    <p>Verified: </p><p>{this.state.letter[0]['Verified']}</p>
+                                                    <Table borderless striped hover>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>First Repository: </td>
+                                                                <td>{this.state.letter[0]['First Repository']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>First Format: </td>
+                                                                <td>{this.state.letter[0]['First Format']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Euro or Am?: </td>
+                                                                <td>{this.state.letter[0]['Euro or Am?']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>First Public?: </td>
+                                                                <td>{this.state.letter[0]['First Public?']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>First Collection: </td>
+                                                                <td>{this.state.letter[0]['First Collection']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Repository information: </td>
+                                                                <td>{this.state.letter[0]['Repository information']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Second Repository: </td>
+                                                                <td>{this.state.letter[0]['Second Repository']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Second Format: </td>
+                                                                <td>{this.state.letter[0]['Second Format']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Second Public?: </td>
+                                                                <td>{this.state.letter[0]['Second Public?']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Second Collection: </td>
+                                                                <td>{this.state.letter[0]['Second Collection']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Third Repository: </td>
+                                                                <td>{this.state.letter[0]['Third Repository']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Third Format: </td>
+                                                                <td>{this.state.letter[0]['Third Format']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Third Public?: </td>
+                                                                <td>{this.state.letter[0]['Third Public?']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Third Collection: </td>
+                                                                <td>{this.state.letter[0]['Third Collection']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>OwnerRights: </td>
+                                                                <td>{this.state.letter[0].OwnerRights}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PrimaryLang: </td>
+                                                                <td>{this.state.letter[0].PrimaryLang}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>File: </td>
+                                                                <td>{this.state.letter[0].File}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sender: </td>
+                                                                <td>{this.state.letter[0].Sender}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PlacePrevPubl: </td>
+                                                                <td>{this.state.letter[0].PlacePrevPubl}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Verified: </td>
+                                                                <td>{this.state.letter[0]['Verified']}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </Table>
                                                 </Card.Body>
                                             </Accordion.Collapse>
                                         </Card>
