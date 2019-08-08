@@ -18,10 +18,19 @@ export class Header extends Component {
                 </Row>
                 <Row className='headerRow3'>
                     <div className='header-container'>
-                        <a href='/'>Home</a><a href='/'>Research<img
-                            src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' /></a><a href='/'>Index<img
-                                src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' /></a><a href='/'>About</a><a
-                                    id='searchBtn'><img id='searchImg' src='../imgs/searchRed.png' alt='magnifying glass' /></a>
+                        <a href='/'>Home</a>
+                        <a href='/'>
+                            Research
+                            <img src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' />
+                        </a>
+                        <a href='/'>
+                            Index
+                            <img  src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' />
+                        </a>
+                        <a href='/'>About</a>
+                        <a href='/' id='searchBtn'>
+                            <img id='searchImg' src='../imgs/searchRed.png' alt='magnifying glass' />
+                        </a>
                     </div>
                 </Row>
             </div>
