@@ -81,38 +81,95 @@ export class LetterPg extends Component {
                                                                 <td>{this.state.letter[0].Day}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Code</td>
-                                                                <td>{this.state.letter[0].Code}</td>
+                                                                <td>Month</td>
+                                                                <td>{this.state.letter[0].Month}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Label</td>
-                                                                <td>Value</td>
+                                                                <td>Year</td>
+                                                                <td>{this.state.letter[0].Year}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Addressed from (Actual)</td>
+                                                                <td>{this.state.letter[0]['Addressed from (Actual)']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. Place written</td>
+                                                                <td>{this.state.letter[0]['Reg. Place written']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. Place written city</td>
+                                                                <td>{this.state.letter[0]['Reg. Place written city']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. Place written country</td>
+                                                                <td>{this.state.letter[0]['Reg. Place written country']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. Place written, second city</td>
+                                                                <td>{this.state.letter[0]['Reg. Place written, second city']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Autograph or Typed</td>
+                                                                <td>{this.state.letter[0]['Autograph or Typed']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PhysDes</td>
+                                                                <td>{this.state.letter[0].PhysDes}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>initialed or signed</td>
+                                                                <td>{this.state.letter[0]['initialed or signed']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Postcard Image</td>
+                                                                <td>{this.state.letter[0]['Postcard Image']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>phys descr detail</td>
+                                                                <td>{this.state.letter[0]['phys descr detail']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PhysDes notes</td>
+                                                                <td>{this.state.letter[0]['PhysDes notes']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>leaves</td>
+                                                                <td>{this.state.letter[0].leaves}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sides</td>
+                                                                <td>{this.state.letter[0].sides}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Envelope</td>
+                                                                <td>{this.state.letter[0].Envelope}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Postmark (Actual)</td>
+                                                                <td>{this.state.letter[0]['Postmark (Actual)']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Addressed to (Actual)</td>
+                                                                <td>{this.state.letter[0]['Addressed to (Actual)']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. recipient</td>
+                                                                <td>{this.state.letter[0]['Reg. recipient']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg place sent</td>
+                                                                <td>{this.state.letter[0]['Reg place sent']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg PlaceSent City</td>
+                                                                <td>{this.state.letter[0]['Reg PlaceSent City']}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Reg. PlaceSent Country</td>
+                                                                <td>{this.state.letter[0]['Reg. PlaceSent Country']}</td>
                                                             </tr>
                                                         </tbody>
                                                     </Table>
-                                                    <p>Day: </p><p>{this.state.letter[0].Day}</p>
-                                                    <p>Month: </p><p>{this.state.letter[0].Month}</p>
-                                                    <p>Year: </p><p>{this.state.letter[0].Year}</p>
-                                                    <p>Addressed from (Actual): </p><p>{this.state.letter[0]['Addressed from (Actual)']}</p>
-                                                    <p>Reg. Place written: </p><p>{this.state.letter[0]['Reg. Place written']}</p>
-                                                    <p>Reg. Place written city: </p><p>{this.state.letter[0]['Reg. Place written city']}</p>
-                                                    <p>Reg. Place written country: </p><p>{this.state.letter[0]['Reg. Place written country']}</p>
-                                                    <p>Reg. Place written, second city: </p><p>{this.state.letter[0]['Reg. Place written, second city']}</p>
-                                                    <p>Autograph or Typed: </p><p>{this.state.letter[0]['Autograph or Typed']}</p>
-                                                    <p>PhysDes: </p><p>{this.state.letter[0].PhysDes}</p>
-                                                    <p>initialed or signed: </p><p>{this.state.letter[0]['initialed or signed']}</p>
-                                                    <p>Postcard Image: </p><p>{this.state.letter[0]['Postcard Image']}</p>
-                                                    <p>phys descr detail: </p><p>{this.state.letter[0]['phys descr detail']}</p>
-                                                    <p>PhysDes notes: </p><p>{this.state.letter[0]['PhysDes notes']}</p>
-                                                    <p>leaves: </p><p> "?"</p>
-                                                    <p>sides: </p><p>{this.state.letter[0].sides}</p>
-                                                    <p>Envelope: </p><p>{this.state.letter[0].Envelope}</p>
-                                                    <p>Postmark (Actual): </p><p> </p>
-                                                    <p>Addressed to (Actual): </p><p>{this.state.letter[0]['Addressed to (Actual)']}</p>
-                                                    <p>Reg. recipient: </p><p>{this.state.letter[0]['Reg. recipient']}</p>
-                                                    <p>Reg place sent: </p><p>{this.state.letter[0]['Reg place sent']}</p>
-                                                    <p>Reg. PlaceSent City: </p><p>{this.state.letter[0]['Reg PlaceSent City']}</p>
-                                                    <p>Reg. PlaceSent Country: </p><p>{this.state.letter[0]['Reg. PlaceSent Country']}</p>
                                                 </Card.Body>
                                             </Accordion.Collapse>
                                         </Card>
