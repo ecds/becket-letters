@@ -45,7 +45,7 @@ export class LetterPg extends Component {
                         <Col md={6} className='letterPgDetails'>
                             <Row>
                                 <Col>
-                                    <Accordion defaultActiveKey="3">
+                                    <Accordion defaultActiveKey="1">
                                         <Card>
                                             <Accordion.Toggle className='detInfo' as={Card.Header} eventKey="0">
                                                 <h4 className='accordTitle'>Details</h4>
