@@ -200,83 +200,83 @@ export class LetterPg extends Component {
                                                     <Table borderless striped hover>
                                                         <tbody>
                                                             <tr>
-                                                                <td>First Repository: </td>
+                                                                <td>First Repository </td>
                                                                 <td>{this.state.letter[0]['First Repository']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>First Format: </td>
+                                                                <td>First Format </td>
                                                                 <td>{this.state.letter[0]['First Format']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Euro or Am?: </td>
+                                                                <td>Euro or Am? </td>
                                                                 <td>{this.state.letter[0]['Euro or Am?']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>First Public?: </td>
+                                                                <td>First Public? </td>
                                                                 <td>{this.state.letter[0]['First Public?']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>First Collection: </td>
+                                                                <td>First Collection </td>
                                                                 <td>{this.state.letter[0]['First Collection']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Repository information: </td>
+                                                                <td>Repository information </td>
                                                                 <td>{this.state.letter[0]['Repository information']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Second Repository: </td>
+                                                                <td>Second Repository </td>
                                                                 <td>{this.state.letter[0]['Second Repository']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Second Format: </td>
+                                                                <td>Second Format </td>
                                                                 <td>{this.state.letter[0]['Second Format']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Second Public?: </td>
+                                                                <td>Second Public? </td>
                                                                 <td>{this.state.letter[0]['Second Public?']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Second Collection: </td>
+                                                                <td>Second Collection </td>
                                                                 <td>{this.state.letter[0]['Second Collection']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Third Repository: </td>
+                                                                <td>Third Repository </td>
                                                                 <td>{this.state.letter[0]['Third Repository']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Third Format: </td>
+                                                                <td>Third Format </td>
                                                                 <td>{this.state.letter[0]['Third Format']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Third Public?: </td>
+                                                                <td>Third Public? </td>
                                                                 <td>{this.state.letter[0]['Third Public?']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Third Collection: </td>
+                                                                <td>Third Collection </td>
                                                                 <td>{this.state.letter[0]['Third Collection']}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>OwnerRights: </td>
+                                                                <td>OwnerRights </td>
                                                                 <td>{this.state.letter[0].OwnerRights}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>PrimaryLang: </td>
+                                                                <td>PrimaryLang </td>
                                                                 <td>{this.state.letter[0].PrimaryLang}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>File: </td>
+                                                                <td>File </td>
                                                                 <td>{this.state.letter[0].File}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Sender: </td>
+                                                                <td>Sender </td>
                                                                 <td>{this.state.letter[0].Sender}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>PlacePrevPubl: </td>
+                                                                <td>PlacePrevPubl </td>
                                                                 <td>{this.state.letter[0].PlacePrevPubl}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Verified: </td>
+                                                                <td>Verified </td>
                                                                 <td>{this.state.letter[0]['Verified']}</td>
                                                             </tr>
                                                         </tbody>
