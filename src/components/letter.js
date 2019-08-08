@@ -45,7 +45,7 @@ export class LetterPg extends Component {
                         <Col md={6} className='letterPgDetails'>
                             <Row>
                                 <Col>
-                                    <Accordion defaultActiveKey="1">
+                                    <Accordion defaultActiveKey="3">
                                         <Card>
                                             <Accordion.Toggle className='detInfo' as={Card.Header} eventKey="0">
                                                 <h4 className='accordTitle'>Details</h4>
@@ -180,7 +180,13 @@ export class LetterPg extends Component {
                                             </Accordion.Toggle>
                                             <Accordion.Collapse eventKey="2">
                                                 <Card.Body>
-                                                    <p>{this.state.letter[0].Additional}</p>
+                                                    <Table borderless hover>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{this.state.letter[0].Additional}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </Table>
                                                 </Card.Body>
                                             </Accordion.Collapse>
                                         </Card>
