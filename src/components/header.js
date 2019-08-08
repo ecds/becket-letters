@@ -21,11 +21,11 @@ export class Header extends Component {
                         <a href='/'>Home</a>
                         <a href='/'>
                             Research
-                            <img src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' />
+                            <img src='../imgs/downArrow.svg' alt='down-arrow' className='navArrow' />
                         </a>
                         <a href='/'>
                             Index
-                            <img  src='../imgs/downArrow.svg' alt='down-arrow' class='navArrow' />
+                            <img  src='../imgs/downArrow.svg' alt='down-arrow' className='navArrow' />
                         </a>
                         <a href='/'>About</a>
                         <a href='/' id='searchBtn'>
