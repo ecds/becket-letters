@@ -14,7 +14,7 @@ export class LetterPg extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('2008.json')])
+            axios.get('letters_json.json')])
             .then(axios.spread((getLetterData) => {
                 const letter = getLetterData.data;
                 this.setState({ letter });
@@ -180,7 +180,7 @@ export class LetterPg extends Component {
                                             </Accordion.Toggle>
                                             <Accordion.Collapse eventKey="2">
                                                 <Card.Body>
-                                                    <Table borderless striped hover>
+                                                    <Table borderless hover>
                                                         <tbody>
                                                             <tr>
                                                                 <td>{this.state.letter[0].Additional}</td>

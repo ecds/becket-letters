@@ -2,7 +2,16 @@
 @import "./assets/stylesheets/header.scss";
 @import "./assets/stylesheets/letterpg.scss";
 @import "./assets/stylesheets/breadcrumbs.scss";
+@import "./assets/stylesheets/timeline.scss";
 
 .App {
   text-align: center;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $serifHeader, serif;
+}
+
+p, a {
+  font-family: $serifBody, serif;
 }

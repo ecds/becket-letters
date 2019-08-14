@@ -1,0 +1,35 @@
+.timelineHeaderBlue {
+    color: $midBlue;
+}
+
+.timelineHeaderYellow {
+    color: $yellow;
+}
+
+.global, .personal {
+    padding: 10px 10px 1px 10px;
+    margin-top: 25px;
+    h4 {
+        color: black; 
+    }
+    p {
+        color: white;
+    }
+    
+  }
+  
+  .global {
+    background: $yellow;
+    
+  }
+
+  .rightEvent {
+    &:before {
+        content: url('/imgs/lineSegment.svg');
+
+    }
+  }
+  
+  .personal {
+    background: $midBlue;
+  }
