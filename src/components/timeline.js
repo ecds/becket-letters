@@ -71,7 +71,7 @@ export class Timeline extends Component {
                     <Row>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium mollitia, laborum blanditiis, natus rerum distinctio architecto rem atque, aut necessitatibus illum eum veritatis. Mollitia qui similique sit corrupti, atque amet?</p>
                     </Row>
-                    <Row>
+                    <Row className='timelineTitleRow'>
                         <Col md={6} >
                             <Row></Row>
                             <h5>Personal events are in <span className="timelineHeaderBlue">blue</span></h5>
@@ -80,7 +80,6 @@ export class Timeline extends Component {
                             <h5>Global events are in <span className="timelineHeaderYellow">gold</span></h5>
                         </Col>
                     </Row>
-                    <hr></hr>
                     {timeline}
                 </div>
             )
