@@ -25,7 +25,7 @@
   &:before {
     content: "⬤";
     font-size: 14px;
-    left: -8px;
+    left: -9px;
     color: $yellow;
     text-shadow: 0px 0px 5px $yellow;
     position: absolute;
@@ -56,7 +56,7 @@
   &:before {
     content: "⬤";
     font-size: 14px;
-    right: -9px;
+    right: -8px;
     color: $midBlue;
     text-shadow: 0px 0px 5px $midBlue;
     position: absolute;
@@ -99,7 +99,7 @@
     &:before {
       content: "⬤";
       font-size: 14px;
-      left: -8px;
+      left: -9px;
       color: $midBlue;
       text-shadow: 0px 0px 5px $midBlue;
       position: absolute;
