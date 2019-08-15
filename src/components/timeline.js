@@ -44,7 +44,7 @@ export class Timeline extends Component {
                 }
                 if (timelineData.type === 'personal') {
                     return <Row>
-                        <Col md={6}>
+                        <Col md={6} className='leftEvent'>
                             <div className={` ${timelineData.type}`}>
                                 <h4>{timelineData.date}</h4>
                                 <p>{timelineData.event}</p>
