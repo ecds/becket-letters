@@ -14,7 +14,7 @@ export class Timeline extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('beckett-timeline.json')])
+            axios.get('beckett-timeline-year.json')])
             .then(axios.spread((getLetterData) => {
                 console.log(getLetterData);
                 const timelineEntries = getLetterData.data;
@@ -38,31 +38,32 @@ export class Timeline extends Component {
             return <div>Loading...</div>;
             // return now that component has value
         } else {
-            const timeline = this.state.timelineEntries.map(function (timelineData) {
-                if (timelineData.type === "") {
-                    return null
-                }
-                if (timelineData.type === 'personal') {
-                    return <Row>
-                        <Col md={6} className='leftEvent'>
-                            <div className={` ${timelineData.type}`}>
-                                <h4>{timelineData.date}</h4>
-                                <p>{timelineData.event}</p>
-                            </div>
-                        </Col>
-                    </Row>;
-                }
-                else {
-                    return <Row>
-                        <Col md={6} className='offset-md-6 rightEvent'>
-                            <div className={` ${timelineData.type}`}>
-                                <h4>{timelineData.date}</h4>
-                                <p>{timelineData.event}</p>
-                            </div>
-                        </Col>
-                    </Row>;
-                };
+            let entry = this.state.timelineEntries;
+            const timeline = entry.map(function (timelineData) {
+                Object.keys(timelineData).forEach(function (key) {
+                    return <Row>h</Row>
+                })
             })
+            const entries = []
+            console.log(entry)
+            
+            console.log(entries)
+            // const timeline = Object.keys(entry).forEach(function (key) {
+            //     entries.push(entry[key])
+            //     entry[key].map(function(timelineData) {
+            //         console.log('w')
+            //         return <Row>{timelineData}</Row>
+            //     });
+                // old .map()
+                // const timeline = entry[key].map(function (timelineData) {
+                //     return <Row>{timelineData}</Row>
+                // const timelineBlock = entry[key].map(function(timelineData) {
+                //     return <Row>{timelineData}</Row>
+                // });
+                // console.log(entry[key])
+                // return "<div>he</div>"
+                // timelineBlock()
+            // })
             return (
                 <div>
                     <Row>
@@ -80,7 +81,8 @@ export class Timeline extends Component {
                             <h5>Global events are in <span className="timelineHeaderYellow">gold</span></h5>
                         </Col>
                     </Row>
-                    {timeline}
+                    
+                    <div>{timeline} hey</div>
                 </div>
             )
         }
