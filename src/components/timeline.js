@@ -38,16 +38,26 @@ export class Timeline extends Component {
             return <div>Loading...</div>;
             // return now that component has value
         } else {
-            let entry = this.state.timelineEntries;
-            const timeline = entry.map(function (timelineData) {
-                Object.keys(timelineData).forEach(function (key) {
-                    return <Row>h</Row>
-                })
+            let allTimelineEntries = this.state.timelineEntries['1960']
+            console.log(allTimelineEntries)
+            allTimelineEntries.map(function(year) {
+                var timelineEvent = year.map(function(event) {
+                    return (
+                        <div>Event</div>
+                    )
+                });
+                return (
+                    {timelineEvent}
+                )
             })
-            const entries = []
-            console.log(entry)
+            // const entries = this.state.timelineEntries;
+            // let entryArr = []; 
+            // Object.keys(entries).forEach(function (key) {
+            //     entryArr.push(entries[key])
+            // });
+            // console.log(entryArr)
             
-            console.log(entries)
+            
             // const timeline = Object.keys(entry).forEach(function (key) {
             //     entries.push(entry[key])
             //     entry[key].map(function(timelineData) {
@@ -82,7 +92,7 @@ export class Timeline extends Component {
                         </Col>
                     </Row>
                     
-                    <div>{timeline} hey</div>
+                    <div>hey</div>
                 </div>
             )
         }
