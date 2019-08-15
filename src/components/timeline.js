@@ -80,6 +80,7 @@ export class Timeline extends Component {
                             <h5>Global events are in <span className="timelineHeaderYellow">gold</span></h5>
                         </Col>
                     </Row>
+                    <hr></hr>
                     {timeline}
                 </div>
             )
