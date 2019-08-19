@@ -1,4 +1,11 @@
-.headerRow4 {
-    height: 20px;
+.breadcrumb {
+    background-color: $white;
     margin: 10px 0px;
+    padding: 0;
+    font-family: $serifBody;
+    .breadcrumb-item {
+      &:not(:first-child):before {
+        content: '>'
+      }
+    }
 }

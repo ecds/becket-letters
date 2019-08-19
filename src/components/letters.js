@@ -57,7 +57,7 @@ export class Letters extends Component {
 
   componentDidMount() {
     axios.all([
-      axios.get('letters_json.json')])
+      axios.get('./letters_json.json')])
       .then(axios.spread((getLetters) => {
         const letters = getLetters.data;
         this.setState({ letters });

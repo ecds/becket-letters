@@ -14,7 +14,7 @@ export class LetterPg extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('letters_json.json')])
+            axios.get('../letters_json.json')])
             .then(axios.spread((getLetterData) => {
                 const letter = getLetterData.data;
                 this.setState({ letter });
