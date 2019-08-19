@@ -57,7 +57,7 @@ export class Timeline extends Component {
               {
                  Object.keys(allTimelineEntries).map(keyOuter => {
                    return (
-                     <TimelineYear year={keyOuter} events={allTimelineEntries[keyOuter]}/>
+                     <TimelineYear key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]}/>
                    )
                  })
               }

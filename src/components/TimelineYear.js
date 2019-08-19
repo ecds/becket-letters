@@ -8,7 +8,7 @@ class TimelineYear extends Component {
 
   render() {
     const events = this.props.events.map((event, key) =>
-        <TimelineEvent event={event} />
+        <TimelineEvent key={key} event={event} />
     );
     return (
         <div className="year-container">
