@@ -1,0 +1,119 @@
+.timelineHeaderBlue {
+  color: $midBlue;
+}
+
+.timelineHeaderYellow {
+  color: $yellow;
+}
+
+.global,
+.personal {
+  padding: 10px 10px 1px 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  h4 {
+    color: $emoryBlack;
+  }
+  p {
+    color: white;
+  }
+}
+
+.global {
+  background: $yellow;
+  //   dot
+  &:before {
+    content: "⬤";
+    font-size: 14px;
+    left: -9px;
+    color: $yellow;
+    text-shadow: 0px 0px 5px $yellow;
+    position: absolute;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+// center line
+.rightEvent {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: -2px;
+    border-left: 3px solid $darkGray;
+  }
+}
+
+.personal {
+  background: $midBlue;
+  //   dot
+  &:before {
+    content: "⬤";
+    font-size: 14px;
+    right: -8px;
+    color: $midBlue;
+    text-shadow: 0px 0px 5px $midBlue;
+    position: absolute;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+// center line
+.leftEvent {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    right: -1px;
+    border-right: 3px solid $darkGray;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .leftEvent {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      left: -2px;
+      border-left: 3px solid $darkGray;
+      border-right: none;
+    }
+  }
+  .personal {
+    background: $midBlue;
+    //   dot
+    &:before {
+      content: "⬤";
+      font-size: 14px;
+      left: -9px;
+      color: $midBlue;
+      text-shadow: 0px 0px 5px $midBlue;
+      position: absolute;
+      display: block;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.timelineTitleRow {
+  border-bottom: 1px solid $lightGray;
+  margin-bottom: 10px;
+}

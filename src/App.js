@@ -8,6 +8,7 @@ import Letters from './components/letters';
 import Header from './components/header';
 import LocationPath from './components/breadcrumbs';
 import LetterPg from './components/letter';
+import Timeline from './components/timeline';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/people" component={People} />
       <Route exact path="/letters" component={Letters} />
       <Route exact path="/letterdetails" component={LetterPg} />
+      <Route exact path='/timeline' component={Timeline} />
       </Container>
     </BrowserRouter>
   );

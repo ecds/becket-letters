@@ -9,6 +9,7 @@ export class Landing extends Component {
                 <p><a href='./people'>Link to people</a></p>
                 <p><a href='./places'>Link to places</a></p>
                 <p><a href='./letterdetails'>Link to letter detail page</a></p>
+                <p><a href='./timeline'>Link to timeline page</a></p>
         </div>
         )
     }
