@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Accordion, Card, Col, Row, Table } from 'react-bootstrap';
+import ProfileLite from './ProfileLite';
 import axios from "axios";
 
 export class LetterPg extends Component {
@@ -40,6 +41,10 @@ export class LetterPg extends Component {
                 <div>
                     <Row>
                         <h2>{this.state.letter[0].Code}</h2>
+                    </Row>
+                    <Row>
+                      <ProfileLite personId="123456"/>
+                      <ProfileLite personId="789101"/>
                     </Row>
                     <Row>
                         <Col md={6} className='letterPgDetails'>
