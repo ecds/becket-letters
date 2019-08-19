@@ -8,7 +8,7 @@ import Letters from './components/letters';
 import Header from './components/header';
 import LocationPath from './components/breadcrumbs';
 import LetterPg from './components/letter';
-import Timeline from './components/timeline';
+import Timeline from './components/Timeline';
 
 function App() {
   return (

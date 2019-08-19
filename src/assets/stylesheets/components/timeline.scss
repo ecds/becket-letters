@@ -1,3 +1,15 @@
+.timeline-container {
+  .year-container {
+    .year-title {
+        font-size: 4em;
+        font-family: $serifHeader;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        background-color: $white;
+    }
+  }
+}
 .timelineHeaderBlue {
   color: $midBlue;
 }
@@ -39,7 +51,7 @@
 }
 
 // center line
-.rightEvent {
+.right-event {
   position: relative;
   &:before {
     content: "";
@@ -70,7 +82,7 @@
 }
 
 // center line
-.leftEvent {
+.left-event {
   position: relative;
   &:before {
     content: "";
