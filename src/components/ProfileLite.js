@@ -13,12 +13,10 @@ class ProfileLite extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     axios.all([
         axios.get('../'+this.props.personId+'.json')])
         .then(axios.spread((getPersonData) => {
             const personData = getPersonData.data[0];
-            console.log(personData);
             this.setState({ personData });
             this.setState({ isLoaded: true })
         }))

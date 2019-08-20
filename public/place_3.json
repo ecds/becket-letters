@@ -1,0 +1,21 @@
+[
+  {
+    "ID": 3,
+    "PlaceName": "Val-de-Marne",
+    "GeonamesURL": "http://www.geonames.org/2971090/departement-du-val-de-marne.html",
+    "Description": "Commune southeast of Paris, France.",
+    "AlternateSpellings": "Marne Valley",
+    "relationships": {
+      "entities": [{
+        "entity-type": 1,
+        "id": "123456"
+      },{
+        "entity-type": 1,
+        "id": "789101"
+      },{
+        "entity-type": 3,
+        "id": "place_2"
+      }]
+    }
+  }
+]

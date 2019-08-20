@@ -1,31 +1,32 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
+import {Row, Col, Card} from "react-bootstrap";
 
 import axios from "axios";
 
-export class Places extends Component {
+class Places extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       error: null,
       isLoaded: false,
-      places: []
+      allPlaces: []
     };
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/places.json`)
-      .then(res => {
-        const places = res.data.data;
-        this.setState({
-          isLoaded: true,
-          places: places
+    axios.all([
+        axios.get('places.json')])
+        .then(axios.spread((getPlaces) => {
+            const allPlaces = getPlaces.data;
+            console.log(allPlaces)
+            this.setState({ allPlaces });
+            this.setState({ isLoaded: true })
+        }))
+        .catch((err) => {
+            this.setState({ isLoaded: false });
+            this.setState({ error: err.message });
         });
-      })
-      .catch((err) => {
-        this.setState({
-          error: err.message
-        });
-      });
   }
 
   render() {
@@ -38,11 +39,25 @@ export class Places extends Component {
       return <div>Loading...</div>;
     // return now that component has value
     } else {
+      const events = this.state.allPlaces.map((place, key) =>
+        <Card>
+          {place.PlaceName}
+          {place.Description}
+          <Link to="places/place" params={{ placeID: place.ID }}>View More</Link>
+        </Card>
+      );
       return (
-        <div>
+
+        <Row>
+          <Col md={3}>
+            {events}
+          </Col>
+          <Col md={9}>
+            Google Maps over here
+          </Col>
           <p>{this.state.places}</p>
           Places
-        </div>
+        </Row>
       )
     }
   }
