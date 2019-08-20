@@ -8,7 +8,7 @@ class TimelineEvent extends Component {
 
   render() {
     const eventClassName = (() => {
-      if (this.props.event.type == 'global')
+      if (this.props.event.type === 'global')
         return 'event offset-md-6 right-event'
       else
         return 'event left-event'
