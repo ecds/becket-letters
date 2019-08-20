@@ -40,7 +40,7 @@ export class LetterPg extends Component {
             return (
                 <div>
                     <Row>
-                        <h2>{this.state.letter[0].Code}</h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter[0]['Reg. recipient']} on {this.state.letter[0].Day}/{this.state.letter[0].Month}/{this.state.letter[0].Year}</h2>
                     </Row>
                     <Row>
                       <ProfileLite personId="123456"/>
@@ -293,10 +293,6 @@ export class LetterPg extends Component {
                                     </Accordion>
                                 </Col>
                             </Row>
-                        </Col>
-                        <Col></Col>
-                        <Col md={2} className='navPane'>
-                            <h4>Navigation</h4>
                         </Col>
                     </Row>
                 </div>

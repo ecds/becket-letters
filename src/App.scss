@@ -22,6 +22,14 @@ a {
   font-family: $serifBody, serif;
 }
 
+a {
+  color: $red;
+  &:hover {
+    color: $red;
+    text-decoration: underline;
+  }
+}
+
 .btn-primary {
   background-color: $red;
   border: none;
