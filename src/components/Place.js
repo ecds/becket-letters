@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ProfileLite from "./ProfileLite";
 import PlaceLite from "./PlaceLite";
 
@@ -70,7 +70,7 @@ class Place extends Component {
           <PlaceLite key={i} placeId={relatedPlace}/>
       );
       return (
-        <div>
+        <Container>
         <Row>
           <Col md={6}>
             <img src="../imgs/Val-de-Marne.jpg" alt={this.state.thisPlace.PlaceName} />
@@ -92,7 +92,7 @@ class Place extends Component {
             {relatedPlaces}
           </Col>
         </Row>
-        </div>
+        </Container>
       )
     }
   }

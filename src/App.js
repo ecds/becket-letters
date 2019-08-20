@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter, Route } from "react-router-dom";
 import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container } from 'react-bootstrap';
-import Landing from './components/landing';
+import Landing from './components/Landing';
 import People from './components/people';
 import Letters from './components/letters';
 import Header from './components/header';
@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Header />
-        <Container>
+        <Container fluid className="p-0">
         <Breadcrumbs mappedRoutes={routes} />
         <Route exact path="/" component={Landing} />
         <Route exact path="/people" component={People} />
