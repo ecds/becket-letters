@@ -8,10 +8,7 @@
     "relationships": {
       "entities": [{
         "entity-type": 1,
-        "id": "123456"
-      },{
-        "entity-type": 1,
-        "id": "789101"
+        "id": "9a304912-c851-436a-ae20-e72e73f92397"
       },{
         "entity-type": 3,
         "id": "place_2"

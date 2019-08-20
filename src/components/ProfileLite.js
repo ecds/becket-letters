@@ -13,10 +13,12 @@ class ProfileLite extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     axios.all([
         axios.get('../'+this.props.personId+'.json')])
         .then(axios.spread((getPersonData) => {
-            const personData = getPersonData.data[0];
+            const personData = getPersonData.data.data[0];
+            console.log(getPersonData);
             this.setState({ personData });
             this.setState({ isLoaded: true })
         }))
@@ -36,15 +38,13 @@ class ProfileLite extends Component {
         return <div>Loading...</div>;
     // return now that component has value
     } else {
-      const fullName = this.state.personData.FirstName + " " + this.state.personData.LastName;
+      const fullName = this.state.personData.attributes.properties["first-name"] + " " + this.state.personData.attributes.properties["last-name"];
       return (
           <Row>
             <Col>
               <Card>
-                {this.state.personData.FirstName}
-                {this.state.personData.LastName}
+                {fullName}
                 {this.state.personData.Descriptions}
-                <img alt={fullName} src={this.state.personData.Media.Images.URL} />
               </Card>
             </Col>
           </Row>
