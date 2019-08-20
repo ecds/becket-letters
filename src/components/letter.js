@@ -40,7 +40,7 @@ export class LetterPg extends Component {
             return (
                 <div>
                     <Row>
-                        <h2>{this.state.letter[0].Code}</h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter[0]['Reg. recipient']} on {this.state.letter[0].Day}/{this.state.letter[0].Month}/{this.state.letter[0].Year}</h2>
                     </Row>
                     <Row>
                       <ProfileLite personId="123456"/>
@@ -50,36 +50,7 @@ export class LetterPg extends Component {
                         <Col md={6} className='letterPgDetails'>
                             <Row>
                                 <Col>
-                                    <Accordion defaultActiveKey="1">
-                                        <Card>
-                                            <Accordion.Toggle className='detInfo' as={Card.Header} eventKey="0">
-                                                <h4 className='accordTitle'>Details</h4>
-                                            </Accordion.Toggle>
-                                            <Accordion.Collapse eventKey="0">
-                                                <Card.Body className='results'>
-                                                    <Table borderless striped hover>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>ID</td>
-                                                                <td>{this.state.letter[0].ID}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Code</td>
-                                                                <td>{this.state.letter[0].Code}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </Table>
-                                                </Card.Body>
-                                            </Accordion.Collapse>
-                                        </Card>
-
-                                        <Card>
-                                            <Accordion.Toggle className='authInfo' as={Card.Header} eventKey="1">
-                                                <h4 className='accordTitle'>Authorship Information</h4>
-                                            </Accordion.Toggle>
-                                            <Accordion.Collapse eventKey="1">
-                                                <Card.Body className='results'>
-                                                    <Table borderless striped hover>
+                                <Table borderless striped hover>
                                                         <tbody>
                                                             <tr>
                                                                 <td>Day</td>
@@ -173,37 +144,9 @@ export class LetterPg extends Component {
                                                                 <td>Reg. PlaceSent Country</td>
                                                                 <td>{this.state.letter[0]['Reg. PlaceSent Country']}</td>
                                                             </tr>
-                                                        </tbody>
-                                                    </Table>
-                                                </Card.Body>
-                                            </Accordion.Collapse>
-                                        </Card>
-
-                                        <Card>
-                                            <Accordion.Toggle className='moreInfo' as={Card.Header} eventKey="2">
-                                                <h4 className='accordTitle'>Additional</h4>
-                                            </Accordion.Toggle>
-                                            <Accordion.Collapse eventKey="2">
-                                                <Card.Body>
-                                                    <Table borderless hover>
-                                                        <tbody>
                                                             <tr>
                                                                 <td>{this.state.letter[0].Additional}</td>
                                                             </tr>
-                                                        </tbody>
-                                                    </Table>
-                                                </Card.Body>
-                                            </Accordion.Collapse>
-                                        </Card>
-
-                                        <Card>
-                                            <Accordion.Toggle className='archInfo' as={Card.Header} eventKey="3">
-                                                <h4 className='accordTitle'>Archival Info</h4>
-                                            </Accordion.Toggle>
-                                            <Accordion.Collapse eventKey="3">
-                                                <Card.Body className='results'>
-                                                    <Table borderless striped hover>
-                                                        <tbody>
                                                             <tr>
                                                                 <td>First Repository </td>
                                                                 <td>{this.state.letter[0]['First Repository']}</td>
@@ -286,17 +229,8 @@ export class LetterPg extends Component {
                                                             </tr>
                                                         </tbody>
                                                     </Table>
-                                                </Card.Body>
-                                            </Accordion.Collapse>
-                                        </Card>
-
-                                    </Accordion>
                                 </Col>
                             </Row>
-                        </Col>
-                        <Col></Col>
-                        <Col md={2} className='navPane'>
-                            <h4>Navigation</h4>
                         </Col>
                     </Row>
                 </div>

@@ -7,7 +7,7 @@ export class Header extends Component {
             <div>
                 <Row className='headerRow1'>
                     <div className='header-container'>
-                        <img src='./imgs/EU_hz_rev.png' alt='emory-logo-white'></img>
+                        <img src='../imgs/EU_hz_rev.png' alt='emory-logo-white'></img>
                     </div>
                 </Row>
                 <Row className='headerRow2'>

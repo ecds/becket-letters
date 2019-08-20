@@ -3,16 +3,39 @@
 @import "./assets/stylesheets/globals/breadcrumbs.scss";
 @import "./assets/stylesheets/components/letterpg.scss";
 @import "./assets/stylesheets/components/timeline.scss";
-@import "./assets/stylesheets/components/landing.scss";
+@import "./assets/stylesheets/components/profilelite.scss";
 
 .App {
   text-align: center;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: $serifHeader, serif;
 }
 
-p, a {
+p,
+a {
   font-family: $serifBody, serif;
+}
+
+a {
+  color: $red;
+  &:hover {
+    color: $red;
+    text-decoration: underline;
+  }
+}
+
+.btn-primary {
+  background-color: $red;
+  border: none;
+  border-radius: 0;
+  font-family: $serifHeader;
+  &:hover {
+    background-color: darken($color: $red, $amount: 10) !important;
+  }
 }
