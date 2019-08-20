@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Card, Col, Row, Table } from 'react-bootstrap';
+import { Container, Col, Row, Table } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
 import axios from "axios";
 
@@ -38,13 +38,12 @@ export class LetterPg extends Component {
             // return now that component has value
         } else {
             return (
-                <div>
+                <Container>
                     <Row>
                         <h2>Letter from Samuel Beckett to {this.state.letter[0]['Reg. recipient']} on {this.state.letter[0].Day}/{this.state.letter[0].Month}/{this.state.letter[0].Year}</h2>
                     </Row>
                     <Row>
-                      <ProfileLite personId="123456"/>
-                      <ProfileLite personId="789101"/>
+                      <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397"/>
                     </Row>
                     <Row>
                         <Col md={6} className='letterPgDetails'>
@@ -233,7 +232,7 @@ export class LetterPg extends Component {
                             </Row>
                         </Col>
                     </Row>
-                </div>
+                </Container>
             )
         }
     }

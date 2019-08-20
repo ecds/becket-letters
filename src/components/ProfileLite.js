@@ -17,7 +17,7 @@ class ProfileLite extends Component {
     axios.all([
       axios.get('../' + this.props.personId + '.json')])
       .then(axios.spread((getPersonData) => {
-        const personData = getPersonData.data[0];
+        const personData = getPersonData.data.data[0];
         console.log(personData);
         this.setState({ personData });
         this.setState({ isLoaded: true })
@@ -44,12 +44,13 @@ class ProfileLite extends Component {
           <Col>
             <Card className='profileLite-card'>
               <Card.Body>
-                <Card.Img src={this.state.personData.Media.Images.URL} className='profileLite-card-img' />
+                <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
                 <Card.Title>
-                  <h5>{this.state.personData.FirstName} {this.state.personData.LastName}</h5>
+                Link
+                  <h5>{fullName}</h5>
                 </Card.Title>
                 <Card.Text>
-                  <p>{this.state.personData.Descriptions}</p>
+                  <p>Profile</p>
                 </Card.Text>
                 <Button variant="primary">Explore</Button>
               </Card.Body>
