@@ -27,7 +27,6 @@ class App extends Component {
         axios.get('../entity-types.json')])
         .then(axios.spread((getEntityTypes) => {
             const entityTypes = getEntityTypes.data.data;
-            console.log(entityTypes)
             this.setState({ entityTypes });
         }))
   }

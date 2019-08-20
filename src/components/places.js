@@ -19,7 +19,6 @@ class Places extends Component {
         axios.get('places.json')])
         .then(axios.spread((getPlaces) => {
             const allPlaces = getPlaces.data;
-            console.log(allPlaces)
             this.setState({ allPlaces });
             this.setState({ isLoaded: true })
         }))
@@ -40,14 +39,13 @@ class Places extends Component {
     // return now that component has value
     } else {
       const events = this.state.allPlaces.map((place, key) =>
-        <Card>
+        <Card key={key}>
           {place.PlaceName}
           {place.Description}
           <Link to="places/place" params={{ placeID: place.ID }}>View More</Link>
         </Card>
       );
       return (
-
         <Row>
           <Col md={3}>
             {events}

@@ -36,6 +36,7 @@ class ProfileLite extends Component {
         return <div>Loading...</div>;
     // return now that component has value
     } else {
+      const fullName = this.state.personData.FirstName + " " + this.state.personData.LastName;
       return (
           <Row>
             <Col>
@@ -43,7 +44,7 @@ class ProfileLite extends Component {
                 {this.state.personData.FirstName}
                 {this.state.personData.LastName}
                 {this.state.personData.Descriptions}
-                <img src={this.state.personData.Media.Images.URL} />
+                <img alt={fullName} src={this.state.personData.Media.Images.URL} />
               </Card>
             </Col>
           </Row>

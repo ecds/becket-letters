@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Row, Col, Card} from "react-bootstrap";
+import {Row, Col } from "react-bootstrap";
 import ProfileLite from "./ProfileLite";
 import PlaceLite from "./PlaceLite";
 
@@ -73,7 +73,7 @@ class Place extends Component {
         <div>
         <Row>
           <Col md={6}>
-            <img src="../imgs/Val-de-Marne.jpg" />
+            <img src="../imgs/Val-de-Marne.jpg" alt={this.state.thisPlace.PlaceName} />
           </Col>
           <Col md={6}>
             <h1>{this.state.thisPlace.PlaceName}</h1>
