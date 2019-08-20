@@ -61,7 +61,6 @@ export class Letters extends Component {
       .then(axios.spread((getLetters) => {
         const letters = getLetters.data;
         this.setState({ letters });
-        console.log(letters)
       }))
       .catch((err) => {
         this.setState({ isLoaded: false });
@@ -76,7 +75,7 @@ export class Letters extends Component {
     return (
       <div>
           <h1>Letters</h1>
-          <BootstrapTable keyField='id' data={this.state.letters} columns={columns} filter={filterFactory()} />
+          <BootstrapTable keyField='ID' data={this.state.letters} columns={columns} filter={filterFactory()} />
           {/* {allLetters} */}
       </div>
     )

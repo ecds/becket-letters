@@ -38,6 +38,7 @@ class ProfileLite extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      const fullName = this.state.personData.attributes.properties["first-name"] + " " + this.state.personData.attributes.properties["last-name"];
       return (
         <Row>
           <Col>
