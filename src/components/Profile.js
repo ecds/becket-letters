@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Container, Button, Card, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 class ProfileLite extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,9 +15,10 @@ class ProfileLite extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
+    const { match: { params } } = this.props;
+    console.log(params.personId)
     axios.all([
-      axios.get('../' + this.props.personId + '.json')])
+      axios.get('../' + params.personId + '.json')])
       .then(axios.spread((getPersonData) => {
         const personData = getPersonData.data.data[0];
         console.log(personData);
@@ -40,23 +43,25 @@ class ProfileLite extends Component {
     } else {
       const fullName = this.state.personData.attributes.properties["first-name"] + " " + this.state.personData.attributes.properties["last-name"];
       return (
-        <Row>
-          <Col>
-            <Card className='profileLite-card'>
-              <Card.Body>
-                <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
-                <Card.Title>
-                Link
-                  <h5>{fullName}</h5>
-                </Card.Title>
-                <Card.Text>
-                  Profile
-                </Card.Text>
-                <Button variant="primary">Explore</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col>
+              <Card className='profileLite-card'>
+                <Card.Body>
+                  <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
+                  <Card.Title>
+                  Link
+                    <h5>{fullName}</h5>
+                  </Card.Title>
+                  <Card.Text>
+                    Profile
+                  </Card.Text>
+                  <Button variant="primary">Explore</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       )
     }
   }
