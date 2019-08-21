@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Table } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
 import axios from "axios";
 
@@ -92,12 +92,7 @@ export class LetterPg extends Component {
             else if (this.state.letter[500]['leaves'] === !'' && this.state.letter[500]['sides'] === '') {
                 leavesAndSides = 'This letter has {leaves} leaves.'
             }
-            else leavesAndSides = 'This letter has ' + leavesNo + ' leave(s) and ' + sidesNo + ' side(s).'
-            // it has {leaves} leaves and {sides} sides
-            //  
-            // this letter can be found at {first repository}
-            // in the {first collection}
-            // 
+            else leavesAndSides = 'This letter has ' + leavesNo + ' leave(s) and ' + sidesNo + ' side(s).' 
             // 
             // 
             return (
@@ -132,6 +127,8 @@ export class LetterPg extends Component {
                             <h5>Location of original letter:</h5>
                             <p>{this.state.letter[500]['First Repository']}</p>
                             <p>({this.state.letter[500]['Euro or Am?']})</p>
+                            <h5>File:</h5>
+                            <p>{this.state.letter[500].File}</p>
                             <h5>Availability:</h5>
                             <p>{this.state.letter[500]['First Public?']}</p>
                             
