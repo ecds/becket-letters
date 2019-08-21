@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Button, Card, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 class ProfileLite extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,13 +14,16 @@ class ProfileLite extends Component {
     }
   }
 
+  componentWillReceiveProps() {
+
+  }
+
   componentDidMount() {
-    console.log(this.props)
+    const { match: { params } } = this.props;
     axios.all([
-      axios.get('../' + this.props.personId + '.json')])
+      axios.get('../' + params.personId + '.json')])
       .then(axios.spread((getPersonData) => {
         const personData = getPersonData.data.data[0];
-        console.log(personData);
         this.setState({ personData });
         this.setState({ isLoaded: true })
       }))
@@ -41,22 +45,18 @@ class ProfileLite extends Component {
     } else {
       const fullName = this.state.personData.attributes.properties["first-name"] + " " + this.state.personData.attributes.properties["last-name"];
       return (
-        <Row>
-          <Col>
-            <Card className='profileLite-card'>
-              <Card.Body>
-                <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
-                <Card.Title>
-                  <h5>{fullName}</h5>
-                </Card.Title>
-                <Card.Text>
-                  {this.state.personData.attributes.properties['description']}
-                </Card.Text>
-                <Link className="btn btn-primary" to={'/people/'+this.state.personData.id}>Explore</Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col md={6}>
+              <img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
+            </Col>
+            <Col md={6}>
+              <h5>{fullName}</h5>
+              {this.state.personData.attributes.properties.profile}
+            </Col>
+          </Row>
+
+        </Container>
       )
     }
   }

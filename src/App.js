@@ -11,6 +11,7 @@ import LetterPg from './components/letter';
 import Timeline from './components/Timeline';
 import Places from './components/Places';
 import Place from './components/Place';
+import Profile from './components/Profile';
 import axios from 'axios';
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
       '/letters/letterdetails': 'Letter Details',
       '/timeline': 'Timeline',
       '/people': 'People',
+      '/people/:personId': ':personId',
       '/places': 'Places',
       '/places/place': 'Place'
     };
@@ -48,6 +50,7 @@ class App extends Component {
         <Breadcrumbs mappedRoutes={routes} />
         <Route exact path="/" component={Landing} />
         <Route exact path="/people" component={People} />
+        <Route exact path="/people/:personId" component={Profile} />
         <Route exact path="/letters" component={Letters} />
         <Route exact path="/letters/letterdetails" component={LetterPg} />
         <Route exact path='/timeline' component={Timeline} />
