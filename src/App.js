@@ -39,7 +39,7 @@ class App extends Component {
       '/letters/letterdetails': 'Letter Details',
       '/timeline': 'Timeline',
       '/people': 'People',
-      '/people/:personId': 'Person',
+      '/people/:personId': ':personId',
       '/places': 'Places',
       '/places/place': 'Place'
     };

@@ -14,14 +14,16 @@ class ProfileLite extends Component {
     }
   }
 
+  componentWillReceiveProps() {
+
+  }
+
   componentDidMount() {
     const { match: { params } } = this.props;
-    console.log(params.personId)
     axios.all([
       axios.get('../' + params.personId + '.json')])
       .then(axios.spread((getPersonData) => {
         const personData = getPersonData.data.data[0];
-        console.log(personData);
         this.setState({ personData });
         this.setState({ isLoaded: true })
       }))
@@ -45,22 +47,15 @@ class ProfileLite extends Component {
       return (
         <Container>
           <Row>
-            <Col>
-              <Card className='profileLite-card'>
-                <Card.Body>
-                  <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
-                  <Card.Title>
-                  Link
-                    <h5>{fullName}</h5>
-                  </Card.Title>
-                  <Card.Text>
-                    Profile
-                  </Card.Text>
-                  <Button variant="primary">Explore</Button>
-                </Card.Body>
-              </Card>
+            <Col md={6}>
+              <img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
+            </Col>
+            <Col md={6}>
+              <h5>{fullName}</h5>
+              {this.state.personData.attributes.properties.profile}
             </Col>
           </Row>
+
         </Container>
       )
     }

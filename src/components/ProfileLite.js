@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class ProfileLite extends Component {
@@ -46,13 +47,12 @@ class ProfileLite extends Component {
               <Card.Body>
                 <Card.Img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
                 <Card.Title>
-                Link
                   <h5>{fullName}</h5>
                 </Card.Title>
                 <Card.Text>
-                  Profile
+                  {this.state.personData.attributes.properties['description']}
                 </Card.Text>
-                <Button variant="primary">Explore</Button>
+                <Link className="btn btn-primary" to={'/people/'+this.state.personData.id}>Explore</Link>
               </Card.Body>
             </Card>
           </Col>
