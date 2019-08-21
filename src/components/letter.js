@@ -37,202 +37,89 @@ export class LetterPg extends Component {
             return <div>Loading...</div>;
             // return now that component has value
         } else {
+            // 
+            // to:
+            // {recipient} at {address}
+            // 
+            // autographed or typed
+            let formatAndSignoff;
+            if (this.state.letter[10]['Autograph or Typed'] === '' && this.state.letter[10]['initialed or signed'] === '') {
+                formatAndSignoff = null
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'A' && this.state.letter[10]['initialed or signed'] === '') {
+                formatAndSignoff = 'Beckett hand wrote this letter.'
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'A' && this.state.letter[10]['initialed or signed'] === 'I') {
+                formatAndSignoff = "Beckett hand wrote this letter and initialed his name."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'A' && this.state.letter[10]['initialed or signed'] === 'S') {
+                formatAndSignoff = "Beckett hand wrote this letter and signed his name."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'T' && this.state.letter[10]['initialed or signed'] === '') {
+                formatAndSignoff = "Beckett typed this letter."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'T' && this.state.letter[10]['initialed or signed'] === 'I') {
+                formatAndSignoff = "Beckett typed this letter and signed his name."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === 'T' && this.state.letter[10]['initialed or signed'] === 'S') {
+                formatAndSignoff = "Beckett typed this letter and signed his name."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === '' && this.state.letter[10]['initialed or signed'] === 'I') {
+                formatAndSignoff = "Beckett initialed his name."
+            }
+            else if (this.state.letter[10]['Autograph or Typed'] === '' && this.state.letter[10]['initialed or signed'] === 'S') {
+                formatAndSignoff = "Beckett signed his name."
+            }
+            //
+            let leavesAndSides;
+            let leavesNo = this.state.letter[10]['leaves'];
+            let sidesNo = this.state.letter[10]['sides'];
+            if (this.state.letter[10]['leaves'] === '' && this.state.letter[10]['sides'] === '') {
+                leavesAndSides = null
+            }
+            else if (this.state.letter[10]['leaves'] === '' && this.state.letter[10]['sides'] === !'') {
+                leavesAndSides = 'This letter has {sides} sides.'
+            }
+            else if (this.state.letter[10]['leaves'] === !'' && this.state.letter[10]['sides'] === '') {
+                leavesAndSides = 'This letter has {leaves} leaves.'
+            }
+            else leavesAndSides = 'This letter has ' + leavesNo + ' leave(s) and ' + sidesNo + ' side(s).'
+            // it has {leaves} leaves and {sides} sides
+            //  
+            // this letter can be found at {first repository}
+            // in the {first collection}
+            // 
+            // 
+            // 
             return (
-                <Container>
+                <div>
                     <Row>
-                        <h2>Letter from Samuel Beckett to {this.state.letter[0]['Reg. recipient']} on {this.state.letter[0].Day}/{this.state.letter[0].Month}/{this.state.letter[0].Year}</h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter[10]['Reg. recipient']} on {this.state.letter[10].Day}/{this.state.letter[10].Month}/{this.state.letter[10].Year}</h2>
                     </Row>
                     <Row>
-                      <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397"/>
+                        <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397" />
                     </Row>
                     <Row>
-                        <Col md={6} className='letterPgDetails'>
-                            <Row>
-                                <Col>
-                                <Table borderless striped hover>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Day</td>
-                                                                <td>{this.state.letter[0].Day}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Month</td>
-                                                                <td>{this.state.letter[0].Month}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Year</td>
-                                                                <td>{this.state.letter[0].Year}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Addressed from (Actual)</td>
-                                                                <td>{this.state.letter[0]['Addressed from (Actual)']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. Place written</td>
-                                                                <td>{this.state.letter[0]['Reg. Place written']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. Place written city</td>
-                                                                <td>{this.state.letter[0]['Reg. Place written city']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. Place written country</td>
-                                                                <td>{this.state.letter[0]['Reg. Place written country']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. Place written, second city</td>
-                                                                <td>{this.state.letter[0]['Reg. Place written, second city']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Autograph or Typed</td>
-                                                                <td>{this.state.letter[0]['Autograph or Typed']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>PhysDes</td>
-                                                                <td>{this.state.letter[0].PhysDes}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>initialed or signed</td>
-                                                                <td>{this.state.letter[0]['initialed or signed']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Postcard Image</td>
-                                                                <td>{this.state.letter[0]['Postcard Image']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>phys descr detail</td>
-                                                                <td>{this.state.letter[0]['phys descr detail']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>PhysDes notes</td>
-                                                                <td>{this.state.letter[0]['PhysDes notes']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>leaves</td>
-                                                                <td>{this.state.letter[0].leaves}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sides</td>
-                                                                <td>{this.state.letter[0].sides}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Envelope</td>
-                                                                <td>{this.state.letter[0].Envelope}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Postmark (Actual)</td>
-                                                                <td>{this.state.letter[0]['Postmark (Actual)']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Addressed to (Actual)</td>
-                                                                <td>{this.state.letter[0]['Addressed to (Actual)']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. recipient</td>
-                                                                <td>{this.state.letter[0]['Reg. recipient']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg place sent</td>
-                                                                <td>{this.state.letter[0]['Reg place sent']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg PlaceSent City</td>
-                                                                <td>{this.state.letter[0]['Reg PlaceSent City']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Reg. PlaceSent Country</td>
-                                                                <td>{this.state.letter[0]['Reg. PlaceSent Country']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>{this.state.letter[0].Additional}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>First Repository </td>
-                                                                <td>{this.state.letter[0]['First Repository']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>First Format </td>
-                                                                <td>{this.state.letter[0]['First Format']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Euro or Am? </td>
-                                                                <td>{this.state.letter[0]['Euro or Am?']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>First Public? </td>
-                                                                <td>{this.state.letter[0]['First Public?']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>First Collection </td>
-                                                                <td>{this.state.letter[0]['First Collection']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Repository information </td>
-                                                                <td>{this.state.letter[0]['Repository information']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Second Repository </td>
-                                                                <td>{this.state.letter[0]['Second Repository']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Second Format </td>
-                                                                <td>{this.state.letter[0]['Second Format']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Second Public? </td>
-                                                                <td>{this.state.letter[0]['Second Public?']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Second Collection </td>
-                                                                <td>{this.state.letter[0]['Second Collection']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Third Repository </td>
-                                                                <td>{this.state.letter[0]['Third Repository']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Third Format </td>
-                                                                <td>{this.state.letter[0]['Third Format']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Third Public? </td>
-                                                                <td>{this.state.letter[0]['Third Public?']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Third Collection </td>
-                                                                <td>{this.state.letter[0]['Third Collection']}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>OwnerRights </td>
-                                                                <td>{this.state.letter[0].OwnerRights}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>PrimaryLang </td>
-                                                                <td>{this.state.letter[0].PrimaryLang}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>File </td>
-                                                                <td>{this.state.letter[0].File}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sender </td>
-                                                                <td>{this.state.letter[0].Sender}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>PlacePrevPubl </td>
-                                                                <td>{this.state.letter[0].PlacePrevPubl}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Verified </td>
-                                                                <td>{this.state.letter[0]['Verified']}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </Table>
-                                </Col>
-                            </Row>
+                        <Col md={12} className='letterPgDetails'>
+
+
+                            <div className='letterInfo'>
+                                <h4>Information about this letter:</h4>
+                                <h5>This letter was written at:</h5>
+                                <p>{this.state.letter[10]['Reg. Place written']}</p>
+                                <p>{this.state.letter[10]['Reg. Place written city']}, {this.state.letter[10]['Reg. Place written country']}</p>
+                                <h5>Beckett addressed it from:</h5>
+                                <p>{this.state.letter[10]['Addressed from (Actual)']}</p>
+                                <h5>{formatAndSignoff}</h5>
+                                <h5>{leavesAndSides}</h5>
+
+                            </div>
+                            <h5>Postcard Image</h5>
+                            <p>{this.state.letter[10]['Postcard Image']}</p>
+
                         </Col>
                     </Row>
-                </Container>
+                </div>
             )
         }
     }

@@ -65,6 +65,17 @@
     }
 }
 
+.letterInfo {
+    border: 1px solid $red;
+    background-color: #D9D9D6;
+    & h5 {
+        margin-left: 10px;
+    }
+    & p {
+        margin-left: 20px;
+    }
+}
+
 .accordion * {
     border-radius: 0;
 }
