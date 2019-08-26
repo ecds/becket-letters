@@ -52,7 +52,7 @@ class ProfileLite extends Component {
                 <Card.Text>
                   {this.state.personData.attributes.properties['description']}
                 </Card.Text>
-                <Link className="btn btn-primary" to={'/people/'+this.state.personData.id}>Explore</Link>
+                <Card.Footer className="btn btn-primary" to={'/people/'+this.state.personData.id}>Explore</Card.Footer>
               </Card.Body>
             </Card>
           </Col>

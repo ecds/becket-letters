@@ -1,10 +1,12 @@
 @import "./assets/stylesheets/globals/variables.scss";
+@import "./assets/stylesheets/components/searchpage.scss";
 @import "./assets/stylesheets/globals/header.scss";
 @import "./assets/stylesheets/globals/breadcrumbs.scss";
 @import "./assets/stylesheets/components/letterpg.scss";
 @import "./assets/stylesheets/components/timeline.scss";
 @import "./assets/stylesheets/components/profilelite.scss";
 @import "./assets/stylesheets/components/landing.scss";
+
 
 .App {
   text-align: center;

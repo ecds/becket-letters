@@ -12,6 +12,7 @@ import Timeline from './components/Timeline';
 import Places from './components/Places';
 import Place from './components/Place';
 import Profile from './components/Profile';
+import SearchPage from './components/SearchPage';
 import axios from 'axios';
 
 class App extends Component {
@@ -56,6 +57,7 @@ class App extends Component {
         <Route exact path='/timeline' component={Timeline} />
         <Route exact path='/places' component={Places} />
         <Route exact path='/places/place' component={Place} />
+        <Route exact path='/search' component={SearchPage} />
         </Container>
       </BrowserRouter>
     );
