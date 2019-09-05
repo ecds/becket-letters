@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Col, Row } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
 import axios from "axios";
+import { list } from "postcss";
 
 export class LetterPg extends Component {
     constructor(props, context) {
@@ -15,9 +16,9 @@ export class LetterPg extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('../letters_json.json')])
-            .then(axios.spread((getLetterData) => {
-                const letter = getLetterData.data;
+            axios.get('http://ot-api.ecdsdev.org/letters/45b6288b-732a-4a6a-8667-e602a930d963')])
+            .then(axios.spread((getEntityList) => {
+                const letter = getEntityList.data.data;
                 this.setState({ letter });
                 this.setState({ isLoaded: true })
             }))
@@ -37,68 +38,18 @@ export class LetterPg extends Component {
             return <div>Loading...</div>;
             // return now that component has value
         } else {
-            // 
-            // recipient person/place
-            let receivedBy;
-            if (this.state.letter[500]["Reg. recipient"] === '') {
-                receivedBy = null
+            console.log(this.state.letter.attributes)
+            let format;
+            if (this.state.letter.attributes.typed === false && this.state.letter.attributes.signed === true) {
+                format = 'signed';
             }
-            else receivedBy = 'by ' + this.state.letter[500]["Reg. recipient"];
-            let receivedAt;
-            if (this.state.letter[500]['Reg place sent'] === '') {
-                receivedAt = null
-            }
-            else receivedAt = 'at ' + this.state.letter[500]['Reg place sent'];
-            // 
-            // autographed or typed
-            let formatAndSignoff;
-            if (this.state.letter[500]['Autograph or Typed'] === '' && this.state.letter[500]['initialed or signed'] === '') {
-                formatAndSignoff = null
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'A' && this.state.letter[500]['initialed or signed'] === '') {
-                formatAndSignoff = 'Beckett hand wrote this letter.'
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'A' && this.state.letter[500]['initialed or signed'] === 'I') {
-                formatAndSignoff = "Beckett hand wrote this letter and initialed his name."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'A' && this.state.letter[500]['initialed or signed'] === 'S') {
-                formatAndSignoff = "Beckett hand wrote this letter and signed his name."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'T' && this.state.letter[500]['initialed or signed'] === '') {
-                formatAndSignoff = "Beckett typed this letter."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'T' && this.state.letter[500]['initialed or signed'] === 'I') {
-                formatAndSignoff = "Beckett typed this letter and signed his name."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === 'T' && this.state.letter[500]['initialed or signed'] === 'S') {
-                formatAndSignoff = "Beckett typed this letter and signed his name."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === '' && this.state.letter[500]['initialed or signed'] === 'I') {
-                formatAndSignoff = "Beckett initialed his name."
-            }
-            else if (this.state.letter[500]['Autograph or Typed'] === '' && this.state.letter[500]['initialed or signed'] === 'S') {
-                formatAndSignoff = "Beckett signed his name."
-            }
-            //
-            let leavesAndSides;
-            let leavesNo = this.state.letter[500]['leaves'];
-            let sidesNo = this.state.letter[500]['sides'];
-            if (this.state.letter[500]['leaves'] === '' && this.state.letter[500]['sides'] === '') {
-                leavesAndSides = null
-            }
-            else if (this.state.letter[500]['leaves'] === '' && this.state.letter[500]['sides'] === !'') {
-                leavesAndSides = 'This letter has {sides} sides.'
-            }
-            else if (this.state.letter[500]['leaves'] === !'' && this.state.letter[500]['sides'] === '') {
-                leavesAndSides = 'This letter has {leaves} leaves.'
-            }
-            else leavesAndSides = 'This letter has ' + leavesNo + ' leave(s) and ' + sidesNo + ' side(s).' 
-            // 
-            // 
+            else format = 'typed';
+            
             return (
                 <Container>
+                    <h2><a href='https://www.npmjs.com/package/react-moment#formatting'>https://www.npmjs.com/package/react-moment#formatting</a></h2>
                     <Row>
-                        <h2>Letter from Samuel Beckett to {this.state.letter[500]['Reg. recipient']} on {this.state.letter[500].Day}/{this.state.letter[500].Month}/{this.state.letter[500].Year}</h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on {this.state.letter.attributes.date}</h2>
                     </Row>
                     <Row>
                         <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397" />
@@ -109,28 +60,53 @@ export class LetterPg extends Component {
 
                             <div className='letterInfo'>
                                 <h4>Information about this letter:</h4>
-                                <h5>This letter was written at:</h5>
-                                <p>{this.state.letter[500]['Reg. Place written']}</p>
-                                <p>{this.state.letter[500]['Reg. Place written city']}, {this.state.letter[500]['Reg. Place written country']}</p>
-                                <h5>Beckett addressed it from:</h5>
-                                <p>{this.state.letter[500]['Addressed from (Actual)']}</p>
-                                <h5>It was received:</h5>
-                                <p>{receivedBy}</p>
-                                <p>{receivedAt}</p>
-                                <p>{this.state.letter[500]['Reg. place sent']}</p>
-                                <h5>{formatAndSignoff}</h5>
-                                <h5>Language:</h5>
-                                <p>{this.state.letter[500]['PrimaryLang']}</p>
-                                <h5>{leavesAndSides}</h5>
+                                <h5>This letter was addressed from:</h5>
+                                <p>{this.state.letter.attributes['addressed-from']}</p>
+                                <h5>And addressed to:</h5>
+                                <p>{this.state.letter.attributes['addressed-to']}</p>
+                                <h5>Destination:</h5>
+                                <p>{this.state.letter.attributes.destination}</p>
+                                <h5>Recpient:</h5>
+                                <p>{this.state.letter.attributes.recipient.label}</p>                            
+                                <h5>Physical description:</h5>
+                                <p>Physical-desc: {this.state.letter.attributes['physical-desc']}</p>
+                                <p>This letter was {format}.</p>
+                                <p>Physical detail: {this.state.letter.attributes['physical-detail']} ( physical-detail empty )</p>
+                                <p>Physical notes: {this.state.letter.attributes['physical-notes']} ( physical-notes empty )</p>
+                                <p>{this.state.letter.attributes.leaves} leave(s)</p>
+                                <p>{this.state.letter.attributes.sides} side(s)</p>
+                                <h5>Notes:</h5>
+                                <p>{this.state.letter.attributes.notes}</p>
+                                <p>Postmark: {this.state.letter.attributes.postmark}</p>
+                                <p>Verified: {this.state.letter.attributes.verified}</p>
+                                <p>Envelope: {this.state.letter.attributes.envelope}</p>
+                                
                                 
                             </div>
-                            <h5>Location of original letter:</h5>
-                            <p>{this.state.letter[500]['First Repository']}</p>
-                            <p>({this.state.letter[500]['Euro or Am?']})</p>
-                            <h5>File:</h5>
-                            <p>{this.state.letter[500].File}</p>
-                            <h5>Availability:</h5>
-                            <p>{this.state.letter[500]['First Public?']}</p>
+                            <h5>Repository Information:</h5>
+                            <p>{this.state.letter.attributes['repository-info']} ( repository-info empty )</p>
+                            <h5>Entity Count:</h5>
+                            <p>{this.state.letter.attributes['entity-count']}</p>
+
+                            <div className='letterInfo'>
+                                <h4>Missing data from previous:</h4>
+                                <p>Addressed from</p>
+                                <p>Place Written</p>
+                                <p>First repository</p>
+                                <p>first format</p>
+                                <p>euro or am</p>
+                                <p>first public?</p>
+                                <p>first collection </p>
+                                <p>repository information</p>
+                                <p>second format</p>
+                                <p>second public?</p>
+                                <p>Third Collection</p>
+                                <p>OwnerRights</p>
+                                <p>PrimaryLang</p>
+                                <p>File</p>
+                                <p>Sender</p>
+                                <p>PlacePrevPubl</p>
+                            </div>
                             
 
                         </Col>
