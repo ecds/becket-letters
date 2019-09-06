@@ -3,6 +3,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
 import axios from "axios";
 import { list } from "postcss";
+import Moment from 'react-moment';
 
 export class LetterPg extends Component {
     constructor(props, context) {
@@ -47,9 +48,8 @@ export class LetterPg extends Component {
             
             return (
                 <Container>
-                    <h2><a href='https://www.npmjs.com/package/react-moment#formatting'>https://www.npmjs.com/package/react-moment#formatting</a></h2>
                     <Row>
-                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on {this.state.letter.attributes.date}</h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on <Moment format="YYYY/MM/DD">{this.state.letter.attributes.date}</Moment></h2>
                     </Row>
                     <Row>
                         <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397" />
