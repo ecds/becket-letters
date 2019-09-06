@@ -49,7 +49,7 @@ export class LetterPg extends Component {
             return (
                 <Container>
                     <Row>
-                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on <Moment format="YYYY/MM/DD">{this.state.letter.attributes.date}</Moment></h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on <Moment format="DD MMM YYYY">{this.state.letter.attributes.date}</Moment></h2>
                     </Row>
                     <Row>
                         <ProfileLite personId="9a304912-c851-436a-ae20-e72e73f92397" />
