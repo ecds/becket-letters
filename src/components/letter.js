@@ -83,7 +83,9 @@ export class LetterPg extends Component {
                                 
                                 
                             </div>
-                            <h5>Repository Information:</h5>
+                        </Col>
+                        <Col md='auto' >
+                        <h5>Repository Information:</h5>
                             <p>{this.state.letter.attributes['repository-info']} ( repository-info empty )</p>
                             <h5>Entity Count:</h5>
                             <p>{this.state.letter.attributes['entity-count']}</p>
@@ -106,10 +108,7 @@ export class LetterPg extends Component {
                                 <p>File</p>
                                 <p>Sender</p>
                                 <p>PlacePrevPubl</p>
-                            </div>
-                            
-
-                        </Col>
+                            </div></Col>
                     </Row>
                 </Container>
             )
