@@ -39,11 +39,20 @@ export class LetterPg extends Component {
             return <div>Loading...</div>;
             // return now that component has value
         } else {
+            // create array of recipient IDs
             let recipientsList = this.state.letter.attributes.recipients;
             let recipientsListIDs = [];
             Object.keys(recipientsList).forEach(function (key) {
                 recipientsListIDs.push(recipientsList[key].id)
             })
+
+            // create list of relationship IDs
+            let relationshipsList = this.state.letter.relationships.entities.data;
+            let relationshipsListIDs = [];
+            Object.keys(relationshipsList).forEach(function (key) {
+                relationshipsListIDs.push(relationshipsList[key].id)
+            })
+            console.log(relationshipsListIDs)
 
             let format;
             if (this.state.letter.attributes.typed === false && this.state.letter.attributes.signed === true) {
@@ -85,13 +94,17 @@ export class LetterPg extends Component {
                                 <p>Postmark: {this.state.letter.attributes.postmark}</p>
                                 <p>Verified: {this.state.letter.attributes.verified}</p>
                                 <p>Envelope: {this.state.letter.attributes.envelope}</p>
-
-
                             </div>
                             <h5>Repository Information:</h5>
                             <p>{this.state.letter.attributes['repository-info']}</p>
                             <h5>Entity Count:</h5>
                             <p>{this.state.letter.attributes['entity-count']}</p>
+                        </Col>
+                        <Col md='auto'>
+                            <h4>Relationships:</h4>
+                            {recipientsListIDs.map((id) => {
+                                return (<p>relationship ID = {id} </p>)
+                            })}
                         </Col>
                     </Row>
                 </Container>

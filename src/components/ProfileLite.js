@@ -38,12 +38,11 @@ class ProfileLite extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let profileDescription;
-      if (this.state.personData.data.attributes.description != null) {
-        console.log("attributes.properties.description is not null")
-        console.log(this.state.personData.data.attributes.properties.description)
+      let cardText = null;
+      if (this.state.personData.data.attributes.properties != null) {
+        cardText = this.state.personData.data.attributes.properties.description
       }
-
+      
       return (
         <Row>
           <Col>
@@ -54,7 +53,7 @@ class ProfileLite extends Component {
                   <h5>{this.state.personData.data.attributes["label"]}</h5>
                 </Card.Title>
                 <Card.Text>
-                  {profileDescription}
+                  {cardText}
                 </Card.Text>
                 <Card.Footer className="btn btn-primary" to={'/people/' + this.state.personData.id}>Explore</Card.Footer>
               </Card.Body>
