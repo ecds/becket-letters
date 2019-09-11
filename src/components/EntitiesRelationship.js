@@ -50,7 +50,8 @@ class entitiesRelationship extends Component {
                             <Card.Header><h5>{this.state.personData.data.attributes["label"]}</h5></Card.Header>
                             <Card.Body>
                                 <Row>
-                                    <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='entitiesRelationship-card-img' />                                    <Col>
+                                    {/* <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='entitiesRelationship-card-img' />                                     */}
+                                    <Col>
                                         <Card.Text>
                                             {cardText}
                                         </Card.Text>

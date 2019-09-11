@@ -53,33 +53,63 @@ export class LetterPg extends Component {
             console.log(relationshipsList)
             // Entities:
             let relEntitiesIDs = [];
-            console.log(relationshipsList.entities.data)
-            Object.keys(relationshipsList.entities.data).forEach(function (key) {
-                console.log(relationshipsList.entities.data[key].id)
-                relEntitiesIDs.push(relationshipsList.entities.data[key].id)
-            })
+            if (relationshipsList.entities.data != null) {
+                Object.keys(relationshipsList.entities.data).forEach(function (key) {
+                    console.log(relationshipsList.entities.data[key].id)
+                    relEntitiesIDs.push(relationshipsList.entities.data[key].id)
+                })
+            }
             console.log(relEntitiesIDs)
 
             // Recipients
             let relRecipientsIDs = [];
+            if (relationshipsList.recipients.data != null) {
+                Object.keys(relationshipsList.recipients.data).forEach(function (key) {
+                    console.log(relationshipsList.recipients.data[key].id)
+                    relRecipientsIDs.push(relationshipsList.recipients.data[key].id)
+                })
+            }
+            console.log(relRecipientsIDs)
 
             // Repositories
             let relRepositoriesIDs = [];
-            console.log(relationshipsList.repositories.data)
-            Object.keys(relationshipsList.repositories.data).forEach(function (key) {
-                console.log(relationshipsList.repositories.data[key].id)
-                relRepositoriesIDs.push(relationshipsList.repositories.data[key].id)
-            })
+            if (relationshipsList.repositories.data != null) {
+                Object.keys(relationshipsList.repositories.data).forEach(function (key) {
+                    console.log(relationshipsList.repositories.data[key].id)
+                    relRepositoriesIDs.push(relationshipsList.repositories.data[key].id)
+                })
+            }
             console.log(relRepositoriesIDs)
 
             // Places-Written
             let relPlacesWrittenIDs = [];
+            if (relationshipsList["places-written"].data != null) {
+                Object.keys(relationshipsList["places-written"].data).forEach(function (key) {
+                    console.log(relationshipsList["places-written"].data[key].id)
+                    relPlacesWrittenIDs.push(relationshipsList["places-written"].data[key].id)
+                })
+            }
+            console.log(relPlacesWrittenIDs)
 
             // Letter-Owner
             let relLetterOwnerIDs = [];
+            if (relationshipsList["letter-owner"].data != null) {
+                Object.keys(relationshipsList["letter-owner"].data).forEach(function (key) {
+                    console.log(relationshipsList["letter-owner"].data[key].id)
+                    relLetterOwnerIDs.push(relationshipsList["letter-owner"].data[key].id)
+                })
+            }
+            console.log(relLetterOwnerIDs)
 
             // Letter-Publisher
             let relLetterPubIDs = [];
+            if (relationshipsList["letter-publisher"].data != null) {
+                Object.keys(relationshipsList["letter-publisher"].data).forEach(function (key) {
+                    console.log(relationshipsList["letter-publisher"].data[key].id)
+                    relLetterPubIDs.push(relationshipsList["letter-publisher"].data[key].id)
+                })
+            }
+            console.log(relLetterPubIDs)
 
 
             let format;
@@ -129,14 +159,30 @@ export class LetterPg extends Component {
                             <p>{this.state.letter.attributes['entity-count']}</p>
                         </Col>
                         <Col md='auto'>
-                            <h4>Relationships</h4>
+                            <h4>Relationships:</h4>
                             <h5>Entities:</h5>
                             {relEntitiesIDs.map((id) => {
+                                return (<EntitiesRelationship personId={id} />)
+                            })}
+                            <h5>Recipients:</h5>
+                            {relRecipientsIDs.map((id) => {
                                 return (<EntitiesRelationship personId={id} />)
                             })}
                             <h5>Repositories:</h5>
                             {relRepositoriesIDs.map((id) => {
                                 return (<RepositoriesRelationship personId={id} />)
+                            })}
+                            <h5>Places Written:</h5>
+                            {relPlacesWrittenIDs.map((id) => {
+                                return (<EntitiesRelationship personId={id} />)
+                            })}
+                            <h5>Letter Owner:</h5>
+                            {relLetterOwnerIDs.map((id) => {
+                                return (<EntitiesRelationship personId={id} />)
+                            })}
+                            <h5>Letter Publisher:</h5>
+                            {relPlacesWrittenIDs.map((id) => {
+                                return (<EntitiesRelationship personId={id} />)
                             })}
                         </Col>
                     </Row>
