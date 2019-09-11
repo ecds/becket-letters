@@ -48,7 +48,7 @@ class ProfileLite extends Component {
           <Col>
             <Card className='profileLite-card'>
               <Card.Body>
-                <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='profileLite-card-img' />
+                {/* <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='profileLite-card-img' /> */}
                 <Card.Title>
                   <h5>{this.state.personData.data.attributes["label"]}</h5>
                 </Card.Title>
