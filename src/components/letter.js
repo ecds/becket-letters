@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Container, Col, Row } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
+import EntitiesRelationship from './EntitiesRelationship';
+import RepositoriesRelationship from './RepositoriesRelationship';
 import axios from "axios";
 import { list } from "postcss";
 import Moment from 'react-moment';
@@ -17,7 +19,7 @@ export class LetterPg extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('http://ot-api.ecdsdev.org/letters/fbef7ee8-4f06-4153-ba6e-30ef6b6ec747')])
+            axios.get('http://ot-api.ecdsdev.org/letters/d65b906a-8483-492d-8d25-2035c4006bcf')])
             .then(axios.spread((getEntityList) => {
                 const letter = getEntityList.data.data;
                 this.setState({ letter });
@@ -46,13 +48,33 @@ export class LetterPg extends Component {
                 recipientsListIDs.push(recipientsList[key].id)
             })
 
-            // create list of relationship IDs
-            let relationshipsList = this.state.letter.relationships.entities.data;
-            let relationshipsListIDs = [];
-            Object.keys(relationshipsList).forEach(function (key) {
-                relationshipsListIDs.push(relationshipsList[key].id)
+            // create list of each relationship type IDs
+            let relationshipsList = this.state.letter.relationships;
+            console.log(relationshipsList)
+            // Entities:
+            let relEntitiesIDs = [];
+
+            // Recipients
+            let relRecipientsIDs = [];
+
+            // Repositories
+            let relRepositoriesIDs = [];
+            console.log(relationshipsList.repositories.data)
+            Object.keys(relationshipsList.repositories.data).forEach(function (key) {
+                console.log(relationshipsList.repositories.data[key].id)
+                relRepositoriesIDs.push(relationshipsList.repositories.data[key].id)
             })
-            console.log(relationshipsListIDs)
+            console.log(relRepositoriesIDs)
+
+            // Places-Written
+            let relPlacesWrittenIDs = [];
+
+            // Letter-Owner
+            let relLetterOwnerIDs = [];
+
+            // Letter-Publisher
+            let relLetterPubIDs = [];
+
 
             let format;
             if (this.state.letter.attributes.typed === false && this.state.letter.attributes.signed === true) {
@@ -101,9 +123,10 @@ export class LetterPg extends Component {
                             <p>{this.state.letter.attributes['entity-count']}</p>
                         </Col>
                         <Col md='auto'>
-                            <h4>Relationships:</h4>
-                            {recipientsListIDs.map((id) => {
-                                return (<p>relationship ID = {id} </p>)
+                            <h4>Relationships</h4>
+                            <h5>Repositories:</h5>
+                            {relRepositoriesIDs.map((id) => {
+                                return (<RepositoriesRelationship personId={id} />)
                             })}
                         </Col>
                     </Row>

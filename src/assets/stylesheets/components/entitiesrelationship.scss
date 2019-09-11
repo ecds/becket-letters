@@ -1,19 +1,20 @@
-.profileLite-card {
-    width: 12rem;
-    & .card-body {
+.card-body {
     padding: 0px;
     & div {
-        margin-left: 10px;
+        margin-left: 0px;
     }
     & p {
         margin-left: 20px;
     }
 }
+
+.entitiesrelationship-card {
+    width: flex;
 }
 
-.profileLite-card-img {
-    margin-bottom: 10px;
-
+.entitiesrelationship-card-img {
+    width: 100px;
+    
 }
 
 .card-footer {
