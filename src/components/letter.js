@@ -53,6 +53,12 @@ export class LetterPg extends Component {
             console.log(relationshipsList)
             // Entities:
             let relEntitiesIDs = [];
+            console.log(relationshipsList.entities.data)
+            Object.keys(relationshipsList.entities.data).forEach(function (key) {
+                console.log(relationshipsList.entities.data[key].id)
+                relEntitiesIDs.push(relationshipsList.entities.data[key].id)
+            })
+            console.log(relEntitiesIDs)
 
             // Recipients
             let relRecipientsIDs = [];
@@ -124,6 +130,10 @@ export class LetterPg extends Component {
                         </Col>
                         <Col md='auto'>
                             <h4>Relationships</h4>
+                            <h5>Entities:</h5>
+                            {relEntitiesIDs.map((id) => {
+                                return (<EntitiesRelationship personId={id} />)
+                            })}
                             <h5>Repositories:</h5>
                             {relRepositoriesIDs.map((id) => {
                                 return (<RepositoriesRelationship personId={id} />)
