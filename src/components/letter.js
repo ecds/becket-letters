@@ -4,7 +4,6 @@ import ProfileLite from './ProfileLite';
 import EntitiesRelationship from './EntitiesRelationship';
 import RepositoriesRelationship from './RepositoriesRelationship';
 import axios from "axios";
-import { list } from "postcss";
 import Moment from 'react-moment';
 
 export class LetterPg extends Component {
@@ -143,29 +142,29 @@ export class LetterPg extends Component {
                         </Col>
                         <Col md='auto'>
                             <h4>Relationships:</h4>
-                            <h5>Entities:</h5>
+                            
                             {relEntitiesIDs.map((id) => {
-                                return (<EntitiesRelationship personId={id} />)
+                                return (<div><h5>Entities:</h5><EntitiesRelationship personId={id} /></div>)
                             })}
-                            <h5>Recipients:</h5>
+                            
                             {relRecipientsIDs.map((id) => {
-                                return (<EntitiesRelationship personId={id} />)
+                                return (<div><h5>Recipients:</h5><EntitiesRelationship personId={id} /></div>)
                             })}
-                            <h5>Repositories:</h5>
+                            
                             {relRepositoriesIDs.map((id) => {
-                                return (<RepositoriesRelationship personId={id} />)
+                                return (<div><h5>Repositories:</h5><RepositoriesRelationship personId={id} /></div>)
                             })}
-                            <h5>Places Written:</h5>
+                            
                             {relPlacesWrittenIDs.map((id) => {
-                                return (<EntitiesRelationship personId={id} />)
+                                return (<div><h5>Places Written:</h5><EntitiesRelationship personId={id} /></div>)
                             })}
-                            <h5>Letter Owner:</h5>
+                            
                             {relLetterOwnerIDs.map((id) => {
-                                return (<EntitiesRelationship personId={id} />)
+                                return (<div><h5>Letter Owner:</h5><EntitiesRelationship personId={id} /></div>)
                             })}
-                            <h5>Letter Publisher:</h5>
+                            
                             {relLetterPubIDs.map((id) => {
-                                return (<EntitiesRelationship personId={id} />)
+                                return (<div><h5>Letter Publisher:</h5><EntitiesRelationship personId={id} /></div>)
                             })}
                         </Col>
                     </Row>
