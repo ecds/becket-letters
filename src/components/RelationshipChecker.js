@@ -116,7 +116,7 @@ class RelationshipChecker extends Component {
                     <Row>
                         <Col md="auto">
                             <Card className='relationship-card'>
-                                <Card.Header><h5>{this.props.cardType}</h5></Card.Header>
+                                <Card.Header><h5>{this.props.cardType} Unvalidated</h5></Card.Header>
                                 <Card.Body>
                                     <Card.Text>
                                         card body
