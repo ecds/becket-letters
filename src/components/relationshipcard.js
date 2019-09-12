@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { nullLiteral } from '@babel/types';
 
-class repositoriesRelationship extends Component {
+class entitiesRelationship extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,7 @@ class repositoriesRelationship extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('http://ot-api.ecdsdev.org/repositories/' + this.props.personId)])
+            axios.get('http://ot-api.ecdsdev.org/' + this.props.personId)])
             .then(axios.spread((getPersonData) => {
                 const personData = getPersonData.data;
                 this.setState({ personData });
@@ -46,10 +46,11 @@ class repositoriesRelationship extends Component {
             return (
                 <Row>
                     <Col md="auto">
-                        <Card className='repositoriesRelationship-card'>
+                        <Card className='relationship-card'>
                             <Card.Header><h5>{this.state.personData.data.attributes["label"]}</h5></Card.Header>
                             <Card.Body>
                                 <Row>
+                                    {/* <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='entitiesRelationship-card-img' />                                     */}
                                     <Col>
                                         <Card.Text>
                                             {cardText}
@@ -69,4 +70,4 @@ class repositoriesRelationship extends Component {
     }
 }
 
-export default repositoriesRelationship;
+export default entitiesRelationship;

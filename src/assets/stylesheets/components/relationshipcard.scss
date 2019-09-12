@@ -1,4 +1,10 @@
-.repositoriesRelationship-card {
+.relationship-card {
+    & .card-header {
+        padding: 10px   !important;
+        & h5 {
+            margin: 0px;
+        }
+    }
   & .card-body {
     padding: 0px;
     & div {
