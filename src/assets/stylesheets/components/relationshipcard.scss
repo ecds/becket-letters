@@ -1,17 +1,15 @@
 .relationship-card {
-    & .card-header {
-        padding: 10px   !important;
-        & h5 {
-            margin: 0px;
-        }
+  & .card-header {
+    padding: 10px !important;
+    & h5 {
+      margin: 0px;
     }
+    margin-bottom: 10px;
+  }
   & .card-body {
     padding: 0px;
-    & div {
-      margin-left: 0px;
-    }
-    & p {
-      margin: 20px;
+    & .card-text {
+      margin: 0px 10px;
     }
     & .entitiesrelationship-card {
       width: flex;
@@ -21,10 +19,10 @@
     }
     & button {
       margin: 10px !important;
+      cursor: pointer;
       & * {
         border-radius: 0;
       }
-      cursor: pointer;
     }
   }
 }

@@ -49,18 +49,13 @@ class entitiesRelationship extends Component {
                         <Card className='relationship-card'>
                             <Card.Header><h5>{this.state.personData.data.attributes["label"]}</h5></Card.Header>
                             <Card.Body>
-                                <Row>
-                                    {/* <Card.Img src={this.state.personData.data.attributes.properties.media.images["0"].link} className='entitiesRelationship-card-img' />                                     */}
-                                    <Col>
-                                        <Card.Text>
-                                            {cardText}
-                                        </Card.Text>
+                                <Card.Text>
+                                    {cardText}
+                                </Card.Text>
 
-                                        <Button to={'/people/' + this.state.personData.id}>
-                                            Explore
+                                <Button to={'/people/' + this.state.personData.id}>
+                                    Explore
                                     </Button>
-                                    </Col>
-                                </Row>
                             </Card.Body>
                         </Card>
                     </Col>
