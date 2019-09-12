@@ -10,16 +10,16 @@ class entitiesRelationship extends Component {
         this.state = {
             isLoaded: false,
             error: '',
-            personData: []
+            relationshipData: []
         }
     }
 
     componentDidMount() {
         axios.all([
             axios.get('http://ot-api.ecdsdev.org/' + this.props.personId)])
-            .then(axios.spread((getPersonData) => {
-                const personData = getPersonData.data;
-                this.setState({ personData });
+            .then(axios.spread((getrelationshipData) => {
+                const relationshipData = getrelationshipData.data;
+                this.setState({ relationshipData });
                 this.setState({ isLoaded: true })
             }))
             .catch((err) => {
@@ -39,21 +39,34 @@ class entitiesRelationship extends Component {
             // return now that component has value
         } else {
             let cardText = null;
-            if (this.state.personData.data.attributes.properties != null) {
-                cardText = this.state.personData.data.attributes.properties.description
+            if (this.state.relationshipData.data.attributes.properties != null) {
+                cardText = <Card.Text>{this.state.relationshipData.data.attributes.properties.description}</Card.Text>
             }
+            console.log(this.state.relationshipData.data.type)
+            if (this.state.relationshipData.data.type === "repositories") {
+                let isPublicRepo;
+                if (this.state.relationshipData.data.attributes.public === true) {
+                    isPublicRepo = 'yes'
+                }
+                else (isPublicRepo = 'no')
+                let isUSRepo;
+                console.log(this.state.relationshipData.data.attributes.american)
+                if (this.state.relationshipData.data.attributes.american === true) {
+                    isUSRepo = 'yes'
+                }
+                else (isUSRepo = 'no')
+                cardText = <Card.Text>Public: {isPublicRepo}<br />American: {isUSRepo}</Card.Text>
+            }
+
 
             return (
                 <Row>
                     <Col md="auto">
                         <Card className='relationship-card'>
-                            <Card.Header><h5>{this.state.personData.data.attributes["label"]}</h5></Card.Header>
+                            <Card.Header><h5>{this.state.relationshipData.data.attributes["label"]}</h5></Card.Header>
                             <Card.Body>
-                                <Card.Text>
-                                    {cardText}
-                                </Card.Text>
-
-                                <Button to={'/people/' + this.state.personData.id}>
+                                {cardText}
+                                <Button to={'/people/' + this.state.relationshipData.id}>
                                     Explore
                                     </Button>
                             </Card.Body>
