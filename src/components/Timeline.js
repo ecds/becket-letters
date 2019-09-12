@@ -15,7 +15,7 @@ export class Timeline extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('beckett-timeline-year.json')])
+            axios.get('beckett-timeline-ver-26-aug.json')])
             .then(axios.spread((getLetterData) => {
                 const timelineEntries = getLetterData.data.events;
                 this.setState({ timelineEntries });
