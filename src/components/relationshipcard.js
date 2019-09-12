@@ -42,7 +42,6 @@ class entitiesRelationship extends Component {
             if (this.state.relationshipData.data.attributes.properties != null) {
                 cardText = <Card.Text>{this.state.relationshipData.data.attributes.properties.description}</Card.Text>
             }
-            console.log(this.state.relationshipData.data.type)
             if (this.state.relationshipData.data.type === "repositories") {
                 let isPublicRepo;
                 if (this.state.relationshipData.data.attributes.public === true) {
@@ -55,7 +54,7 @@ class entitiesRelationship extends Component {
                     isUSRepo = 'yes'
                 }
                 else (isUSRepo = 'no')
-                cardText = <Card.Text>Public: {isPublicRepo}<br />American: {isUSRepo}</Card.Text>
+                cardText = <Card.Text>Public: {isPublicRepo}<br/>American: {isUSRepo}</Card.Text>
             }
 
 
