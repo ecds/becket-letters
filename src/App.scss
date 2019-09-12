@@ -42,3 +42,7 @@ a {
     background-color: darken($color: $red, $amount: 10) !important;
   }
 }
+
+.card {
+  border-radius: 0px;
+}

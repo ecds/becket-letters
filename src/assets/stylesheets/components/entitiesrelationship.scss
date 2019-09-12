@@ -1,23 +1,24 @@
-.card-body {
-  padding: 0px;
-  & div {
-    margin-left: 0px;
-  }
-  & p {
-    margin: 20px;
-  }
-  & .entitiesrelationship-card {
-    width: flex;
-  }
-  & .entitiesrelationship-card-img {
-    width: 100px;
-  }
-  & button {
-    margin: 10px !important;
-    & * {
-      border-radius: 0;
+.repositoriesRelationship-card {
+  & .card-body {
+    padding: 0px;
+    & div {
+      margin-left: 0px;
     }
-    cursor: pointer;
-  }  
+    & p {
+      margin: 20px;
+    }
+    & .entitiesrelationship-card {
+      width: flex;
+    }
+    & .entitiesrelationship-card-img {
+      width: 100px;
+    }
+    & button {
+      margin: 10px !important;
+      & * {
+        border-radius: 0;
+      }
+      cursor: pointer;
+    }
+  }
 }
-
