@@ -1,27 +1,23 @@
 .card-body {
-    padding: 0px;
-    & div {
-        margin-left: 0px;
-    }
-    & p {
-        margin-left: 20px;
-    }
-}
-
-.entitiesrelationship-card {
+  padding: 0px;
+  & div {
+    margin-left: 0px;
+  }
+  & p {
+    margin: 20px;
+  }
+  & .entitiesrelationship-card {
     width: flex;
-}
-
-.entitiesrelationship-card-img {
+  }
+  & .entitiesrelationship-card-img {
     width: 100px;
-    
-}
-
-.card-footer {
-    margin: 0px !important;
-    width: 100%;
+  }
+  & button {
+    margin: 10px !important;
     & * {
-        border-radius: 0;
+      border-radius: 0;
     }
     cursor: pointer;
+  }  
 }
+
