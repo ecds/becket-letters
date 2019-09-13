@@ -39,7 +39,22 @@ class RelationshipChecker extends Component {
             // return now that component has value
         } else {
             if (this.props.cardType === 'entities') {
-                if (this.state.relationshipData.data.attributes['type-label'] === 'Place')
+                if (this.state.relationshipData.data.attributes['type-label'] === 'Attendance') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Music') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Organization') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Person') {
                     return (
                         <Row>
                             <Col md="auto">
@@ -55,6 +70,71 @@ class RelationshipChecker extends Component {
                             </Col>
                         </Row>
                     )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Place') {
+                    return (
+                        <Row>
+                            <Col md="auto">
+                                <Card className='relationship-card'>
+                                    <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>
+                                            {this.state.relationshipData.data.attributes.properties.description}
+                                        </Card.Text>
+                                        <Button to='#'>Explore</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Production') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Public Events') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Publication') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Reading') {
+                    return (
+                        <Row>
+                            <Col md="auto">
+                                <Card className='relationship-card'>
+                                    <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>
+                                            By {this.state.relationshipData.data.attributes.properties.authors}
+                                        </Card.Text>
+                                        <Button to='#'>Explore</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Translating') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Works Of Art') {
+                    return (
+                        null
+                    )
+                }
+                else if (this.state.relationshipData.data.attributes['type-label'] === 'Writing') {
+                    return (
+                        null
+                    )
+                }
             }
             // Recipients type
             if (this.props.cardType === 'recipients') {
@@ -83,7 +163,6 @@ class RelationshipChecker extends Component {
             }
             // Repositories type
             if (this.props.cardType === 'repositories') {
-                console.log(this.state.relationshipData.data.attributes)
                 let isPublic;
                 let isAmerican;
                 if (this.state.relationshipData.data.attributes.public == true) {
