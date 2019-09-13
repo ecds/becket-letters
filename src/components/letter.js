@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Col, Row } from 'react-bootstrap';
 import ProfileLite from './ProfileLite';
-import RelationshipCard from './relationshipcard';
+import RelationshipChecker from './RelationshipChecker';
 import axios from "axios";
 import Moment from 'react-moment';
 
@@ -102,7 +102,7 @@ export class LetterPg extends Component {
             return (
                 <Container>
                     <Row>
-                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['addressed-to']} on <Moment format="DD MMM YYYY">{this.state.letter.attributes.date}</Moment></h2>
+                        <h2>Letter from Samuel Beckett to {this.state.letter.attributes['recipient-list']} on <Moment format="DD MMM YYYY">{this.state.letter.attributes.date}</Moment></h2>
                     </Row>
                     <Row>
                         {recipientsListIDs.map((id) => {
@@ -143,27 +143,27 @@ export class LetterPg extends Component {
                             <h4>Relationships:</h4>
                             
                             {relEntitiesIDs.map((id) => {
-                                return (<div><h5>Entities:</h5><RelationshipCard personId={'entities/' + id} /></div>)
+                                return (<div><h5>Entities:</h5><RelationshipChecker cardType='entities' URLextender='entities/' id={id} /></div>)
                             })}
                             
                             {relRecipientsIDs.map((id) => {
-                                return (<div><h5>Recipients:</h5><RelationshipCard personId={'entities/' + id} /></div>)
+                                return (<div><h5>Recipients:</h5><RelationshipChecker cardType='recipients' URLextender='entities/' id={id} /></div>)
                             })}
                             
                             {relRepositoriesIDs.map((id) => {
-                                return (<div><h5>Repositories:</h5><RelationshipCard personId={'repositories/' + id} /></div>)
+                                return (<div><h5>Repositories:</h5><RelationshipChecker cardType='repositories' URLextender='repositories/' id={id} /></div>)
                             })}
                             
                             {relPlacesWrittenIDs.map((id) => {
-                                return (<div><h5>Places Written:</h5><RelationshipCard personId={'entities/' + id} /></div>)
+                                return (<div><h5>Places Written:</h5><RelationshipChecker cardType='places-written' URLextender='entities/' id={id} /></div>)
                             })}
                             
                             {relLetterOwnerIDs.map((id) => {
-                                return (<div><h5>Letter Owner:</h5><RelationshipCard personId={'entities/' + id} /></div>)
+                                return (<div><h5>Letter Owner:</h5><RelationshipChecker cardType='letter-owner' URLextender='entities/' id={id} /></div>)
                             })}
                             
                             {relLetterPubIDs.map((id) => {
-                                return (<div><h5>Letter Publisher:</h5><RelationshipCard personId={'entities/' + id} /></div>)
+                                return (<div><h5>Letter Publisher:</h5><RelationshipChecker cardType='letter-publisher' URLextender='entities/' id={id} /></div>)
                             })}
                         </Col>
                     </Row>
