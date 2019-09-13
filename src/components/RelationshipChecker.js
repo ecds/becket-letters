@@ -47,7 +47,7 @@ class RelationshipChecker extends Component {
                                     <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
                                     <Card.Body>
                                         <Card.Text>
-                                            card text
+                                            {this.state.relationshipData.data.attributes.properties.description}
                                         </Card.Text>
                                         <Button to='#'>Explore</Button>
                                     </Card.Body>
@@ -58,6 +58,13 @@ class RelationshipChecker extends Component {
             }
             // Recipients type
             if (this.props.cardType === 'recipients') {
+                let personText;
+                if (this.state.relationshipData.data.attributes.properties == null) {
+                    personText = null
+                } 
+                else {
+                    personText = this.state.relationshipData.data.attributes.properties.description
+                }
                 return (
                     <Row>
                         <Col md="auto">
@@ -65,7 +72,7 @@ class RelationshipChecker extends Component {
                                 <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
                                 <Card.Body>
                                     <Card.Text>
-                                        card text
+                                        {personText}
                                     </Card.Text>
                                     <Button to='#'>Explore</Button>
                                 </Card.Body>
