@@ -61,7 +61,7 @@ class RelationshipChecker extends Component {
                 let personText;
                 if (this.state.relationshipData.data.attributes.properties == null) {
                     personText = null
-                } 
+                }
                 else {
                     personText = this.state.relationshipData.data.attributes.properties.description
                 }
@@ -83,6 +83,21 @@ class RelationshipChecker extends Component {
             }
             // Repositories type
             if (this.props.cardType === 'repositories') {
+                console.log(this.state.relationshipData.data.attributes)
+                let isPublic;
+                let isAmerican;
+                if (this.state.relationshipData.data.attributes.public == true) {
+                    isPublic = "Yes"
+                }
+                else {
+                    isPublic = "No"
+                }
+                if (this.state.relationshipData.data.attributes.american == true) {
+                    isAmerican = "Yes"
+                }
+                else {
+                    isAmerican = "No"
+                }
                 return (
                     <Row>
                         <Col md="auto">
@@ -90,7 +105,9 @@ class RelationshipChecker extends Component {
                                 <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
                                 <Card.Body>
                                     <Card.Text>
-                                        card text
+                                        Public: {isPublic}
+                                        <br />
+                                        American: {isAmerican}
                                     </Card.Text>
                                     <Button to='#'>Explore</Button>
                                 </Card.Body>
@@ -108,7 +125,7 @@ class RelationshipChecker extends Component {
                                 <Card.Header><h5>{this.state.relationshipData.data.attributes.label}</h5></Card.Header>
                                 <Card.Body>
                                     <Card.Text>
-                                        card text
+                                        {this.state.relationshipData.data.attributes.properties.description}
                                     </Card.Text>
                                     <Button to='#'>Explore</Button>
                                 </Card.Body>
