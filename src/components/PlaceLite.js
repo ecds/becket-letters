@@ -13,11 +13,10 @@ class PlaceLite extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     axios.all([
-        axios.get('../'+this.props.placeId+'.json')])
+        axios.get('http://ot-api.ecdsdev.org/entities/'+this.props.placeId)])
         .then(axios.spread((getPlaceData) => {
-            const placeData = getPlaceData.data[0];
+            const placeData = getPlaceData.data.data;
             this.setState({ placeData });
             this.setState({ isLoaded: true })
         }))
@@ -41,7 +40,14 @@ class PlaceLite extends Component {
           <Row>
             <Col>
               <Card>
-                {this.state.placeData.PlaceName}
+                {this.state.placeData.attributes ?
+                  <p>{this.state.placeData.attributes.label}</p>
+                  : null
+                }
+                {this.state.placeData.attributes.properties ?
+                  <p>{this.state.placeData.attributes.properties.description}</p>
+                  : null
+                }
               </Card>
             </Col>
           </Row>

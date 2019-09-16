@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { } from 'react-bootstrap';
 import HomeJumbotron from './Jumbotron';
+import SearchPage from './SearchPage';
 import axios from "axios";
 
 class Landing extends Component {
@@ -14,6 +15,7 @@ class Landing extends Component {
                 <p><a href='./places'>Link to places</a></p>
                 <p><a href='./letters/letterdetails'>Link to letter detail page</a></p>
                 <p><a href='./timeline'>Link to timeline page</a></p>
+                <SearchPage />
             </div>
         )
     }

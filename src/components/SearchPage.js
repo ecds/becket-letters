@@ -1,10 +1,44 @@
 import React, { Component } from "react";
-import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
-import '../assets/stylesheets/components/searchpage.scss'
+import axios from "axios";
+import { Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 
 export class SearchPage extends Component {
 
+  constructor(props, context) {
+      super(props, context);
+      this.state = {
+          error: null,
+          isLoaded: false,
+          entityTypes: []
+      };
+      this.submitForm = this.submitForm.bind(this);
+  }
+
+  submitForm (e) {
+		e.preventDefault()
+    const data = new FormData(e.target);
+		this.props.history.push('/search?query='+e.target.elements.query.value+'&type='+e.target.elements.entity_type.value.toLowerCase());
+	}
+
+
+  componentDidMount() {
+    axios.all([
+        axios.get('http://ot-api.ecdsdev.org/entity-types')])
+        .then(axios.spread((getAllEntityTypes) => {
+            const entityTypes = getAllEntityTypes.data.data;
+            this.setState({ entityTypes });
+            this.setState({ isLoaded: true })
+        }))
+        .catch((err) => {
+            this.setState({ isLoaded: false });
+            this.setState({ error: err.message });
+        });
+  }
+
     render() {
+
+      var EntityType = props => <select name="entity_type">{this.state.entityTypes.map((x) => <option key={x.attributes.label}>{x.attributes['pretty-label']}</option>)}</select>;
         return (
             <div>
                 <Container>
@@ -12,6 +46,13 @@ export class SearchPage extends Component {
                         <h2>Search</h2>
                     </Row>
                 </Container>
+                <form  onSubmit={this.submitForm} >
+                  <label htmlFor="search">Search Terms</label>
+                  <input id="query" name="query" type="text" />
+                  <EntityType/>
+                  <button>Search</button>
+                </form>
+                {/*
                 <Row className='m-0 searchBoxBg'>
                     <Container >
                         <Row className='dateRange justify-content-md-center'>
@@ -43,13 +84,9 @@ export class SearchPage extends Component {
 
                                     <InputGroup.Append>
                                         <InputGroup.Text>in</InputGroup.Text>
-                                        <select>
-                                            <option value="Entity 1">Entity 1</option>
-                                            <option value="Entity 4">Entity 2</option>
-                                            <option value="Entity 3">Entity 3</option>
-                                            <option value="Entity 4">Entity 4</option>
-                                        </select>
-                                        <Button >Go</Button>
+                                        <EntityType/>
+
+                                        <button type='button' onClick={this.handleSearch}>Click Me!</button>
                                     </InputGroup.Append>
                                 </InputGroup>
                             </Col>
@@ -57,7 +94,7 @@ export class SearchPage extends Component {
 
                     </Container>
                 </Row>
-                {/* <Container>
+                 <Container>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, sequi, molestias numquam perferendis delectus cumque dolores aut obcaecati unde fugit, veniam quae vel ipsa repellendus. Recusandae repellendus unde earum. Recusandae.</p>
                 </Container> */}
             </div>
@@ -65,4 +102,4 @@ export class SearchPage extends Component {
     }
 }
 
-export default SearchPage;
+export default withRouter(SearchPage);
