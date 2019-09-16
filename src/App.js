@@ -5,13 +5,14 @@ import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container } from 'react-bootstrap';
 import Landing from './components/Landing';
 import People from './components/people';
-import Letters from './components/letters';
+import BrowseLetters from './components/BrowseLetters';
 import Header from './components/header';
 import LetterPg from './components/letter';
 import Timeline from './components/Timeline';
 import Places from './components/Places';
 import Place from './components/Place';
 import Profile from './components/Profile';
+import SearchResults from './components/SearchResults';
 // import SearchPage from './components/SearchPage';
 import axios from 'axios';
 
@@ -42,7 +43,8 @@ class App extends Component {
       '/people': 'People',
       '/people/:personId': ':personId',
       '/places': 'Places',
-      '/places/place': 'Place'
+      '/places/place': 'Place',
+      '/search': 'Search Results'
     };
     return (
       <BrowserRouter>
@@ -52,11 +54,12 @@ class App extends Component {
         <Route exact path="/" component={Landing} />
         <Route exact path="/people" component={People} />
         <Route exact path="/people/:personId" component={Profile} />
-        <Route exact path="/letters" component={Letters} />
+        <Route exact path="/letters" component={BrowseLetters} />
         <Route exact path="/letters/letterdetails" component={LetterPg} />
         <Route exact path='/timeline' component={Timeline} />
         <Route exact path='/places' component={Places} />
         <Route exact path='/places/place' component={Place} />
+        <Route exact path='/search' component={SearchResults} />
         </Container>
       </BrowserRouter>
     );
