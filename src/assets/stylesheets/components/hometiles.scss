@@ -1,0 +1,17 @@
+.home-tiles {
+  text-align: center;
+  background-color: $darkGray;
+  padding: 1em;
+  .card-footer {
+    padding: 0;
+    a {
+      color: white;
+      display: block;
+      padding: .75em;
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}

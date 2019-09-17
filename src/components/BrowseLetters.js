@@ -3,6 +3,7 @@ import { Container, Tabs, Tab } from 'react-bootstrap';
 import axios from "axios";
 import LettersByPeopleMentioned from './LettersByPeopleMentioned';
 import LettersByPlacesMentioned from './LettersByPlacesMentioned';
+import LettersByOrganizationsMentioned from './LettersByOrganizationsMentioned';
 
 class BrowseLetters extends Component {
   constructor(props, context) {
@@ -16,10 +17,16 @@ class BrowseLetters extends Component {
   }
 
   componentDidMount() {
-    this.setState({ activeKey: this.props.location.state.activeKey }, () => {
-      console.log(this.state.activeKey);
+    if (this.props.location.state.activeKey.length > 0) {
+      this.setState({ activeKey: this.props.location.state.activeKey }, () => {
+        console.log(this.state.activeKey);
+        this.setState({isLoaded:true})
+      });
+    }
+    else {
       this.setState({isLoaded:true})
-    });
+    }
+
   }
 
   render() {
@@ -34,8 +41,8 @@ class BrowseLetters extends Component {
             <Tab eventKey="places" title="Places">
               <LettersByPlacesMentioned />
             </Tab>
-            <Tab eventKey="organization" title="Organization">
-              <div>Organization</div>
+            <Tab eventKey="organizations" title="Organization">
+              <LettersByOrganizationsMentioned/>
             </Tab>
           </Tabs>
           : null}

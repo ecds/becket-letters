@@ -5,6 +5,7 @@ import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container } from 'react-bootstrap';
 import Landing from './components/Landing';
 import People from './components/people';
+import Letters from './components/letters';
 import BrowseLetters from './components/BrowseLetters';
 import Header from './components/header';
 import LetterPg from './components/letter';
@@ -58,7 +59,8 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/people" component={People} />
           <Route exact path="/people/:personId" component={Profile} />
-          <Route exact path="/letters" component={BrowseLetters} />
+          <Route exact path="/browse-letters" component={BrowseLetters} />
+          <Route exact path="/letters" component={Letters} />
           <Route exact path="/letters/letterdetails" component={LetterPg} />
           <Route exact path='/timeline' component={Timeline} />
           <Route exact path='/places' component={Places} />
