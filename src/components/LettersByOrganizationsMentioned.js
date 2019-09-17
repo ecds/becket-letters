@@ -6,7 +6,7 @@ import Profile from './Profile.js';
 import Pagination from '../utilities/Pagination';
 
 
-class LettersByPeopleMentioned extends Component {
+class LettersByOrganizationsMentioned extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -32,7 +32,7 @@ class LettersByPeopleMentioned extends Component {
 
   getData = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=person&items=200&page='+this.state.page)])
+        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=organization&items=200&page='+this.state.page)])
         .then(axios.spread((getAllPeople) => {
             const allPeople = getAllPeople.data.data;
             const pagination = getAllPeople.data.meta.pagination;
@@ -63,7 +63,7 @@ class LettersByPeopleMentioned extends Component {
             <thead>
               <tr>
                 <th>Number of Letters</th>
-                <th>Person Name</th>
+                <th>Organization Name</th>
               </tr>
             </thead>
             <tbody>
@@ -76,4 +76,4 @@ class LettersByPeopleMentioned extends Component {
     }
   }
 
-export default LettersByPeopleMentioned;
+export default LettersByOrganizationsMentioned;
