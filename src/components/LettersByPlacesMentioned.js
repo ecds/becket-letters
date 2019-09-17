@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import BrowseLettersByIndexTabs from './BrowseLettersByIndexTabs';
 import Profile from './Profile.js';
-import Pagination from './Pagination';
+import Pagination from '../utilities/Pagination';
 
 
 class LettersByPlacesMentioned extends Component {
@@ -15,21 +15,36 @@ class LettersByPlacesMentioned extends Component {
           isLoaded: false,
           allPeople: [],
           page: '1',
-          pagination: []
+          pagination: [],
+          messageShown: false
       };
-      this.getPeople = this.getPeople.bind(this);
+      this.getData = this.getData.bind(this);
+      this.handler = this.handler.bind(this);
   }
 
   componentDidMount() {
-    this.getPeople();
+    console.log(this.props)
+    this.getData();
   }
 
-  getPeople = () => {
+
+  handler = (pageValue) => {
+    const page = pageValue
+    console.log(page)
+    console.log(pageValue)
+    console.log(this.state.page)
+    this.setState({ page }, () => {
+      this.getData();
+    });
+  }
+
+  getData = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=place&items=100')])
+        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=place&items=100&page='+this.state.page)])
         .then(axios.spread((getAllPeople) => {
             const allPeople = getAllPeople.data.data;
             const pagination = getAllPeople.data.meta.pagination;
+            console.log(getAllPeople)
             console.log(pagination)
             this.setState({ pagination });
             this.setState({ allPeople });
@@ -62,7 +77,7 @@ class LettersByPlacesMentioned extends Component {
             <thead>
               <tr>
                 <th>Number of Letters</th>
-                <th>Recipient</th>
+                <th>Place</th>
               </tr>
             </thead>
             <tbody>
@@ -73,7 +88,7 @@ class LettersByPlacesMentioned extends Component {
           <h1>Recipients</h1>
           <div>get all people. get length of letter list from all people</div>
           <div>Link to search results with URL: /letters?recipients=person_label</div>
-          {this.state.isLoaded ? <Pagination pagination={this.state.pagination} /> : null}
+          {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
         </Container>
       )
     }

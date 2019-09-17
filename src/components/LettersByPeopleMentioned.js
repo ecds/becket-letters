@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import BrowseLettersByIndexTabs from './BrowseLettersByIndexTabs';
 import Profile from './Profile.js';
-import Pagination from './Pagination';
+import Pagination from '../utilities/Pagination';
 
 
 class LettersByPeopleMentioned extends Component {
@@ -39,10 +39,6 @@ class LettersByPeopleMentioned extends Component {
             this.setState({ isLoaded: false });
             this.setState({ error: err.message });
         });
-  }
-
-  getNextList = () => {
-
   }
 
 

@@ -10,7 +10,6 @@ class Pagination extends Component {
       this.state = {
           page: '1'
       };
-    console.log(this.props)
   }
 
   componentDidMount() {
@@ -18,10 +17,16 @@ class Pagination extends Component {
     // this.createPagination();
   }
 
+  changePageNumber = (e) => {
+    console.log(e.target.id)
+    var page = e.target.id
+    this.props.action(page)
+  }
+
   createPagination = () => {
       let table = []
       for (let i = 0; i < this.props.pagination['total-pages']; i++) {
-        table.push(<a key={i} onClick={() => this.refreshData(i+1)} className='btn btn-pagination' href="#">{i+1}</a>)
+        table.push(<button key={i} onClick={this.changePageNumber} id={i+1} className='btn btn-pagination' href="#">{i+1}</button>)
       }
       return table
     }
