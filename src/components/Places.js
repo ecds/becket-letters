@@ -16,7 +16,7 @@ class Places extends Component {
 
   componentDidMount() {
     axios.all([
-        axios.get('places.json')])
+        axios.get('http://ot-api.ecdsdev.org/entities/'+ this.props.history.location.state.id)])
         .then(axios.spread((getPlaces) => {
             const allPlaces = getPlaces.data;
             this.setState({ allPlaces });

@@ -13,8 +13,7 @@ class Place extends Component {
       error: null,
       isLoaded: false,
       thisPlace: [],
-      relatedPlaces: {},
-      relatedAuthors: {}
+      lettersList: []
     };
 
   }
@@ -36,13 +35,22 @@ class Place extends Component {
     })
   }
 
+  getLettersList = () => {
+    return <p>H</p>
+  }
+
   componentDidMount() {
+    console.log(this.props)
     axios.all([
-        axios.get('../place_3.json')])
+        axios.get('http://ot-api.ecdsdev.org/entities/'+ this.props.location.state.id)])
         .then(axios.spread((getPlace) => {
-            const thisPlace = getPlace.data[0];
+
+            const thisPlace = getPlace.data.data;
+            const lettersList = getPlace.data.data.attributes['letters-list'];
+            console.log(getPlace)
             this.setState({ thisPlace });
-            this.categorizeRelatedEntities(thisPlace.relationships.entities)
+            this.setState({ lettersList });
+            // this.categorizeRelatedEntities(thisPlace.relationships.entities)
             this.setState({ isLoaded: true })
         }))
         .catch((err) => {
@@ -54,6 +62,9 @@ class Place extends Component {
 
 
   render() {
+    const LettersList = this.state.lettersList.map((letter) =>
+      <p>{letter}</p>
+    );
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -63,12 +74,7 @@ class Place extends Component {
       return <div>Loading...</div>;
     // return now that component has value
     } else {
-      const relatedAuthors = this.state.relatedAuthors.map((relatedAuthor, i) =>
-          <ProfileLite key={i} personId={relatedAuthor}/>
-      );
-      const relatedPlaces = this.state.relatedPlaces.map((relatedPlace, i) =>
-          <PlaceLite key={i} placeId={relatedPlace}/>
-      );
+
       return (
         <Container>
         <Row>
@@ -82,14 +88,14 @@ class Place extends Component {
         </Row>
         <Row className="mt-3">
           <Col md={12}>
-            <h4>Related Authors</h4>
-            {relatedAuthors}
+            <h4>Letters List</h4>
+            {LettersList}
           </Col>
         </Row>
         <Row className="mt-3">
           <Col md={12}>
             <h4>Related Places</h4>
-            {relatedPlaces}
+
           </Col>
         </Row>
         </Container>
