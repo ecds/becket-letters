@@ -13,6 +13,7 @@ import Places from './components/Places';
 import Place from './components/Place';
 import Profile from './components/Profile';
 import SearchResults from './components/SearchResults';
+import SearchLetters from './components/SearchLetters';
 // import SearchPage from './components/SearchPage';
 import axios from 'axios';
 
@@ -43,14 +44,17 @@ class App extends Component {
       '/people': 'People',
       '/people/:personId': ':personId',
       '/places': 'Places',
-      '/places/place': 'Place',
-      '/search': 'Search Results'
+      '/places/:placeId': ':placeId',
+      '/search': 'Search Results',
+      '/search-letters': 'Search Letters'
     };
     return (
       <BrowserRouter>
         <Header />
         <Container fluid className="p-0">
-        <Breadcrumbs mappedRoutes={routes} />
+        <Container>
+          <Breadcrumbs mappedRoutes={routes} />
+        </Container>
         <Route exact path="/" component={Landing} />
         <Route exact path="/people" component={People} />
         <Route exact path="/people/:personId" component={Profile} />
@@ -58,8 +62,9 @@ class App extends Component {
         <Route exact path="/letters/letterdetails" component={LetterPg} />
         <Route exact path='/timeline' component={Timeline} />
         <Route exact path='/places' component={Places} />
-        <Route exact path='/places/place' component={Place} />
+        <Route exact path='/places/:placeId' component={Place} />
         <Route exact path='/search' component={SearchResults} />
+        <Route exact path='/search-letters' component={SearchLetters} />
         </Container>
       </BrowserRouter>
     );

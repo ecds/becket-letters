@@ -14,16 +14,12 @@ class ProfileLite extends Component {
     }
   }
 
-  componentWillReceiveProps() {
-
-  }
 
   componentDidMount() {
-    const { match: { params } } = this.props;
     axios.all([
-      axios.get('../' + params.personId + '.json')])
+      axios.get('http://ot-api.ecdsdev.org/entities/' +  this.props.history.location.state.id)])
       .then(axios.spread((getPersonData) => {
-        const personData = getPersonData.data.data[0];
+        const personData = getPersonData.data.data;
         this.setState({ personData });
         this.setState({ isLoaded: true })
       }))
@@ -40,22 +36,12 @@ class ProfileLite extends Component {
       return <div>Error: {error.message}</div>;
       // if not loaded show loading
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <Container>Loading...</Container>;
       // return now that component has value
     } else {
-      const fullName = this.state.personData.attributes.properties["first-name"] + " " + this.state.personData.attributes.properties["last-name"];
       return (
         <Container>
-          <Row>
-            <Col md={6}>
-              <img src={this.state.personData.attributes.properties.media.images[0].link} className='profileLite-card-img' />
-            </Col>
-            <Col md={6}>
-              <h5>{fullName}</h5>
-              {this.state.personData.attributes.properties.profile}
-            </Col>
-          </Row>
-
+          <h1>{this.state.personData.attributes.label}</h1>
         </Container>
       )
     }
