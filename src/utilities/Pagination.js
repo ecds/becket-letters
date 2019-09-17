@@ -26,7 +26,7 @@ class Pagination extends Component {
   createPagination = () => {
       let table = []
       for (let i = 0; i < this.props.pagination['total-pages']; i++) {
-        table.push(<li class="page-item"><a key={i} onClick={this.changePageNumber} id={i+1} className='page-link' href="#">{i+1}</a></li>)
+        table.push(<li key={i} className="page-item"><a onClick={this.changePageNumber} id={i+1} className='page-link' href="#">{i+1}</a></li>)
       }
       return table
     }

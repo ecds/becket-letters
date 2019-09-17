@@ -46,7 +46,7 @@ class App extends Component {
       '/places': 'Places',
       '/places/:placeId': ':placeId',
       '/search': 'Search Results',
-      '/search-letters': 'Search Letters'
+      '/search-letters': 'Search Letters',
     };
     return (
       <BrowserRouter>
@@ -55,16 +55,16 @@ class App extends Component {
         <Container>
           <Breadcrumbs mappedRoutes={routes} />
         </Container>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/people" component={People} />
-        <Route exact path="/people/:personId" component={Profile} />
-        <Route exact path="/letters" component={BrowseLetters} />
-        <Route exact path="/letters/letterdetails" component={LetterPg} />
-        <Route exact path='/timeline' component={Timeline} />
-        <Route exact path='/places' component={Places} />
-        <Route exact path='/places/:placeId' component={Place} />
-        <Route exact path='/search' component={SearchResults} />
-        <Route exact path='/search-letters' component={SearchLetters} />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/people" component={People} />
+          <Route exact path="/people/:personId" component={Profile} />
+          <Route exact path="/letters" component={BrowseLetters} />
+          <Route exact path="/letters/letterdetails" component={LetterPg} />
+          <Route exact path='/timeline' component={Timeline} />
+          <Route exact path='/places' component={Places} />
+          <Route exact path='/places/:placeId' component={Place} />
+          <Route exact path='/search' component={SearchResults} />
+          <Route exact path='/search-letters' component={SearchLetters} />
         </Container>
       </BrowserRouter>
     );

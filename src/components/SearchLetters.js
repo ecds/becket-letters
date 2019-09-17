@@ -41,7 +41,6 @@ export class SearchLetters extends Component {
         .then(axios.spread((getAllSearchResults) => {
             const searchResults = getAllSearchResults.data.data;
             const paginationResults = getAllSearchResults.data.meta.pagination;
-            console.log(getAllSearchResults)
             this.setState({paginationResults});
             this.setState({ searchResults });
             this.setState({ isLoaded: true })

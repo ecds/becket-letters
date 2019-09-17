@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container, Table } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import BrowseLettersByIndexTabs from './BrowseLettersByIndexTabs';
 import Profile from './Profile.js';
 import Pagination from '../utilities/Pagination';
 
