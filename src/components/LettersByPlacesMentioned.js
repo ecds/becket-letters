@@ -30,9 +30,6 @@ class LettersByPlacesMentioned extends Component {
 
   handler = (pageValue) => {
     const page = pageValue
-    console.log(page)
-    console.log(pageValue)
-    console.log(this.state.page)
     this.setState({ page }, () => {
       this.getData();
     });
@@ -73,7 +70,7 @@ class LettersByPlacesMentioned extends Component {
     );
       return (
         <Container>
-          <Table striped bordered>
+          <Table striped bordered className="browse-by">
             <thead>
               <tr>
                 <th>Number of Letters</th>
@@ -84,10 +81,6 @@ class LettersByPlacesMentioned extends Component {
             {PlaceList}
             </tbody>
           </Table>
-
-          <h1>Recipients</h1>
-          <div>get all people. get length of letter list from all people</div>
-          <div>Link to search results with URL: /letters?recipients=person_label</div>
           {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
         </Container>
       )
