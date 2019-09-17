@@ -22,7 +22,7 @@ class BrowseLettersByIndexTabs extends Component {
       return (
         <Tabs defaultActiveKey={this.state.activeKey} id="uncontrolled-tab-example">
           <Tab eventKey="people" title="People">
-            <LettersByPeopleMentioned props="Recipient"/>
+            <LettersByPeopleMentioned props="People"/>
           </Tab>
           <Tab eventKey="places" title="Places">
             <LettersByPlacesMentioned />

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import BrowseLettersByIndexTabs from './BrowseLettersByIndexTabs';
 import Profile from './Profile.js';
-import Pagination from './Pagination';
+import Pagination from '../utilities/Pagination';
 
 
 class LettersByPeopleMentioned extends Component {
@@ -17,20 +17,26 @@ class LettersByPeopleMentioned extends Component {
           page: '1',
           pagination: []
       };
-      this.getPeople = this.getPeople.bind(this);
+      this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
-    this.getPeople();
+    this.getData();
   }
 
-  getPeople = () => {
+  handler = (pageValue) => {
+    const page = pageValue
+    this.setState({ page }, () => {
+      this.getData();
+    });
+  }
+
+  getData = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=person&items=100')])
+        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=person&items=200&page='+this.state.page)])
         .then(axios.spread((getAllPeople) => {
             const allPeople = getAllPeople.data.data;
             const pagination = getAllPeople.data.meta.pagination;
-            console.log(pagination)
             this.setState({ pagination });
             this.setState({ allPeople });
             this.setState({ isLoaded: true })
@@ -39,10 +45,6 @@ class LettersByPeopleMentioned extends Component {
             this.setState({ isLoaded: false });
             this.setState({ error: err.message });
         });
-  }
-
-  getNextList = () => {
-
   }
 
 
@@ -58,22 +60,18 @@ class LettersByPeopleMentioned extends Component {
     );
       return (
         <Container>
-          <Table striped bordered>
+          <Table striped bordered className="browse-by">
             <thead>
               <tr>
                 <th>Number of Letters</th>
-                <th>Recipient</th>
+                <th>Person Name</th>
               </tr>
             </thead>
             <tbody>
             {PeopleList}
             </tbody>
           </Table>
-
-          <h1>Recipients</h1>
-          <div>get all people. get length of letter list from all people</div>
-          <div>Link to search results with URL: /letters?recipients=person_label</div>
-          {this.state.isLoaded ? <Pagination pagination={this.state.pagination} /> : null}
+          {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
         </Container>
       )
     }
