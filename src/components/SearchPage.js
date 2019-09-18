@@ -5,53 +5,56 @@ import { withRouter } from 'react-router-dom';
 
 export class SearchPage extends Component {
 
-  constructor(props, context) {
-      super(props, context);
-      this.state = {
-          error: null,
-          isLoaded: false,
-          entityTypes: []
-      };
-      this.submitForm = this.submitForm.bind(this);
-  }
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            entityTypes: []
+        };
+        this.submitForm = this.submitForm.bind(this);
+    }
 
-  submitForm (e) {
-		e.preventDefault()
-    const data = new FormData(e.target);
-		this.props.history.push('/search?query='+e.target.elements.query.value+'&type='+e.target.elements.entity_type.value.toLowerCase());
-	}
+    submitForm(e) {
+        e.preventDefault()
+        const data = new FormData(e.target);
+        this.props.history.push('/search?query=' + e.target.elements.query.value + '&type=' + e.target.elements.entity_type.value.toLowerCase());
+    }
 
 
-  componentDidMount() {
-    axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entity-types')])
-        .then(axios.spread((getAllEntityTypes) => {
-            const entityTypes = getAllEntityTypes.data.data;
-            this.setState({ entityTypes });
-            this.setState({ isLoaded: true })
-        }))
-        .catch((err) => {
-            this.setState({ isLoaded: false });
-            this.setState({ error: err.message });
-        });
-  }
+    componentDidMount() {
+        axios.all([
+            axios.get('http://ot-api.ecdsdev.org/entity-types')])
+            .then(axios.spread((getAllEntityTypes) => {
+                const entityTypes = getAllEntityTypes.data.data;
+                this.setState({ entityTypes });
+                this.setState({ isLoaded: true })
+            }))
+            .catch((err) => {
+                this.setState({ isLoaded: false });
+                this.setState({ error: err.message });
+            });
+    }
 
     render() {
 
-      var EntityType = props => <select name="entity_type">{this.state.entityTypes.map((x) => <option key={x.attributes.label}>{x.attributes['pretty-label']}</option>)}</select>;
+        var EntityType = props => <select name="entity_type">{this.state.entityTypes.map((x) => <option key={x.attributes.label}>{x.attributes['pretty-label']}</option>)}</select>;
         return (
             <div>
                 <Container>
-                    <Row>
-                        <h2>Search</h2>
+                    <Row className='search-row justify-content-center'>
+                        <h2>Search in</h2>
+                        <EntityType />
+                        <h2>for</h2>
+                        <form onSubmit={this.submitForm} >
+                            <input id="query" name="query" type="text" placeholder="ex. 'Endgame'" />
+
+                            <button className='btn btn-primary'>Search</button>
+                        </form>
                     </Row>
                 </Container>
-                <form  onSubmit={this.submitForm} >
-                  <label htmlFor="search">Search Terms</label>
-                  <input id="query" name="query" type="text" />
-                  <EntityType/>
-                  <button>Search</button>
-                </form>
+
+
                 {/*
                 <Row className='m-0 searchBoxBg'>
                     <Container >
