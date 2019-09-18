@@ -4,6 +4,7 @@ import axios from "axios";
 import LettersByPeopleMentioned from './LettersByPeopleMentioned';
 import LettersByPlacesMentioned from './LettersByPlacesMentioned';
 import LettersByOrganizationsMentioned from './LettersByOrganizationsMentioned';
+import LettersByProductionsMentioned from './LettersByProductionsMentioned';
 
 class BrowseLetters extends Component {
   constructor(props, context) {
@@ -43,6 +44,12 @@ class BrowseLetters extends Component {
             </Tab>
             <Tab eventKey="organizations" title="Organization">
               <LettersByOrganizationsMentioned/>
+            </Tab>
+            <Tab eventKey="productions" title="Productions">
+              <form>
+                <input type="text" name="Search"/>
+              </form>
+              <LettersByProductionsMentioned/>
             </Tab>
           </Tabs>
           : null}

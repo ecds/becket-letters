@@ -6,7 +6,7 @@ import Profile from './Profile.js';
 import Pagination from '../utilities/Pagination';
 
 
-class LettersByPlacesMentioned extends Component {
+class LettersByProductionsMentioned extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -15,10 +15,13 @@ class LettersByPlacesMentioned extends Component {
           allPeople: [],
           page: '1',
           pagination: [],
-          messageShown: false
+          messageShown: false,
+          isSearching: false
       };
       this.getData = this.getData.bind(this);
+      this.searchData = this.searchData.bind(this);
       this.handler = this.handler.bind(this);
+      this.intiateSearch = this.intiateSearch.bind(this);
   }
 
   componentDidMount() {
@@ -30,18 +33,29 @@ class LettersByPlacesMentioned extends Component {
   handler = (pageValue) => {
     const page = pageValue
     this.setState({ page }, () => {
-      this.getData();
+      if (this.state.isSearching) {
+        this.searchData();
+      }
+      else {
+        this.getData();
+      }
     });
   }
 
-  getData = () => {
+  intiateSearch(event) {
+    event.preventDefault()
+    const data = new FormData(event.target);
+    const searchTerms = event.target.elements.query.value;
+    this.searchData(searchTerms)
+  }
+
+  searchData = (searchTerms) => {
+    this.setState({ isSearching: true })
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=place&items=100&page='+this.state.page)])
-        .then(axios.spread((getAllPeople) => {
-            const allPeople = getAllPeople.data.data;
-            const pagination = getAllPeople.data.meta.pagination;
-            console.log(getAllPeople)
-            console.log(pagination)
+        axios.get('http://ot-api.ecdsdev.org/search-entities?query='+searchTerms+'&type=production')])
+        .then(axios.spread((searchProductions) => {
+            const allPeople = searchProductions.data.data;
+            const pagination = searchProductions.data.meta.pagination;
             this.setState({ pagination });
             this.setState({ allPeople });
             this.setState({ isLoaded: true })
@@ -52,10 +66,21 @@ class LettersByPlacesMentioned extends Component {
         });
   }
 
-  getNextList = () => {
-
+  getData = () => {
+    axios.all([
+        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=production&items=100&page='+this.state.page)])
+        .then(axios.spread((getAllPeople) => {
+            const allPeople = getAllPeople.data.data;
+            const pagination = getAllPeople.data.meta.pagination;
+            this.setState({ pagination });
+            this.setState({ allPeople });
+            this.setState({ isLoaded: true })
+        }))
+        .catch((err) => {
+            this.setState({ isLoaded: false });
+            this.setState({ error: err.message });
+        });
   }
-
 
   render() {
     var PlaceList = this.state.allPeople.map((place) =>
@@ -69,11 +94,16 @@ class LettersByPlacesMentioned extends Component {
     );
       return (
         <Container>
+          <form onSubmit={this.intiateSearch}>
+            <label htmlFor="search">Search Terms</label>
+            <input id="query" name="query" type="text" />
+            <button>Search</button>
+          </form>
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
                 <th>Number of Letters</th>
-                <th>Place</th>
+                <th>Production</th>
               </tr>
             </thead>
             <tbody>
@@ -86,4 +116,4 @@ class LettersByPlacesMentioned extends Component {
     }
   }
 
-export default LettersByPlacesMentioned;
+export default LettersByProductionsMentioned;
