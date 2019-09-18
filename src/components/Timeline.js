@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import TimelineYear from './TimelineYear';
 
 export class Timeline extends Component {
@@ -15,7 +15,7 @@ export class Timeline extends Component {
 
     componentDidMount() {
         axios.all([
-            axios.get('beckett-timeline-ver-26-aug.json')])
+            axios.get('http://localhost:3000/beckett-timeline-ver-26-aug.json')])
             .then(axios.spread((getLetterData) => {
                 const timelineEntries = getLetterData.data.events;
                 this.setState({ timelineEntries });
@@ -39,7 +39,7 @@ export class Timeline extends Component {
         } else {
             let allTimelineEntries = this.state.timelineEntries
           return (
-            <div className="timeline-container">
+            <Container className="timeline-container">
               <Row>
                 <h1>Timeline</h1>
               </Row>
@@ -61,7 +61,7 @@ export class Timeline extends Component {
                    )
                  })
               }
-            </div>
+            </Container>
           )
         }
     }

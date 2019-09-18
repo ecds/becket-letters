@@ -13,7 +13,8 @@ class Place extends Component {
       error: null,
       isLoaded: false,
       thisPlace: [],
-      lettersList: []
+      lettersList: [],
+      alternateSpellings: []
     };
 
   }
@@ -47,9 +48,9 @@ class Place extends Component {
 
             const thisPlace = getPlace.data.data;
             const lettersList = getPlace.data.data.attributes['letters-list'];
-            console.log(getPlace)
-            this.setState({ thisPlace });
-            this.setState({ lettersList });
+            const alternateSpellings = getPlace.data.data.attributes.properties['alternate-spellings']
+            console.log(alternateSpellings)
+            this.setState({ thisPlace, lettersList, alternateSpellings });
             // this.categorizeRelatedEntities(thisPlace.relationships.entities)
             this.setState({ isLoaded: true })
         }))
@@ -62,9 +63,13 @@ class Place extends Component {
 
 
   render() {
+    console.log(this.state.thisPlace)
     const LettersList = this.state.lettersList.map((letter) =>
       <p>{letter}</p>
     );
+    const AlternateSpellings = this.state.alternateSpellings.map((spelling) =>
+      <p>{spelling}</p>
+    )
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -82,8 +87,12 @@ class Place extends Component {
             <img src="../imgs/Val-de-Marne.jpg" alt={this.state.thisPlace.PlaceName} />
           </Col>
           <Col md={6}>
-            <h1>{this.state.thisPlace.PlaceName}</h1>
-            <p>{this.state.thisPlace.Description}</p>
+            <h1>{this.state.thisPlace.attributes.label}
+            {this.state.alternateSpellings.length > 0 ?
+              <p>Alternate: {AlternateSpellings} </p>
+            : null}
+            </h1>
+            <p>{this.state.thisPlace.attributes.properties.description}</p>
           </Col>
         </Row>
         <Row className="mt-3">
@@ -95,7 +104,6 @@ class Place extends Component {
         <Row className="mt-3">
           <Col md={12}>
             <h4>Related Places</h4>
-
           </Col>
         </Row>
         </Container>

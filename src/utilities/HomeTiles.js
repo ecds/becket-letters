@@ -56,6 +56,18 @@ class HomeTiles extends Component {
                   <Link to={{pathname: '/browse-letters', state: { activeKey: "organizations" }}}>Explore</Link>
                 </Card.Footer>
               </Card>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                  <Card.Title>Productions Mentioned</Card.Title>
+                  <Card.Text>
+                    Example Text Here
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer className="btn btn-primary">
+                  <Link to={{pathname: '/browse-letters', state: { activeKey: "productions" }}}>Explore</Link>
+                </Card.Footer>
+              </Card>
           </Row>
         </Container>
       )

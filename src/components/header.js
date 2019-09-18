@@ -19,18 +19,8 @@ export class Header extends Component {
                 <Row className='headerRow3'>
                     <div className='header-container'>
                         <a href='/'>Home</a>
-                        <a href='/'>
-                            Research
-                            <img src='../imgs/downArrow.svg' alt='down-arrow' className='navArrow' />
-                        </a>
-                        <a href='/'>
-                            Index
-                            <img  src='../imgs/downArrow.svg' alt='down-arrow' className='navArrow' />
-                        </a>
-                        <a href='/'>About</a>
-                        <a href='/' id='searchBtn'>
-                            <img id='searchImg' src='../imgs/searchRed.png' alt='magnifying glass' />
-                        </a>
+                        <a href="/letters/">Browse Letters</a>
+                        <a href="/timeline/">Timeline</a>
                     </div>
                 </Row>
             </div>
