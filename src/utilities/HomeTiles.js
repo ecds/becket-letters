@@ -19,13 +19,13 @@ class HomeTiles extends Component {
       return (
         <Container fluid className="home-tiles">
           <h2>Browse Letters By</h2>
-          <Row>
+          <Row className='justify-content-center'>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={process.env.PUBLIC_URL + "imgs/lindon.jpg"} />
                 <Card.Body>
                   <Card.Title>People Mentioned</Card.Title>
                   <Card.Text>
-                    Example Text Here
+                    Pictured: Jérôme Lindon, <i>nouveau roman</i> publisher at Les Éditions de Minuit
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
@@ -33,11 +33,11 @@ class HomeTiles extends Component {
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={process.env.PUBLIC_URL + "imgs/paris.jpg"} />
                 <Card.Body>
                   <Card.Title>Places Mentioned</Card.Title>
                   <Card.Text>
-                    Example Text Here
+                    Pictured: Paris. France
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
@@ -45,11 +45,11 @@ class HomeTiles extends Component {
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={process.env.PUBLIC_URL + "imgs/akademie.jpg"} />
                 <Card.Body>
                   <Card.Title>Organizations Mentioned</Card.Title>
                   <Card.Text>
-                    Example Text Here
+                    Pictured: Akademie der Künste state arts institution in Berlin
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
@@ -57,11 +57,11 @@ class HomeTiles extends Component {
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={process.env.PUBLIC_URL + "imgs/krapp.jpg"} />
                 <Card.Body>
                   <Card.Title>Productions Mentioned</Card.Title>
                   <Card.Text>
-                    Example Text Here
+                    Pictured:<br/> John Hurt in a 2012 production of <i>Krapp's Last Tape</i>
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
