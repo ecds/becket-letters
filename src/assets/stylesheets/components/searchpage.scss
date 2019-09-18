@@ -1,44 +1,28 @@
 @import "../globals/variables.scss";
 
-.searchBoxBg {
-  background-color: $green;
-}
-
-.dateRange {
-  margin-top: 20px;
-}
-
-.input-group {
-  font-family: $serifBody;
-  background: none;
-  border: none;
-  border-radius: 0px;
+.search-row {
+  margin-bottom: 32px;
+  & select {
+    font-family: $serifBody;
+    color: $emoryBlack;
+    margin: 0px 5px;
+    font-size: 1.25em;
+    padding: 0px 4px;
+    height: 38px;
+    width: 150px;
+  }
   & input {
-      border: 1px solid $lightGray;
-      background-color: none;
+    font-family: $serifBody;
+    color: $emoryBlack;
+    height: 38px;
+    width: 250px;
+    font-size: 1.25em;
+    margin: 0px 5px;
+    padding: 0px 4px;
   }
-  & * {
-      margin: 0px 2px;
+  & button {
+    height: 38px;
+    width: 80px; 
+    margin-top: -1px;
   }
-}
-
-.form-control {
-  border-radius: 0px;
-  border: 1px solid $lightGray;
-  color: $red;
-}
-
-.input-group-text {
-  padding: 3px;
-  background: none !important;
-  background-color: none;
-  border: none;
-}
-
-select {
-  width: 100px;
-  color: $emoryBlack;
-  background-color: white;
-  border: 1px solid $lightGray;
-  border-radius: 0px;
 }
