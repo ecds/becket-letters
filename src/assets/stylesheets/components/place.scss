@@ -1,0 +1,20 @@
+.map {
+position: fixed;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    .leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+}
+.place-details {
+  padding: 1em;
+}
+.sidebar-outer {
+    margin-top: -92px;
+    position: relative;
+}
+.fixed {
+
+}

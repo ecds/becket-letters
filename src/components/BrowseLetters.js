@@ -18,22 +18,34 @@ class BrowseLetters extends Component {
   }
 
   componentDidMount() {
-    if (this.props.location.state.activeKey.length > 0) {
-      this.setState({ activeKey: this.props.location.state.activeKey }, () => {
-        console.log(this.state.activeKey);
+    if (Object.prototype.hasOwnProperty.call(this.props, 'location')) {
+      if (Object.prototype.hasOwnProperty.call(this.props.location, 'state')) {
+        if (this.props.location.state != undefined) {
+          this.setState({ activeKey: this.props.location.state.activeKey }, () => {
+            console.log(this.state.activeKey);
+            this.setState({isLoaded:true})
+          });
+        }
+        else {
+          this.setState({ activeKey: 'people' })
+          this.setState({isLoaded:true})
+        }
+      }
+      else {
+        this.setState({ activeKey: 'people' })
         this.setState({isLoaded:true})
-      });
+      }
     }
     else {
+      this.setState({ activeKey: 'people' })
       this.setState({isLoaded:true})
     }
-
   }
 
   render() {
       return (
-        <Container>
-          <h1>Browse Letters by <span className="active-key">{this.state.activeKey}</span> Mentioned</h1>
+        <div className='main-content'>
+          <h1>Browse Letters by Entities Mentioned</h1>
           {this.state.isLoaded ?
           <Tabs defaultActiveKey={this.state.activeKey} id="uncontrolled-tab-example">
             <Tab eventKey="people" title="People">
@@ -46,14 +58,11 @@ class BrowseLetters extends Component {
               <LettersByOrganizationsMentioned/>
             </Tab>
             <Tab eventKey="productions" title="Productions">
-              <form>
-                <input type="text" name="Search"/>
-              </form>
               <LettersByProductionsMentioned/>
             </Tab>
           </Tabs>
           : null}
-        </Container>
+        </div>
       )
     }
   }

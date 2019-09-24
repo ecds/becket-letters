@@ -1,0 +1,8 @@
+.badge {
+    display: block;
+    color: white;
+    width: auto;
+  &.place {
+    background-color: orange;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Profile from './Profile.js';
@@ -15,10 +15,13 @@ class LettersByPlacesMentioned extends Component {
           allPeople: [],
           page: '1',
           pagination: [],
-          messageShown: false
+          messageShown: false,
+          isSearching: false
       };
       this.getData = this.getData.bind(this);
       this.handler = this.handler.bind(this);
+      this.intiateSearch = this.intiateSearch.bind(this);
+      this.searchData = this.searchData.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +35,33 @@ class LettersByPlacesMentioned extends Component {
     this.setState({ page }, () => {
       this.getData();
     });
+  }
+
+  intiateSearch(event) {
+    console.log(event.target.elements.query.value)
+    event.preventDefault()
+    const data = new FormData(event.target);
+    const searchTerms = event.target.elements.query.value;
+    this.searchData(searchTerms)
+  }
+
+  searchData = (searchTerms) => {
+    this.setState({ isSearching: true })
+    axios.all([
+      axios.get('http://ot-api.ecdsdev.org/search-entities?query='+searchTerms+'&type=place')])
+      .then(axios.spread((getAllPeople) => {
+          const allPeople = getAllPeople.data.data;
+          const pagination = getAllPeople.data.meta.pagination;
+          console.log(getAllPeople)
+          console.log(pagination)
+          this.setState({ pagination });
+          this.setState({ allPeople });
+          this.setState({ isLoaded: true })
+      }))
+      .catch((err) => {
+          this.setState({ isLoaded: false });
+          this.setState({ error: err.message });
+      });
   }
 
   getData = () => {
@@ -62,13 +92,28 @@ class LettersByPlacesMentioned extends Component {
       place.attributes['letters-list'].length > 0 ?
         <tr key={place.id}>
           <td>{place.attributes['letters-list'].length}</td>
-          <td><Link to={{ pathname: `/places/${place.attributes.label}`, state: { id: place.id} }}>{place.attributes.label}</Link></td>
+          <td><Link to={{ pathname: `/places/${place.id}`, state: { id: place.id} }}>{place.attributes.label}</Link></td>
         </tr>
       :
       null
     );
       return (
         <Container>
+        <Form className="tab-search" onSubmit={this.intiateSearch}>
+          <Form.Group controlId="formBasicEmail">
+            <Row>
+                <Form.Label column sm="1">Search</Form.Label>
+                <Col md={9}>
+                  <Form.Control id="query" name="query" type="query" placeholder="ex. 'Ussy'" />
+                </Col>
+                <Col md={2}>
+                  <Button  variant="primary" type="submit">
+                    Search
+                  </Button>
+                </Col>
+            </Row>
+          </Form.Group>
+        </Form>
           <Table striped bordered className="browse-by">
             <thead>
               <tr>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Josefin+Slab:400,700&display=swap');
 @import "./assets/stylesheets/globals/variables.scss";
 @import "./assets/stylesheets/components/searchpage.scss";
 @import "./assets/stylesheets/globals/header.scss";
@@ -9,6 +10,12 @@
 @import "./assets/stylesheets/components/relationshipcard.scss";
 @import "./assets/stylesheets/components/browseby.scss";
 @import "./assets/stylesheets/components/hometiles.scss";
+@import "./assets/stylesheets/components/place.scss";
+@import "./assets/stylesheets/globals/sidebar.scss";
+@import "./assets/stylesheets/globals/utilities.scss";
+@import "./assets/stylesheets/globals/buttons.scss";
+@import "./assets/stylesheets/globals/badges.scss";
+@import "./assets/stylesheets/components/profile.scss";
 
 .App {
   text-align: center;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
-import PlaceLite from './PlaceLite.js';
+import PlaceCard from './PlaceCard.js';
 
 export class SearchResults extends Component {
 
@@ -36,7 +36,7 @@ export class SearchResults extends Component {
 
   performSearch = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/search-entities'+this.props.history.location.search+'&page='+this.state.page)])
+        axios.get('http://ot-api.ecdsdev.org/search-entities'+this.props.history.location.search+'&page='+this.state.page+'&type=place')])
         .then(axios.spread((getAllSearchResults) => {
             const searchResults = getAllSearchResults.data.data;
             const paginationResults = getAllSearchResults.data.meta.pagination;
@@ -51,12 +51,13 @@ export class SearchResults extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state.page)
     this.performSearch();
   }
 
     render() {
       const SearchResultItems = this.state.searchResults.map((item, key) =>
-        item.id ? <PlaceLite placeId={item.id} key={item.id}/> : null
+        item.id ? <PlaceCard placeId={item.id} key={item.id}/> : null
       );
 
         return (

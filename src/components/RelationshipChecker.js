@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import RelationshipCard from './RelationshipCard';
 import { Button, Col, Row, Card } from 'react-bootstrap';
 
 class RelationshipChecker extends Component {
@@ -165,13 +163,13 @@ class RelationshipChecker extends Component {
             if (this.props.cardType === 'repositories') {
                 let isPublic;
                 let isAmerican;
-                if (this.state.relationshipData.data.attributes.public == true) {
+                if (this.state.relationshipData.data.attributes.public === true) {
                     isPublic = "Yes"
                 }
                 else {
                     isPublic = "No"
                 }
-                if (this.state.relationshipData.data.attributes.american == true) {
+                if (this.state.relationshipData.data.attributes.american === true) {
                     isAmerican = "Yes"
                 }
                 else {

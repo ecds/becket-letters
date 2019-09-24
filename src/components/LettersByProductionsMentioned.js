@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Profile from './Profile.js';
 import Pagination from '../utilities/Pagination';
+import {multiply} from '../utilities/helpers';
 
 
 class LettersByProductionsMentioned extends Component {
@@ -87,18 +88,28 @@ class LettersByProductionsMentioned extends Component {
       place.attributes['letters-list'].length > 0 ?
         <tr key={place.id}>
           <td>{place.attributes['letters-list'].length}</td>
-          <td><Link to={{ pathname: `/places/${place.attributes.label}`, state: { id: place.id} }}>{place.attributes.label}</Link></td>
+          <td><Link to={{ pathname: `/place/${place.id}`, state: { id: place.id} }}><span dangerouslySetInnerHTML={{__html: place.attributes.label}}/></Link></td>
         </tr>
       :
       null
     );
       return (
         <Container>
-          <form onSubmit={this.intiateSearch}>
-            <label htmlFor="search">Search Terms</label>
-            <input id="query" name="query" type="text" />
-            <button>Search</button>
-          </form>
+          <Form className="tab-search" onSubmit={this.intiateSearch}>
+            <Form.Group controlId="formBasicEmail">
+              <Row>
+                  <Form.Label column sm="1">Search</Form.Label>
+                  <Col md={9}>
+                    <Form.Control id="query" name="query" type="query" placeholder="ex. 'Godot'" />
+                  </Col>
+                  <Col md={2}>
+                    <Button  variant="primary" type="submit">
+                      Search
+                    </Button>
+                  </Col>
+              </Row>
+            </Form.Group>
+          </Form>
           <Table striped bordered className="browse-by">
             <thead>
               <tr>

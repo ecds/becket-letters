@@ -39,7 +39,7 @@ export class Timeline extends Component {
         } else {
             let allTimelineEntries = this.state.timelineEntries
           return (
-            <Container className="timeline-container">
+            <div className="timeline-container">
               <Row>
                 <h1>Timeline</h1>
               </Row>
@@ -61,7 +61,7 @@ export class Timeline extends Component {
                    )
                  })
               }
-            </Container>
+            </div>
           )
         }
     }

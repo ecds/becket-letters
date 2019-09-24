@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import ProfileLite from "./ProfileLite";
-import PlaceLite from "./PlaceLite";
+import ProfileCard from "./ProfileCard";
+import PlaceCard from "./PlaceCard";
 
 import axios from "axios";
 
