@@ -66,7 +66,7 @@ export class LetterDetails extends Component {
         if (!error & isLoaded) {
           return (
             <div className="letter-details">
-              <h1>Letter To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMM YYYY">{this.state.letter.attributes.date}</Moment>)</h1>
+              <h1>Letter To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMMM YYYY">{this.state.letter.attributes.date}</Moment>)</h1>
               <div className="panel">
               <h2>Information About This Letter</h2>
               <table className="table table-striped">

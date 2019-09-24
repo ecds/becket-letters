@@ -35,7 +35,7 @@ export class LetterQuickGlance extends Component {
         // if there is an error
         if (!error & isLoaded) {
           return (
-            <p>To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMM YYYY">{this.state.letter.attributes.date}</Moment>)
+            <p>To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMMM YYYY">{this.state.letter.attributes.date}</Moment>)
               <a href={ '/letters/letterdetails/' + this.state.letter.id }>Explore Letter</a>
             </p>
           )
