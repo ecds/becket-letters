@@ -16,9 +16,10 @@ export class SearchPage extends Component {
     }
 
     submitForm(e) {
+      console.log(e.target.elements.entity_type.value.toLowerCase())
         e.preventDefault()
         const data = new FormData(e.target);
-        this.props.history.push('/search?query=' + e.target.elements.query.value + '&type=' + e.target.elements.entity_type.value.toLowerCase());
+        this.props.history.push('/letters');
     }
 
 

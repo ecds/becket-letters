@@ -33,11 +33,9 @@ class RelationshipCard extends Component {
       console.log(this.props.data)
         return (
                     <Card className='relationship-card'>
-                        <Card.Header><h5>{this.props.data.attributes.label}</h5></Card.Header>
+                        <Card.Header><h5 dangerouslySetInnerHTML={{__html: this.props.data.attributes.label}}/></Card.Header>
                         <Card.Body>
-
-                        <div dangerouslySetInnerHTML={{__html: this.props.data.attributes.properties.description}} />
-
+                          <div dangerouslySetInnerHTML={{__html: this.props.data.attributes.properties.description}} />
                         </Card.Body>
                           {this.state.redirectURL ? <Card.Footer><a href={this.state.redirectURL}>Explore {this.props.data.attributes["type-label"]}</a></Card.Footer> : null}
                     </Card>

@@ -36,7 +36,7 @@ export class SearchResults extends Component {
 
   performSearch = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/search-entities'+this.props.history.location.search+'&page='+this.state.page)])
+        axios.get('http://ot-api.ecdsdev.org/search-entities'+this.props.history.location.search+'&page='+this.state.page+'&type=place')])
         .then(axios.spread((getAllSearchResults) => {
             const searchResults = getAllSearchResults.data.data;
             const paginationResults = getAllSearchResults.data.meta.pagination;
@@ -51,6 +51,7 @@ export class SearchResults extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state.page)
     this.performSearch();
   }
 

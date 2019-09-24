@@ -19,12 +19,9 @@ class Sidebar extends Component {
             Samuel Beckett Letters
            </div>
           <div className="list-group list-group-flush">
-            <a href="#" className="list-group-item list-group-item-action bg-light">Letters</a>
-            <a href="#" className="list-group-item list-group-item-action bg-light">Places</a>
-            <a href="#" className="list-group-item list-group-item-action bg-light">People</a>
-            <a href="#" className="list-group-item list-group-item-action bg-light">Productions</a>
-            <a href="#" className="list-group-item list-group-item-action bg-light">Chronology</a>
-            <a href="/browse-letters" activekey="people" className="list-group-item list-group-item-action bg-light">Advanced Search</a>
+            <a href="/" className="list-group-item list-group-item-action bg-light">Home</a>
+            <a href="/timeline" className="list-group-item list-group-item-action bg-light">Chronology</a>
+            <a href="/browse-letters" activekey="people" className="list-group-item list-group-item-action bg-light">Browse Letters</a>
           </div>
           <div className="credits">
             <p className="small">Beckett Letters is supported by Emory University LITS and Emory University Center for Digital Scholarship</p>

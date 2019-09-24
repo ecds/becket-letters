@@ -34,6 +34,7 @@ class Place extends Component {
             const thisPlace = getPlace.data.data;
             const lettersList = getPlace.data.data.attributes['letters-list'];
             const alternateSpellings = getPlace.data.data.attributes['alternate-spelling-list']
+            console.log(thisPlace)
             this.setState({ thisPlace, lettersList, alternateSpellings });
             // this.categorizeRelatedEntities(thisPlace.relationships.entities)
             this.setLatAndLng()
