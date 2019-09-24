@@ -1,0 +1,12 @@
+.list-span {
+  font-size: 1em;
+  padding-bottom: .75em;
+  &:after {
+    content: ', '
+  }
+  &:last-of-type {
+    &:after {
+      content: ''
+    }
+  }
+}

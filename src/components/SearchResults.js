@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
-import PlaceLite from './PlaceLite.js';
+import PlaceCard from './PlaceCard.js';
 
 export class SearchResults extends Component {
 
@@ -56,7 +56,7 @@ export class SearchResults extends Component {
 
     render() {
       const SearchResultItems = this.state.searchResults.map((item, key) =>
-        item.id ? <PlaceLite placeId={item.id} key={item.id}/> : null
+        item.id ? <PlaceCard placeId={item.id} key={item.id}/> : null
       );
 
         return (

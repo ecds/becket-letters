@@ -1,7 +1,12 @@
 .home-tiles {
   text-align: center;
-  background-color: $darkGray;
   padding: 1em;
+  background: linear-gradient(
+      rgba(220,220,220, 0.85),
+      rgba(220,220,220, 0.85)
+    ), url('http://localhost:3000/imgs/connection.jpg');
+    background-size: 300%;
+    background-position: center bottom;
   .card-footer {
     padding: 0;
     a {

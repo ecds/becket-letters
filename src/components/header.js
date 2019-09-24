@@ -5,6 +5,14 @@ export class Header extends Component {
     render() {
         return (
             <div>
+              <Row>
+              <div class="circle">
+                <p>SBL</p>
+            </div>
+                <div className="circle">SBL</div>
+                <div className="name">Samuel Beckett Letters</div>
+                <div>Navigation Here</div>
+              </Row>
                 <Row className='headerRow1'>
                     <div className='header-container'>
                         <img src='../imgs/EU_hz_rev.png' alt='emory-logo-white'></img>
