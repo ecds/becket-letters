@@ -3,8 +3,8 @@ import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Profile from './Profile.js';
-import Pagination from '../utilities/Pagination';
-import {multiply} from '../utilities/helpers';
+import Pagination from './utilities/Pagination';
+import {multiply} from './utilities/helpers';
 
 
 class LettersByProductionsMentioned extends Component {
@@ -85,13 +85,9 @@ class LettersByProductionsMentioned extends Component {
 
   render() {
     var PlaceList = this.state.allPeople.map((place) =>
-      place.attributes['letters-list'].length > 0 ?
         <tr key={place.id}>
-          <td>{place.attributes['letters-list'].length}</td>
-          <td><Link to={{ pathname: `/place/${place.id}`, state: { id: place.id} }}><span dangerouslySetInnerHTML={{__html: place.attributes.label}}/></Link></td>
+          <td><Link to={{ pathname: `/productions/${place.id}`, state: { id: place.id} }}><span dangerouslySetInnerHTML={{__html: place.attributes.label}}/></Link></td>
         </tr>
-      :
-      null
     );
       return (
         <Container>
@@ -113,7 +109,6 @@ class LettersByProductionsMentioned extends Component {
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
-                <th>Number of Letters</th>
                 <th>Production</th>
               </tr>
             </thead>

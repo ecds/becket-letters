@@ -1,5 +1,6 @@
 .profile-details {
-  padding: 1em;
+  font-family: $serifBody;
+  padding: 2em;
   .spellings {
     margin-bottom: .5em;
     font-size: .75em;
@@ -9,5 +10,12 @@
     float: right;
     padding: 0 1em 1em 1em;
     max-width: 50%;
+  }
+  .title {
+    font-size: 1.35em;
+  }
+  .description {
+    font-size: 1em;
+    padding: .5em 0;
   }
 }

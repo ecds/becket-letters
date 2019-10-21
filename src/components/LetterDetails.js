@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { Container, Col, Row } from 'react-bootstrap';
 import axios from "axios";
-import Moment from 'react-moment';
-import PlaceCard from './PlaceCard';
-import ProfileCard from './ProfileCard';
-import EntitiesMentioned from './EntitiesMentioned';
+import QuickGlance from './QuickGlance';
+import RepositoryQuickGlance from './RepositoryQuickGlance';
 
 
 export class LetterDetails extends Component {
+
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -22,92 +20,172 @@ export class LetterDetails extends Component {
         };
     }
 
+    getData() {
+      axios.all([
+          axios.get(this.props.apiUrl+'/letters/'+this.props.match.params.id)])
+          .then(axios.spread((getEntityList) => {
+              const letter = getEntityList.data.data;
+              console.log(letter)
+              const placesWritten = getEntityList.data.data.relationships['places-written'].data
+              const letterRecipients = getEntityList.data.data.attributes.recipients
+              const entitiesMentioned = getEntityList.data.data.attributes['entities-mentioned-list']
+              const attributes = getEntityList.data.data.attributes
+              this.setState({ letter, placesWritten, attributes, letterRecipients, entitiesMentioned });
+              this.setState({ isLoaded: true })
+          }))
+          .catch((err) => {
+              this.setState({ isLoaded: false });
+              this.setState({ error: err.message });
+          });
+    }
+
 
 
     componentDidMount() {
-        axios.all([
-            axios.get('http://ot-api.ecdsdev.org/letters/'+this.props.match.params.letterId)])
-            .then(axios.spread((getEntityList) => {
-                const letter = getEntityList.data.data;
-                const placesWritten = getEntityList.data.data.relationships['places-written'].data
-                const letterRecipients = getEntityList.data.data.attributes.recipients
-                const entitiesMentioned = getEntityList.data.data.relationships['entities-mentioned'].data
-                const attributes = getEntityList.data.data.attributes
-                this.setState({ letter, placesWritten, attributes, letterRecipients, entitiesMentioned });
-                this.setState({ isLoaded: true })
-            }))
-            .catch((err) => {
-                this.setState({ isLoaded: false });
-                this.setState({ error: err.message });
-            });
+        this.getData()
     }
-
-    showEntitiesMentioned() {
-      const entitiesMentioned = this.state.entitiesMentioned.map((entity) =>
-        <Col sm={3} className=" d-flex align-items-stretch"><EntitiesMentioned id={entity.id} /></Col>
-      )
-      return entitiesMentioned
-    }
-
-
-
-
 
     render() {
-        const PlacesWritten = this.state.placesWritten.map((place) =>
-          <Col sm={4} className=" d-flex align-items-stretch"><PlaceCard placeId={place.id} key={place.id}/></Col>
-        )
-        const Recipients = this.state.letterRecipients.map((recipient) =>
-          <Col sm={4} className=" d-flex align-items-stretch"><ProfileCard personId={recipient.id} key={recipient.id} /></Col>
-        )
 
         const { error, isLoaded } = this.state;
         // if there is an error
         if (!error & isLoaded) {
           return (
-            <div className="letter-details">
-              <h1>Letter To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMMM YYYY">{this.state.letter.attributes.date}</Moment>)</h1>
+            <div className="details">
+              <h1>Letter To: {this.state.letter.attributes['recipient-list']} ({this.state.letter.attributes['formatted-date']})</h1>
               <div className="panel">
               <h2>Information About This Letter</h2>
               <table className="table table-striped">
+              <tbody>
               {this.state.letter.attributes['addressed-from'] ? <tr><td>Addressed From:</td><td> <span className="value">{this.state.letter.attributes['addressed-from']}</span></td></tr> : null }
               {this.state.letter.attributes['addressed-to'] ? <tr><td>Addressed To:</td><td> {this.state.letter.attributes['addressed-to']}</td></tr> : null }
-              {this.state.letter.attributes['code'] ? <tr><td>Code: </td><td>{this.state.letter.attributes['code']}</td></tr> : null }
               {this.state.letter.attributes['envelope'] ? <tr><td>Envelope: </td><td>{this.state.letter.attributes['envelope']}</td></tr> : null }
               {this.state.letter.attributes['leaves'] ? <tr><td>Leaves:</td><td> {this.state.letter.attributes['leaves']}</td></tr> : null }
               {this.state.letter.attributes['letter-publisher'] ? <tr><td>Letter Publisher:</td><td> {this.state.letter.attributes['letter-publisher']}</td></tr> : null }
               {this.state.letter.attributes['notes'] ? <tr><td>Notes:</td><td> {this.state.letter.attributes['notes']}</td></tr> : null }
-              {this.state.letter.attributes['physical-desc'] ? <tr><td>Physical Description:</td><td> {this.state.letter.attributes['physical-desc']}</td></tr> : null }
+              <tr><td>Physical Description:</td><td>{this.state.letter.attributes['physical-desc']}{this.state.letter.attributes['signed'] ? 'S' : null} </td></tr>
               {this.state.letter.attributes['physical-detail'] ? <tr><td>Physical Detail: </td><td>{this.state.letter.attributes['physical-detail']}</td></tr> : null }
               {this.state.letter.attributes['physical-notes'] ? <tr><td>Physical Notes:</td><td> {this.state.letter.attributes['physical-notes']}</td></tr> : null }
               {this.state.letter.attributes['postcard-image'] ? <tr><td>Postcard Image: </td><td>{this.state.letter.attributes['postcard-image']}</td></tr> : null }
               {this.state.letter.attributes['postmark'] ? <tr><td>Postmark: </td><td>{this.state.letter.attributes['postmark']}</td></tr> : null }
               {this.state.letter.attributes['sides'] ? <tr><td>Sides: </td><td>{this.state.letter.attributes['sides']}</td></tr> : null }
-              {this.state.letter.attributes['signed'] ? <tr><td>Signed:</td><td> Yes </td></tr> : <tr><td>Signed:</td><td> No </td></tr> }
-              {this.state.letter.attributes['typed'] ? <tr><td>Typed:</td><td> Yes </td></tr> : <tr><td>Typed:</td><td> No</td></tr>}
-              {this.state.letter.attributes['verified'] ? <tr><td>Verified:</td><td> Yes</td></tr> : <tr><td>Verified:</td><td> No</td></tr> }
-              </table>
-              </div>
-              <div>
-                <div className="panel">
-                <h2>Recipients</h2>
-                  <Row>
-                    {Recipients}
-                  </Row>
-                </div>
-                <div className="panel">
-                <h2>Places Written</h2>
-                  <Row>
-                    {PlacesWritten}
-                  </Row>
-                </div>
-                <div className="panel">
-                <h2>Entities Mentioned</h2>
-                <Row>
-                  {this.showEntitiesMentioned()}
-                </Row>
-                </div>
+              {this.state.letter.attributes['signed'] ? <tr><td>Signed:</td><td> S </td></tr>  : null }
+              {this.state.letter.attributes['typed'] ? <tr><td>Typed:</td><td> T </td></tr>  : null }
+              <tr>
+                <td>Recipient{this.state.letter.attributes.recipients.length > 1 ? 's' : null}:</td>
+                <td>
+                {this.state.letter.attributes.recipients.map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Repositor{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
+                <td>
+                {this.state.letter.relationships.repositories.data.map((respository) =>
+                  <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Place{this.state.letter.relationships['places-written'].data.length > 1 ? 's' : null} Written:</td>
+                <td>
+                {this.state.letter.relationships['places-written'].data.map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Production{this.state.entitiesMentioned['production'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['production'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Attendance{this.state.entitiesMentioned['attendance'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['attendance'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Music Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['music'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Organization{this.state.entitiesMentioned['organization'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['organization'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>People Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['person'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Place{this.state.entitiesMentioned['place'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['place'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Event{this.state.entitiesMentioned['public-event'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['public-event'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Reading{this.state.entitiesMentioned['reading'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['reading'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Translating{this.state.entitiesMentioned['translating'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['translating'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Work{this.state.entitiesMentioned['work-of-art'].length > 1 ? 's' : null} of Art Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['work-of-art'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
+              <tr>
+                <td>Writing{this.state.entitiesMentioned['writing'].length > 1 ? 's' : null} Mentioned:</td>
+                <td>
+                {this.state.entitiesMentioned['writing'].map((entity) =>
+                  <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id}/>
+                )}
+                </td>
+              </tr>
 
+              </tbody>
+              </table>
               </div>
             </div>
           )

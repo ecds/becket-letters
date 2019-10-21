@@ -15,7 +15,18 @@ import Place from './components/Place';
 import Profile from './components/Profile';
 import SearchResults from './components/SearchResults';
 import SearchLetters from './components/SearchLetters';
-import Sidebar from './utilities/Sidebar';
+import Sidebar from './components/utilities/Sidebar';
+import RepositoryDetails from './components/RepositoryDetails';
+import ProductionDetails from './components/ProductionDetails';
+import MusicDetails from './components/MusicDetails';
+import OrganizationDetails from './components/OrganizationDetails';
+import AttendanceDetails from './components/AttendanceDetails';
+import PublicEventDetails from './components/PublicEventDetails';
+import ReadingDetails from './components/ReadingDetails';
+import WorksOfArtDetails from './components/WorksOfArtDetails';
+import WritingDetails from './components/WritingDetails';
+import TranslatingDetails from './components/TranslatingDetails';
+
 // import SearchPage from './components/SearchPage';
 import axios from 'axios';
 
@@ -28,18 +39,24 @@ class App extends Component {
   }
 
   render() {
+
     const routes = {
       '/': 'Home',
       '/letters': 'Letters',
-      '/letters/letterdetails/:letterId': 'Letter Details',
+      '/letters/letterdetails/:id': 'Letter Details',
       '/timeline': 'Timeline',
       '/people': 'People',
-      '/people/:personId': ':personId',
+      '/people/:personId/:name': ':name',
       '/places': 'Places',
-      '/places/:placeId': ':placeId',
+      '/places/:placeId': ':d',
       '/search': 'Search Results',
       '/search-letters': 'Search Letters',
-      '/browse-letters': 'Browse Letters'
+      '/browse-letters': 'Browse Letters',
+      '/repositories/:id': ':id',
+      '/productions/:id': ':id',
+      '/music/:id': ':id',
+      '/organizations/:id': ':id',
+      '/attendance/:id': ':id'
     };
     return (
       <BrowserRouter>
@@ -57,15 +74,25 @@ class App extends Component {
             </Navbar>
             <Route exact path="/" component={Landing} />
             <Route exact path="/people" component={People} />
-            <Route exact path="/people/:personId" component={Profile} />
+            <Route exact path="/people/:id/:name" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} /> } />
             <Route exact path="/browse-letters" component={BrowseLetters} />
             <Route exact path="/letters" component={Letters} />
-            <Route exact path="/letters/letterdetails/:letterId" component={LetterDetails} />
+            <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} /> } />
             <Route exact path='/timeline' component={Timeline} />
             <Route exact path='/places' component={Places} />
-            <Route exact path='/places/:placeId' component={Place} />
+            <Route exact path='/places/:id' render={(props) => <Place apiUrl={this.props.apiUrl} {...props} /> } />
             <Route exact path='/search' component={SearchResults} />
             <Route exact path='/search-letters' component={SearchLetters} />
+            <Route exact path='/repositories/:id' render={(props) => <RepositoryDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/productions/:id' render={(props) => <ProductionDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/attendance/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/translating/:id' render={(props) => <TranslatingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
           </div>
         </div>
         </Container>

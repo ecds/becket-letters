@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import ProfileCard from "./ProfileCard";
-import PlaceCard from "./PlaceCard";
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Row, Col } from "react-bootstrap";
+import { Map, TileLayer } from 'react-leaflet'
 import LetterQuickGlance from "./LetterQuickGlance";
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import Geocode from "react-geocode";
 
 import axios from "axios";
 
@@ -18,7 +18,7 @@ class Place extends Component {
       alternateSpellings: [],
       lat: 51.505,
       lng: -0.09,
-      zoom: 1
+      zoom: 13
     };
 
   }
@@ -29,12 +29,11 @@ class Place extends Component {
 
   getData = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities/'+this.props.match.params.placeId)])
+        axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
         .then(axios.spread((getPlace) => {
             const thisPlace = getPlace.data.data;
-            const lettersList = getPlace.data.data.attributes['letters-list'];
+            const lettersList = getPlace.data.data.attributes['public-letters-hash'];
             const alternateSpellings = getPlace.data.data.attributes['alternate-spelling-list']
-            console.log(thisPlace)
             this.setState({ thisPlace, lettersList, alternateSpellings });
             // this.categorizeRelatedEntities(thisPlace.relationships.entities)
             this.setLatAndLng()
@@ -47,9 +46,11 @@ class Place extends Component {
   }
 
   setLatAndLng = () => {
-    const lat = this.state.thisPlace.attributes.properties.coordinates.lat
-    const lng = this.state.thisPlace.attributes.properties.coordinates.lng
-    this.setState({ lat, lng })
+    if (this.state.thisPlace.attributes.properties != null) {
+      const lat = this.state.thisPlace.attributes.properties.coordinates.lat
+      const lng = this.state.thisPlace.attributes.properties.coordinates.lng
+      this.setState({ lat, lng })
+    }
   }
 
   getAlternateSpellings() {
@@ -58,12 +59,15 @@ class Place extends Component {
     }
   }
 
+  getLinks() {
+    if (this.state.thisPlace.attributes.properties["links"].length > 0) {
+      return this.state.thisPlace.attributes.properties["links"].map((link, i) => <a key={i} href={link} target="_blank">{link}</a>)
+    }
+  }
+
 
   render() {
     const position = [this.state.lat, this.state.lng];
-    const LettersList = this.state.lettersList.map((letter, index) =>
-      <LetterQuickGlance letterId={letter} key={index}/>
-    );
 
     const { error, isLoaded } = this.state;
     // if there is an error
@@ -78,19 +82,34 @@ class Place extends Component {
       return (
         <Row className="place-details">
           <Col md={7} className='h-100 p-3'>
-            <h1>{this.state.thisPlace.attributes.label}
-
-            </h1>
+            <h1>{this.state.thisPlace.attributes.label}</h1>
             <div className="spellings">{this.getAlternateSpellings()}</div>
-            <p>{this.state.thisPlace.attributes.properties.description}</p>
-            <h4>Letters List</h4>
+            <p>{this.state.thisPlace.attributes.properties ? this.state.thisPlace.attributes.properties.description : null}</p>
+            {this.state.thisPlace.attributes.properties ? this.getLinks() : null }
+            <h2>Samuel Beckett Mentioned {this.state.thisPlace.attributes.label} in the following letters:</h2>
+            <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient'/>
+            <table className='table table-bordered' id='repositoryLetters'>
+            <thead>
+              <tr>
+                <th>Recipient(s)</th>
+                <th colSpan="2">Date</th>
+              </tr>
+            </thead>
+            {this.state.lettersList.map((letter, index) =>
+              <tr>
+                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
+                <td>{letter['date']}</td>
+                <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
+              </tr>
+            )}
+            </table>
 
-            {LettersList}
 
           </Col>
+
           <div className="col-sm-5 p-0 sidebar-outer">
             <div className="map">
-              <Map center={position} zoom={13}>
+              <Map center={position} zoom={this.state.zoom}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

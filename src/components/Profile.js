@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
-import { Container, Button, Card, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Container, Button, Popover, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
 import LetterQuickGlance from './LetterQuickGlance';
+import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 class ProfileLite extends Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
       error: '',
-      personData: []
+      personData: [],
+      receivedLetters: [],
+      lettersList: []
     }
   }
-
 
   componentDidMount() {
-    console.log(this.props)
-    this.getData()
+    this.getData();
   }
-
-  getAlternateSpellings() {
-    if (this.state.personData.attributes["alternate-spelling-list"].length > 0) {
-      return <Popover id="popover-basic">
-          <Popover.Title as="h3">Alternate Spellings</Popover.Title>
-          <Popover.Content>
-            {this.state.personData.attributes["alternate-spelling-list"].map((spelling, i) => <span className='list-span' key={i}>{spelling}</span>)}
-          </Popover.Content>
-        </Popover>
-    }
-  }
-
 
   getData = () => {
     axios.all([
-      axios.get('http://ot-api.ecdsdev.org/entities/' +  this.props.match.params['personId'])])
-      .then(axios.spread((getPersonData) => {
+      axios.get(this.props.apiUrl +'/entities/' +  this.props.match.params.id), axios.get(this.props.apiUrl +'/letters?recipient=' +  this.props.match.params.name)])
+      .then(axios.spread((getPersonData, getReceivedLetters) => {
         const personData = getPersonData.data.data;
         console.log(personData)
-        this.setState({ personData });
+        const lettersList = getPersonData.data.data.attributes['public-letters-hash'];
+        const receivedLetters = getReceivedLetters.data.data;
+        this.setState({ personData, lettersList, receivedLetters });
         this.setState({ isLoaded: true })
       }))
       .catch((err) => {
@@ -48,20 +39,34 @@ class ProfileLite extends Component {
       });
   }
 
+
   getProfilePicture() {
-    if (this.state.personData.attributes.properties > 0) {
-      return <img src={this.state.personData.attributes.properties.media.images[0].link} className="profile-photo"/>
-    }
-  }
-
-  getLettersList() {
-    if (this.state.personData.attributes['letters-list'].length > 0) {
-      return this.state.personData.attributes['letters-list'].map((letter) => <LetterQuickGlance letterId={letter}/>)
-    }
-
+    console.log(this.state.personData.attributes.properties.media.images.length)
+      return
   }
 
   render() {
+    const LettersList = this.state.lettersList.map((letter, index) =>
+    <tr>
+      <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
+      <td>{letter['date']}</td>
+      <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
+    </tr>
+    );
+    const ReceivedLettersList = this.state.receivedLetters.map((letter, index) =>
+      <tr>
+        <td>{letter.attributes['formatted-date']}</td>
+        <td><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
+      </tr>
+    );
+
+    const columns = [{
+      dataField: 'id',
+      text: 'ID'
+    },{
+      dataField: 'attributes[formatted-date]',
+      text: 'Formatted Date'
+    }];
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -74,21 +79,47 @@ class ProfileLite extends Component {
       return (
         <div className="profile-details">
           <h1>{this.state.personData.attributes.label}
-            <sup><OverlayTrigger trigger="click" placement="right" overlay={this.getAlternateSpellings()}>
-              <Button className="additional-info">?</Button>
-            </OverlayTrigger></sup>
-            {this.state.personData.attributes.properties ? " (" + this.state.personData.attributes.properties['life-dates'] + ") " : null}
-            {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['description']}} />  : null}
-
+            {this.state.personData.attributes.properties['life-dates'] ? " (" + this.state.personData.attributes.properties['life-dates'] + ") " : null}
           </h1>
+          <div className="title">
+          {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['description']}} />  : null}
+          </div>
 
-          <p className="lead">
-            {this.state.personData.attributes.properties ? this.getProfilePicture() : null}
+          <div className="description">
+            {this.state.personData.attributes.properties.media ? this.state.personData.attributes.properties.media.images.map((image, index) =>
+              <img src={image.link} className="profile-photo"/>
+            ) : null}
+            {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['profile']}} /> : null}
+          </div>
+          <h2>Letters {this.state.personData.attributes.label} Received from Samuel Beckett:</h2>
+          <SearchRecipientOnPage tableId='receivedlettersList' placeHolder='by date'/>
+          <table id="receivedlettersList" className="table table-bordered">
+          <thead>
+            <tr>
+              <th colSpan="2">Date(s)</th>
+            </tr>
+          </thead>
+            <tbody>
+              {ReceivedLettersList}
+            </tbody>
+          </table>
+          <div className="panel">
+          <h2>Letters Samuel Beckett Mentioned {this.state.personData.attributes.label} in:</h2>
+          <SearchRecipientOnPage tableId='lettersList' placeHolder='for recipient'/>
 
-            {this.state.personData.attributes.properties ? this.state.personData.attributes.properties['profile'] : null}
-          </p>
-          <h2>Letters List</h2>
-            {this.getLettersList()}
+          <table id="lettersList" className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Recipient(s)</th>
+              <th colSpan="2">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LettersList}
+          </tbody>
+        </table>
+        </div>
+
         </div>
       )
     }

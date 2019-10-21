@@ -13,12 +13,17 @@
     "react-bootstrap-table-next": "^3.1.7",
     "react-bootstrap-table2-filter": "^1.1.10",
     "react-dom": "^16.8.6",
+    "react-geocode": "^0.2.0",
+    "react-global": "^0.1.8",
+    "react-history": "^0.18.2",
     "react-leaflet": "^2.4.0",
     "react-moment": "^0.9.2",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-router-dynamic-breadcrumbs": "^2.2.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-table": "^6.10.3",
+    "react-table-filter": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

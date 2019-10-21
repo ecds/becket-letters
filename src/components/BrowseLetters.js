@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Container, Tabs, Tab } from 'react-bootstrap';
-import axios from "axios";
+import { Tabs, Tab } from 'react-bootstrap';
 import LettersByPeopleMentioned from './LettersByPeopleMentioned';
 import LettersByPlacesMentioned from './LettersByPlacesMentioned';
 import LettersByOrganizationsMentioned from './LettersByOrganizationsMentioned';
@@ -20,7 +19,7 @@ class BrowseLetters extends Component {
   componentDidMount() {
     if (Object.prototype.hasOwnProperty.call(this.props, 'location')) {
       if (Object.prototype.hasOwnProperty.call(this.props.location, 'state')) {
-        if (this.props.location.state != undefined) {
+        if (this.props.location.state !== undefined) {
           this.setState({ activeKey: this.props.location.state.activeKey }, () => {
             console.log(this.state.activeKey);
             this.setState({isLoaded:true})

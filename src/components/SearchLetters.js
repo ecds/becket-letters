@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
-import PlaceCard from './PlaceCard.js';
 
 export class SearchLetters extends Component {
 
@@ -56,13 +55,9 @@ export class SearchLetters extends Component {
   }
 
     render() {
-      const SearchResultItems = this.state.searchResults.map((item, key) =>
-        item.id ? <PlaceCard placeId={item.id} key={item.id}/> : null
-      );
 
         return (
             <Container>
-              {SearchResultItems}
             </Container>
         )
     }

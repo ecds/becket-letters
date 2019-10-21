@@ -8,10 +8,6 @@ class Sidebar extends Component {
       super(props, context);
   }
 
-  componentDidMount() {
-  }
-
-
   render() {
       return (
         <div className="bg-light border-right" id="sidebar-wrapper">

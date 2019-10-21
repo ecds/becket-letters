@@ -3,7 +3,7 @@ import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Profile from './Profile.js';
-import Pagination from '../utilities/Pagination';
+import Pagination from './utilities/Pagination';
 
 
 class LettersByOrganizationsMentioned extends Component {
@@ -77,13 +77,10 @@ class LettersByOrganizationsMentioned extends Component {
 
   render() {
     var PeopleList = this.state.allPeople.map((person) =>
-      person.attributes['letters-list'].length > 0 ?
         <tr key={person.id}>
-          <td>{person.attributes['letters-list'].length}</td>
-          <td><span dangerouslySetInnerHTML={{__html: person.attributes.label}}/></td>
+          <td><Link to={{ pathname: `/organizations/${person.id}`, state: { id: person.id} }}><span dangerouslySetInnerHTML={{__html: person.attributes.label}}/></Link></td>
         </tr>
-      :
-      null
+
     );
       return (
         <Container>
@@ -105,7 +102,6 @@ class LettersByOrganizationsMentioned extends Component {
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
-                <th>Number of Letters</th>
                 <th>Organization Name</th>
               </tr>
             </thead>
