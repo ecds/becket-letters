@@ -1,21 +1,10 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Card } from 'react-bootstrap';
 import {Link, withRouter} from 'react-router-dom';
-import axios from "axios";
 
 
 class HomeTiles extends Component {
-  constructor(props, context) {
-      super(props, context);
-  }
-
-  componentDidMount() {
-    console.log(this.props)
-    // this.createPagination();
-  }
-
-
-  render() {
+    render() {
       return (
         <Container fluid className="home-tiles">
           <h2>Browse Letters By</h2>

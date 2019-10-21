@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Josefin+Slab:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
 @import "./assets/stylesheets/globals/variables.scss";
 @import "./assets/stylesheets/components/searchpage.scss";
 @import "./assets/stylesheets/globals/header.scss";
@@ -16,6 +16,7 @@
 @import "./assets/stylesheets/globals/buttons.scss";
 @import "./assets/stylesheets/globals/badges.scss";
 @import "./assets/stylesheets/components/profile.scss";
+@import "./assets/stylesheets/globals/tables.scss";
 
 .App {
   text-align: center;
@@ -31,7 +32,7 @@ h5 {
 
 p,
 a {
-  font-family: $serifBody, serif;
+  font-family: $serifBody, sans-serif;
 }
 
 a {

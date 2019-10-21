@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row } from 'react-bootstrap';
-import ProfileCard from './ProfileCard';
-import RelationshipChecker from './RelationshipChecker';
 import axios from "axios";
-import Moment from 'react-moment';
 
 export class LetterQuickGlance extends Component {
     constructor(props, context) {
@@ -20,7 +16,6 @@ export class LetterQuickGlance extends Component {
             axios.get('http://ot-api.ecdsdev.org/letters/'+this.props.letterId)])
             .then(axios.spread((getEntityList) => {
                 const letter = getEntityList.data.data;
-                console.log(getEntityList)
                 this.setState({ letter });
                 this.setState({ isLoaded: true })
             }))
@@ -32,12 +27,15 @@ export class LetterQuickGlance extends Component {
 
     render() {
         const { error, isLoaded } = this.state;
+
         // if there is an error
         if (!error & isLoaded) {
           return (
-            <p>To: {this.state.letter.attributes['recipient-list']}(<Moment format="DD MMMM YYYY">{this.state.letter.attributes.date}</Moment>)
-              <a href={ '/letters/letterdetails/' + this.state.letter.id }>Explore Letter</a>
-            </p>
+            <tr>
+              <td>{this.state.letter.attributes['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.label}>{this_recipient.label}</a>)}</td>
+              <td>{this.state.letter.attributes['formatted-date']}</td>
+              <td className="actions"><a href={'/letters/letterdetails/'+this.state.letter.id}>Explore Letter</a></td>
+            </tr>
           )
         }
         else {

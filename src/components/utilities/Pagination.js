@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import { Container, Table } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import axios from "axios";
-
 
 class Pagination extends Component {
   constructor(props, context) {
@@ -26,7 +22,7 @@ class Pagination extends Component {
   createPagination = () => {
       let table = []
       for (let i = 0; i < this.props.pagination['total-pages']; i++) {
-        table.push(<li key={i} className="page-item"><a onClick={this.changePageNumber} id={i+1} className='page-link' href="#">{i+1}</a></li>)
+        table.push(<li key={i} className="page-item"><button onClick={this.changePageNumber} id={i+1} className='page-link' alt={"Page"+i+1}>{i+1}</button></li>)
       }
       return table
     }

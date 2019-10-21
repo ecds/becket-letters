@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import {  Navbar, Nav } from 'react-bootstrap';
 import HomeJumbotron from './Jumbotron';
 import SearchPage from './SearchPage';
-import HomeTiles from '../utilities/HomeTiles';
-import Sidebar from '../utilities/Sidebar';
-import axios from "axios";
+import HomeTiles from './utilities/HomeTiles';
 
 class Landing extends Component {
     render() {

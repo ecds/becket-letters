@@ -3,7 +3,7 @@ import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Profile from './Profile.js';
-import Pagination from '../utilities/Pagination';
+import Pagination from './utilities/Pagination';
 
 
 class LettersByPlacesMentioned extends Component {
@@ -54,13 +54,10 @@ class LettersByPlacesMentioned extends Component {
           const pagination = getAllPeople.data.meta.pagination;
           console.log(getAllPeople)
           console.log(pagination)
-          this.setState({ pagination });
-          this.setState({ allPeople });
-          this.setState({ isLoaded: true })
+          this.setState({ pagination, allPeople, isLoaded: true });
       }))
       .catch((err) => {
-          this.setState({ isLoaded: false });
-          this.setState({ error: err.message });
+          this.setState({ isLoaded: false, error: err.message });
       });
   }
 
@@ -71,10 +68,7 @@ class LettersByPlacesMentioned extends Component {
             const allPeople = getAllPeople.data.data;
             const pagination = getAllPeople.data.meta.pagination;
             console.log(getAllPeople)
-            console.log(pagination)
-            this.setState({ pagination });
-            this.setState({ allPeople });
-            this.setState({ isLoaded: true })
+            this.setState({ pagination, allPeople, isLoaded: true });
         }))
         .catch((err) => {
             this.setState({ isLoaded: false });
@@ -88,14 +82,12 @@ class LettersByPlacesMentioned extends Component {
 
 
   render() {
+    console.log(this.state.allPeople)
     var PlaceList = this.state.allPeople.map((place) =>
-      place.attributes['letters-list'].length > 0 ?
         <tr key={place.id}>
-          <td>{place.attributes['letters-list'].length}</td>
           <td><Link to={{ pathname: `/places/${place.id}`, state: { id: place.id} }}>{place.attributes.label}</Link></td>
         </tr>
-      :
-      null
+
     );
       return (
         <Container>
@@ -117,7 +109,6 @@ class LettersByPlacesMentioned extends Component {
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
-                <th>Number of Letters</th>
                 <th>Place</th>
               </tr>
             </thead>
