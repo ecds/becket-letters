@@ -5,7 +5,7 @@ import AlternateSpellings from './utilities/AlternateSpellings';
 import TableFilter from 'react-table-filter';
 
 
-class TranslatingDetails extends Component {
+class TranslationDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -110,4 +110,4 @@ class TranslatingDetails extends Component {
   }
 }
 
-export default TranslatingDetails;
+export default TranslationDetails;

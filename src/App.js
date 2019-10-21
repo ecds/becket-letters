@@ -25,7 +25,7 @@ import PublicEventDetails from './components/PublicEventDetails';
 import ReadingDetails from './components/ReadingDetails';
 import WorksOfArtDetails from './components/WorksOfArtDetails';
 import WritingDetails from './components/WritingDetails';
-import TranslatingDetails from './components/TranslatingDetails';
+import TranslationDetails from './components/TranslationDetails';
 
 // import SearchPage from './components/SearchPage';
 import axios from 'axios';
@@ -92,7 +92,7 @@ class App extends Component {
             <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/translating/:id' render={(props) => <TranslatingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
           </div>
         </div>
         </Container>
