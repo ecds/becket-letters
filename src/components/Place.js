@@ -4,6 +4,7 @@ import { Map, TileLayer } from 'react-leaflet'
 import LetterQuickGlance from "./LetterQuickGlance";
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import Geocode from "react-geocode";
+import MentionedLetters from './utilities/MentionedLettersTable';
 
 import axios from "axios";
 
@@ -29,20 +30,17 @@ class Place extends Component {
 
   getData = () => {
     axios.all([
-        axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
-        .then(axios.spread((getPlace) => {
-            const thisPlace = getPlace.data.data;
-            const lettersList = getPlace.data.data.attributes['public-letters-hash'];
-            const alternateSpellings = getPlace.data.data.attributes['alternate-spelling-list']
-            this.setState({ thisPlace, lettersList, alternateSpellings });
-            // this.categorizeRelatedEntities(thisPlace.relationships.entities)
-            this.setLatAndLng()
-            this.setState({ isLoaded: true })
-        }))
-        .catch((err) => {
-            this.setState({ isLoaded: false });
-            this.setState({ error: err.message });
-        });
+      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      .then(axios.spread((getData) => {
+        const entityData = getData.data.data;
+        console.log(entityData)
+        this.setState({ entityData });
+        this.setState({ isLoaded: true })
+      }))
+      .catch((err) => {
+        this.setState({ isLoaded: false });
+        this.setState({ error: err.message });
+      });
   }
 
   setLatAndLng = () => {
@@ -95,13 +93,8 @@ class Place extends Component {
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-            {this.state.lettersList.map((letter, index) =>
-              <tr>
-                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
-                <td>{letter['date']}</td>
-                <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
-              </tr>
-            )}
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+
             </table>
 
 
