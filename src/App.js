@@ -89,7 +89,7 @@ class App extends Component {
             <Route exact path='/publications/:id' render={(props) => <PublicationDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/attendance/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/attendances/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
