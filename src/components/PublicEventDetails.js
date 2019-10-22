@@ -22,6 +22,8 @@ class PublicEventDetails extends Component {
 
 
   getData = () => {
+    console.log('hell')
+    console.log(this.props.apiUrl+'/entities/'+this.props.match.params.id)
     axios.all([
       axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
       .then(axios.spread((getData) => {
@@ -50,6 +52,7 @@ class PublicEventDetails extends Component {
       return (
         <div className="details">
           <h1 dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/>
+          <h2>ffdsaf</h2>
         </div>
       )
     }

@@ -5,7 +5,7 @@ import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
-class WorksOfArtDetails extends Component {
+class PublicationDetails extends Component {
 
 
   constructor(props) {
@@ -82,4 +82,4 @@ class WorksOfArtDetails extends Component {
   }
 }
 
-export default WorksOfArtDetails;
+export default PublicationDetails;

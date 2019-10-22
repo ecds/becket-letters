@@ -24,7 +24,7 @@ class ProductionDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         const lettersList = getData.data.data.attributes['public-letters-hash'];
@@ -50,10 +50,10 @@ class ProductionDetails extends Component {
       return (
 
         <div className="details">
-          <h1 dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/>
+          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           {this.state.entityData.attributes.properties != null ?
-            <AlternateSpellings spellingList={this.state.entityData.attributes.properties['alternate-spellings']}/>
-          : null }
+            <AlternateSpellings spellingList={this.state.entityData.attributes.properties['alternate-spellings']} />
+            : null}
           {this.state.entityData.attributes.properties != null ?
             <table className="table table-striped">
               <tbody>
@@ -90,22 +90,22 @@ class ProductionDetails extends Component {
             : null
           }
 
-          <h2>Letters <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/> Mentioned In:</h2>
-          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient'/>
+          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> Mentioned In:</h2>
+          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
-          <thead>
-            <tr>
-              <th>Recipient(s)</th>
-              <th colSpan="2">Date</th>
-            </tr>
-          </thead>
-          {this.state.lettersList.map((letter, index) =>
-            <tr>
-              <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
-              <td>{letter['date']}</td>
-              <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
-            </tr>
-          )}
+            <thead>
+              <tr>
+                <th>Recipient(s)</th>
+                <th colSpan="2">Date</th>
+              </tr>
+            </thead>
+            {this.state.lettersList.map((letter, index) =>
+              <tr>
+                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                <td>{letter['date']}</td>
+                <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
+              </tr>
+            )}
           </table>
 
         </div>
