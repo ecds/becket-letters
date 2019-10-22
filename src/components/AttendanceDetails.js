@@ -5,7 +5,7 @@ import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
-class PublicationDetails extends Component {
+class AttendanceDetails extends Component {
 
 
   constructor(props) {
@@ -54,13 +54,17 @@ class PublicationDetails extends Component {
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
-              <tr>
-                <td>Author</td>
-                <td>{this.state.entityData.attributes.properties.author}</td>
+            <tr>
+                <td>Event Type</td>
+                <td>{this.state.entityData.attributes.properties['event-type']}</td>
               </tr>
               <tr>
-                <td>Place</td>
-                <td>{this.state.entityData.attributes.properties.place}</td>
+                <td>Place and Date</td>
+                <td>{this.state.entityData.attributes.properties['place-date']}</td>
+              </tr>
+              <tr>
+                <td>Performed By</td>
+                <td>{this.state.entityData.attributes.properties['performed-by']}</td>
               </tr>
             </tbody>
           </table>
@@ -82,4 +86,4 @@ class PublicationDetails extends Component {
   }
 }
 
-export default PublicationDetails;
+export default AttendanceDetails;
