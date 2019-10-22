@@ -21,6 +21,7 @@ import ProductionDetails from './components/ProductionDetails';
 import MusicDetails from './components/MusicDetails';
 import OrganizationDetails from './components/OrganizationDetails';
 import AttendanceDetails from './components/AttendanceDetails';
+import PublicationDetails from './components/PublicationDetails';
 import PublicEventDetails from './components/PublicEventDetails';
 import ReadingDetails from './components/ReadingDetails';
 import WorksOfArtDetails from './components/WorksOfArtDetails';
@@ -85,6 +86,7 @@ class App extends Component {
             <Route exact path='/search-letters' component={SearchLetters} />
             <Route exact path='/repositories/:id' render={(props) => <RepositoryDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/productions/:id' render={(props) => <ProductionDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/publications/:id' render={(props) => <PublicationDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/attendance/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
