@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LetterQuickGlance from './LetterQuickGlance';
+import AlternateSpellings from './utilities/AlternateSpellings';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import MentionedLetters from './utilities/MentionedLettersTable';
 
 class WorksOfArtDetails extends Component {
 
@@ -48,8 +51,32 @@ class WorksOfArtDetails extends Component {
     } else {
       return (
         <div className="details">
-          <h1 dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/>
-        </div>
+          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          <table className="table table-striped">
+            <tbody>
+              <tr>
+                <td>Artist</td>
+                <td>{this.state.entityData.attributes.properties.artist}</td>
+              </tr>
+              <tr>
+                <td>Location</td>
+                <td>{this.state.entityData.attributes.properties.location}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
+          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
+          <table className='table table-bordered' id='repositoryLetters'>
+            <thead>
+              <tr>
+                <th>Recipient(s)</th>
+                <th colSpan="2">Date</th>
+              </tr>
+            </thead>
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+
+          </table>
+        </div >
       )
     }
   }
