@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import AlternateSpellings from './utilities/AlternateSpellings';
 import LetterQuickGlance from './LetterQuickGlance';
-import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
+import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import MentionedLetters from './utilities/MentionedLettersTable';
 
-class ProductionDetails extends Component {
+class PublicationDetails extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
       error: '',
-      entityData: [],
-      lettersList: [],
-      lettersLoaded: false
+      entityData: []
     }
   }
 
+
   componentDidMount() {
-    this.getData();
+    this.getData()
   }
+
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
+      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
-        const lettersList = getData.data.data.attributes['public-letters-hash'];
-        this.setState({ entityData, lettersList, isLoaded: true });
+        console.log(entityData)
+        this.setState({ entityData });
+        this.setState({ isLoaded: true })
       }))
       .catch((err) => {
         this.setState({ isLoaded: false });
@@ -48,15 +50,10 @@ class ProductionDetails extends Component {
       // return now that component has value
     } else {
       return (
-
         <div className="details">
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-          {this.state.entityData.attributes.properties != null ?
-            <AlternateSpellings spellingList={this.state.entityData.attributes.properties['alternate-spellings']} />
-            : null}
-          {this.state.entityData.attributes.properties != null ?
-            <table className="table table-striped">
-              <tbody>
+          <table className="table table-striped">
+          <tbody>
                 <tr>
                   <td>City</td>
                   <td>{this.state.entityData.attributes.properties.city}</td>
@@ -74,23 +71,16 @@ class ProductionDetails extends Component {
                   <td>{this.state.entityData.attributes.properties.proposal}</td>
                 </tr>
                 <tr>
-                  <td>Reason</td>
-                  <td>{this.state.entityData.attributes.properties.reason}</td>
-                </tr>
-                <tr>
-                  <td>Response</td>
-                  <td>{this.state.entityData.attributes.properties.response}</td>
+                  <td>Reason / Response</td>
+                  <td>{this.state.entityData.attributes.properties.reason} / {this.state.entityData.attributes.properties.response}</td>
                 </tr>
                 <tr>
                   <td>Theatre</td>
                   <td>{this.state.entityData.attributes.properties.theatre}</td>
                 </tr>
               </tbody>
-            </table>
-            : null
-          }
-
-          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> Mentioned In:</h2>
+          </table>
+          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
@@ -99,19 +89,13 @@ class ProductionDetails extends Component {
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-            {this.state.lettersList.map((letter, index) =>
-              <tr>
-                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
-                <td>{letter['date']}</td>
-                <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
-              </tr>
-            )}
-          </table>
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
-        </div>
+          </table>
+        </div >
       )
     }
   }
 }
 
-export default ProductionDetails;
+export default PublicationDetails;
