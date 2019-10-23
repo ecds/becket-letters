@@ -22,13 +22,14 @@ import ProductionDetails from './components/ProductionDetails';
 import MusicDetails from './components/MusicDetails';
 import OrganizationDetails from './components/OrganizationDetails';
 import AttendanceDetails from './components/AttendanceDetails';
+import PublicationDetails from './components/PublicationDetails';
 import PublicEventDetails from './components/PublicEventDetails';
 import ReadingDetails from './components/ReadingDetails';
 import WorksOfArtDetails from './components/WorksOfArtDetails';
 import WritingDetails from './components/WritingDetails';
-import TranslatingDetails from './components/TranslatingDetails';
+import TranslationDetails from './components/TranslationDetails';
 import LettersByOrganizationsMentioned from './components/LettersByOrganizationsMentioned';
-import LettersByProductionsMentioned from './components/LettersByProductionsMentioned';
+
 import axios from 'axios';
 import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons'
 
@@ -89,14 +90,15 @@ class App extends Component {
             <Route exact path='/search-letters' component={SearchLetters} />
             <Route exact path='/repositories/:id' render={(props) => <RepositoryDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/productions/:id' render={(props) => <ProductionDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/publications/:id' render={(props) => <PublicationDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/attendance/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/attendances/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/translating/:id' render={(props) => <TranslatingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/browse-letters/productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/browse-letters/organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
           </div>

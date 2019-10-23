@@ -5,7 +5,7 @@ import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
-class WorksOfArtDetails extends Component {
+class PublicationDetails extends Component {
 
 
   constructor(props) {
@@ -55,12 +55,12 @@ class WorksOfArtDetails extends Component {
           <table className="table table-striped">
             <tbody>
               <tr>
-                <td>Artist</td>
-                <td>{this.state.entityData.attributes.properties.artist}</td>
+                <td>Author</td>
+                <td>{this.state.entityData.attributes.properties.author}</td>
               </tr>
               <tr>
-                <td>Location</td>
-                <td>{this.state.entityData.attributes.properties.location}</td>
+                <td>Place</td>
+                <td>{this.state.entityData.attributes.properties.place}</td>
               </tr>
             </tbody>
           </table>
@@ -82,4 +82,4 @@ class WorksOfArtDetails extends Component {
   }
 }
 
-export default WorksOfArtDetails;
+export default PublicationDetails;
