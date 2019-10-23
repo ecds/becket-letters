@@ -80,7 +80,7 @@ class LettersByWorkOfArtMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
         <tr key={entity.id}>
           <td>
-            <Link to={{ pathname: `/works_of_art/${entity.id}`, state: { id: entity.id} }}>
+            <Link to={{ pathname: `/works-of-art/${entity.id}`, state: { id: entity.id} }}>
               <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
              </Link>
            </td>
@@ -88,8 +88,8 @@ class LettersByWorkOfArtMentioned extends Component {
 
     );
       return (
-        <Container>
-        <BrowseLetters active="by-places"/>
+        <Container fluid>
+        <BrowseLetters active="by-works-of-art"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">
           <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">

@@ -33,19 +33,11 @@ class BrowseLetters extends Component {
             <li className={this.setActive('by-publication')}><a href="/browse-letters/publications">Publications</a></li>
             <li className={this.setActive('by-music')}><a href="/browse-letters/music">Music</a></li>
             <li className={this.setActive('by-reading')}><a href="/browse-letters/readings">Readings</a></li>
-            <li className={this.setActive('by-writing')}><a href="/browse-letters/writing">Writings</a></li>
+            <li className={this.setActive('by-writing')}><a href="/browse-letters/writings">Writings</a></li>
             <li className={this.setActive('by-translations')}><a href="/browse-letters/translations">Translations</a></li>
             <li className={this.setActive('by-attendance')}><a href="/browse-letters/attendance">Attendance</a></li>
             <li className={this.setActive('by-works-of-art')}><a href="/browse-letters/works_of_art">Works of Art</a></li>
             <li className={this.setActive('by-public-events')}><a href="/browse-letters/public_events">Public Events</a></li>
-
-
-
-
-
-
-
-
           </ul>
 
         </div>

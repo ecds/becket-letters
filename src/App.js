@@ -80,17 +80,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Container fluid className="p-0">
-        <div className="d-flex" id="wrapper">
           <Sidebar />
-          <div id="page-content-wrapper">
-            <Navbar expand="lg">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto" id="navbarSupportedContent" >
-                  <img src='http://localhost:3000/imgs/EU_hz_rev.png' alt='emory-logo-white'></img>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
+
             <Route exact path="/" component={Landing} />
             <Route exact path="/people" component={People} />
             <Route exact path="/people/:id/:name" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} /> } />
@@ -127,8 +118,6 @@ class App extends Component {
             <Route exact path='/browse-letters/public_events' render={(props) => <LettersByPublicEventMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
 
 
-          </div>
-        </div>
         </Container>
       </BrowserRouter>
     );

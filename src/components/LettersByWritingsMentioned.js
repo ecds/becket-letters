@@ -80,7 +80,7 @@ class LettersByWritingsMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
         <tr key={entity.id}>
           <td>
-            <Link to={{ pathname: `/writing/${entity.id}`, state: { id: entity.id} }}>
+            <Link to={{ pathname: `/writings/${entity.id}`, state: { id: entity.id} }}>
               <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
              </Link>
            </td>
@@ -88,8 +88,8 @@ class LettersByWritingsMentioned extends Component {
 
     );
       return (
-        <Container>
-        <BrowseLetters active="by-places"/>
+        <Container fluid>
+        <BrowseLetters active="by-writing"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">
           <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">

@@ -86,7 +86,7 @@ class LettersByOrganizationsMentioned extends Component {
 
     );
       return (
-        <Container>
+        <Container fluid>
         <BrowseLetters active="by-organization"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">

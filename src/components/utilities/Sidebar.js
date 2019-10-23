@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link, withRouter} from 'react-router-dom';
+import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import axios from "axios";
 
 
@@ -10,31 +11,30 @@ class Sidebar extends Component {
 
   render() {
       return (
-        <div className="bg-light border-right" id="sidebar-wrapper">
-          <div className="sidebar-heading">
-            Samuel Beckett Letters
-           </div>
-          <div className="list-group list-group-flush">
-            <a href="/" className="list-group-item list-group-item-action bg-light">Home</a>
-            <a href="/timeline" className="list-group-item list-group-item-action bg-light">Chronology</a>
-            <a href="/browse-letters/places" className="list-group-item list-group-item-action bg-light">Letters by Places</a>
-            <a href="/browse-letters/people" className="list-group-item list-group-item-action bg-light">Letters by People</a>
-            <a href="/browse-letters/productions" className="list-group-item list-group-item-action bg-light">Letters by Productions</a>
-            <a href="/browse-letters/organizations" className="list-group-item list-group-item-action bg-light">Letters by Organizations</a>
-            <a href="/browse-letters/publications" className="list-group-item list-group-item-action bg-light">Letters by Publications</a>
-            <a href="/browse-letters/music" className="list-group-item list-group-item-action bg-light">Letters by Music</a>
-            <a href="/browse-letters/readings" className="list-group-item list-group-item-action bg-light">Letters by Reading</a>
-            <a href="/browse-letters/writings" className="list-group-item list-group-item-action bg-light">Letters by Writings</a>
-            <a href="/browse-letters/translations" className="list-group-item list-group-item-action bg-light">Letters by Translations</a>
-            <a href="/browse-letters/attendance" className="list-group-item list-group-item-action bg-light">Letters by Attendance</a>
-            <a href="/browse-letters/works_of_art" className="list-group-item list-group-item-action bg-light">Letters by Works of Art</a>
-            <a href="/browse-letters/public_events" className="list-group-item list-group-item-action bg-light">Letters by Public Events</a>
+        <Navbar bg="light"expand="lg">
+        <Navbar.Brand href="#home">Samuel Beckett Letters</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <NavDropdown title="Browse Letters By"id="basic-nav-dropdown">
+              <NavDropdown.Item  href="/browse-letters/places">Letters by Places</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/people">Letters by People</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/productions">Letters by Productions</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/organizations">Letters by Organizations</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/publications">Letters by Publications</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/music">Letters by Music</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/readings">Letters by Reading</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/writings">Letters by Writings</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/translations">Letters by Translations</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/attendance">Letters by Attendance</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/works_of_art">Letters by Works of Art</NavDropdown.Item>
+              <NavDropdown.Item  href="/browse-letters/public_events">Letters by Public Events</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+      </Navbar.Collapse>
+    </Navbar>
 
-          </div>
-          <div className="credits">
-            <p className="small">Beckett Letters is supported by Emory University LITS and Emory University Center for Digital Scholarship</p>
-          </div>
-        </div>
       )
     }
   }

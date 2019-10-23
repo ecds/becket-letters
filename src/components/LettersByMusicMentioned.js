@@ -88,8 +88,8 @@ class LettersByMusicMentioned extends Component {
 
     );
       return (
-        <Container>
-        <BrowseLetters active="by-places"/>
+        <Container fluid>
+        <BrowseLetters active="by-music"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">
           <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
