@@ -12,9 +12,6 @@ export class LetterDetails extends Component {
             error: null,
             isLoaded: false,
             letter: [],
-            placesWritten: [],
-            includedFields: ['addressed-from', 'code'],
-            attributes: [],
             letterRecipients: [],
             entitiesMentioned: []
         };
@@ -45,8 +42,27 @@ export class LetterDetails extends Component {
         this.getData()
     }
 
-    render() {
+    getPhysicalDescription() {
+      var physicalDescription = '';
+      if (this.state.letter.attributes['typed']) {
+        physicalDescription += 'T'
+      }
+      physicalDescription += this.state.letter.attributes['physical-desc'];
+      if (this.state.letter.attributes['signed']) {
+        physicalDescription += 'S'
+      }
+      physicalDescription += '; '
+      if (this.state.letter.attributes['leaves']) {
+        physicalDescription += this.state.letter.attributes['leaves'] + ' leaf,'
+      }
+      if (this.state.letter.attributes['sides']) {
+        physicalDescription += this.state.letter.attributes['sides'] + ' side'
+      }
 
+      return physicalDescription;
+    }
+
+    render() {
         const { error, isLoaded } = this.state;
         // if there is an error
         if (!error & isLoaded) {
@@ -63,14 +79,12 @@ export class LetterDetails extends Component {
               {this.state.letter.attributes['leaves'] ? <tr><td>Leaves:</td><td> {this.state.letter.attributes['leaves']}</td></tr> : null }
               {this.state.letter.attributes['letter-publisher'] ? <tr><td>Letter Publisher:</td><td> {this.state.letter.attributes['letter-publisher']}</td></tr> : null }
               {this.state.letter.attributes['notes'] ? <tr><td>Notes:</td><td> {this.state.letter.attributes['notes']}</td></tr> : null }
-              <tr><td>Physical Description:</td><td>{this.state.letter.attributes['physical-desc']}{this.state.letter.attributes['signed'] ? 'S' : null} </td></tr>
+              <tr><td>Physical Description:</td>
+              <td>{this.getPhysicalDescription()} </td></tr>
               {this.state.letter.attributes['physical-detail'] ? <tr><td>Physical Detail: </td><td>{this.state.letter.attributes['physical-detail']}</td></tr> : null }
               {this.state.letter.attributes['physical-notes'] ? <tr><td>Physical Notes:</td><td> {this.state.letter.attributes['physical-notes']}</td></tr> : null }
               {this.state.letter.attributes['postcard-image'] ? <tr><td>Postcard Image: </td><td>{this.state.letter.attributes['postcard-image']}</td></tr> : null }
               {this.state.letter.attributes['postmark'] ? <tr><td>Postmark: </td><td>{this.state.letter.attributes['postmark']}</td></tr> : null }
-              {this.state.letter.attributes['sides'] ? <tr><td>Sides: </td><td>{this.state.letter.attributes['sides']}</td></tr> : null }
-              {this.state.letter.attributes['signed'] ? <tr><td>Signed:</td><td> S </td></tr>  : null }
-              {this.state.letter.attributes['typed'] ? <tr><td>Typed:</td><td> T </td></tr>  : null }
               <tr>
                 <td>Recipient{this.state.letter.attributes.recipients.length > 1 ? 's' : null}:</td>
                 <td>

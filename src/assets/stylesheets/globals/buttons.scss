@@ -11,4 +11,19 @@
       background-color: $lightGray;
     }
   }
+  &.btn-primary {
+    background-color: $red;
+    border: none;
+    border-radius: 0;
+    font-family: $serifHeader;
+    &:hover {
+      background-color: darken($color: $red, $amount: 10) !important;
+    }
+  }
+  &.btn-secondary {
+    border-radius: 0;
+  }
+  &.full-width {
+    width: 100%;
+  }
 }

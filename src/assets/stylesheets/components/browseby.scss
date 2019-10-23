@@ -9,5 +9,34 @@ table {
   text-transform: capitalize;
 }
 .tab-search {
-  padding-top: 1em;
+  input {
+    border-radius: 0;
+  }
+}
+#browse-tabs {
+  li {
+    padding: .5em 1em ;
+    border: solid 1px #EEE;
+
+  }
+  .active {
+    border: solid 1px #CCC;
+    border-top: $primaryColor solid 3px;
+    border-bottom: 1px white solid;
+    background-color: white;
+    margin-bottom: -.05em;
+  }
+}
+.dateAndCity {
+  &:before {
+    content: ' (';
+  }
+  span:nth-child(2) {
+    &:before {
+      content: '; '
+    }
+  }
+  &:after {
+    content: ')';
+  }
 }

@@ -32,26 +32,18 @@ h5 {
 
 p,
 a {
+  color: $fontColor;
   font-family: $serifBody, sans-serif;
 }
 
 a {
-  color: $red;
   &:hover {
     color: $red;
     text-decoration: underline;
   }
 }
 
-.btn-primary {
-  background-color: $red;
-  border: none;
-  border-radius: 0;
-  font-family: $serifHeader;
-  &:hover {
-    background-color: darken($color: $red, $amount: 10) !important;
-  }
-}
+
 
 .card {
   border-radius: 0px;
