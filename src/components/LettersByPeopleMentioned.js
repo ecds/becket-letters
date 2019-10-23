@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import Profile from './Profile.js';
 import Pagination from './utilities/Pagination';
-
+import BrowseLetters from './BrowseLetters';
+import LoadingSpinner from './utilities/LoadingSpinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class LettersByPeopleMentioned extends Component {
   constructor(props, context) {
@@ -12,13 +13,15 @@ class LettersByPeopleMentioned extends Component {
       this.state = {
           error: null,
           isLoaded: false,
-          allPeople: [],
+          data: [],
           page: '1',
-          pagination: []
+          pagination: [],
+          isSearching: false
       };
       this.getData = this.getData.bind(this);
       this.intiateSearch = this.intiateSearch.bind(this);
       this.searchData = this.searchData.bind(this);
+      this.resetPage = this.resetPage.bind(this);
   }
 
   componentDidMount() {
@@ -33,70 +36,84 @@ class LettersByPeopleMentioned extends Component {
   }
 
   intiateSearch(event) {
-    console.log(event.target.elements.query.value)
     event.preventDefault()
-    const data = new FormData(event.target);
     const searchTerms = event.target.elements.query.value;
     this.searchData(searchTerms)
+  }
+
+  resetPage(event) {
+    event.preventDefault()
+    this.refs.form["query"].value = ''
+    this.setState({ isSearching: false, isLoaded: false })
+    this.getData();
   }
 
   searchData = (searchTerms) => {
     this.setState({ isSearching: true })
     axios.all([
-      axios.get('http://ot-api.ecdsdev.org/search-entities?query='+searchTerms+'&type=person')])
-      .then(axios.spread((getAllPeople) => {
-          const allPeople = getAllPeople.data.data;
-          const pagination = getAllPeople.data.meta.pagination;
-          this.setState({ pagination });
-          this.setState({ allPeople });
-          this.setState({ isLoaded: true })
+      axios.get(this.props.apiUrl+'/search-entities?query='+searchTerms+'&type=person')])
+      .then(axios.spread((getAllData) => {
+          const data = getAllData.data.data;
+          const pagination = getAllData.data.meta.pagination;
+          this.setState({ pagination, data, isLoaded: true });
       }))
       .catch((err) => {
-          this.setState({ isLoaded: false });
-          this.setState({ error: err.message });
+          this.setState({ isLoaded: false, error: err.message });
       });
   }
 
   getData = () => {
     axios.all([
-        axios.get('http://ot-api.ecdsdev.org/entities?entity_type=person&items=200&page='+this.state.page)])
-        .then(axios.spread((getAllPeople) => {
-            const allPeople = getAllPeople.data.data;
-            const pagination = getAllPeople.data.meta.pagination;
-            this.setState({ pagination });
-            this.setState({ allPeople });
-            this.setState({ isLoaded: true })
+        axios.get(this.props.apiUrl+'/entities?entity_type=person&items=200&page='+this.state.page)])
+        .then(axios.spread((getAllData) => {
+            const data = getAllData.data.data;
+            const pagination = getAllData.data.meta.pagination;
+            this.setState({ pagination, data, isLoaded: true });
         }))
         .catch((err) => {
-            this.setState({ isLoaded: false });
-            this.setState({ error: err.message });
+            this.setState({ isLoaded: false, error: err.message });
         });
   }
 
 
   render() {
-    var PeopleList = this.state.allPeople.map((person) =>
-        <tr key={person.id}>
-          <td><Link to={{ pathname: `/people/${person.id}/${person.attributes.label}`, state: { id: person.id} }}>{person.attributes.label}</Link></td>
+    var EntityList = this.state.data.map((entity) =>
+        <tr key={entity.id}>
+          <td>
+            <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id} }}>
+              <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
+              {entity.attributes.properties ? ' ('+entity.attributes.properties['life-dates']+')' : null}
+             </Link>
+           </td>
         </tr>
+
     );
       return (
-        <Container>
-        <Form className="tab-search" onSubmit={this.intiateSearch}>
-          <Form.Group controlId="formBasicEmail">
-            <Row>
-                <Form.Label column sm="1">Search</Form.Label>
-                <Col md={9}>
-                  <Form.Control id="query" name="query" type="query" placeholder="ex. 'Bakewell'" />
-                </Col>
-                <Col md={2}>
-                  <Button  variant="primary" type="submit">
-                    Search
-                  </Button>
-                </Col>
-            </Row>
-          </Form.Group>
-        </Form>
+        <Container fluid>
+        <BrowseLetters active="by-people"/>
+        <Row className="no-gutters pt-3">
+        <Col md={11} className="no-gutters">
+          <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
+            <Form.Group>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+              <Button variant="primary" type="submit">
+                <FontAwesomeIcon icon="search"/>
+              </Button>
+              </div>
+              <Form.Control id="query" name="query" type="query" placeholder="ex. 'Godot'" />
+            </div>
+            </Form.Group>
+          </Form>
+        </Col>
+        <Col md={1} className="no-gutters">
+        {this.state.isSearching ?
+          <Form onSubmit={this.resetPage}><Button  variant="secondary" type="submit" className="full-width">Clear</Button></Form>
+          : null
+        }
+        </Col>
+        </Row>
+          {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
@@ -104,7 +121,8 @@ class LettersByPeopleMentioned extends Component {
               </tr>
             </thead>
             <tbody>
-            {PeopleList}
+            {!this.state.isLoaded ? <LoadingSpinner/> : EntityList }
+
             </tbody>
           </Table>
           {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}

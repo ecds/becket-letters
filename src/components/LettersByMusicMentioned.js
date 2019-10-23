@@ -7,7 +7,7 @@ import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class LettersByProductionsMentioned extends Component {
+class LettersByMusicMentioned extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -51,7 +51,7 @@ class LettersByProductionsMentioned extends Component {
   searchData = (searchTerms) => {
     this.setState({ isSearching: true })
     axios.all([
-      axios.get(this.props.apiUrl+'/search-entities?query='+searchTerms+'&type=production')])
+      axios.get(this.props.apiUrl+'/search-entities?query='+searchTerms+'&type=music')])
       .then(axios.spread((getAllData) => {
           const data = getAllData.data.data;
           const pagination = getAllData.data.meta.pagination;
@@ -64,7 +64,7 @@ class LettersByProductionsMentioned extends Component {
 
   getData = () => {
     axios.all([
-        axios.get(this.props.apiUrl+'/entities?entity_type=production&items=50&page='+this.state.page)])
+        axios.get(this.props.apiUrl+'/entities?entity_type=music&items=50&page='+this.state.page)])
         .then(axios.spread((getAllData) => {
             const data = getAllData.data.data;
             const pagination = getAllData.data.meta.pagination;
@@ -80,15 +80,8 @@ class LettersByProductionsMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
         <tr key={entity.id}>
           <td>
-            <Link to={{ pathname: `/productions/${entity.id}`, state: { id: entity.id} }}>
+            <Link to={{ pathname: `/music/${entity.id}`, state: { id: entity.id} }}>
               <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
-              { (entity.attributes.properties.city || entity.attributes.properties.date) ?
-                <span className="dateAndCity">
-                  {entity.attributes.properties.city ? <span>{entity.attributes.properties.city}</span> : null}
-                  {entity.attributes.properties.date ? <span>{entity.attributes.properties.date}</span> : null}
-                </span>
-                :null
-              }
              </Link>
            </td>
         </tr>
@@ -96,7 +89,7 @@ class LettersByProductionsMentioned extends Component {
     );
       return (
         <Container fluid>
-        <BrowseLetters active="by-production"/>
+        <BrowseLetters active="by-music"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">
           <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
@@ -123,7 +116,7 @@ class LettersByProductionsMentioned extends Component {
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
-                <th>Production Name</th>
+                <th>Music Name</th>
               </tr>
             </thead>
             <tbody>
@@ -137,4 +130,4 @@ class LettersByProductionsMentioned extends Component {
     }
   }
 
-export default LettersByProductionsMentioned;
+export default LettersByMusicMentioned;

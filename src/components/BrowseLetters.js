@@ -26,10 +26,18 @@ class BrowseLetters extends Component {
         <div className="pt-3">
           <h1>Browse Letters by Entities Mentioned</h1>
           <ul className="nav nav-tabs" id="browse-tabs">
-            <li className={this.setActive('by-places')}><a href="/browse-letters/places">By Places</a></li>
-            <li className={this.setActive('by-people')}><a href="/browse-letters/people">By People</a></li>
-            <li className={this.setActive('by-organization')}><a href="/browse-letters/organizations">By Organizations</a></li>
-            <li className={this.setActive('by-production')}><a href="/browse-letters/productions">By Productions</a></li>
+            <li className={this.setActive('by-places')}><a href="/browse-letters/places">Places</a></li>
+            <li className={this.setActive('by-people')}><a href="/browse-letters/people">People</a></li>
+            <li className={this.setActive('by-organization')}><a href="/browse-letters/organizations">Organizations</a></li>
+            <li className={this.setActive('by-production')}><a href="/browse-letters/productions">Productions</a></li>
+            <li className={this.setActive('by-publication')}><a href="/browse-letters/publications">Publications</a></li>
+            <li className={this.setActive('by-music')}><a href="/browse-letters/music">Music</a></li>
+            <li className={this.setActive('by-reading')}><a href="/browse-letters/readings">Readings</a></li>
+            <li className={this.setActive('by-writing')}><a href="/browse-letters/writings">Writings</a></li>
+            <li className={this.setActive('by-translations')}><a href="/browse-letters/translations">Translations</a></li>
+            <li className={this.setActive('by-attendance')}><a href="/browse-letters/attendance">Attendance</a></li>
+            <li className={this.setActive('by-works-of-art')}><a href="/browse-letters/works_of_art">Works of Art</a></li>
+            <li className={this.setActive('by-public-events')}><a href="/browse-letters/public_events">Public Events</a></li>
           </ul>
 
         </div>

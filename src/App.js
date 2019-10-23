@@ -29,6 +29,20 @@ import WorksOfArtDetails from './components/WorksOfArtDetails';
 import WritingDetails from './components/WritingDetails';
 import TranslationDetails from './components/TranslationDetails';
 import LettersByOrganizationsMentioned from './components/LettersByOrganizationsMentioned';
+import LettersByProductionsMentioned from './components/LettersByProductionsMentioned';
+import LettersByPlacesMentioned from './components/LettersByPlacesMentioned';
+import LettersByPeopleMentioned from './components/LettersByPeopleMentioned';
+import LettersByMusicMentioned from './components/LettersByMusicMentioned';
+import LettersByReadingsMentioned from './components/LettersByReadingsMentioned';
+import LettersByWritingsMentioned from './components/LettersByWritingsMentioned';
+
+import LettersByWorkOfArtMentioned from './components/LettersByWorkOfArtMentioned';
+import LettersByAttendanceMentioned from './components/LettersByAttendanceMentioned';
+
+import LettersByPublicEventMentioned from './components/LettersByPublicEventMentioned';
+import LettersByTranslationsMentioned from './components/LettersByTranslationsMentioned';
+import LettersByPublicationMentioned from './components/LettersByPublicationMentioned';
+
 
 import axios from 'axios';
 import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -66,17 +80,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Container fluid className="p-0">
-        <div className="d-flex" id="wrapper">
           <Sidebar />
-          <div id="page-content-wrapper">
-            <Navbar expand="lg">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto" id="navbarSupportedContent" >
-                  <img src='http://localhost:3000/imgs/EU_hz_rev.png' alt='emory-logo-white'></img>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
+
             <Route exact path="/" component={Landing} />
             <Route exact path="/people" component={People} />
             <Route exact path="/people/:id/:name" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} /> } />
@@ -101,8 +106,18 @@ class App extends Component {
             <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/browse-letters/productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/browse-letters/organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-          </div>
-        </div>
+            <Route exact path='/browse-letters/places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/readings' render={(props) => <LettersByReadingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/publications' render={(props) => <LettersByPublicationMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/public_events' render={(props) => <LettersByPublicEventMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+
+
         </Container>
       </BrowserRouter>
     );
