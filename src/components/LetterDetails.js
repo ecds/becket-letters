@@ -47,9 +47,15 @@ export class LetterDetails extends Component {
       if (this.state.letter.attributes['typed']) {
         physicalDescription += 'T'
       }
+      else {
+        physicalDescription += 'A'
+      }
       physicalDescription += this.state.letter.attributes['physical-desc'];
       if (this.state.letter.attributes['signed']) {
         physicalDescription += 'S'
+      }
+      else {
+        physicalDescription += 'I'
       }
       physicalDescription += '; '
       if (this.state.letter.attributes['leaves']) {
@@ -76,7 +82,6 @@ export class LetterDetails extends Component {
               {this.state.letter.attributes['addressed-from'] ? <tr><td>Addressed From:</td><td> <span className="value">{this.state.letter.attributes['addressed-from']}</span></td></tr> : null }
               {this.state.letter.attributes['addressed-to'] ? <tr><td>Addressed To:</td><td> {this.state.letter.attributes['addressed-to']}</td></tr> : null }
               {this.state.letter.attributes['envelope'] ? <tr><td>Envelope: </td><td>{this.state.letter.attributes['envelope']}</td></tr> : null }
-              {this.state.letter.attributes['leaves'] ? <tr><td>Leaves:</td><td> {this.state.letter.attributes['leaves']}</td></tr> : null }
               {this.state.letter.attributes['letter-publisher'] ? <tr><td>Letter Publisher:</td><td> {this.state.letter.attributes['letter-publisher']}</td></tr> : null }
               {this.state.letter.attributes['notes'] ? <tr><td>Notes:</td><td> {this.state.letter.attributes['notes']}</td></tr> : null }
               <tr><td>Physical Description:</td>

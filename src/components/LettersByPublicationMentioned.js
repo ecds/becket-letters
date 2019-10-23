@@ -7,7 +7,7 @@ import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class LettersByPeopleMentioned extends Component {
+class LettersByPublicationMentioned extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -51,7 +51,7 @@ class LettersByPeopleMentioned extends Component {
   searchData = (searchTerms) => {
     this.setState({ isSearching: true })
     axios.all([
-      axios.get(this.props.apiUrl+'/search-entities?query='+searchTerms+'&type=person')])
+      axios.get(this.props.apiUrl+'/search-entities?query='+searchTerms+'&type=publication')])
       .then(axios.spread((getAllData) => {
           const data = getAllData.data.data;
           const pagination = getAllData.data.meta.pagination;
@@ -64,7 +64,7 @@ class LettersByPeopleMentioned extends Component {
 
   getData = () => {
     axios.all([
-        axios.get(this.props.apiUrl+'/entities?entity_type=person&items=200&page='+this.state.page)])
+        axios.get(this.props.apiUrl+'/entities?entity_type=publication&items=50&page='+this.state.page)])
         .then(axios.spread((getAllData) => {
             const data = getAllData.data.data;
             const pagination = getAllData.data.meta.pagination;
@@ -80,9 +80,8 @@ class LettersByPeopleMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
         <tr key={entity.id}>
           <td>
-            <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id} }}>
+            <Link to={{ pathname: `/publication/${entity.id}`, state: { id: entity.id} }}>
               <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
-              {entity.attributes.properties ? ' ('+entity.attributes.properties['life-dates']+')' : null}
              </Link>
            </td>
         </tr>
@@ -90,7 +89,7 @@ class LettersByPeopleMentioned extends Component {
     );
       return (
         <Container>
-        <BrowseLetters active="by-people"/>
+        <BrowseLetters active="by-places"/>
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">
           <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
@@ -117,7 +116,7 @@ class LettersByPeopleMentioned extends Component {
           <Table striped bordered className="browse-by">
             <thead>
               <tr>
-                <th>Person Name</th>
+                <th>Publication Name</th>
               </tr>
             </thead>
             <tbody>
@@ -131,4 +130,4 @@ class LettersByPeopleMentioned extends Component {
     }
   }
 
-export default LettersByPeopleMentioned;
+export default LettersByPublicationMentioned;
