@@ -10,57 +10,28 @@ class BrowseLetters extends Component {
       super(props, context);
       this.state = {
           error: null,
-          isLoaded: false,
-          componentName: '',
-          activeKey: 'people'
+          isLoaded: false
       };
+      this.setActive = this.setActive.bind(this);
   }
 
-  componentDidMount() {
-    if (Object.prototype.hasOwnProperty.call(this.props, 'location')) {
-      if (Object.prototype.hasOwnProperty.call(this.props.location, 'state')) {
-        if (this.props.location.state !== undefined) {
-          this.setState({ activeKey: this.props.location.state.activeKey }, () => {
-            console.log(this.state.activeKey);
-            this.setState({isLoaded:true})
-          });
-        }
-        else {
-          this.setState({ activeKey: 'people' })
-          this.setState({isLoaded:true})
-        }
-      }
-      else {
-        this.setState({ activeKey: 'people' })
-        this.setState({isLoaded:true})
-      }
-    }
-    else {
-      this.setState({ activeKey: 'people' })
-      this.setState({isLoaded:true})
+  setActive(t) {
+    if (t == this.props.active) {
+      return 'active'
     }
   }
 
   render() {
       return (
-        <div className='main-content'>
+        <div className="pt-3">
           <h1>Browse Letters by Entities Mentioned</h1>
-          {this.state.isLoaded ?
-          <Tabs defaultActiveKey={this.state.activeKey} id="uncontrolled-tab-example">
-            <Tab eventKey="people" title="People">
-              <LettersByPeopleMentioned/>
-            </Tab>
-            <Tab eventKey="places" title="Places">
-              <LettersByPlacesMentioned />
-            </Tab>
-            <Tab eventKey="organizations" title="Organization">
-              <LettersByOrganizationsMentioned/>
-            </Tab>
-            <Tab eventKey="productions" title="Productions">
-              <LettersByProductionsMentioned/>
-            </Tab>
-          </Tabs>
-          : null}
+          <ul className="nav nav-tabs" id="browse-tabs">
+            <li className={this.setActive('by-places')}><a href="/browse-letters/places">By Places</a></li>
+            <li className={this.setActive('by-people')}><a href="/browse-letters/people">By People</a></li>
+            <li className={this.setActive('by-organization')}><a href="/browse-letters/organizations">By Organizations</a></li>
+            <li className={this.setActive('by-production')}><a href="/browse-letters/productions">By Productions</a></li>
+          </ul>
+
         </div>
       )
     }

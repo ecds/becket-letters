@@ -3,6 +3,7 @@ import './App.scss';
 import { BrowserRouter, Route } from "react-router-dom";
 import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container, Navbar, Nav } from 'react-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core'
 import Landing from './components/Landing';
 import People from './components/people';
 import Letters from './components/letters';
@@ -27,9 +28,12 @@ import ReadingDetails from './components/ReadingDetails';
 import WorksOfArtDetails from './components/WorksOfArtDetails';
 import WritingDetails from './components/WritingDetails';
 import TranslationDetails from './components/TranslationDetails';
+import LettersByOrganizationsMentioned from './components/LettersByOrganizationsMentioned';
 
-// import SearchPage from './components/SearchPage';
 import axios from 'axios';
+import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faSpinner, faSearch)
 
 class App extends Component {
   constructor(props, context) {
@@ -95,6 +99,8 @@ class App extends Component {
             <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
             <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+            <Route exact path='/browse-letters/organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
           </div>
         </div>
         </Container>
