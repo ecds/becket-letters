@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
 import AlternateSpellings from './utilities/AlternateSpellings';
-import TableFilter from 'react-table-filter';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
+import LetterQuickGlance from './LetterQuickGlance';
 import MentionedLetters from './utilities/MentionedLettersTable';
+import React, { Component } from 'react';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
+let striptags = require('striptags');
 
 class TranslationDetails extends Component {
   constructor(props) {
@@ -51,9 +52,16 @@ class TranslationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      console.log(this.state.lettersList)
+      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedIntoLang = striptags(this.state.entityData.attributes.properties['translated-into'])
+      let strippedTranslator = striptags(this.state.entityData.attributes.properties.translator)
+      const meta = {
+        title: `${strippedTitle} translated by ${strippedTranslator}`,
+        description: `View details for ${strippedTitle}; translated into ${strippedIntoLang} by ${strippedTranslator}`,
+      };
       return (
         <div className="details">
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
