@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
 import AlternateSpellings from './utilities/AlternateSpellings';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
+import LetterQuickGlance from './LetterQuickGlance';
 import MentionedLetters from './utilities/MentionedLettersTable';
+import React, { Component } from 'react';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+
+let striptags = require('striptags');
 
 class OrganizationDetails extends Component {
 
@@ -49,8 +52,15 @@ class OrganizationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedDesc = striptags(this.state.entityData.attributes.properties.description)
+      const meta = {
+        title: strippedTitle,
+        description: `View details for ${strippedTitle}, ${strippedDesc}`,
+      };
       return (
         <div className="details">
+        <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>

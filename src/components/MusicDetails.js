@@ -55,7 +55,7 @@ class MusicDetails extends Component {
       let strippedTitle = striptags(this.state.entityData.attributes.label)
       const meta = {
         title: strippedTitle,
-        description: `View details for Beckett's attendance of ${this.state.entityData.attributes.label}`,
+        description: `View details for ${strippedTitle}`,
       };
       return (
         <div className="details">
