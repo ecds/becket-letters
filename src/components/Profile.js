@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button, Popover, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import LetterQuickGlance from './LetterQuickGlance';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
@@ -19,6 +20,7 @@ class ProfileLite extends Component {
   }
 
   componentDidMount() {
+    console.log("in person")
     this.getData();
   }
 
@@ -50,13 +52,13 @@ class ProfileLite extends Component {
     <tr>
       <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
       <td>{letter['date']}</td>
-      <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
+      <td className="actions"><Link to={'/letters/letterdetails/'+letter.id}>Explore Letter</Link></td>
     </tr>
     );
     const ReceivedLettersList = this.state.receivedLetters.map((letter, index) =>
       <tr>
         <td>{letter.attributes['formatted-date']}</td>
-        <td><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
+        <td><Link to={'/letters/letterdetails/'+letter.id}>Explore Letter</Link></td>
       </tr>
     );
 
@@ -79,7 +81,7 @@ class ProfileLite extends Component {
       return (
         <div className="profile-details">
           <h1>{this.state.personData.attributes.label}
-            {this.state.personData.attributes.properties['life-dates'] ? " (" + this.state.personData.attributes.properties['life-dates'] + ") " : null}
+            {this.state.personData.attributes.properties ? " (" + this.state.personData.attributes.properties['life-dates'] + ") " : null}
           </h1>
           <div className="title">
           {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['description']}} />  : null}

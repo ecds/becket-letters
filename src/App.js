@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -78,48 +78,51 @@ class App extends Component {
       '/attendance/:id': ':id'
     };
     return (
-      <BrowserRouter>
+      <Router buildname="build">
         <Container fluid className="p-0">
           <Sidebar />
-
+            <Switch>
+              <Route exact path='/browse-letters-productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-/writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-readings' render={(props) => <LettersByReadingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters/attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-publications' render={(props) => <LettersByPublicationMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-public_events' render={(props) => <LettersByPublicEventMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/repositories/:id' render={(props) => <RepositoryDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/productions/:id' render={(props) => <ProductionDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/publications/:id' render={(props) => <PublicationDetails apiUrl={this.props.apiUrl} {...props} />} />
+              <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/attendances/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/timeline' component={Timeline} />
+              <Route exact path="/people" component={People} />
+              <Route exact path="/people/:id" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} /> } />
+              <Route exact path="/browse-letters" component={BrowseLetters} />
+              <Route exact path="/letters" component={Letters} />
+              <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} /> } />
+              <Route exact path='/places' component={Places} />
+              <Route exact path='/places/:id' render={(props) => <Place apiUrl={this.props.apiUrl} {...props} /> } />
+              <Route exact path='/search' component={SearchResults} />
+              <Route exact path='/search-letters' component={SearchLetters} />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/people" component={People} />
-            <Route exact path="/people/:id/:name" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} /> } />
-            <Route exact path="/browse-letters" component={BrowseLetters} />
-            <Route exact path="/letters" component={Letters} />
-            <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} /> } />
-            <Route exact path='/timeline' component={Timeline} />
-            <Route exact path='/places' component={Places} />
-            <Route exact path='/places/:id' render={(props) => <Place apiUrl={this.props.apiUrl} {...props} /> } />
-            <Route exact path='/search' component={SearchResults} />
-            <Route exact path='/search-letters' component={SearchLetters} />
-            <Route exact path='/repositories/:id' render={(props) => <RepositoryDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/productions/:id' render={(props) => <ProductionDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/publications/:id' render={(props) => <PublicationDetails apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/music/:id' render={(props) => <MusicDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/organizations/:id' render={(props) => <OrganizationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/attendances/:id' render={(props) => <AttendanceDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/readings/:id' render={(props) => <ReadingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/works-of-art/:id' render={(props) => <WorksOfArtDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/writings/:id' render={(props) => <WritingDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/readings' render={(props) => <LettersByReadingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/publications' render={(props) => <LettersByPublicationMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-            <Route exact path='/browse-letters/public_events' render={(props) => <LettersByPublicEventMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
 
+
+
+</Switch>
 
         </Container>
-      </BrowserRouter>
+      </Router>
     );
   }
 

@@ -80,7 +80,7 @@ class LettersByPeopleMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
         <tr key={entity.id}>
           <td>
-            <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id} }}>
+            <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id, name: entity.attributes.label} }}>
               <span dangerouslySetInnerHTML={{__html: entity.attributes.label}}/>
               {entity.attributes.properties ? ' ('+entity.attributes.properties['life-dates']+')' : null}
              </Link>

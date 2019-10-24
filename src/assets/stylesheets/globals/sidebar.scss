@@ -1,4 +1,20 @@
-
+.navbar {
+      background: linear-gradient(135deg, rgba(0,39,135,1) 14%,rgba(37,141,200,1) 100%) !important;
+      a {
+        color: white !important;
+      }
+      .dropdown-menu {
+        background-color: rgb(0,39,135);
+        a {
+          &:hover {
+            background-color: darken($emoryBlue, 10%)
+          }
+          &:active {
+            background-color: darken($emoryBlue, 10%)
+          }
+        }
+      }
+}
 body {
   overflow-x: hidden;
   height: 100%;

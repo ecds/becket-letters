@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 class QuickGlance extends Component {
@@ -74,7 +75,7 @@ class QuickGlance extends Component {
       this.setState({ localURLExtension: '/work-of-art/' + this.state.entityData.id})
     }
     else {
-      this.setState({ localURLExtension: '/people/' + this.state.entityData.id + '/' + this.state.entityData.attributes.label})
+      this.setState({ localURLExtension: '/people/' + this.state.entityData.id})
     }
   }
 
@@ -89,13 +90,13 @@ class QuickGlance extends Component {
       // return now that component has value
     } else {
       return (
-        <a href={this.state.localURLExtension} className="listLink">
+        <Link to={this.state.localURLExtension} className="listLink">
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/>
           {this.state.typeLabel == 'Person' ? this.getLifeDates() : null}
           {this.state.typeLabel == 'Production' ?
             <span dangerouslySetInnerHTML={{__html: ' (' + this.state.entityData.attributes.properties['city'] + '; ' + this.state.entityData.attributes.properties['date'] + ')'}}/>
             : null}
-        </a>
+        </Link>
       )
     }
   }
