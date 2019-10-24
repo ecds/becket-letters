@@ -1,4 +1,3 @@
-import DocumentMeta from 'react-document-meta';
 import LettersByPeopleMentioned from './LettersByPeopleMentioned';
 import LettersByPlacesMentioned from './LettersByPlacesMentioned';
 import LettersByOrganizationsMentioned from './LettersByOrganizationsMentioned';
@@ -6,11 +5,6 @@ import LettersByProductionsMentioned from './LettersByProductionsMentioned';
 import { Link } from 'react-router-dom';
 import React, { Component } from "react";
 import { Tabs, Tab } from 'react-bootstrap';
-
-const meta = {
-  title: 'Browse Letters',
-  description: `Browse all letters on this page`,
-};
 
 class BrowseLetters extends Component {
   constructor(props, context) {
@@ -31,7 +25,6 @@ class BrowseLetters extends Component {
   render() {
     return (
       <div className="pt-3">
-        <DocumentMeta {...meta} />
         <h1>Browse Letters by Entities Mentioned</h1>
         <ul className="nav nav-tabs" id="browse-tabs">
           <li className={this.setActive('by-places')}>
