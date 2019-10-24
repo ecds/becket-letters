@@ -29,7 +29,6 @@ class AttendanceDetails extends Component {
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
-        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -41,7 +40,6 @@ class AttendanceDetails extends Component {
 
 
   render() {
-    console.log(this.state.entityData.attributes)
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
