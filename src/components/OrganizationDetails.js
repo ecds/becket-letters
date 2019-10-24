@@ -56,7 +56,7 @@ class OrganizationDetails extends Component {
       let strippedDesc = striptags(this.state.entityData.attributes.properties.description)
       const meta = {
         title: strippedTitle,
-        description: `View details for ${strippedTitle}, ${strippedDesc}`,
+        description: `View details for ${strippedTitle}; ${strippedDesc}`,
       };
       return (
         <div className="details">

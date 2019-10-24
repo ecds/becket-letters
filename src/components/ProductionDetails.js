@@ -56,7 +56,7 @@ class PublicationDetails extends Component {
       let strippedDate = striptags(this.state.entityData.attributes.properties.date)
       const meta = {
         title: strippedTitle,
-        description: `View details for ${strippedTitle}, ${strippedDate}`,
+        description: `View details for ${strippedTitle}; ${strippedDate}`,
       };
       return (
         <div className="details">
