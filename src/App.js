@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Breadcrumbs  from 'react-router-dynamic-breadcrumbs';
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fontawesome/fontawesome-svg-core'
 import Landing from './components/Landing';
 import People from './components/people';
 import Letters from './components/letters';
