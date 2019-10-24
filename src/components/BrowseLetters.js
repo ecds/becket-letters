@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import React, { Component } from "react";
 import { Tabs, Tab } from 'react-bootstrap';
 
-let striptags = require('striptags');
 const meta = {
   title: 'Browse Letters',
   description: `Browse all letters on this page`,
