@@ -8,7 +8,6 @@ class Landing extends Component {
         return (
           <div className="landing">
             <HomeJumbotron/>
-            <SearchPage/>
             <HomeTiles/>
           </div>
         )
