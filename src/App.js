@@ -86,10 +86,10 @@ class App extends Component {
               <Route exact path='/browse-letters-organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-              <Route exact path='/browse-letters-/writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-readings' render={(props) => <LettersByReadingsMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
-              <Route exact path='/browse-letters/attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
+              <Route exact path='/browse-letters-attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-publications' render={(props) => <LettersByPublicationMentioned apiUrl={this.props.apiUrl} {...props} /> }  />
               <Route exact path='/browse-letters-works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} /> }  />

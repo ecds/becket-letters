@@ -90,8 +90,8 @@ class LettersByMusicMentioned extends Component {
     );
 
     const meta = {
-      title: 'Browse Music',
-      description: `Browse all letters on this page`,
+      title: 'Browse by Music',
+      description: `Browse all letters by music mentioned`,
     };
 
     return (
