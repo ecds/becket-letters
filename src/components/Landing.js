@@ -13,9 +13,7 @@ class Landing extends Component {
 
     return (
       <div className="landing" >
-        <DocumentMeta {...meta}>
-          <h1>Hello World!</h1>
-        </DocumentMeta>
+        <DocumentMeta {...meta} />
         <HomeJumbotron />
         <SearchPage />
         <HomeTiles />

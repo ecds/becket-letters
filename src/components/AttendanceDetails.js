@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
 import AlternateSpellings from './utilities/AlternateSpellings';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
+import LetterQuickGlance from './LetterQuickGlance';
 import MentionedLetters from './utilities/MentionedLettersTable';
+import React, { Component } from 'react';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+
+let striptags = require('striptags');
 
 class AttendanceDetails extends Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +26,7 @@ class AttendanceDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         console.log(entityData)
@@ -40,6 +41,7 @@ class AttendanceDetails extends Component {
 
 
   render() {
+    console.log(this.state.entityData.attributes)
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -49,12 +51,18 @@ class AttendanceDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      const meta = {
+        title: strippedTitle,
+        description: `View details for Beckett's attendance of ${this.state.entityData.attributes.label}`,
+      };
       return (
         <div className="details">
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
-            <tr>
+              <tr>
                 <td>Event Type</td>
                 <td>{this.state.entityData.attributes.properties['event-type']}</td>
               </tr>
@@ -77,7 +85,7 @@ class AttendanceDetails extends Component {
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
           </table>
         </div >
