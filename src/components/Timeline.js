@@ -56,10 +56,10 @@ export class Timeline extends Component {
           </Row>
           <Row className='timelineTitleRow'>
             <Col md={6} >
-              <h5>Personal events are in <span className="timelineHeaderBlue">blue</span></h5>
+              <h2>Personal events are in <span className="timelineHeaderBlue">blue</span></h2>
             </Col>
             <Col md={6} >
-              <h5>Global events are in <span className="timelineHeaderYellow">gold</span></h5>
+              <h2>Global events are in <span className="timelineHeaderYellow">gold</span></h2>
             </Col>
           </Row>
           {

@@ -14,7 +14,7 @@ class TimelineEvent extends Component {
       <Row>
         <Col md={6} className={eventClassName}>
           <div className={this.props.event.type}>
-            <h3>{this.props.event.date}</h3>
+            <h4>{this.props.event.date}</h4>
             <p>{this.props.event.event}</p>
           </div>
         </Col>
