@@ -1,10 +1,5 @@
-import LettersByPeopleMentioned from './LettersByPeopleMentioned';
-import LettersByPlacesMentioned from './LettersByPlacesMentioned';
-import LettersByOrganizationsMentioned from './LettersByOrganizationsMentioned';
-import LettersByProductionsMentioned from './LettersByProductionsMentioned';
 import { Link } from 'react-router-dom';
 import React, { Component } from "react";
-import { Tabs, Tab } from 'react-bootstrap';
 
 class BrowseLetters extends Component {
   constructor(props, context) {
@@ -17,7 +12,7 @@ class BrowseLetters extends Component {
   }
 
   setActive(t) {
-    if (t == this.props.active) {
+    if (t === this.props.active) {
       return 'active'
     }
   }

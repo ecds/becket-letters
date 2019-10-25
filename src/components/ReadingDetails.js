@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
-import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 

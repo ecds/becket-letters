@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
 export class SearchPage extends Component {
@@ -18,7 +18,6 @@ export class SearchPage extends Component {
     submitForm(e) {
       console.log(e.target.elements.entity_type.value.toLowerCase())
         e.preventDefault()
-        const data = new FormData(e.target);
         this.props.history.push('/letters');
     }
 

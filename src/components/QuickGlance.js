@@ -92,8 +92,8 @@ class QuickGlance extends Component {
       return (
         <Link to={this.state.localURLExtension} className="listLink">
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}}/>
-          {this.state.typeLabel == 'Person' ? this.getLifeDates() : null}
-          {this.state.typeLabel == 'Production' ?
+          {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
+          {this.state.typeLabel === 'Production' ?
             <span dangerouslySetInnerHTML={{__html: ' (' + this.state.entityData.attributes.properties['city'] + '; ' + this.state.entityData.attributes.properties['date'] + ')'}}/>
             : null}
         </Link>
