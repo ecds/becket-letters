@@ -23,7 +23,7 @@ class Pagination extends Component {
       let table = []
       if (this.props.pagination['total-pages'] > 1) {
         for (let i = 0; i < this.props.pagination['total-pages']; i++) {
-          table.push(<li key={i} className="page-item"><button onClick={this.changePageNumber} id={i+1} className='page-link' alt={"Page"+i+1}>{i+1}</button></li>)
+          table.push(<li key={i} className="page-item pagination-btn"><button onClick={this.changePageNumber} id={i+1} className='page-link' alt={"Page"+i+1}>{i+1}</button></li>)
         }
         return table
       }
