@@ -74,7 +74,7 @@ class ProfileLite extends Component {
             {this.state.personData.attributes.properties ? " (" + this.state.personData.attributes.properties['life-dates'] + ") " : null}
           </h1>
           <div className="title">
-          {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['description']}} />  : null}
+          {this.state.personData.attributes.properties ? <title dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['description']}} />  : null}
           </div>
 
           <div className="description">
