@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
 import AlternateSpellings from './utilities/AlternateSpellings';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
+import LetterQuickGlance from './LetterQuickGlance';
 import MentionedLetters from './utilities/MentionedLettersTable';
+import React, { Component } from 'react';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+
+let striptags = require('striptags');
 
 class PublicationDetails extends Component {
 
@@ -25,7 +28,7 @@ class PublicationDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         console.log(entityData)
@@ -49,36 +52,43 @@ class PublicationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedDate = striptags(this.state.entityData.attributes.properties.date)
+      const meta = {
+        title: strippedTitle,
+        description: `View details for ${strippedTitle}; ${strippedDate}`,
+      };
       return (
         <div className="details">
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
-          <tbody>
-                <tr>
-                  <td>City</td>
-                  <td>{this.state.entityData.attributes.properties.city}</td>
-                </tr>
-                <tr>
-                  <td>Date</td>
-                  <td>{this.state.entityData.attributes.properties.date}</td>
-                </tr>
-                <tr>
-                  <td>Director</td>
-                  <td>{this.state.entityData.attributes.properties.director}</td>
-                </tr>
-                <tr>
-                  <td>Proposal</td>
-                  <td>{this.state.entityData.attributes.properties.proposal}</td>
-                </tr>
-                <tr>
-                  <td>Reason / Response</td>
-                  <td>{this.state.entityData.attributes.properties.reason} / {this.state.entityData.attributes.properties.response}</td>
-                </tr>
-                <tr>
-                  <td>Theatre</td>
-                  <td>{this.state.entityData.attributes.properties.theatre}</td>
-                </tr>
-              </tbody>
+            <tbody>
+              <tr>
+                <td>City</td>
+                <td>{this.state.entityData.attributes.properties.city}</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>{this.state.entityData.attributes.properties.date}</td>
+              </tr>
+              <tr>
+                <td>Director</td>
+                <td>{this.state.entityData.attributes.properties.director}</td>
+              </tr>
+              <tr>
+                <td>Proposal</td>
+                <td>{this.state.entityData.attributes.properties.proposal}</td>
+              </tr>
+              <tr>
+                <td>Reason / Response</td>
+                <td>{this.state.entityData.attributes.properties.reason} / {this.state.entityData.attributes.properties.response}</td>
+              </tr>
+              <tr>
+                <td>Theatre</td>
+                <td>{this.state.entityData.attributes.properties.theatre}</td>
+              </tr>
+            </tbody>
           </table>
           <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
@@ -89,7 +99,7 @@ class PublicationDetails extends Component {
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
           </table>
         </div >
