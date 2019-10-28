@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import DocumentMeta from 'react-document-meta';
 
 class RepositoryDetails extends Component {
 
@@ -45,8 +46,13 @@ class RepositoryDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      const meta = {
+        title: 'Beckett Timeline',
+        description: `This page displays a timeline of events in Beckett's personal life and events he mentioned in his letters.`,
+      };
       return (
         <div className="details">
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{__html: 'Repository Name: ' + this.state.entityData.attributes.label}}/>
           <table className='table table-bordered'>
             <tr>

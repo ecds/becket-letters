@@ -100,26 +100,26 @@ class LettersByPeopleMentioned extends Component {
         <DocumentMeta {...meta} />
         <BrowseLetters active="by-people" />
         <Row className="no-gutters pt-3">
-          <Col md={11} className="no-gutters">
-            <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
-              <Form.Group>
-                <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                    <Button variant="primary" type="submit">
-                      <FontAwesomeIcon icon="search" />
-                    </Button>
-                  </div>
-                  <Form.Control id="query" name="query" type="query" placeholder="ex. 'Godot'" />
-                </div>
-              </Form.Group>
-            </Form>
-          </Col>
-          <Col md={1} className="no-gutters">
-            {this.state.isSearching ?
-              <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
-              : null
-            }
-          </Col>
+        <Col md={11} className="no-gutters">
+          <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
+            <Form.Group>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+              <Button aria-label='submit button' variant="primary" type="submit">
+                <FontAwesomeIcon icon="search"/>
+              </Button>
+              </div>
+              <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
+            </div>
+            </Form.Group>
+          </Form>
+        </Col>
+        <Col md={1} className="no-gutters">
+        {this.state.isSearching ?
+          <Form onSubmit={this.resetPage}><Button  variant="secondary" type="submit" className="full-width">Clear</Button></Form>
+          : null
+        }
+        </Col>
         </Row>
         {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
         <Table striped bordered className="browse-by">

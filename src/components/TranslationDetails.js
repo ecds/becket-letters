@@ -76,7 +76,7 @@ class TranslationDetails extends Component {
               </tr>
               <tr>
                 <td>Translated Title</td>
-                <td>{this.state.entityData.attributes.properties['translated-title']}</td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['translated-title']}}></td>
               </tr>
               <tr>
                 <td>Translator</td>

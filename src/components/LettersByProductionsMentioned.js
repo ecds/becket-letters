@@ -111,11 +111,11 @@ class LettersByProductionsMentioned extends Component {
               <Form.Group>
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
-                    <Button variant="primary" type="submit">
+                    <Button aria-label='submit button' variant="primary" type="submit">
                       <FontAwesomeIcon icon="search" />
                     </Button>
                   </div>
-                  <Form.Control id="query" name="query" type="query" placeholder="ex. 'Godot'" />
+                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
                 </div>
               </Form.Group>
             </Form>
