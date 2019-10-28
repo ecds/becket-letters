@@ -18,7 +18,7 @@ class HomeTiles extends Component {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
-                  <Link to={{pathname: '/browse-letters', state: { activeKey: "people" }}}>Explore</Link>
+                  <Link to='/browse-letters-people'>Explore</Link>
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
@@ -30,7 +30,7 @@ class HomeTiles extends Component {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
-                  <Link to={{pathname: '/browse-letters', state: { activeKey: "places" }}}>Explore</Link>
+                  <Link to='/browse-letters-places'>Explore</Link>
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
@@ -42,7 +42,7 @@ class HomeTiles extends Component {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
-                  <Link to={{pathname: '/browse-letters', state: { activeKey: "organizations" }}}>Explore</Link>
+                  <Link to='/browse-letters-organizations'>Explore</Link>
                 </Card.Footer>
               </Card>
               <Card style={{ width: '18rem' }}>
@@ -54,7 +54,7 @@ class HomeTiles extends Component {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="btn btn-primary">
-                  <Link to={{pathname: '/browse-letters', state: { activeKey: "productions" }}}>Explore</Link>
+                  <Link to='/browse-letters-productions'>Explore</Link>
                 </Card.Footer>
               </Card>
           </Row>
