@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Button, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import LetterQuickGlance from './LetterQuickGlance';
-import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 class ProfileLite extends Component {
@@ -62,13 +59,6 @@ class ProfileLite extends Component {
       </tr>
     );
 
-    const columns = [{
-      dataField: 'id',
-      text: 'ID'
-    },{
-      dataField: 'attributes[formatted-date]',
-      text: 'Formatted Date'
-    }];
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -89,7 +79,7 @@ class ProfileLite extends Component {
 
           <div className="description">
             {this.state.personData.attributes.properties.media ? this.state.personData.attributes.properties.media.images.map((image, index) =>
-              <img src={image.link} className="profile-photo"/>
+              <img src={image.link} alt={'photo of ' + this.state.personData.attributes.label} className="profile-photo"/>
             ) : null}
             {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['profile']}} /> : null}
           </div>

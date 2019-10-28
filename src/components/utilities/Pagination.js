@@ -9,12 +9,10 @@ class Pagination extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     // this.createPagination();
   }
 
   changePageNumber = (e) => {
-    console.log(e.target.id)
     var page = e.target.id
     this.props.action(page)
   }

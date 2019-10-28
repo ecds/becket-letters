@@ -7,7 +7,7 @@ import DocumentMeta from 'react-document-meta';
 class Landing extends Component {
   render() {
     const meta = {
-      title: "Samuel BeckettS Letters",
+      title: "Samuel Beckett's Letters",
       description: "Begin your exploration of Samuel Beckett's letters",
     };
 

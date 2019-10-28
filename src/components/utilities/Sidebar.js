@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import {Link, withRouter} from 'react-router-dom';
-import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap'
-import axios from "axios";
+import { Link, withRouter } from 'react-router-dom';
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 
 
 class Sidebar extends Component {
-  constructor(props, context) {
-      super(props, context);
-  }
-
   render() {
       return (
         <Navbar bg="light"expand="lg">
