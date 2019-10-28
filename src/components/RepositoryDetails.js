@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import DocumentMeta from 'react-document-meta';
 

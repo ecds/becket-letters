@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Col, Row } from 'react-bootstrap';
-import LetterQuickGlance from './LetterQuickGlance';
-import AlternateSpellings from './utilities/AlternateSpellings';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
-import { Map, TileLayer } from 'react-leaflet'
-import Geocode from "react-geocode";
+import { Map, TileLayer } from 'react-leaflet';
 
 class Place extends Component {
   constructor(props, context) {
@@ -55,7 +52,7 @@ class Place extends Component {
 
   getLinks() {
     if (this.state.thisPlace.attributes.properties["links"].length > 0) {
-      return this.state.thisPlace.attributes.properties["links"].map((link, i) => <a key={i} href={link} target="_blank">{link}</a>)
+      return this.state.thisPlace.attributes.properties["links"].map((link, i) => <a key={i} href={link} target="_blank" rel="noopener noreferrer" >{link}</a>)
     }
   }
 

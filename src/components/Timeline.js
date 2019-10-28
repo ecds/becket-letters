@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Container, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import TimelineYear from './TimelineYear';
 import DocumentMeta from 'react-document-meta';
 

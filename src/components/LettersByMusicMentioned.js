@@ -5,7 +5,8 @@ import axios from "axios";
 import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DocumentMeta from 'react-document-meta';
 
 class LettersByMusicMentioned extends Component {
   constructor(props, context) {
@@ -87,8 +88,15 @@ class LettersByMusicMentioned extends Component {
       </tr>
 
     );
+
+    const meta = {
+      title: 'Browse by Music',
+      description: `Browse all letters by music mentioned`,
+    };
+
     return (
       <Container fluid>
+        <DocumentMeta {...meta} />
         <BrowseLetters active="by-music" />
         <Row className="no-gutters pt-3">
           <Col md={11} className="no-gutters">

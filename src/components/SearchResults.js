@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 export class SearchResults extends Component {
 

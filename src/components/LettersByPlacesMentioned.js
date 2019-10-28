@@ -5,7 +5,8 @@ import axios from "axios";
 import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DocumentMeta from 'react-document-meta';
 
 class LettersByPlacesMentioned extends Component {
   constructor(props, context) {
@@ -87,8 +88,15 @@ class LettersByPlacesMentioned extends Component {
       </tr>
 
     );
+
+    const meta = {
+      title: 'Browse by Places',
+      description: `Browse all letters by places mentioned`,
+    };
+
     return (
       <Container fluid>
+        <DocumentMeta {...meta} />
         <BrowseLetters active="by-places" />
         <Row className="no-gutters pt-3">
           <Col md={11} className="no-gutters">

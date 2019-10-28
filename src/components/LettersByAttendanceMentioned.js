@@ -5,7 +5,8 @@ import axios from "axios";
 import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DocumentMeta from 'react-document-meta';
 
 class LettersByAttendanceMentioned extends Component {
   constructor(props, context) {
@@ -85,10 +86,16 @@ class LettersByAttendanceMentioned extends Component {
           </Link>
         </td>
       </tr>
-
     );
+
+    const meta = {
+      title: 'Browse Attendances',
+      description: `Browse all letters on this page`,
+    };
+
     return (
       <Container fluid>
+        <DocumentMeta {...meta} />
         <BrowseLetters active="by-attendance" />
         <Row className="no-gutters pt-3">
           <Col md={11} className="no-gutters">

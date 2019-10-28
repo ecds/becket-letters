@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
 import axios from 'axios';
-import LetterQuickGlance from './LetterQuickGlance';
-import AlternateSpellings from './utilities/AlternateSpellings';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+import DocumentMeta from 'react-document-meta';
 import MentionedLetters from './utilities/MentionedLettersTable';
+import React, { Component } from 'react';
+import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
+
+let striptags = require('striptags');
 
 class PublicationDetails extends Component {
 
@@ -28,7 +29,6 @@ class PublicationDetails extends Component {
       axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
-        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -49,8 +49,15 @@ class PublicationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedPlace = striptags(this.state.entityData.attributes.properties.place)
+      const meta = {
+        title: strippedTitle,
+        description: `View details for ${strippedTitle}; ${strippedPlace}`,
+      };
       return (
         <div className="details">
+        <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
