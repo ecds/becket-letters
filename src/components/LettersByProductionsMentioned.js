@@ -97,7 +97,7 @@ class LettersByProductionsMentioned extends Component {
     );
 
     const meta = {
-      title: 'Browse by Productions',
+      title: 'Browse by Production',
       description: `Browse all letters by productions mentioned`,
     };
 
