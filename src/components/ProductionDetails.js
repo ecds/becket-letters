@@ -6,7 +6,7 @@ import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 let striptags = require('striptags');
 
-class PublicationDetails extends Component {
+class ProductionDetails extends Component {
 
 
   constructor(props) {
@@ -106,4 +106,4 @@ class PublicationDetails extends Component {
   }
 }
 
-export default PublicationDetails;
+export default ProductionDetails;
