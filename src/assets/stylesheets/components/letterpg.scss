@@ -54,3 +54,16 @@
 #myUL li a:hover:not(.header) {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
+
+@media print {
+  .details * {
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+    & a {
+      text-decoration: none;
+    }
+  }
+  .details .panel {
+    border: none;
+  }
+}
