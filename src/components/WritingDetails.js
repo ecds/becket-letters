@@ -75,7 +75,7 @@ class WritingDetails extends Component {
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>

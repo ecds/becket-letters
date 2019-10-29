@@ -23,7 +23,7 @@ class RepositoryDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl +'/repositories/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/repositories/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         console.log(entityData)
@@ -53,7 +53,7 @@ class RepositoryDetails extends Component {
       return (
         <div className="details">
           <DocumentMeta {...meta} />
-          <h1 dangerouslySetInnerHTML={{__html: 'Repository Name: ' + this.state.entityData.attributes.label}}/>
+          <h1 dangerouslySetInnerHTML={{ __html: 'Repository Name: ' + this.state.entityData.attributes.label }} />
           <table className='table table-bordered'>
             <tr>
               <td>American</td>
@@ -64,21 +64,21 @@ class RepositoryDetails extends Component {
               <td>{this.state.entityData.attributes['letter-count']}</td>
             </tr>
           </table>
-          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient'/>
+          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
-          <thead>
-            <tr>
-              <th>Recipient(s)</th>
-              <th colSpan="2">Date</th>
-            </tr>
-          </thead>
-          {this.state.entityData.attributes['public-letters-hash'].map((letter, index) =>
-            <tr>
-              <td>{letter['recipients'].map((this_recipient) => <a href={'/people/'+this_recipient.id+'/'+this_recipient.name}>{this_recipient.name}</a>)}</td>
-              <td>{letter['date']}</td>
-              <td className="actions"><a href={'/letters/letterdetails/'+letter.id}>Explore Letter</a></td>
-            </tr>
-          )}
+            <thead>
+              <tr>
+                <th>Recipient</th>
+                <th colSpan="2">Date</th>
+              </tr>
+            </thead>
+            {this.state.entityData.attributes['public-letters-hash'].map((letter, index) =>
+              <tr>
+                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                <td>{letter['date']}</td>
+                <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
+              </tr>
+            )}
           </table>
         </div>
       )

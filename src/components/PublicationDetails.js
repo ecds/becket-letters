@@ -26,7 +26,7 @@ class PublicationDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         this.setState({ entityData });
@@ -57,7 +57,7 @@ class PublicationDetails extends Component {
       };
       return (
         <div className="details">
-        <DocumentMeta {...meta} />
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
@@ -76,11 +76,11 @@ class PublicationDetails extends Component {
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
           </table>
         </div >
