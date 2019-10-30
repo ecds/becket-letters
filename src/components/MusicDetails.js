@@ -63,15 +63,15 @@ class MusicDetails extends Component {
             <tbody>
               <tr>
                 <td>Composer</td>
-                <td>{this.state.entityData.attributes.properties.composer}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.composer : null}</td>
               </tr>
               <tr>
                 <td>Description</td>
-                <td>{this.state.entityData.attributes.properties.description}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.description : null}</td>
               </tr>
               <tr>
                 <td>Performed by</td>
-                <td>{this.state.entityData.attributes.properties['performed-by']}</td>
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['performed-by'] }} /> : <td></td> }
               </tr>
             </tbody>
           </table>
