@@ -15,28 +15,42 @@ table {
 }
 #browse-tabs {
   li {
-    padding: .5em .5em ;
-    border: solid 1px #EEE;
-
+    padding: 0.5em 0.5em;
+    border: solid 1px #eee;
   }
   .active {
-    border: solid 1px #CCC;
+    border: solid 1px #ccc;
     border-top: $primaryColor solid 3px;
     border-bottom: 1px white solid;
     background-color: white;
-    margin-bottom: -.05em;
+    margin-bottom: -0.05em;
   }
 }
 .dateAndCity {
   &:before {
-    content: ' (';
+    content: " (";
   }
   span:nth-child(2) {
     &:before {
-      content: '; '
+      content: "; ";
     }
   }
   &:after {
-    content: ')';
+    content: ")";
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  h1 {
+    font-size: 1.75em;
+  }
+  #browse-tabs {
+    display: none;
+  }
+  .pagination {
+    max-width: 100%;
+  }
+  .browse-by th, .browse-by td {
+    padding: 5px 10px;
   }
 }
