@@ -2,9 +2,9 @@
   font-family: $serifBody;
   padding: 2em;
   .spellings {
-    margin-bottom: .5em;
-    font-size: .75em;
-    margin-top: .5em;
+    margin-bottom: 0.5em;
+    font-size: 0.75em;
+    margin-top: 0.5em;
   }
   .profile-photo {
     float: right;
@@ -16,6 +16,13 @@
   }
   .description {
     font-size: 1em;
-    padding: .5em 0;
+    padding: 0.5em 0;
+  }
+}
+
+@media print {
+  .profile-details * {
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
   }
 }
