@@ -127,6 +127,10 @@ html {
     position: fixed;
     width: 100%;
     z-index: 1001;
+    
+  }
+  .navbar + div {
+    padding-top: 44px;
   }
   .navbar-toggler {
     font-size: .75rem;
