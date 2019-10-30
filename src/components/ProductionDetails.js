@@ -6,7 +6,7 @@ import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 let striptags = require('striptags');
 
-class PublicationDetails extends Component {
+class ProductionDetails extends Component {
 
 
   constructor(props) {
@@ -88,12 +88,12 @@ class PublicationDetails extends Component {
               </tr>
             </tbody>
           </table>
-          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
+          <h2>Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
@@ -106,4 +106,4 @@ class PublicationDetails extends Component {
   }
 }
 
-export default PublicationDetails;
+export default ProductionDetails;

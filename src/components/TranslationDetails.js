@@ -76,7 +76,7 @@ class TranslationDetails extends Component {
               </tr>
               <tr>
                 <td>Translated Title</td>
-                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['translated-title']}}></td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['translated-title'] }}></td>
               </tr>
               <tr>
                 <td>Translator</td>
@@ -84,12 +84,12 @@ class TranslationDetails extends Component {
               </tr>
             </tbody>
           </table>
-          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
+          <h2>Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
