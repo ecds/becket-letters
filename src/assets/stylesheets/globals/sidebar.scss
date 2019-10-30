@@ -6,11 +6,15 @@
       .dropdown-menu {
         background-color: rgb(0,39,135);
         a {
+          &:focus {
+            background-color: rgb(0,39,135);
+          }
           &:hover {
-            background-color: darken($emoryBlue, 10%)
+            background-color: darken($emoryBlue, 5%)
           }
           &:active {
-            background-color: darken($emoryBlue, 10%)
+            background-color: darken($white, 10%);
+            color: $emoryBlue !important;
           }
         }
       }
