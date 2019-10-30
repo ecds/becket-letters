@@ -62,11 +62,11 @@ class WorksOfArtDetails extends Component {
             <tbody>
               <tr>
                 <td>Artist</td>
-                <td>{this.state.entityData.attributes.properties.artist}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.artist : null}</td>
               </tr>
               <tr>
                 <td>Location</td>
-                <td>{this.state.entityData.attributes.properties.location}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.location : null}</td>
               </tr>
             </tbody>
           </table>
