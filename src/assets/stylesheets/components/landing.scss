@@ -33,4 +33,12 @@
       max-width: 66%;
     }
   }
+  .home-tiles{
+    & h2 {
+      font-size: 1.33em
+    }
+    & .card {
+      margin-bottom: 5px;
+    }
+  }
 }
