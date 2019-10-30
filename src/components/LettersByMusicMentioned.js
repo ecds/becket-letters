@@ -85,6 +85,7 @@ class LettersByMusicMentioned extends Component {
             <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
           </Link>
         </td>
+        <td><p>{entity.attributes.properties !== null ? entity.attributes.properties.composer : null}</p></td>
       </tr>
 
     );
@@ -125,6 +126,7 @@ class LettersByMusicMentioned extends Component {
           <thead>
             <tr>
               <th>Music Name</th>
+              <th>Composer</th>
             </tr>
           </thead>
           <tbody>

@@ -80,7 +80,6 @@ class WorksOfArtDetails extends Component {
               </tr>
             </thead>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
           </table>
         </div >
       )
