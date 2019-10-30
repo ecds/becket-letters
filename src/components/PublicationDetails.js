@@ -66,6 +66,10 @@ class PublicationDetails extends Component {
                 <td>{this.state.entityData.attributes.properties.author}</td>
               </tr>
               <tr>
+                <td>Translator</td>
+                <td>{this.state.entityData.attributes.properties.translator}</td>
+              </tr>
+              <tr>
                 <td>Place</td>
                 <td>{this.state.entityData.attributes.properties.place}</td>
               </tr>
