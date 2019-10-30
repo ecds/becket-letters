@@ -15,6 +15,8 @@ class Sidebar extends Component {
             <NavDropdown.Item href="/browse-letters-attendance">Letters by Attendance</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-music">Letters by Music</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-organizations">Letters by Organizations</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-people">Letters by People</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-places">Letters by Places</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-productions">Letters by Productions</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-public_events">Letters by Public Events</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-publications">Letters by Publications</NavDropdown.Item>
@@ -22,8 +24,6 @@ class Sidebar extends Component {
             <NavDropdown.Item href="/browse-letters-translations">Letters by Translations</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-works_of_art">Letters by Works of Art</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-writings">Letters by Writings</NavDropdown.Item>
-            <NavDropdown.Item href='/browse-letters-people'>Letters by People</NavDropdown.Item>
-            <NavDropdown.Item href='/browse-letters-places'>Letters by Places</NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Navbar>
