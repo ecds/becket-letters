@@ -27,7 +27,6 @@ class Sidebar extends Component {
           </NavDropdown>
         </Navbar.Collapse>
       </Navbar>
-
     )
   }
 }
