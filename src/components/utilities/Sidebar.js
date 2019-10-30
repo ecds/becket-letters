@@ -7,7 +7,7 @@ class Sidebar extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Samuel Beckett Letters</Navbar.Brand>
+        <Navbar.Brand href="/">Samuel Beckett Letters</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link href="/">Home</Nav.Link>
