@@ -26,7 +26,7 @@ class PublicEventDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl+'/entities/'+this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
         console.log(entityData)
@@ -58,7 +58,7 @@ class PublicEventDetails extends Component {
       };
       return (
         <div className="details">
-        <DocumentMeta {...meta} />
+          <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody>
@@ -68,16 +68,16 @@ class PublicEventDetails extends Component {
               </tr>
             </tbody>
           </table>
-          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
+          <h2>Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
-          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
           </table>
         </div >

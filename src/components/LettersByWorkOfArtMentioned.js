@@ -78,6 +78,7 @@ class LettersByWorkOfArtMentioned extends Component {
 
 
   render() {
+
     var EntityList = this.state.data.map((entity) =>
       <tr key={entity.id}>
         <td>
@@ -85,8 +86,10 @@ class LettersByWorkOfArtMentioned extends Component {
             <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
           </Link>
         </td>
+        <td>
+          <p>{entity.attributes.properties !== null ? entity.attributes.properties.artist : null}</p>
+        </td>
       </tr>
-
     );
 
     const meta = {
@@ -125,6 +128,7 @@ class LettersByWorkOfArtMentioned extends Component {
           <thead>
             <tr>
               <th>Work of Art Name</th>
+              <th>Artist</th>
             </tr>
           </thead>
           <tbody>
@@ -133,7 +137,7 @@ class LettersByWorkOfArtMentioned extends Component {
           </tbody>
         </Table>
         {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
-      </Container>
+      </Container >
     )
   }
 }

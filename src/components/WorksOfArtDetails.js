@@ -62,25 +62,24 @@ class WorksOfArtDetails extends Component {
             <tbody>
               <tr>
                 <td>Artist</td>
-                <td>{this.state.entityData.attributes.properties.artist}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.artist : null}</td>
               </tr>
               <tr>
                 <td>Location</td>
-                <td>{this.state.entityData.attributes.properties.location}</td>
+                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.location : null}</td>
               </tr>
             </tbody>
           </table>
-          <h2>Letters <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> is Mentioned In:</h2>
+          <h2>Mentioned In:</h2>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
             <thead>
               <tr>
-                <th>Recipient(s)</th>
+                <th>Recipient</th>
                 <th colSpan="2">Date</th>
               </tr>
             </thead>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
           </table>
         </div >
       )
