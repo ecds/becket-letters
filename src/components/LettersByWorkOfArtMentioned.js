@@ -87,7 +87,7 @@ class LettersByWorkOfArtMentioned extends Component {
           </Link>
         </td>
         <td>
-          {entity.attributes.properties !== null ? entity.attributes.properties.artist : null}
+          <p>{entity.attributes.properties !== null ? entity.attributes.properties.artist : null}</p>
         </td>
       </tr>
     );
