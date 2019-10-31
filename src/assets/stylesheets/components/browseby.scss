@@ -1,3 +1,28 @@
+.pagination-toggle {
+  margin-bottom: 1rem;
+}
+
+.show .pagination-toggle {
+  background-color: #580000  !important;
+}
+
+.pagination-dropdown {
+  width: 40px !important;
+  min-width: 55px !important;
+  padding: 8px 0px;
+}
+
+.pagination-link {
+  font-size: .9em;
+  width: 100%;
+  padding: 2px 15px;
+  margin: 0px;
+  &:active {
+    color: $white;
+    background-color: $red; 
+  }
+}
+
 table {
   &.browse-by {
     th:first-child {

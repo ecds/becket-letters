@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Dropdown } from 'react-bootstrap';
 
 class Pagination extends Component {
   constructor(props, context) {
-      super(props, context);
-      this.state = {
-          page: '1'
-      };
+    super(props, context);
+    this.state = {
+      page: '1'
+    };
   }
 
   componentDidMount() {
@@ -18,25 +19,32 @@ class Pagination extends Component {
   }
 
   createPagination = () => {
-      let table = []
-      if (this.props.pagination['total-pages'] > 1) {
-        for (let i = 0; i < this.props.pagination['total-pages']; i++) {
-          table.push(<li key={i} className="page-item pagination-btn"><button onClick={this.changePageNumber} id={i+1} className='page-link' alt={"Page"+i+1}>{i+1}</button></li>)
-        }
-        return table
+    let pageBtns = []
+    if (this.props.pagination['total-pages'] > 1) {
+      for (let i = 0; i < this.props.pagination['total-pages']; i++) {
+        pageBtns.push(<Dropdown.Item key={i} className="page-item pagination-link" onClick={this.changePageNumber} id={i + 1} alt={"Page" + i + 1}>{i + 1}</Dropdown.Item>)
       }
+      return ([
+        <Dropdown>
+          <Dropdown.Toggle className='pagination-toggle'>
+            Pages
+        </Dropdown.Toggle>
+          <Dropdown.Menu className='pagination-dropdown'>
+            {pageBtns}
+          </Dropdown.Menu>
+        </Dropdown>
+      ])
     }
+  }
 
 
   render() {
-      return (
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            {this.createPagination()}
-          </ul>
-        </nav>
-      )
-    }
+    return (
+      <nav aria-label="Page navigation example">
+        {this.createPagination()}
+      </nav >
+    )
   }
+}
 
 export default Pagination;
