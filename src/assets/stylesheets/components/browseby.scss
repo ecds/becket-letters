@@ -1,5 +1,6 @@
 .pagination-toggle {
   margin-bottom: 1rem;
+  float: right;
 }
 
 .show .pagination-toggle {
@@ -10,6 +11,8 @@
   width: 40px !important;
   min-width: 55px !important;
   padding: 8px 0px;
+  box-shadow: 1px 2px 10px -5px $emoryBlack;
+  z-index: 9;
 }
 
 .pagination-link {
@@ -71,9 +74,6 @@ table {
   }
   #browse-tabs {
     display: none;
-  }
-  .pagination {
-    max-width: 100%;
   }
   .browse-by th, .browse-by td {
     padding: 5px 10px;
