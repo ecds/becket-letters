@@ -26,6 +26,17 @@
   }
 }
 
+.paginate-btn {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 84px;
+  text-align: center;
+}
+
+.paginate-prev {
+  margin-right: 4px;
+}
+
 table {
   &.browse-by {
     th:first-child {
@@ -77,5 +88,11 @@ table {
   }
   .browse-by th, .browse-by td {
     padding: 5px 10px;
+  }
+  .paginate-btn {
+    width: 66px;
+  }
+  .paginate-btn, .pagination-toggle {
+    font-size: .75em;
   }
 }

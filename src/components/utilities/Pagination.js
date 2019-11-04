@@ -21,22 +21,23 @@ class Pagination extends Component {
     })
   }
 
-  createPrevBtn = (e) => {
-    var page = this.state.page
+  createPrevBtn = () => {
+    var page = parseInt(this.state.page)
     if (page === 1) {
       return null
     }
     else {
-      return <Button onClick={this.changePageNumber} id={this.state.page-1}>Previous</Button>
+      return <Button onClick={this.changePageNumber} id={page-1} className='paginate-prev paginate-btn'>Previous</Button>
     }
   }
 
-  createNextBtn = (e) => {
-    if (this.state.page === this.props.pagination['total-pages']) {
+  createNextBtn = () => {
+    var page = parseInt(this.state.page)
+    if (page === this.props.pagination['total-pages']) {
       return null
     }
     else {
-      return <Button onClick={this.changePageNumber} id={this.state.page+1}>Next</Button>
+      return <Button onClick={this.changePageNumber} id={page+1} className='paginate-btn'>Next</Button>
     }
   }
 
