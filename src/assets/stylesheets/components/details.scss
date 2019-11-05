@@ -13,9 +13,14 @@
 }
 
 .details-table tr {
-  background-color: #f8f8f8;
+  background-color: white;
   border: 1px solid #ddd;
   padding: 0.35em;
+  
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #eeeeee;
 }
 
 .details-table th,
@@ -30,6 +35,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .mentioned-letters-head {
+    visibility: hidden;
+  }
   .details-table {
     border: 0;
     &thead {
@@ -43,6 +51,8 @@
       width: 1px;
     }
     &.details-table tr {
+      
+      background-color: #eeeeee;
       border-bottom: 3px solid #ddd;
       display: block;
       margin-bottom: 0.625em;

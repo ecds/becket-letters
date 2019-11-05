@@ -4,13 +4,13 @@
   margin: 0px auto;
   .year-container {
     .year-title {
-        font-size: 4em;
-        font-family: $serifHeader;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-        background-color: $white;
-        z-index: 2
+      font-size: 4em;
+      font-family: $serifHeader;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      background-color: $white;
+      z-index: 2;
     }
   }
 }
@@ -30,9 +30,9 @@
   p {
     color: $emoryBlack;
     margin-bottom: 0px;
-  };
+  }
   h4 {
-    padding: 5px
+    padding: 5px;
   }
   p {
     padding: 10px 10px 10px 10px;
@@ -42,7 +42,7 @@
 .global {
   border: 2px solid $yellow;
   & h4 {
-    background: $yellow
+    background: $yellow;
   }
   //   dot
   &:before {
@@ -75,7 +75,7 @@
 
 .personal {
   border: 2px solid $midBlue;
-  & h4{
+  & h4 {
     background-color: $midBlue;
     color: $white;
   }
@@ -110,21 +110,24 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .leftEvent {
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      height: 100%;
-      left: -2px;
-      border-left: 3px solid $darkGray;
-      border-right: none;
-    }
+  .left-event:before {
+    border-right: none;
   }
   .personal {
-    //   dot
+    text-align: left;
     &:before {
       content: "⬤";
+      left: -9px;
+      color: $midBlue;
+      display: block;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      z-index: 9;
+    }
+    &:after {
+      content: "";
       font-size: 14px;
       left: -9px;
       color: $midBlue;
@@ -136,6 +139,11 @@
       -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
+      position: absolute;
+      height: 100%;
+      left: -2px;
+      border-left: 3px solid $darkGray;
+      border-right: none;
     }
   }
 }

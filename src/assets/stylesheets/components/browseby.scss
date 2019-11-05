@@ -80,6 +80,15 @@ table {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .details {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  .place-details, .h-100 {
+    padding-left: 0px  !important;
+    padding-right: 0px  !important;
+    margin: 0px !important;
+  }
   h1 {
     font-size: 1.75em;
   }
@@ -95,7 +104,7 @@ table {
   .paginate-btn, .pagination-toggle {
     font-size: .75em;
   }
-  .map {
+  .sidebar-outer {
     display: none;
   }
 }

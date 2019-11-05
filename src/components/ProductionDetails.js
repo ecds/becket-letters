@@ -61,7 +61,7 @@ class ProductionDetails extends Component {
           <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>City</td>
                 <td>{this.state.entityData.attributes.properties.city}</td>
