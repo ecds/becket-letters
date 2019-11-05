@@ -23,7 +23,7 @@ class BrowseLetters extends Component {
         <h1>Browse Letters by Entities Mentioned</h1>
         <ul className="nav nav-tabs" id="browse-tabs">
           <li className={this.setActive('by-attendance')}><Link to="/browse-letters-attendance">Attendance</Link></li>
-          <li className={this.setActive('by-music')}><Link to="/browse-letters/-music">Music</Link></li>
+          <li className={this.setActive('by-music')}><Link to="/browse-letters-music">Music</Link></li>
           <li className={this.setActive('by-organization')}><Link to="/browse-letters-organizations">Organizations</Link></li>
           <li className={this.setActive('by-people')}><Link to="/browse-letters-people">People</Link></li>
           <li className={this.setActive('by-places')}><Link to="/browse-letters-places">Places</Link></li>
