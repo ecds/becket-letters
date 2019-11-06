@@ -17,3 +17,28 @@
     color: white;
   }
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .jumbotron {
+    padding: 0px 0px 10px 0px;
+    height: auto;
+  }
+  .home-main {
+    & h1 {
+      font-size: 3em;
+      max-width: 100%;
+    }
+    & p {
+      font-size: 1.2em;
+      max-width: 66%;
+    }
+  }
+  .home-tiles{
+    & h2 {
+      font-size: 1.33em
+    }
+    & .card {
+      margin-bottom: 5px;
+    }
+  }
+}

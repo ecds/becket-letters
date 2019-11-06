@@ -60,7 +60,7 @@ class MusicDetails extends Component {
           <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>Composer</td>
                 <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.composer : null}</td>

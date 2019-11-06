@@ -139,7 +139,6 @@ class LettersByProductionsMentioned extends Component {
 
           </tbody>
         </Table>
-        {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
       </Container>
     )
   }
