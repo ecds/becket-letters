@@ -78,7 +78,7 @@ class ProfileLite extends Component {
           </div>
 
           <div className="description">
-            {this.state.personData.attributes.properties.media ? this.state.personData.attributes.properties.media.images.map((image, index) =>
+            {this.state.personData.attributes.properties && this.state.personData.attributes.properties.media.images && this.state.personData.attributes.properties.media ? this.state.personData.attributes.properties.media.images.map((image, index) =>
               <img src={image.link} alt={'photo of ' + this.state.personData.attributes.label} className="profile-photo"/>
             ) : null}
             {this.state.personData.attributes.properties ? <div dangerouslySetInnerHTML={{__html: this.state.personData.attributes.properties['profile']}} /> : null}
