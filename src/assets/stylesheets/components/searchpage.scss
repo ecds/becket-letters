@@ -30,3 +30,21 @@
 .page-link {
   color: $red;
 }
+
+@media screen and (max-width: 600px) {
+  .search-row {
+    & h2 {
+      font-size: 1.2em;
+    }
+    & select {
+      width: 160px;
+      margin-top: -8px;
+      font-size: 1.2em;
+      border: 1px solid $darkGray;
+    }
+    & form input {
+      width: 240px;
+      border: 1px solid $lightGray;
+    }
+  }
+}

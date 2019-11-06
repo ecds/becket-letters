@@ -35,8 +35,11 @@
 }
 
 @media screen and (max-width: 600px) {
-  .mentioned-letters-head {
-    visibility: hidden;
+  #repositoryLetters{
+    & th, td {
+      padding: 5px;
+      font-size: .9em;
+    }
   }
   .details-table {
     border: 0;

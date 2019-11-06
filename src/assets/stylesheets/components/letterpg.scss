@@ -55,6 +55,14 @@
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
+@media screen and (max-width: 600px) {
+  .details .panel {
+    border:none;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @media print {
   .details * {
     font-family: 'Times New Roman', Times, serif;
