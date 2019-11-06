@@ -66,6 +66,10 @@ class MusicDetails extends Component {
                 <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.composer : null}</td>
               </tr>
               <tr>
+                <td>Alternative Title</td>
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['alternative-titles'] }} /> : <td></td> }
+              </tr>
+              <tr>
                 <td>Description</td>
                 <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.description : null}</td>
               </tr>

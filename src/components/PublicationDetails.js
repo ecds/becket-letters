@@ -71,7 +71,7 @@ class PublicationDetails extends Component {
               </tr>
               <tr>
                 <td>Place</td>
-                <td>{this.state.entityData.attributes.properties.place}</td>
+                <td>{this.state.entityData.attributes.properties['publication-information']}</td>
               </tr>
             </tbody>
           </table>

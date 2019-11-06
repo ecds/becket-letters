@@ -51,10 +51,9 @@ class OrganizationDetails extends Component {
       // return now that component has value
     } else {
       let strippedTitle = striptags(this.state.entityData.attributes.label)
-      let strippedDesc = striptags(this.state.entityData.attributes.properties.description)
       const meta = {
         title: strippedTitle,
-        description: `View details for ${strippedTitle}; ${strippedDesc}`,
+        description: `View details for ${strippedTitle}; ${this.state.entityData.attributes.properties !== null ? striptags(this.state.entityData.attributes.properties.description) : 'no description provided'}`,
       };
       return (
         <div className="details">
@@ -64,7 +63,7 @@ class OrganizationDetails extends Component {
             <tbody>
               <tr>
                 <td>Description</td>
-                <td>{this.state.entityData.attributes.properties.description}</td>
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : <td></td> }
               </tr>
             </tbody>
           </table>

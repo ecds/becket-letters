@@ -70,6 +70,10 @@ class AttendanceDetails extends Component {
                 <td>Performed By</td>
                 <td>{this.state.entityData.attributes.properties['performed-by']}</td>
               </tr>
+              <tr>
+                <td>Attended With</td>
+                <td>{this.state.entityData.attributes.properties['attended-with']}</td>
+              </tr>
             </tbody>
           </table>
           <h2>Mentioned In:</h2>
