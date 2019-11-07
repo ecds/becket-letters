@@ -39,6 +39,12 @@
   }
 }
 
+// images
+.timeline-event-image {
+  max-height: 280px;
+  margin: 10px;
+}
+
 .global {
   border: 2px solid $yellow;
   & h4 {
