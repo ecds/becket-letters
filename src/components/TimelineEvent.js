@@ -16,6 +16,7 @@ class TimelineEvent extends Component {
           <div className={this.props.event.type}>
             <h4>{this.props.event.date}</h4>
             <p>{this.props.event.event}</p>
+            {this.props.event.additional && this.props.event.additional.startsWith('http') ? <img className='timeline-event-image' src={this.props.event.additional} alt='timeline event' /> : null}
           </div>
         </Col>
       </Row>
