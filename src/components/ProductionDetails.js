@@ -29,7 +29,6 @@ class ProductionDetails extends Component {
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
-        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -50,7 +49,13 @@ class ProductionDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       let strippedDate = striptags(this.state.entityData.attributes.properties.date)
       const meta = {
         title: strippedTitle,
@@ -59,7 +64,7 @@ class ProductionDetails extends Component {
       return (
         <div className="details">
           <DocumentMeta {...meta} />
-          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
@@ -72,19 +77,28 @@ class ProductionDetails extends Component {
               </tr>
               <tr>
                 <td>Director</td>
-                <td>{this.state.entityData.attributes.properties.director}</td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.director }} />
+              </tr>
+              <tr>
+                <td>Cast</td>
+                <td>{this.state.entityData.attributes.properties.cast}</td>
               </tr>
               <tr>
                 <td>Proposal</td>
                 <td>{this.state.entityData.attributes.properties.proposal}</td>
               </tr>
               <tr>
-                <td>Reason / Response</td>
-                <td>{this.state.entityData.attributes.properties.reason} / {this.state.entityData.attributes.properties.response}</td>
+                <td>Response / Reason</td>
+                <td className="reasonResponse">{this.state.entityData.attributes.properties.response ? <span>{this.state.entityData.attributes.properties.response}</span> : null} {this.state.entityData.attributes.properties.reason ? <span>{this.state.entityData.attributes.properties.reason}</span> : null} </td>
               </tr>
               <tr>
                 <td>Theatre</td>
                 <td>{this.state.entityData.attributes.properties.theatre}</td>
+              </tr>
+
+              <tr>
+                <td>Notes</td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.notes }} />
               </tr>
             </tbody>
           </table>

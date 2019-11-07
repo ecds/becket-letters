@@ -7,7 +7,7 @@ class MentionedLetters extends Component {
             return (
                 <tbody>
                     <tr>
-                        <td>No letters!</td>
+                        <td>No Letters</td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -17,8 +17,8 @@ class MentionedLetters extends Component {
             return (
                 <tbody>
                     {this.props.letters.map((letter) =>
-                        <tr>
-                            <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                        <tr key={letter.id}>
+                            <td>{letter['recipients'].map((this_recipient) => <a key={this_recipient.id} href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
                             <td>{letter.date}</td>
                             <td className="actions"><Link to={'/letters/letterdetails/' + letter.id}>View Letter Details</Link></td>
                         </tr>

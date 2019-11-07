@@ -82,7 +82,7 @@ class LettersByProductionsMentioned extends Component {
       <tr key={entity.id}>
         <td>
           <Link to={{ pathname: `/productions/${entity.id}`, state: { id: entity.id } }}>
-            <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
             {(entity.attributes.properties.city || entity.attributes.properties.date) ?
               <span className="dateAndCity">
                 {entity.attributes.properties.city ? <span>{entity.attributes.properties.city}</span> : null}

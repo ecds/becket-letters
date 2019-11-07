@@ -47,7 +47,13 @@ class AttendanceDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       const meta = {
         title: strippedTitle,
         description: `View details for Beckett's attendance of ${this.state.entityData.attributes.label}`,
@@ -68,11 +74,11 @@ class AttendanceDetails extends Component {
               </tr>
               <tr>
                 <td>Performed By</td>
-                <td>{this.state.entityData.attributes.properties['performed-by']}</td>
+                <td><ul className="noBullets">{this.state.entityData.attributes.properties['performed-by'].map((entity, key) => <li key={key}>{entity}</li>)}</ul></td>
               </tr>
               <tr>
                 <td>Attended With</td>
-                <td>{this.state.entityData.attributes.properties['attended-with']}</td>
+                <td>{this.state.entityData.attributes.properties['attended-with'] }</td>
               </tr>
             </tbody>
           </table>

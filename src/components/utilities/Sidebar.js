@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 
@@ -12,18 +12,19 @@ class Sidebar extends Component {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link href="/">Home</Nav.Link>
           <NavDropdown title="Browse Letters By" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/browse-letters-attendance">Letters by Attendance</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-music">Letters by Music</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-organizations">Letters by Organizations</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-people">Letters by People</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-places">Letters by Places</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-productions">Letters by Productions</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-public_events">Letters by Public Events</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-publications">Letters by Publications</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-readings">Letters by Reading</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-translations">Letters by Translations</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-works_of_art">Letters by Works of Art</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-writings">Letters by Writings</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-attendance">Attendance</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-music">Music</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-organizations">Organizations</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-people">People</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-places">Places</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-productions">Productions</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-public_events">Public Events</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-publications">Publications</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-readings">Reading</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-repositories">Repository</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-translations">Translations</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-works_of_art">Works of Art</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-writings">Writings</NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Navbar>

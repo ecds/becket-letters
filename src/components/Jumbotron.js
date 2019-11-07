@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Jumbotron } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 class HomeJumbotron extends Component {
     render() {

@@ -3,6 +3,10 @@ import axios from 'axios';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import DocumentMeta from 'react-document-meta';
 
+
+let striptags = require('striptags');
+
+
 class RepositoryDetails extends Component {
 
 
@@ -46,15 +50,23 @@ class RepositoryDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       const meta = {
-        title: 'Beckett Timeline',
-        description: `This page displays a timeline of events in Beckett's personal life and events he mentioned in his letters.`,
+        title: strippedTitle,
+        description: `View details for ${strippedTitle}`,
       };
       return (
         <div className="details">
           <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: 'Repository Name: ' + this.state.entityData.attributes.label }} />
-          <table className='table table-bordered'>
+          <table className='table table-striped'>
+            <tbody className='details-table'>
             <tr>
               <td>American</td>
               <td>{this.state.entityData.attributes.american ? 'Yes' : 'No'}</td>
@@ -63,6 +75,7 @@ class RepositoryDetails extends Component {
               <td>Letter Count</td>
               <td>{this.state.entityData.attributes['letter-count']}</td>
             </tr>
+            </tbody>
           </table>
           <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
           <table className='table table-bordered' id='repositoryLetters'>
@@ -79,6 +92,7 @@ class RepositoryDetails extends Component {
                 <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
               </tr>
             )}
+            {this.state.entityData.attributes['public-letters-hash'].length === 0 ? <tr><td colspan='2'>No Letters</td></tr>:null}
           </table>
         </div>
       )

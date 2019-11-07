@@ -31,8 +31,8 @@ class SearchRecipientOnPage extends Component {
   render() {
       return (
         <div className="table-search">
-          <label for={this.props.tableId+'_input'} >Search Letters by Recipient:</label>
-          <input type="text" id={this.props.tableId+'_input'} onKeyUp={this.filterLettersList} placeholder={"Search "+this.props.placeHolder+'...'} className="form-control" controlId='12345'/>
+          <label htmlFor={this.props.tableId+'_input'} >Search Letters by Recipient:</label>
+          <input type="text" id={this.props.tableId+'_input'} onKeyUp={this.filterLettersList} placeholder={"Search "+this.props.placeHolder+'...'} className="form-control"/>
         </div>
       )
     }

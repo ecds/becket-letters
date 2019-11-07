@@ -8,7 +8,6 @@ let striptags = require('striptags');
 
 class OrganizationDetails extends Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +49,13 @@ class OrganizationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       const meta = {
         title: strippedTitle,
         description: `View details for ${strippedTitle}; ${this.state.entityData.attributes.properties !== null ? striptags(this.state.entityData.attributes.properties.description) : 'no description provided'}`,
@@ -60,7 +65,7 @@ class OrganizationDetails extends Component {
           <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>Description</td>
                 {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : <td></td> }

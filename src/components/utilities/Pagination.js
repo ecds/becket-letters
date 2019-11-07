@@ -48,7 +48,7 @@ class Pagination extends Component {
         pageBtns.push(<Dropdown.Item key={i} className="page-item pagination-link" onClick={this.changePageNumber} id={i + 1} alt={"Page" + i + 1}>{i + 1}</Dropdown.Item>)
       }
       return ([
-        <div>
+        <div key="pagination-row">
           <Dropdown>
             <Dropdown.Toggle className='pagination-toggle'>
               Page {this.state.page} of {this.props.pagination['total-pages']}
@@ -67,7 +67,7 @@ class Pagination extends Component {
 
   render() {
     return (
-      <nav aria-label="Page navigation example">
+      <nav aria-label="pagination">
         {this.createPagination()}
       </nav >
     )

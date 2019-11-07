@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DocumentMeta from 'react-document-meta';
 
-class LettersByWritingsMentioned extends Component {
+class LettersByRepository extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -52,7 +50,7 @@ class LettersByWritingsMentioned extends Component {
   searchData = (searchTerms) => {
     this.setState({ isSearching: true })
     axios.all([
-      axios.get(this.props.apiUrl + '/search-entities?query=' + searchTerms + '&type=writing')])
+      axios.get(this.props.apiUrl + '/search-entities?query=' + searchTerms + '&type=reading')])
       .then(axios.spread((getAllData) => {
         const data = getAllData.data.data;
         const pagination = getAllData.data.meta.pagination;
@@ -65,11 +63,11 @@ class LettersByWritingsMentioned extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl + '/entities?entity_type=writing&items=50&page=' + this.state.page)])
+      axios.get(this.props.apiUrl + '/repositories')])
       .then(axios.spread((getAllData) => {
         const data = getAllData.data.data;
-        const pagination = getAllData.data.meta.pagination;
-        this.setState({ pagination, data, isLoaded: true });
+        console.log(data)
+        this.setState({ data, isLoaded: true });
       }))
       .catch((err) => {
         this.setState({ isLoaded: false, error: err.message });
@@ -81,7 +79,7 @@ class LettersByWritingsMentioned extends Component {
     var EntityList = this.state.data.map((entity) =>
       <tr key={entity.id}>
         <td>
-          <Link to={{ pathname: `/writings/${entity.id}`, state: { id: entity.id } }}>
+          <Link to={{ pathname: `/repositories/${entity.id}`, state: { id: entity.id } }}>
             {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
           </Link>
         </td>
@@ -90,41 +88,18 @@ class LettersByWritingsMentioned extends Component {
     );
 
     const meta = {
-      title: 'Browse by Writing',
-      description: `Browse all letters by writing mentioned`,
+      title: 'Browse by Repository',
+      description: `Browse all letters by reading mentioned`,
     };
 
     return (
       <Container fluid>
         <DocumentMeta {...meta} />
-        <BrowseLetters active="by-writing" />
-        <Row className="no-gutters pt-3">
-          <Col md={11} className="no-gutters">
-            <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
-              <Form.Group>
-                <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                    <Button aria-label='submit button' variant="primary" type="submit">
-                      <FontAwesomeIcon icon="search" />
-                    </Button>
-                  </div>
-                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
-                </div>
-              </Form.Group>
-            </Form>
-          </Col>
-          <Col md={1} className="no-gutters">
-            {this.state.isSearching ?
-              <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
-              : null
-            }
-          </Col>
-        </Row>
-        {this.state.isLoaded ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
+        <BrowseLetters active="by-repository" />
         <Table striped bordered className="browse-by">
           <thead>
             <tr>
-              <th>Writing Name</th>
+              <th>Repository Name</th>
             </tr>
           </thead>
           <tbody>
@@ -137,4 +112,4 @@ class LettersByWritingsMentioned extends Component {
   }
 }
 
-export default LettersByWritingsMentioned;
+export default LettersByRepository;

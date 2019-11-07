@@ -83,7 +83,8 @@ class LettersByWorkOfArtMentioned extends Component {
       <tr key={entity.id}>
         <td>
           <Link to={{ pathname: `/works-of-art/${entity.id}`, state: { id: entity.id } }}>
-            <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+
           </Link>
         </td>
         <td>

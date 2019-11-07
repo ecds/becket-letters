@@ -49,7 +49,13 @@ class TranslationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       let strippedIntoLang = striptags(this.state.entityData.attributes.properties['translated-into'])
       let strippedTranslator = striptags(this.state.entityData.attributes.properties.translator)
       const meta = {
@@ -59,9 +65,9 @@ class TranslationDetails extends Component {
       return (
         <div className="details">
           <DocumentMeta {...meta} />
-          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />:<h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>Author</td>
                 <td>{this.state.entityData.attributes.properties.author}</td>

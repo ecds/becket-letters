@@ -50,7 +50,13 @@ class MusicDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       const meta = {
         title: strippedTitle,
         description: `View details for ${strippedTitle}`,
@@ -71,7 +77,7 @@ class MusicDetails extends Component {
               </tr>
               <tr>
                 <td>Description</td>
-                <td>{this.state.entityData.attributes.properties !== null ? this.state.entityData.attributes.properties.description : null}</td>
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['description'] }} /> : <td></td>}
               </tr>
               <tr>
                 <td>Performed by</td>

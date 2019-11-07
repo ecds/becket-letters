@@ -49,7 +49,13 @@ class WritingDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       const meta = {
         title: strippedTitle,
         description: `View details for ${strippedTitle}`,
@@ -57,16 +63,16 @@ class WritingDetails extends Component {
       return (
         <div className="details">
           <DocumentMeta {...meta} />
-          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>Date</td>
-                <td>{this.state.entityData.attributes.properties.date}</td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.date }}/>
               </tr>
               <tr>
                 <td>Proposal</td>
-                <td>{this.state.entityData.attributes.properties.proposal}</td>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.proposal }}/>
               </tr>
             </tbody>
           </table>

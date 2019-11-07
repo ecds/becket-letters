@@ -23,13 +23,11 @@ class PublicEventDetails extends Component {
     this.getData()
   }
 
-
   getData = () => {
     axios.all([
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
-        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -50,7 +48,13 @@ class PublicEventDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle = striptags(this.state.entityData.attributes.label)
+      let strippedTitle
+      if (this.state.entityData.attributes.label) {
+        strippedTitle = striptags(this.state.entityData.attributes.label)
+      }
+      else {
+        strippedTitle = this.state.entityData.id
+      }
       let strippedDate = striptags(this.state.entityData.attributes.properties.date)
       const meta = {
         title: strippedTitle,
@@ -61,7 +65,7 @@ class PublicEventDetails extends Component {
           <DocumentMeta {...meta} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
-            <tbody>
+            <tbody className='details-table'>
               <tr>
                 <td>Date</td>
                 <td>{this.state.entityData.attributes.properties.date}</td>

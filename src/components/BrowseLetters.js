@@ -31,6 +31,7 @@ class BrowseLetters extends Component {
           <li className={this.setActive('by-public-events')}><Link to="/browse-letters-public_events">Public Events</Link></li>
           <li className={this.setActive('by-publication')}><Link to="/browse-letters-publications">Publications</Link></li>
           <li className={this.setActive('by-reading')}><Link to="/browse-letters-readings">Readings</Link></li>
+          <li className={this.setActive('by-repository')}><Link to="/browse-letters-repositories">Repository</Link></li>
           <li className={this.setActive('by-translations')}><Link to="/browse-letters-translations">Translations</Link></li>
           <li className={this.setActive('by-works-of-art')}><Link to="/browse-letters-works_of_art">Works of Art</Link></li>
           <li className={this.setActive('by-writing')}><Link to="/browse-letters-writings">Writings</Link></li>

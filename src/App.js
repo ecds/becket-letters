@@ -25,7 +25,7 @@ import MusicDetails from './components/MusicDetails';
 import People from './components/people';
 import Places from './components/Places';
 import Place from './components/Place';
-import Profile from './components/Profile';
+import PersonDetails from './components/PersonDetails';
 import Timeline from './components/Timeline';
 import SearchResults from './components/SearchResults';
 import SearchLetters from './components/SearchLetters';
@@ -39,6 +39,7 @@ import RepositoryDetails from './components/RepositoryDetails';
 import TranslationDetails from './components/TranslationDetails';
 import WorksOfArtDetails from './components/WorksOfArtDetails';
 import WritingDetails from './components/WritingDetails';
+import LettersByRepository from './components/LettersByRepository';
 
 
 
@@ -73,7 +74,7 @@ class App extends Component {
       '/organizations/:id': ':id',
       '/attendance/:id': ':id'
     };
-    
+
     return (
       <Router buildname="build">
         <Container fluid className="p-0">
@@ -104,7 +105,8 @@ class App extends Component {
             <Route exact path='/translations/:id' render={(props) => <TranslationDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/timeline' component={Timeline} />
             <Route exact path="/people" component={People} />
-            <Route exact path="/people/:id" render={(props) => <Profile apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path="/people/:id" render={(props) => <PersonDetails apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path="/browse-letters-repositories" render={(props) => <LettersByRepository apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path="/browse-letters" component={BrowseLetters} />
             <Route exact path="/letters" component={Letters} />
             <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} />} />

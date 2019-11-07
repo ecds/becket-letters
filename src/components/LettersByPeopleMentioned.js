@@ -55,6 +55,7 @@ class LettersByPeopleMentioned extends Component {
       axios.get(this.props.apiUrl + '/search-entities?query=' + searchTerms + '&type=person')])
       .then(axios.spread((getAllData) => {
         const data = getAllData.data.data;
+
         const pagination = getAllData.data.meta.pagination;
         this.setState({ pagination, data, isLoaded: true });
       }))
@@ -68,6 +69,7 @@ class LettersByPeopleMentioned extends Component {
       axios.get(this.props.apiUrl + '/entities?entity_type=person&items=200&page=' + this.state.page)])
       .then(axios.spread((getAllData) => {
         const data = getAllData.data.data;
+        console.log(data)
         const pagination = getAllData.data.meta.pagination;
         this.setState({ pagination, data, isLoaded: true });
       }))
@@ -82,8 +84,9 @@ class LettersByPeopleMentioned extends Component {
       <tr key={entity.id}>
         <td>
           <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id, name: entity.attributes.label } }}>
-            <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-            {entity.attributes.properties ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
+            {entity.attributes.label !== " " ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+
+            {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
           </Link>
         </td>
       </tr>
