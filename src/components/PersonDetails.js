@@ -131,18 +131,7 @@ class PersonDetails extends Component {
           </table>
           <div className="panel">
           <h2>Mentioned in:</h2>
-          <SearchRecipientOnPage tableId='lettersList' placeHolder='for recipient'/>
-
-          <table id="lettersList" className="table table-bordered">
-          <thead>
-            <tr>
-              <th>Recipient</th>
-              <th colSpan="2">Date</th>
-            </tr>
-          </thead>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
-        </table>
         </div>
 
         </div>

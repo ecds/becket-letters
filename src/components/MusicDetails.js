@@ -73,7 +73,7 @@ class MusicDetails extends Component {
               </tr>
               <tr>
                 <td>Alternative Title</td>
-                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['alternative-titles'] }} /> : <td></td> }
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['alternative-titles'] }} /> : <td></td>}
               </tr>
               <tr>
                 <td>Description</td>
@@ -81,22 +81,13 @@ class MusicDetails extends Component {
               </tr>
               <tr>
                 <td>Performed by</td>
-                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['performed-by'] }} /> : <td></td> }
+                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['performed-by'] }} /> : <td></td>}
               </tr>
             </tbody>
           </table>
           <h2>Mentioned In:</h2>
-          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
-          <table className='table table-bordered' id='repositoryLetters'>
-            <thead>
-              <tr>
-                <th>Recipient</th>
-                <th colSpan="2">Date</th>
-              </tr>
-            </thead>
-            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
 
-          </table>
         </div >
       )
     }
