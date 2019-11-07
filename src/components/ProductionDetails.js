@@ -1,9 +1,7 @@
 import axios from 'axios';
-import DocumentMeta from 'react-document-meta';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
-
-let striptags = require('striptags');
 
 class ProductionDetails extends Component {
 
@@ -48,21 +46,20 @@ class ProductionDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle
+      let docTitle
       if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
+        docTitle = this.state.entityData.attributes.label
       }
       else {
-        strippedTitle = this.state.entityData.id
+        docTitle = this.state.entityData.id
       }
-      let strippedDate = striptags(this.state.entityData.attributes.properties.date)
-      const meta = {
-        title: strippedTitle,
-        description: `View details for ${strippedTitle}; ${strippedDate}`,
+      const metaBuild = {
+        title: docTitle,
+        description: `View details for ${docTitle}; ${docTitle}`,
       };
       return (
         <div className="details">
-          <DocumentMeta {...meta} />
+          <DocMetaBuilder {...metaBuild} />
           {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
             <tbody className='details-table'>

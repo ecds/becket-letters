@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DocumentMeta from 'react-document-meta';
 
 class LettersByPeopleMentioned extends Component {
   constructor(props, context) {
@@ -85,7 +85,6 @@ class LettersByPeopleMentioned extends Component {
         <td>
           <Link to={{ pathname: `/people/${entity.id}`, state: { id: entity.id, name: entity.attributes.label } }}>
             {entity.attributes.label !== " " ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-
             {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
           </Link>
         </td>
@@ -93,14 +92,14 @@ class LettersByPeopleMentioned extends Component {
 
     );
 
-    const meta = {
+    const metaBuild = {
       title: 'Browse by People',
       description: `Browse all letters by people mentioned`,
     };
 
     return (
       <Container fluid>
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <BrowseLetters active="by-people" />
         <Row className="no-gutters pt-3">
         <Col md={11} className="no-gutters">

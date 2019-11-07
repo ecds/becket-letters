@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import HomeJumbotron from './Jumbotron';
 import SearchPage from './SearchPage';
 import HomeTiles from './utilities/HomeTiles';
-import DocumentMeta from 'react-document-meta';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 
 class Landing extends Component {
   render() {
-    const meta = {
+    const metaBuild = {
       title: "Samuel Beckett's Letters",
       description: "Begin your exploration of Samuel Beckett's letters",
     };
 
     return (
       <div className="landing" >
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <HomeJumbotron />
         <SearchPage />
         <HomeTiles />

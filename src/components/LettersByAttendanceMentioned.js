@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import axios from "axios";
-import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
-import LoadingSpinner from './utilities/LoadingSpinner';
+import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DocumentMeta from 'react-document-meta';
+import { Link } from 'react-router-dom';
+import LoadingSpinner from './utilities/LoadingSpinner';
+import Pagination from './utilities/Pagination';
+import React, { Component } from "react";
+import axios from "axios";
 
 class LettersByAttendanceMentioned extends Component {
   constructor(props, context) {
@@ -82,20 +82,21 @@ class LettersByAttendanceMentioned extends Component {
       <tr key={entity.id}>
         <td>
           <Link to={{ pathname: `/attendances/${entity.id}`, state: { id: entity.id } }}>
+          {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
             <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
           </Link>
         </td>
       </tr>
     );
 
-    const meta = {
+    const metaBuild = {
       title: 'Browse Attendances',
       description: `Browse all letters on this page`,
     };
 
     return (
       <Container fluid>
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <BrowseLetters active="by-attendance" />
         <Row className="no-gutters pt-3">
           <Col md={11} className="no-gutters">

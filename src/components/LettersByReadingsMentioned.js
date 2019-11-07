@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DocumentMeta from 'react-document-meta';
 
 class LettersByReadingsMentioned extends Component {
   constructor(props, context) {
@@ -89,14 +89,14 @@ class LettersByReadingsMentioned extends Component {
 
     );
 
-    const meta = {
+    const metaBuild = {
       title: 'Browse by Reading',
       description: `Browse all letters by reading mentioned`,
     };
 
     return (
       <Container fluid>
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <BrowseLetters active="by-reading" />
         <Row className="no-gutters pt-3">
           <Col md={11} className="no-gutters">

@@ -2,7 +2,6 @@ import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 let striptags = require('striptags');
 
@@ -87,7 +86,6 @@ class MusicDetails extends Component {
           </table>
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
         </div >
       )
     }
