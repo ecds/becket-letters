@@ -2,7 +2,6 @@ import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 
 let striptags = require('striptags');
 
@@ -78,22 +77,12 @@ class AttendanceDetails extends Component {
               </tr>
               <tr>
                 <td>Attended With</td>
-                <td>{this.state.entityData.attributes.properties['attended-with'] }</td>
+                <td>{this.state.entityData.attributes.properties['attended-with']}</td>
               </tr>
             </tbody>
           </table>
           <h2>Mentioned In:</h2>
-          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
-          <table className='table table-bordered' id='repositoryLetters'>
-            <thead>
-              <tr>
-                <th>Recipient</th>
-                <th colSpan="2">Date</th>
-              </tr>
-            </thead>
-            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
-          </table>
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >
       )
     }

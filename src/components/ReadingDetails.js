@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
 import axios from 'axios';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
 
@@ -63,8 +62,8 @@ class PublicationDetails extends Component {
       };
       return (
         <div className="details">
-        <DocumentMeta {...meta} />
-        {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
+          <DocumentMeta {...meta} />
+          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
@@ -73,22 +72,12 @@ class PublicationDetails extends Component {
               </tr>
               <tr>
                 <td>Publication</td>
-                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.publication }}/>
+                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.publication }} />
               </tr>
             </tbody>
           </table>
           <h2>Mentioned In:</h2>
-          <SearchRecipientOnPage tableId='repositoryLetters' placeHolder='by recipient' />
-          <table className='table table-bordered' id='repositoryLetters'>
-            <thead>
-              <tr>
-                <th>Recipient</th>
-                <th colSpan="2">Date</th>
-              </tr>
-            </thead>
-            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-
-          </table>
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >
       )
     }
