@@ -1,9 +1,7 @@
 import axios from 'axios';
-import DocumentMeta from 'react-document-meta';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
-
-let striptags = require('striptags');
 
 class AttendanceDetails extends Component {
   constructor(props) {
@@ -46,21 +44,15 @@ class AttendanceDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle
-      if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
+      let metaBuild = {
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties['place-date']}`,
+        id: this.state.entityData.id
       }
-      else {
-        strippedTitle = this.state.entityData.id
-      }
-      const meta = {
-        title: strippedTitle,
-        description: `View details for Beckett's attendance of ${this.state.entityData.attributes.label}`,
-      };
       return (
         <div className="details">
-          <DocumentMeta {...meta} />
-          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          <DocMetaBuilder {...metaBuild} />
+          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
@@ -73,7 +65,7 @@ class AttendanceDetails extends Component {
               </tr>
               <tr>
                 <td>Performed By</td>
-                <td><ul className="noBullets">{this.state.entityData.attributes.properties['performed-by'].map((entity, key) => <li key={key}>{entity}</li>)}</ul></td>
+                <td>{this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['performed-by'] ? <ul className="noBullets">{this.state.entityData.attributes.properties['performed-by'].map((entity, key) => <li key={key}>{entity}</li>)}</ul> : null}</td>
               </tr>
               <tr>
                 <td>Attended With</td>

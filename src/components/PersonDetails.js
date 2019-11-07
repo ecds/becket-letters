@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
-import DocumentMeta from 'react-document-meta';
-
-let striptags = require('striptags');
 
 class PersonDetails extends Component {
   constructor(props) {
@@ -76,20 +74,21 @@ class PersonDetails extends Component {
       return <Container>Loading...</Container>;
       // return now that component has value
     } else {
-      let strippedTitle
+      let docTitle
       if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
+        docTitle = this.state.entityData.attributes.label
       }
       else {
-        strippedTitle = this.state.entityData.id
+        docTitle = this.state.entityData.id
       }
-      const meta = {
-        title: strippedTitle,
-        description: `View details for ${strippedTitle}; ${this.state.entityData.attributes.properties !== null ? striptags(this.state.entityData.attributes.properties.description) : 'no description provided'}`,
+      const metaBuild = {
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.description}`,
+        id: this.state.entityData.id
       };
       return (
         <div className="profile-details">
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <h1>{this.state.entityData.attributes.label !== " " ? this.state.entityData.attributes.label : this.state.entityData.id}
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['life-dates'] ? " (" + this.state.entityData.attributes.properties['life-dates'] + ") " : null}
         </h1>

@@ -1,9 +1,7 @@
 import axios from 'axios';
-import DocumentMeta from 'react-document-meta';
+import DocMetaBuilder from './utilities/DocMetaBuilder'
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
-
-let striptags = require('striptags');
 
 class PublicEventDetails extends Component {
 
@@ -47,21 +45,14 @@ class PublicEventDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle
-      if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
-      }
-      else {
-        strippedTitle = this.state.entityData.id
-      }
-      let strippedDate = striptags(this.state.entityData.attributes.properties.date)
-      const meta = {
-        title: strippedTitle,
-        description: `View details for ${strippedTitle}; ${strippedDate}`,
+      const metaBuild = {
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.description}`,
+        id: this.state.entityData.id
       };
       return (
         <div className="details">
-          <DocumentMeta {...meta} />
+          <DocMetaBuilder {...metaBuild} />
           <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
           <table className="table table-striped">
             <tbody className='details-table'>
@@ -72,7 +63,7 @@ class PublicEventDetails extends Component {
             </tbody>
           </table>
           <h2>Mentioned In:</h2>
-            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >
       )
     }

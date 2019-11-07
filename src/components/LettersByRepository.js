@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Container, Table } from 'react-bootstrap';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import BrowseLetters from './BrowseLetters';
 import LoadingSpinner from './utilities/LoadingSpinner';
-import DocumentMeta from 'react-document-meta';
 
 class LettersByRepository extends Component {
   constructor(props, context) {
@@ -87,14 +87,14 @@ class LettersByRepository extends Component {
 
     );
 
-    const meta = {
+    const metaBuild = {
       title: 'Browse by Repository',
       description: `Browse all letters by reading mentioned`,
     };
 
     return (
       <Container fluid>
-        <DocumentMeta {...meta} />
+        <DocMetaBuilder {...metaBuild} />
         <BrowseLetters active="by-repository" />
         <Table striped bordered className="browse-by">
           <thead>
