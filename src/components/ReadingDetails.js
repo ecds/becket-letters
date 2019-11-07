@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import DocumentMeta from 'react-document-meta';
+import DocMetaBuilder from './utilities/DocMetaBuilder'
 import axios from 'axios';
 import MentionedLetters from './utilities/MentionedLettersTable';
-
-
-let striptags = require('striptags');
 
 class PublicationDetails extends Component {
 
@@ -49,20 +46,14 @@ class PublicationDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle
-      if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
-      }
-      else {
-        strippedTitle = this.state.entityData.id
-      }
-      const meta = {
-        title: strippedTitle,
-        description: `View details for ${strippedTitle}`,
+      const metaBuild = {
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.publication}`,
+        id: this.state.entityData.id
       };
       return (
         <div className="details">
-          <DocumentMeta {...meta} />
+          <DocMetaBuilder {...metaBuild} />
           {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
           <table className="table table-striped">
             <tbody className='details-table'>

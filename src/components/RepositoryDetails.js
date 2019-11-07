@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
-import DocumentMeta from 'react-document-meta';
-
-
-let striptags = require('striptags');
-
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 
 class RepositoryDetails extends Component {
 
@@ -50,20 +46,14 @@ class RepositoryDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let strippedTitle
-      if (this.state.entityData.attributes.label) {
-        strippedTitle = striptags(this.state.entityData.attributes.label)
-      }
-      else {
-        strippedTitle = this.state.entityData.id
-      }
-      const meta = {
-        title: strippedTitle,
-        description: `View details for ${strippedTitle}`,
+      const metaBuild = {
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes['letter-count']} letters`,
+        id: this.state.entityData.id
       };
       return (
         <div className="details">
-          <DocumentMeta {...meta} />
+          <DocMetaBuilder {...metaBuild} />
           <h1 dangerouslySetInnerHTML={{ __html: 'Repository Name: ' + this.state.entityData.attributes.label }} />
           <table className='table table-striped'>
             <tbody className='details-table'>

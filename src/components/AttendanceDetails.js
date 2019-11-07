@@ -46,7 +46,7 @@ class AttendanceDetails extends Component {
     } else {
       let metaBuild = {
         title: this.state.entityData.attributes.label,
-        desc: `Details for ${this.state.entityData.attributes.label}`,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties['place-date']}`,
         id: this.state.entityData.id
       }
       return (

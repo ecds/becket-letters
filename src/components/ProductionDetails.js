@@ -54,8 +54,9 @@ class ProductionDetails extends Component {
         docTitle = this.state.entityData.id
       }
       const metaBuild = {
-        title: docTitle,
-        description: `View details for ${docTitle}; ${docTitle}`,
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.date}`,
+        id: this.state.entityData.id
       };
       return (
         <div className="details">

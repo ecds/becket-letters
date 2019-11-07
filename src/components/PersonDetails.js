@@ -82,8 +82,9 @@ class PersonDetails extends Component {
         docTitle = this.state.entityData.id
       }
       const metaBuild = {
-        title: docTitle,
-        description: `View details for ${docTitle} ${this.state.entityData.attributes.properties !== null ? `; ${this.state.entityData.attributes.properties.description}` : null}`,
+        title: this.state.entityData.attributes.label,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.description}`,
+        id: this.state.entityData.id
       };
       return (
         <div className="profile-details">

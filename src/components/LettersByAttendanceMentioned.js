@@ -83,7 +83,6 @@ class LettersByAttendanceMentioned extends Component {
         <td>
           <Link to={{ pathname: `/attendances/${entity.id}`, state: { id: entity.id } }}>
           {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-            <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
           </Link>
         </td>
       </tr>
