@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DocMetaBuilder from './utilities/DocMetaBuilder'
+import DocMetaBuilder from './utilities/DocMetaBuilder';
+import HeaderBuilder from './utilities/HeaderBuilder';
 import axios from 'axios';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
@@ -54,7 +55,7 @@ class PublicationDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
+          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>

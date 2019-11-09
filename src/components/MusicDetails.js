@@ -1,12 +1,10 @@
 import axios from 'axios';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
+import HeaderBuilder from './utilities/HeaderBuilder';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
 
-let striptags = require('striptags');
-
 class MusicDetails extends Component {
-
 
   constructor(props) {
     super(props);
@@ -57,7 +55,7 @@ class MusicDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>

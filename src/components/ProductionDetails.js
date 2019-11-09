@@ -1,5 +1,6 @@
 import axios from 'axios';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
+import HeaderBuilder from './utilities/HeaderBuilder';
 import MentionedLetters from './utilities/MentionedLettersTable';
 import React, { Component } from 'react';
 
@@ -46,13 +47,6 @@ class ProductionDetails extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      let docTitle
-      if (this.state.entityData.attributes.label) {
-        docTitle = this.state.entityData.attributes.label
-      }
-      else {
-        docTitle = this.state.entityData.id
-      }
       const metaBuild = {
         title: this.state.entityData.attributes.label,
         description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.date}`,
@@ -61,7 +55,7 @@ class ProductionDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          {this.state.entityData.attributes.label ? <h1 dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /> : <h1>{this.state.entityData.id}</h1>}
+          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
