@@ -104,7 +104,7 @@ class LettersByOrganizationsMentioned extends Component {
                       <FontAwesomeIcon icon="search" />
                     </Button>
                   </div>
-                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
+                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'University of Toronto'" />
                 </div>
               </Form.Group>
             </Form>

@@ -107,7 +107,7 @@ class LettersByAttendanceMentioned extends Component {
                       <FontAwesomeIcon icon="search" />
                     </Button>
                   </div>
-                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
+                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Come Back Africa'" />
                 </div>
               </Form.Group>
             </Form>
