@@ -111,7 +111,7 @@ class LettersByWorkOfArtMentioned extends Component {
                       <FontAwesomeIcon icon="search" />
                     </Button>
                   </div>
-                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
+                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Divine Comedy'" />
                 </div>
               </Form.Group>
             </Form>

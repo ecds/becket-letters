@@ -115,7 +115,7 @@ class LettersByProductionsMentioned extends Component {
                       <FontAwesomeIcon icon="search" />
                     </Button>
                   </div>
-                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Godot'" />
+                  <Form.Control id="query" name="query" type="query" aria-label='query' placeholder="ex. 'Krapp's Last Tape'" />
                 </div>
               </Form.Group>
             </Form>
