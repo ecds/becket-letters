@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
+import HeaderBuilder from './utilities/HeaderBuilder';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
@@ -74,13 +75,6 @@ class PersonDetails extends Component {
       return <Container>Loading...</Container>;
       // return now that component has value
     } else {
-      let docTitle
-      if (this.state.entityData.attributes.label) {
-        docTitle = this.state.entityData.attributes.label
-      }
-      else {
-        docTitle = this.state.entityData.id
-      }
       const metaBuild = {
         title: this.state.entityData.attributes.label,
         description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.description}`,
@@ -89,9 +83,8 @@ class PersonDetails extends Component {
       return (
         <div className="profile-details">
         <DocMetaBuilder {...metaBuild} />
-        <h1>{this.state.entityData.attributes.label !== " " ? this.state.entityData.attributes.label : this.state.entityData.id}
-          {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['life-dates'] ? " (" + this.state.entityData.attributes.properties['life-dates'] + ") " : null}
-        </h1>
+        <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} lifedates={this.state.entityData.attributes.properties['life-dates']} />
+
         <Row>
           <Col md={this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.media && this.state.entityData.attributes.properties.media.images ? 10 : 12}>
           <table className="table table-striped">

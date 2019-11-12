@@ -216,11 +216,6 @@ export class LetterDetails extends Component {
       )
     }
     else {
-
-      let metaBuild = {
-        title: 'null letter',
-        desc: 'null letter'
-      }
       return null
     }
   }

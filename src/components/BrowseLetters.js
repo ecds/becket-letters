@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import HeaderBuilder from './utilities/HeaderBuilder';
 import React, { Component } from "react";
 
 class BrowseLetters extends Component {
@@ -20,7 +21,7 @@ class BrowseLetters extends Component {
   render() {
     return (
       <div className="pt-3">
-        <h1>Browse Letters by Entities Mentioned</h1>
+        <HeaderBuilder header='Browse Letters Mentioned' />
         <ul className="nav nav-tabs" id="browse-tabs">
           <li className={this.setActive('by-attendance')}><Link to="/browse-letters-attendance">Attendance</Link></li>
           <li className={this.setActive('by-music')}><Link to="/browse-letters-music">Music</Link></li>
