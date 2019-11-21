@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Col, Row } from 'react-bootstrap';
 import TimelineYear from './TimelineYear';
 import DocumentMeta from 'react-document-meta';
+import { HashLink as Link } from 'react-router-hash-link';
 
 export class Timeline extends Component {
   constructor(props, context) {
@@ -43,12 +43,12 @@ export class Timeline extends Component {
       let allTimelineEntries = this.state.timelineEntries
       const meta = {
         title: 'Beckett Timeline',
-        description: `This page displays a timeline of events in Beckett's personal life and events he mentioned in his letters.`,
+        description: "This page displays a timeline of events in Beckett's personal life and events he mentioned in his letters.",
       };
       return (
         <div className="timeline-container">
           <DocumentMeta {...meta} />
-          <Row>
+          {/* <Row>
             <h1>Timeline</h1>
           </Row>
           <Row>
@@ -61,11 +61,18 @@ export class Timeline extends Component {
             <Col md={6} >
               <h2>Global events are in <span className="timelineHeaderYellow">gold</span></h2>
             </Col>
-          </Row>
+          </Row> */}
+          <ol>
+            {Object.keys(allTimelineEntries).map(keyOuter => {
+              return (
+                <li key={keyOuter}><Link to={'#' + keyOuter} >{keyOuter}</Link></li>
+              )
+            })}
+          </ol>
           {
             Object.keys(allTimelineEntries).map(keyOuter => {
               return (
-                <TimelineYear key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]} />
+                <TimelineYear id={keyOuter} key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]} />
               )
             })
           }

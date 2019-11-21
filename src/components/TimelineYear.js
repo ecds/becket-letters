@@ -8,7 +8,7 @@ class TimelineYear extends Component {
         <TimelineEvent key={key} event={event} />
     );
     return (
-        <div className="year-container">
+        <div className="year-container" id={this.props.id}>
           <h3 className="year-title sticky-top">
             {this.props.year}
           </h3>
