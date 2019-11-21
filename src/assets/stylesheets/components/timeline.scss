@@ -14,6 +14,20 @@
     }
   }
 }
+
+ol {
+  position: fixed;
+  padding: 6px;
+  border: 1px solid red;
+  background-color: white;
+  z-index: 9;
+  right: 10px;
+  & li {
+    list-style-type: none;
+  }
+}
+
+
 .timelineHeaderBlue {
   color: $midBlue;
 }

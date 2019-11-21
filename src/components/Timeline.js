@@ -28,7 +28,17 @@ export class Timeline extends Component {
       });
   }
 
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
 
+  scrollToElement() {
+    
+  }
 
   render() {
     const { error, isLoaded } = this.state;
@@ -47,7 +57,7 @@ export class Timeline extends Component {
       };
       return (
         <div className="timeline-container">
-          <DocumentMeta {...meta} />
+          <DocumentMeta {...meta} id='docmeta' />
           {/* <Row>
             <h1>Timeline</h1>
           </Row>
@@ -68,6 +78,7 @@ export class Timeline extends Component {
                 <li key={keyOuter}><Link to={'#' + keyOuter} >{keyOuter}</Link></li>
               )
             })}
+            <button onClick={() => this.scrollToTop()}>Top</button>
           </ol>
           {
             Object.keys(allTimelineEntries).map(keyOuter => {
