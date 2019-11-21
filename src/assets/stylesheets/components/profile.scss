@@ -10,6 +10,9 @@
     float: right;
     padding: 0 1em 1em 1em;
     max-width: 100%;
+    width: 100%;
+    border: solid 1px black;
+    padding: 2em;
   }
   .title {
     font-size: 1.35em;
@@ -17,6 +20,15 @@
   .description {
     font-size: 1em;
     padding: 0.5em 0;
+  }
+}
+#personProfile {
+  background-color: #CCC;
+  font-size: 1.2em;
+  padding: 1em;
+  margin-bottom: 1em;
+  img {
+    width: 100%;
   }
 }
 
@@ -31,4 +43,7 @@
   .profile-details {
     padding: 5%;
   };
+  #personProfile {
+    font-size: .9em;
+  }
 }

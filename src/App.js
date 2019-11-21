@@ -24,7 +24,7 @@ import LettersByWritingsMentioned from './components/LettersByWritingsMentioned'
 import MusicDetails from './components/MusicDetails';
 import People from './components/people';
 import Places from './components/Places';
-import Place from './components/Place';
+import Place from './components/PlaceDetails';
 import PersonDetails from './components/PersonDetails';
 import Timeline from './components/Timeline';
 import SearchResults from './components/SearchResults';

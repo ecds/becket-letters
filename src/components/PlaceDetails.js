@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import HeaderBuilder from './utilities/HeaderBuilder';
 import axios from 'axios';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
-class PublicationDetails extends Component {
-
-
-  constructor(props) {
-    super(props);
+class Place extends Component {
+  constructor(props, context) {
+    super(props, context);
     this.state = {
+      error: null,
       isLoaded: false,
-      error: '',
       entityData: []
-    }
-  }
+    };
 
+  }
 
   componentDidMount() {
     this.getData()
@@ -38,6 +35,7 @@ class PublicationDetails extends Component {
   }
 
 
+
   render() {
     const { error, isLoaded } = this.state;
     // if there is an error
@@ -50,7 +48,7 @@ class PublicationDetails extends Component {
     } else {
       const metaBuild = {
         title: this.state.entityData.attributes.label,
-        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.publication}`,
+        description: `${this.state.entityData.attributes.label}`,
         id: this.state.entityData.id
       };
       return (
@@ -58,9 +56,13 @@ class PublicationDetails extends Component {
           <DocMetaBuilder {...metaBuild} />
           {/*<HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />*/}
           <h1>
-            {this.state.entityData.attributes.properties.authors ? <span>{this.state.entityData.attributes.properties.authors}</span> : null}
-            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label}} className="comma"/>
-            {this.state.entityData.attributes.properties.publication ? <span  className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.publication}}/> : null}
+            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label}}/>
+            {this.state.entityData.attributes.properties ?
+            <span>{this.state.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : ', '}
+            {this.state.entityData.attributes.properties.description ? <span className="comma" dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.description}} /> : null}
+            {this.state.entityData.attributes.properties['links'].length > 0 ? <span className='comma'>{this.state.entityData.attributes.properties['links'].map((entity, key) => <a target="_new" key={key} href={entity}>{entity}</a>)} </span> : null}
+            </span>
+            : null}
           </h1>
           {/*
           <table className="table table-striped">
@@ -83,4 +85,4 @@ class PublicationDetails extends Component {
   }
 }
 
-export default PublicationDetails;
+export default Place;

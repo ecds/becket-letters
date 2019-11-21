@@ -56,8 +56,24 @@ class WorksOfArtDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
-          <table className="table table-striped">
+          {/*<HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />  */}
+          <h1>
+            {this.state.entityData.attributes.properties.artist ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.artist}} /> : null}
+            {this.state.entityData.attributes.label ? <span className="comma" dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}} /> : null}
+            {this.state.entityData.attributes.properties['alternative-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternative-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : ', '}
+          </h1>
+          {this.state.entityData.attributes.properties.description ? <h3><span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.description}} /></h3> : null}
+
+          {this.state.entityData.attributes.properties['owner-location-accession-number-contemporaneous'] ?
+          <h3>
+            <p><i>Contemporaneous:  </i> {this.state.entityData.attributes.properties['owner-location-accession-number-contemporaneous']}</p>
+          </h3>
+          : null }
+          <h3>
+            <p><i>Current: </i> {this.state.entityData.attributes.properties['owner-location-accession-number-current'] ? <span>{this.state.entityData.attributes.properties['owner-location-accession-number-current']}</span> : 'Unknown'}</p>
+          </h3>
+
+          {/*<table className="table table-striped">
             <tbody className='details-table'>
               <tr>
                 <td>Artist</td>
@@ -72,7 +88,7 @@ class WorksOfArtDetails extends Component {
                 <td>{this.state.entityData.attributes.properties.owner}</td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >

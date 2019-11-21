@@ -1,0 +1,123 @@
+.attended-with {
+  &:before {
+    content: ', attended with ';
+  }
+}
+
+.performed-by {
+  &:before {
+    content: ', performed by ';
+  }
+  &.new-line {
+
+    &:before {
+      content: 'Performed by ';
+    }
+  }
+}
+.proposed-by {
+  &:before {
+    content: ', '
+  }
+}
+
+.translated-by {
+  &:before {
+    content: ', tr. ';
+  }
+}
+
+.parenthesis.period {
+  &:before {
+    content: '. (';
+  }
+  &:after {
+    content: ' )';
+  }
+}
+.list-span {
+  font-size: 1em;
+  padding-bottom: .75em;
+  &:after {
+    content: ', '
+  }
+  &:last-of-type {
+    &:after {
+      content: ''
+    }
+  }
+}
+.listLink {
+  display: block;
+}
+.noBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.reasonResponse {
+  span {
+    &:nth-child(2) {
+      &:before {
+        content: ' / '
+      }
+
+    }
+  }
+}
+.details {
+  .btn {
+    margin: 1em 1em 1em 0;
+  }
+}
+.spellings {
+  &:before {
+    content: ' ['
+  }
+  &:after {
+    content: ']'
+  }
+  span {
+    &:after {
+      content: ', '
+    }
+    &:last-of-type {
+      &:after {
+        content: ''
+      }
+    }
+  }
+}
+.comma {
+  &.director {
+    &:before {
+      content: ', dir. '
+    }
+  }
+  &:before {
+    content: ', '
+  }
+  &.after {
+    &:before {
+      content: ''
+    }
+    &:after {
+      content: ', '
+    }
+  }
+  &:last-of-type {
+    &:after {
+      content: '. '
+    }
+  }
+}
+.cast {
+  &:before {
+    content: "Cast: "
+  }
+}
+.notes {
+  &:before {
+    content: " Notes: "
+  }
+}

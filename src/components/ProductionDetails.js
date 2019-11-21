@@ -27,6 +27,7 @@ class ProductionDetails extends Component {
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
+        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -52,11 +53,34 @@ class ProductionDetails extends Component {
         description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.date}`,
         id: this.state.entityData.id
       };
+
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
-          <table className="table table-striped">
+          {/* <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} /> */}
+          <h1>
+            <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}} className="label"/>
+            {this.state.entityData.attributes.properties['proposal'] && this.state.entityData.attributes.properties['response'] === 'no' ?
+              <span>
+                {this.state.entityData.attributes.properties['proposal'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['proposal']}} className="proposed-by"/> : null}
+                {this.state.entityData.attributes.properties.response ? <span className="comma">{this.state.entityData.attributes.properties.response}</span> : null}
+                {this.state.entityData.attributes.properties.reason ? <span className="comma">{this.state.entityData.attributes.properties.reason}</span> : null }
+                {this.state.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['notes']}} className="notes"/> : null}
+              </span>
+            : <span>
+                <span className="detailGroup">
+                  {this.state.entityData.attributes.properties.director ? <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.director }}  className="comma director"/> : null}
+                  {this.state.entityData.attributes.properties.theatre ? <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.theatre }}  className="comma"/> : null}
+                  {this.state.entityData.attributes.properties.city ? <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.city }}  className="comma"/> : null }
+                  {this.state.entityData.attributes.properties.date ? <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.date }}  className="comma"/> : null}
+                </span>
+                {this.state.entityData.attributes.properties['cast'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['cast']}} className="cast"/> : null}
+                {this.state.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['notes']}} className="notes"/> : null}
+                <br />
+                {this.state.entityData.attributes.properties['staging-beckett'] ? <a href={this.state.entityData.attributes.properties['staging-beckett']} className="btn btn-primary" target="_new">Staging Beckett</a> : null }
+              </span> }
+          </h1>
+          {/* <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
                 <td>City</td>
@@ -93,6 +117,7 @@ class ProductionDetails extends Component {
               </tr>
             </tbody>
           </table>
+           */}
           <h2>Mentioned In:</h2>
             <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >
