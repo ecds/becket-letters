@@ -1,0 +1,1529 @@
+{
+    "events": {
+      "1957": [
+        {
+          "date": "04 January",
+          "event": "Samuel Beckett is writing “The Gloaming” (abandoned, later Rough for Theatre I).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "07 January",
+          "event": "All police powers in Algiers taken over by General Massu.",
+          "type": "global",
+          "additional": "headline"
+        },
+        {
+          "date": "10-19 January",
+          "event": "Waiting for Godot with an all black cast at the Shubert Theatre in Boston. It opened on 21 Januaryuary at the Ethel Barrymore Theatre, New York.",
+          "type": "personal",
+          "additional": "image  see works file"
+        },
+        {
+          "date": "13 January",
+          "event": "All That Fall broadcast on the BBC Third Programme. ",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 January",
+          "event": "Fin de Partie and Acte sans paroles published, Editions de Minuit.",
+          "type": "personal",
+          "additional": "https://www.foldvaribooks.com/pictures/1291.jpg?v=1504617993"
+        },
+        {
+          "date": "February",
+          "event": "Beckett begins English translation of L’Innommable.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "c. 11-15 February",
+          "event": "In Paris, John Beckett and Deryk Mendel coordinate music and movements for Acte sans paroles I.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "19 February",
+          "event": "Beckett’s first meeting with BBC radio director Donald McWhinnie, in Paris.",
+          "type": "personal",
+          "additional": "image"
+        },
+        {
+          "date": "March",
+          "event": "Tous ceux qui tombent published in Les Lettres Nouvelles. ",
+          "type": "personal",
+          "additional": "https://andalusiabooks.files.wordpress.com/2012/08/les-lettres-nouvelle_0002.jpg"
+        },
+        {
+          "date": "15 March",
+          "event": "Murphy  published by Grove Press.",
+          "type": "personal",
+          "additional": "https://upload.wikimedia.org/wikipedia/en/0/05/Beckett_Murphy.jpg"
+        },
+        {
+          "date": "21 March",
+          "event": "Beckett supervises rehearsals of Fin de partie, Royal Court Theatre, London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "28 March",
+          "event": "Death of Jack B. Yeats in Dublin; Samuel Beckett unable to attend the funeral.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/4/42/Jack_Butler_Yeats.jpg"
+        },
+        {
+          "date": "2 April",
+          "event": "Premiere of Fin de partie, as part of the French Festival Week in London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 April",
+          "event": "Fin de partie, Studio des Champs-Elysées, Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "2 May",
+          "event": "Fin de partie, in French with the original London cast, BBC Third Programme.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 May",
+          "event": "Beckett begins English translation of Fin de partie.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "22 May",
+          "event": "The term “Le Nouveau Roman”coined (by Emile Henriot in Le Monde, reviewing works by Alain Robbe-Grillet and Nathalie Sarraute.",
+          "type": "global",
+          "additional": "image"
+        },
+        {
+          "date": "After 27 May",
+          "event": "Publication of Lieutenant en Algérie by Jean-Jacques Servan-Schreiber; it denounces French military policy in Algeria.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "24 August",
+          "event": "Beckett completes Acte sans paroles II, for Deryk Mendel.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 August",
+          "event": "All That Fall published by Faber and Faber.",
+          "type": "personal",
+          "additional": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/All_That_Fall.jpg/220px-All_That_Fall.jpg"
+        },
+        {
+          "date": "4 October",
+          "event": "Launch of the first earth satellite, the Soviet Sputnik.",
+          "type": "global",
+          "additional": "headline https://en.wikipedia.org/wiki/Sputnik_1#/media/File:Sputnik-stamp-ussr.jpg; https://www.nps.gov/articles/sputniki.htm"
+        },
+        {
+          "date": "8 October",
+          "event": "Alan Schneider in Paris to discuss Fin de partie; he and Beckett attend the Paris production together, twice.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "12 October",
+          "event": "Fin de partie closes after 97 performances in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "After 18 October",
+          "event": "Tous ceux qui tombent published by Editions de Minuit.",
+          "type": "personal",
+          "additional": "http://www.leseditionsdeminuit.fr/images/livre_galerie_9782707302052.jpg"
+        },
+        {
+          "date": "10 December",
+          "event": "Extracts from Molloy read by Patrick Magee, with music by John Beckett, BBC Third Programme.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "14 December",
+          "event": "From an Abandoned Work read by Patrick Magee, BBC Third Programme.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 December",
+          "event": "Albert Camus awarded the Nobel Prize in Literature.",
+          "type": "global",
+          "additional": "image"
+        }
+      ],
+      "1958": [
+        {
+          "date": "28 January",
+          "event": "Premiere of Endgame, Cherry Lane Theatre, New York.",
+          "type": "personal",
+          "additional": "http://www.cherrylanetheatre.org/images/uploads/161/endgame_program_1957__main.jpg"
+        },
+        {
+          "date": "31 January",
+          "event": "Launch of the first earth satellite, Explorer 1, by the United States.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/7/72/JPL_-_Explorer_1_is_test-mated_before_launch.jpg"
+        },
+        {
+          "date": "by 17 February",
+          "event": "Samuel Beckett withdraws his two mimes and a reading of All That Fall from the Dublin Theatre Festival.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "23 February",
+          "event": "Beckett completes first draft of English translation, The Unnamable.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "27 February",
+          "event": "Samuel Beckett withdraws all his work from Irish production because of censorship.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 March",
+          "event": "Malone Dies published by John Calder.",
+          "type": "personal",
+          "additional": "https://pictures.abebooks.com/SHAPERO/md/md22841252761.jpg"
+        },
+        {
+          "date": "17 March",
+          "event": "Beckett completes Krapp’s Last Tape.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "25 April",
+          "event": "Endgame, followed by Act Without Words I, published by Faber and Faber.",
+          "type": "personal",
+          "additional": "image"
+        },
+        {
+          "date": "5 May",
+          "event": "Beckett meets Alain Resnais to discuss film of Tous ceux qui tombent. ",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7-10 May",
+          "event": "Beckett visits Bern to attend Bram van Velde’s retrospective.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 May",
+          "event": "“May 1958 Crisis” in Algeria.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/3/30/Algerian_war_collage_wikipedia.jpg"
+        },
+        {
+          "date": "29 May",
+          "event": "Charles De Gaulle appointed Président du Conseil by President Coty, France.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "1 June",
+          "event": "De Gaulle’s cabinet approved by the Assemblée Nationale.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "18 June",
+          "event": "Extract from Malone Dies read by Patrick Magee, with music composed by John Beckett, BBC Third Programme.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 July",
+          "event": "Beckett begins a three week holiday with Suzanne in Yugoslavia.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 August",
+          "event": "Beckett dates early draft of an abandoned play (later, Rough for Theatre II).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 September",
+          "event": "Samuel Beckett meets Donald McWhinnie and Patrick Magee in Paris to discuss Krapp’s Last Tape.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "23 September",
+          "event": "Boris Pasternak awarded the Nobel Prize in Literature. Soviet authorities require that he refuse it.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Boris_Pasternak_1928.jpg"
+        },
+        {
+          "date": "28 September",
+          "event": "New French constitution adopted by referendum (79% in favor).",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "29 September",
+          "event": "The Unnamable published by Grove Press.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21 October",
+          "event": "Beckett in London for a week to assist with rehearsals of Krapp’s Last Tape and Endgame.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "28 October",
+          "event": "Premiere of Krapp’s Last Tape as a curtain-raiser for Endgame, Royal Court Theatre, London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "1 November",
+          "event": "Beckett completes English translation (“Text I”) from Textes pour rien.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "before 23 November",
+          "event": "Beckett asks Barbara Bray and Donald McWhinnie to read his “aborted radio script” (Embers).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "December",
+          "event": "Anthology of Mexican Poetry, ed. Octavio Paz, translated by Samuel Beckett into English, published by Indiana University Press.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "1 December",
+          "event": "Beckett flies to Dublin for a week. Ethna MacCarthy Leventhal is dying of cancer; Thomas MacGreevy has had a serious heart attack.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 December",
+          "event": "Boris Pasternak is required by the Soviet authorities to refuse the Nobel Prize in Literature.",
+          "type": "global",
+          "additional": "image"
+        },
+        {
+          "date": "17 December",
+          "event": "Samuel Beckett begins “Pim” which eventually becomes part of Comment c’est.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "29 December",
+          "event": "Cardinal Roncalli is elected Pope, as John XXIII.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/en/9/9f/Johnxxiii-color-tiara-sm.jpg"
+        }
+      ],
+      "1959": [
+        {
+          "date": "1 January",
+          "event": "Overthrow of the government of Cuban President Fulgencio Batista; Fidel Castro assumes power on 16 February. Opening of the European Common Market.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "19 January",
+          "event": "The BBC Third Programme broadcasts extracts from The Unnamable, read by Patrick Magee, with music by John Beckett.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "February",
+          "event": "André Malraux appointed by De Gaulle as France’s first Ministre de la Culture.",
+          "type": "global",
+          "additional": "image"
+        },
+        {
+          "date": "12 February-7",
+          "event": "Henri Hayden exhibition, Waddington Galleries, London; catalogue includes Samuel Beckett text “Henri Hayden.”",
+          "type": "personal",
+          "additional": "https://en.wikipedia.org/wiki/Henri_Hayden#/media/File:Fille_assise_au_bouquet_de_fleurs,_1919.jpg"
+        },
+        {
+          "date": "4 March",
+          "event": "Les Lettres Nouvelles publishes La dernière bande.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 March",
+          "event": "Beckett reports that he has given permission to Marcel Mihalovici to make a chamber opera of La dernière bande.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 March",
+          "event": "Death of Peter Suhrkamp, Samuel Beckett’s German publisher.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Suhrkamp_peter.png"
+        },
+        {
+          "date": "4 April",
+          "event": "Beckett attends France-Wales rugby match at Colombes Stadium, with Claude Simon.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 May",
+          "event": "Death of Ethna MacCarthy Leventhal.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 June",
+          "event": "The BBC Third Programme broadcasts Embers.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "26 June",
+          "event": "Limes Verlag, Wiesbaden, publish poems as Gedichte. ",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "2 July",
+          "event": "Samuel Beckett receives honorary D. Litt. from Trinity College Dublin.",
+          "type": "personal",
+          "additional": "https://i.pinimg.com/474x/f4/e7/09/f4e709955fdf3db7747154518ef7ee30.jpg"
+        },
+        {
+          "date": "21 August",
+          "event": "Death of Denis Devlin",
+          "type": "global",
+          "additional": "image"
+        },
+        {
+          "date": "13-17 September",
+          "event": "Samuel Beckett is in Sorrento where Radiotelevisione Italia awards Embers the Italia Prize on 15 September.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 September",
+          "event": "De Gaulle recognizes Algeria’s right to self-determination.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "October",
+          "event": "Olympia Press publish Molloy, Malone Dies, and The Unnamable as a single volume for European market; Grove Press publish the “three in one” in November.",
+          "type": "global",
+          "additional": "https://pictures.abebooks.com/ELLISBKS/15900021036.jpg"
+        },
+        {
+          "date": "before 14 October",
+          "event": "Beckett buys a Citroën 2CV.",
+          "type": "personal",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/b/b8/1956_Citro%C3%ABn_2CV_-_Flickr_-_skinnylawyer.jpg"
+        },
+        {
+          "date": "20 November",
+          "event": "Beckett introduces Robert Pinget to friends in the United States.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "18 December",
+          "event": "Krapp’s Last Tape, with Embers published by Faber and Faber.",
+          "type": "personal",
+          "additional": "none"
+        }
+      ],
+      "1960": [
+        {
+          "date": "4 January",
+          "event": "Death of Albert Camus.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Albert_Camus2.jpg"
+        },
+        {
+          "date": "after 5 January",
+          "event": "Publication of La dernière bande, suivi de Cendres by Editions de Minuit.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "14 January",
+          "event": "Krapp’s Last Tape opens at the Provincetown Playhouse, New York, directed by Alan Schneider.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 January-1 February",
+          "event": "Insurrection in Algiers, known as “La semaine des barricades.”",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "2-3 February",
+          "event": "The French Government takes on emergency powers to deal with the worsening situation in Algeria.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "27 March",
+          "event": "Générale of La dernière bande, directed by Roger Blin, and Lettre morte, directed by Jean Martin, Théâtre Récamier.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 March",
+          "event": "Samuel Beckett’s tribute to Sean O’Casey published in The Irish Times.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "31 March",
+          "event": "Molloy, Malone Dies, and The Unnamable published by John Calder in a single volume as Three Novels.",
+          "type": "personal",
+          "additional": "https://archive.org/services/img/in.ernet.dli.2015.125753"
+        },
+        {
+          "date": "27 April",
+          "event": "The BBC Third Programme broadcasts Waiting For Godot.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 May",
+          "event": "Samuel Beckett lifts his embargo on production of his work in Ireland.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 June",
+          "event": "Beckett attends Berliner Ensemble production of Brecht’s Die Mutter, Sarah Bernhardt Theatre, Paris; leaves at first opportunity.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "before 15 June",
+          "event": "John Calder’s edition of Three Novels is seized from Hanna’s bookstore in Dublin, under Irish Government order.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "17 June",
+          "event": "Beckett and Alan Schneider attend the Berliner Ensemble production of Brecht’s Galileo in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "2 August",
+          "event": "Beckett completes revision  of his new work, which becomes Comment c’est.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 August",
+          "event": "Beckett dates a draft of what becomes Happy Days.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "18 August",
+          "event": "Samuel Beckett writes his first letter to Harold Pinter.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "23 August",
+          "event": "The BBC Third Programme broadcasts The Old Tune, produced by Barbara Bray, with Jack MacGowran and Patrick Magee.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "6 September",
+          "event": "Vérité-Liberté publishes a Déclaration sur le Droit à l’Insoumission dans la Guerre d’Algérie signed by 121 writers and artists; it becomes known as the “Manifeste des 121.”",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "19 September",
+          "event": "Robert Pinget’s La Manivelle and Samuel Beckett’s English text, The Old Tune, published by Editions de Minuit.",
+          "type": "personal",
+          "additional": "https://www.williamreesecompany.com/pictures/medium/WRCLIT71623.jpg"
+        },
+        {
+          "date": "30 September",
+          "event": "Jérôme Lindon, editor of Editions de Minuit, arrested.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "7 October",
+          "event": "A letter condemning the “apologists of desertion and disobedience” and defending the army appears in Le Figaro with 185 signatories.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "by 19 October",
+          "event": "Beckett has begun to move into his new apartment at 38 Boulevard Saint-Jacques, Paris 14",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 November",
+          "event": "De Gaulle outlines his conception of the “Algerian Republic.”",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "7 November",
+          "event": "John F. Kennedy is elected President of the United States.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "16 November",
+          "event": "Beckett views On the Bowery directed by Lionel Rogosin; and returns for a second time.",
+          "type": "personal",
+          "additional": "none"
+        }
+      ],
+      "1961": [
+        {
+          "date": "1 January",
+          "event": "With A. J. Leventhal, Beckett attends Max Frisch’s Biedermann et les incendiaires, Théâtre de Lutèce, directed by Jean-Marie Serreau.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 January",
+          "event": "The French proposal for Algerian self-determination receives 75% of the votes in a referendum.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "After 8 January",
+          "event": "Comment c’est published by Editions de Minuit.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "9 January",
+          "event": "Opening of Henri Hayden’s exhibition at Waddington Gallery, London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "11 January",
+          "event": "Samuel Beckett’s first meeting with Harold Pinter.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 January",
+          "event": "Beckett dates completion of a draft of Happy Days.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "29 January",
+          "event": "Beckett attends Harold Pinter’s Le Gardien.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 February",
+          "event": "Beckett attends concert performance of Mihalovici’s opera Krapp at the Théâtre de Chaillot.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "28 February",
+          "event": "Beckett attends dress rehearsal of Mihalovici’s opera Krapp in Bielefeld, Germany.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 March",
+          "event": "Beckett returns to Paris, driving with the Tophovens, having visited Amsterdam, Delft, and Haarlem.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8-25 March",
+          "event": "Samuel Beckett resident in Folkestone prior to his marriage.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "25 March",
+          "event": "Samuel Beckett and Suzanne Dechevaux-Dumesnil marry in the Folkestone Registry Office, and return to Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "3 April",
+          "event": "WNTA TV (New York) broadcasts Waiting for Godot directed by Alan Schneider.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 April - 5 May",
+          "event": "Beckett manages rehearsals of En attendant Godot duirng Roger Blin’s absence in London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "11 April",
+          "event": "Trial of Adolf Eichmann begins in Jerusalem.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "12 April",
+          "event": "Yuri Gagarin, aboard the Soviet satellite Vostok 1, becomes the first human in outer space.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "17 - 20 April",
+          "event": "Bay of Pigs “invasion” of Cuba by US.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "21 April",
+          "event": "Attempted coup, in Algers, by Generals Challe, Salan, Jouhaud, and Zeller, against De Gaulle’s policy of self-determination for Algeria.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "1 May",
+          "event": "Cuba declares itself a Democratic Socialist Republic.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "3 May",
+          "event": "Opening of En attendant Godot, Théâtre de l’Odéon.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 May",
+          "event": "Samuel Beckett awarded the first Prix International des Editeurs, (also known later as the Prix Formentor, and the Prix International de littérature) shared with Jorge Luis Borges; Beckett does not attend the ceremony.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "by 28 May",
+          "event": "Barbara Bray and her daughters have moved to Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 - 30 June",
+          "event": "Beckett in Surrey with Sheila and Donald Page until 22 or 23 June, then in London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "26 June",
+          "event": "BBC TV broadcasts Waiting for Godot directed by Donald McWhinnie.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "3 - 4 July",
+          "event": "The Bielefeld production of Mihalovici’s opera of Krapp performed as part of the Théâtre des Nations, Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "5 July",
+          "event": "Beckett attends John Osborne’s Luther performed as part of the Théâtre des Nations, Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 July",
+          "event": "Beckett begins English translation of Comment c’est.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "11-22 August",
+          "event": "Increasingly frequent OAS attacks in many areas of France.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "13 August",
+          "event": "The German Democratic Republic (GDR) begins construction of the Berlin Wall.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "20-23 August",
+          "event": "Beckett and Suzanne in Etretat, France.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "1-11 September",
+          "event": "Samuel Beckett in England.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 September",
+          "event": "Failed attempt on the life of General de Gaulle.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "17 September",
+          "event": "World premiere of Happy Days at the Cherry Lane Theatre, New York, directed by Alan Schneider.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 October",
+          "event": "Opening of Bram van Velde’s retrospective, Knoedler Gallery, Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "by 10 December",
+          "event": "Samuel Beckett’s Poems in English published by John Calder.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 December",
+          "event": "Samuel Beckett sends petition to John Calder and Harold Hobson for signatures to protest against the trial of Jérôme Lindon for his publication of The Deserter and for his anti-torture position on Algeria.",
+          "type": "personal",
+          "additional": "none"
+        }
+      ],
+      "1962": [
+        {
+          "date": "12 January",
+          "event": "Samuel Beckett in Ussy to complete draft translation of How It Is.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 February",
+          "event": "Demonstration against the O.A.S. at the Charonne Métro Station provokes police response that ends in death of nine persons; this triggers a general strike in Paris on 13 February in Paris.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "11 February",
+          "event": "Jean-Jacques Mayoux’s home is bombed.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 February",
+          "event": "Bram van Velde’s first New York exhibition opens, Knoedler Gallery.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "18 March",
+          "event": "With the signing of the Evian Accords, a ceasefire takes effect in Algeria on 19 March.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "5 May",
+          "event": "Beckett attends Henri Hayden vernissage, Galerie Suillerot.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 May",
+          "event": "Beckett attends vernissage of Joan Mitchell double show, Galerie Jacques Dubourg and Galerie Lawrence, Paris.",
+          "type": "personal",
+          "additional": "image"
+        },
+        {
+          "date": "before 15 May",
+          "event": "Beckett has begun work on a play for three faces and lights (ultimately Play).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 May",
+          "event": "Samuel Beckett lunches with Igor and Vera Stravinsky in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "22 May",
+          "event": "The BBC Third Programme broadcasts Endgame, produced by Michael Bakewell.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 June",
+          "event": "Happy Days published by Faber and Faber.",
+          "type": "personal",
+          "additional": "image"
+        },
+        {
+          "date": "17 June",
+          "event": "Agreement signed between the Algerian FLN (National Liberation Front) and the OAS effectively ends the Algerian war.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "3 July",
+          "event": "After the approval of the Evian Accords by the electorate of Algeria, De Gaulle pronounces Algeria an independent country.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "19 July",
+          "event": "Beckett finishes draft of new play (Play).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "5 August",
+          "event": "Beckett attends Pinget double bill of La Manivelle and Architruc at the Comédie de Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7-25 August",
+          "event": "Beckett holidays with Suzanne in Kitzbühel.",
+          "type": "personal",
+          "additional": "https://www.gettyimages.com/detail/photo/wilder-kaiser-mountain-range-royalty-free-image/15727808"
+        },
+        {
+          "date": "22 August",
+          "event": "Second attempt on the life of General de Gaulle.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "5 September",
+          "event": "De Gaulle dissolves the French National Assembly, now allowing the President to be directly elected by the people.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "21 September",
+          "event": "Beckett sends complete manuscripts of Cascando to Herbert Myron for deposit in the Harvard University Theatre Collection.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 October",
+          "event": "Samuel Beckett arrives in London to begin rehearsals of Happy Days on 8 October.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 October",
+          "event": "Attends Jack McGowran’s runthrough of his one-man Beckett show, End of the Day. The BBC Third Programme broadcasts Words and Music.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 October",
+          "event": "Start of the Cuban missile crisis.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "1 November",
+          "event": "London opening of Happy Days at the Royal Court Theatre. Samuel Beckett returns to Paris. Grants George Devine and the Royal Court Theatre first option on production of his future work in London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "3 November",
+          "event": "Samuel Beckett consults an eye specialist in Berne.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 November",
+          "event": "The BBC Third Programme broadcasts Words and Music.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "19 November",
+          "event": "Henri Hayden taken ill and hospitalized in London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "before 27 December",
+          "event": "Samuel Beckett attends Ionesco’s Le Roi se meurt with George Devine, Jocelyn Herbert, and her daughter Jenny.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "27 December",
+          "event": "Samuel Beckett attends with Robert Pinget, Roland Dubillard’s La Maison d’os.",
+          "type": "personal",
+          "additional": "none"
+        }
+      ],
+      "1963": [
+        {
+          "date": "25 January",
+          "event": "Tous ceux qui tombent broadcast on French Television with an introduction by Georges Belmont.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "25 February",
+          "event": "Beckett accepts Barney Rosset’s commission to write a film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 March",
+          "event": "Poems in English published by Grove Press.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "22 March",
+          "event": "Attends Ramón Valle-Inclán’s play Divines paroles at the Théâtre de l’Odéon, directed by Roger Blin.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "5 April",
+          "event": "Beckett begins a manuscript notebook of Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 April",
+          "event": "Completes first draft of Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "week of 15 April",
+          "event": "Beckett works with Jean-Marie Serreau on Comédie.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 May",
+          "event": "Attends King Lear directed by Peter Brook at the Théâtre Sarah-Bernhardt.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 May",
+          "event": "Samuel Beckett agrees to an embargo against performance of his plays before segregated audiences in South Africa.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 May - 6 June",
+          "event": "Beckett attends rehearsals and recordings of Cascando, RTF studios.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 May",
+          "event": "With Alan Schneider, Beckett attends two working sessions of Spiel in Ulm, Germany.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "3 June",
+          "event": "Death of Pope John XXIII.",
+          "type": "global",
+          "additional": "image"
+        },
+        {
+          "date": "14 June",
+          "event": "Premiere of Spiel at the Ulmer-Theater, Ulm-Donau, directed by Deryk Mendel.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "before 17 June",
+          "event": "Beckett rehearses Oh Les beaux jours with Madeleine Renaud and Roger Blin.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "17 June - 16 July",
+          "event": "Samuel Beckett holidays with Suzanne in Zell-am-See, Austria.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21 June",
+          "event": "Election of Cardinal Montini as Pope Paul VI.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "29 July",
+          "event": "A. J. Leventhal moves from Dublin to Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "before 20 August",
+          "event": "Samuel Beckett writes a brief tribute to Richard Aldington.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 August",
+          "event": "Samuel Beckett begins a play for a lit face (“Kilcool”; TCD, MS 4664).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "27 September",
+          "event": "Premiere of Oh les beaux jours at the Teatro del Ridotto, as part of the Venice Festival.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 September",
+          "event": "Happy Days opens at the Eblana Theatre, Dublin, directed by John Beary, with Marie Kean.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 October",
+          "event": "ORTF-France Culture broadcasts Cascando.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 November",
+          "event": "Beckett asks Faber and Faber to publish the unexpurgated version of Waiting for Godot.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "22 November",
+          "event": "Assassination of John F. Kennedy. Lyndon B. Johnson becomes President of the United States.",
+          "type": "global",
+          "additional": "image"
+        }
+      ],
+      "1964": [
+        {
+          "date": "4 January",
+          "event": "Play opens at the Cherry Lane Theatre, New York, directed by Alan Schneider, on a double bill with Harold Pinter’s The Lover.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 January - 5 February",
+          "event": "Beckett in London for rehearsals of Endgame with Patrick Magee and Jack MacGowran.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "25 January",
+          "event": "Beckett attends playback of Cascando as recorded in Stuttgart.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "28 January",
+          "event": "Attends the opening night of Max Frisch’s play Andorra at the Old Vic.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "29 January",
+          "event": "Attends “Theatre of Cruelty” productions, organized by Charles Marowitz and Peter Brook, at LAMDA.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 February",
+          "event": "Attends dress rehearsal of Who’s Afraid of Virginia Woolf, directed by Alan Schneider, Piccadilly Theatre, London.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "17 February",
+          "event": "Endgame with Jack MacGowran and Patrick Magee opens at the Studio des Champs-Elysées.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "24 February",
+          "event": "Goddard Lieberson’s invites Beckett to contribute to a Homage for John F. Kennedy. Beckett declines.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "14 March - 8 April",
+          "event": "Samuel Beckett in London for rehearsals of Play.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21-22 March",
+          "event": "Spends weekend with George Devine and Jocelyn Herbert at their farm, “Andrews,” in Hampshire.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 April",
+          "event": "Assassination of Martin Luther King Jr. in Memphis.",
+          "type": "global",
+          "additional": "https://www.twincities.com/wp-content/uploads/2018/04/mlk-page-11.jpg"
+        },
+        {
+          "date": "7 April",
+          "event": "Play opens at the National Theatre, Old Vic, on a double bill with Sophocles’ Philoctetes.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 April",
+          "event": "Samuel Beckett writes tribute to Brendan Behan for Theater heute.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "14 April",
+          "event": "Samuel Beckett resumes rehearsals in Paris for Comédie, directed by Jean-Marie Serreau.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21 April",
+          "event": "Gisèle Freund photographs Samuel Beckett.",
+          "type": "personal",
+          "additional": "https://upload.wikimedia.org/wikipedia/en/2/22/Self_Portrait_of_Gisele_Freund.jpg"
+        },
+        {
+          "date": "30 April",
+          "event": "How It Is published by John Calder.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 May",
+          "event": "Henri Cartier-Bresson photographs Beckett in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "June",
+          "event": "Comédie published in Les Lettres Nouvelles.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "11 June",
+          "event": "Comédie opens at the Pavillon de Marsan, as part of the Estival 1964, directed by Jean-Marie Serreau, assisted by Samuel Beckett.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "12 June",
+          "event": "Nelson Mandela sentenced to life imprisonment in South Africa.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/1/11/Young_Mandela.jpg"
+        },
+        {
+          "date": "29 June-9 July",
+          "event": "Samuel Beckett in London to assist Donald McWhinnie with rehearsals of Endgame, with Jack MacGowran and Patrick Magee.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "9 July",
+          "event": "Endgame opens at the Aldwych Theatre.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 July - 6 August",
+          "event": "Beckett flies from London to New York for work on Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "11-12 July",
+          "event": "Stays at Barney Rosset’s home in East Hampton, works with Alan Schneider and cameraman Boris Kaufman on plans for Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 July",
+          "event": "Murphy, published by Calder and Boyars, is banned in Ireland.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "23 July",
+          "event": "Beckett attends Dutchman by LeRoi Jones (later Amiri Baraka) and The American Dream by Edward Albee at Cherry Lane Theatre.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "30 July",
+          "event": "Final day of shooting of Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "1 and 2 August",
+          "event": "Beckett works with Sidney Meyers, the editor of Film.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "15 August",
+          "event": "Death of Leslie Daiken, in London.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "by 21 August",
+          "event": "Samuel Beckett has begun to write first of four pieces which will later be called “Faux départs.”",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "18 September",
+          "event": "Death of Sean O’Casey.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Sean_ocasey_1924.jpg"
+        },
+        {
+          "date": "6 October",
+          "event": "Cascando broadcast on the BBC Third Program. ",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 October",
+          "event": "Samuel Beckett halts republication of More Pricks Than Kicks by Grove Press and John Calder.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "12 - 31 December",
+          "event": " Beckett in London for rehearsals of Waiting for Godot, directed by Anthony Page at the Royal Court Theatre.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "10 December",
+          "event": "Jean-Paul Sartre refuses the Nobel Prize in Literature.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jean_Paul_Sartre_1965.jpg"
+        },
+        {
+          "date": "30 December",
+          "event": "Waiting for Godot opens at the Royal Court Theatre with Patrick Magee and Nicol Williamson.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {}
+      ],
+      "1965": [
+        {
+          "date": "5 February",
+          "event": "Beckett called to Berlin to help with Schiller-Theater production of Warten auf Godot, directed by Deryk Mendel.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "18 February",
+          "event": "Beckett flies from Berlin to London to assist with rehearsals of Jack MacGowran’s Beginning to End.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "19 February",
+          "event": "Attends Marat/Sade, by Peter Weiss, directed by Peter Brook, with Patrick Magee as the Marquis de Sade.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21 February",
+          "event": "Beckett returns to Berlin from London to resume rehearsals of Warten auf Godot.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "27 February",
+          "event": "Beckett flies from Berlin to Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "28 February",
+          "event": "Samuel Beckett learns that Italian actress Clara Colosimo has gone on hunger strike because she cannot get permission to perform Giorni felici (Happy Days).",
+          "type": "personal",
+          "additional": "image?"
+        },
+        {
+          "date": "2 March",
+          "event": "Launch of Operation Rolling Thunder, a sustained American bombing campaign of North Vietnam that lasts until 2 November 1968.",
+          "type": "global",
+          "additional": "none"
+        },
+        {
+          "date": "11 March",
+          "event": "Beckett views latest cut of Film and sends his notes on to Schneider the following day.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "17 March",
+          "event": "Death of Nancy Cunard in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "21 March",
+          "event": "Beckett completes a draft of Va-et-vient, French translation of Come and Go.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 April",
+          "event": "Beckett sends third and fourth (final) draft of How It Is to Henry Wenning as a gift to the Boston University Beckett collection.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "13 April",
+          "event": "Beckett ro write Eh Joe for television, a play for Jack MacGowran.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "6 May",
+          "event": "Unexpurgated edition of Waiting for Godot published by Faber and Faber.",
+          "type": "personal",
+          "additional": "https://i2.wp.com/i1083.photobucket.com/albums/j391/bookkarino/13453814_zpsywj532ak.jpg"
+        },
+        {
+          "date": "15 May",
+          "event": "Beckett completes Eh Joe and sends to Jack MacGowran, Donald McWhinnie, and Curtis Brown.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "20 June",
+          "event": "Beckett and Suzanne fly to Turin, travelling on to Courmayeur on 22 June for a holiday.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "3 July",
+          "event": "Beckett completes the French translation Dis Joe.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4-8 July",
+          "event": "Beckett translates Imagination morte imaginez into English.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "14 July",
+          "event": "Beckett returns to Paris from Courmayeur via Turin.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "16 July",
+          "event": "Opening of the Mont Blanc Tunnel between France and Italy.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Mont_Blanc_Tunnel_French_Side.jpg"
+        },
+        {
+          "date": "19 July",
+          "event": "Samuel Beckett has surgery on jaw.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "8 August",
+          "event": "Beckett begins French translation of Words and Music; draft translation completed on 14 August.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "4 September",
+          "event": "Premiere of Film at the Venice Film Festival. Samuel Beckett begins draft of Assez.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "November",
+          "event": "Annales (Toulouse) publishes an extract from Mercier et Camier (as yet unpublished novel, 1946).",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "mid-November to 5 December",
+          "event": "Beckett in Ussy, working on Le Dépeupleur. Completes first draft on 28 November.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "7 December",
+          "event": "Samuel Beckett begins work with director Marin Karmitz on a film of Comédie in Paris.",
+          "type": "personal",
+          "additional": "none"
+        },
+        {
+          "date": "12 December",
+          "event": "Charles de Gaulle is reelected as French President, defeating François Mitterrand.",
+          "type": "global",
+          "additional": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Charles_de_Gaulle_Mr_VIE_Isles_sur_Suippe.jpg"
+        },
+        {
+          "date": "21 January",
+          "event": "Beckett has completed manuscript of Come and Go and sends it to Barbara Bray.",
+          "type": "personal",
+          "additional": "none"
+        }
+      ]
+    }
+  }

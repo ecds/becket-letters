@@ -58,8 +58,8 @@ class Place extends Component {
           <h1>
             <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label}}/>
             {this.state.entityData.attributes.properties ?
-            <span>{this.state.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : ', '}
-            {this.state.entityData.attributes.properties.description ? <span className="comma" dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.description}} /> : null}
+            <span>{this.state.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : null}
+            {this.state.entityData.attributes.properties.description && this.state.entityData.attributes.properties.description != "" ? <span className="comma" dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.description}} /> : null}
             {this.state.entityData.attributes.properties['links'].length > 0 ? <span className='comma'>{this.state.entityData.attributes.properties['links'].map((entity, key) => <a target="_new" key={key} href={entity}>{entity}</a>)} </span> : null}
             </span>
             : null}

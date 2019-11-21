@@ -15,7 +15,7 @@ class Landing extends Component {
       <div className="landing" >
         <DocMetaBuilder {...metaBuild} />
         <HomeJumbotron />
-        <SearchPage />
+        {/* <SearchPage /> */}
         <HomeTiles />
       </div >
     )

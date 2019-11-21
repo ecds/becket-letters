@@ -60,7 +60,7 @@ class AttendanceDetails extends Component {
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}} className="label"/>
           {this.state.entityData.attributes.properties ?
             <span>
-              {this.state.entityData.attributes.properties['alternative-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternative-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : ', '}
+              {this.state.entityData.attributes.properties['alternative-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternative-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : null}
               {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['place-date'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['place-date']}} className="comma"/> : null}
               {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['attended-with'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['attended-with']}} className="attended-with"/> : null}
               {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['performed-by'] ? <span className="performed-by">{this.state.entityData.attributes.properties['performed-by'].map((entity, key) => <span className="list-span" key={key} dangerouslySetInnerHTML={{__html: entity}}></span>)}</span> : null}
