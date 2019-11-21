@@ -27,6 +27,7 @@ class WritingDetails extends Component {
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
+        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -55,8 +56,14 @@ class WritingDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
-          <table className="table table-striped">
+          {/*<HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />*/}
+          <h1>
+            <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}} className="label"/>
+            <span className="comma">{this.state.entityData.attributes.properties.date}</span>
+            <span className="comma">{this.state.entityData.attributes.properties.proposal}</span>
+            {this.state.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['notes']}} className="notes"/> : null}
+          </h1>
+          {/* <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
                 <td>Date</td>
@@ -68,6 +75,7 @@ class WritingDetails extends Component {
               </tr>
             </tbody>
           </table>
+          */}
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >

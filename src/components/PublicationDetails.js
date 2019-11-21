@@ -56,7 +56,15 @@ class PublicationDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
+          {/* <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} /> */}
+          <h1>
+           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label}}/>
+           {this.state.entityData.attributes.properties.author ? <span className="comma">{this.state.entityData.attributes.properties.author}</span> : null}
+           {this.state.entityData.attributes.properties.translator ? <span className="comma">{this.state.entityData.attributes.properties.translator}</span> : null}
+           {this.state.entityData.attributes.properties['publication-information'] ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['publication-information'] }} /> : null}
+           {this.state.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['notes']}} className="notes"/> : null}
+          </h1>
+          {/*
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
@@ -69,7 +77,7 @@ class PublicationDetails extends Component {
               </tr>
               <tr>
                 <td>Publication Information</td>
-                <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['publication-information'] }} />
+                <td  />
               </tr>
               <tr>
                 <td>Notes</td>
@@ -77,6 +85,7 @@ class PublicationDetails extends Component {
               </tr>
             </tbody>
           </table>
+          */}
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >

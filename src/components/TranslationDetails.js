@@ -26,6 +26,7 @@ class TranslationDetails extends Component {
       axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getData) => {
         const entityData = getData.data.data;
+        console.log(entityData)
         this.setState({ entityData });
         this.setState({ isLoaded: true })
       }))
@@ -55,7 +56,16 @@ class TranslationDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
+          {/*<HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} /> */}
+          <h1>
+            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label}}/>
+            {this.state.entityData.attributes.properties.author ? <span className="comma">{this.state.entityData.attributes.properties.author}</span> : null }
+            {this.state.entityData.attributes.properties['translated-into'] ? <span className="comma">{this.state.entityData.attributes.properties['translated-into']}</span> : null }
+            {this.state.entityData.attributes.properties.translator ? <span className="translated-by">{this.state.entityData.attributes.properties.translator}</span> : null }
+            {this.state.entityData.attributes.properties['translated-title'] ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['translated-title'] }}/> : null }
+            {this.state.entityData.attributes.properties['comments'] ? <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties['comments']}}/> : null}
+          </h1>
+          {/*
           <table className="table table-striped">
             <tbody className='details-table'>
               <tr>
@@ -80,6 +90,7 @@ class TranslationDetails extends Component {
               </tr>
             </tbody>
           </table>
+           */}
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div>
