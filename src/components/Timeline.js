@@ -7,6 +7,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 export class Timeline extends Component {
   constructor(props, context) {
     super(props, context);
+    this.myRef = React.createRef();
     this.state = {
       error: null,
       isLoaded: false,
@@ -14,7 +15,23 @@ export class Timeline extends Component {
     };
   }
 
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  scrollToMyRef = () => {
+    window.scrollTo({
+      top: this.myRef.offsetTop,
+      // behavior: "smooth" // optional
+    });
+  };
+
   componentDidMount() {
+    this.scrollToMyRef();
     axios.all([
       axios.get('http://localhost:3000/beckett-timeline-ver-26-aug.json')])
       .then(axios.spread((getLetterData) => {
@@ -26,18 +43,6 @@ export class Timeline extends Component {
         this.setState({ isLoaded: false });
         this.setState({ error: err.message });
       });
-  }
-
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
-
-  scrollToElement() {
-    
   }
 
   render() {
@@ -75,7 +80,7 @@ export class Timeline extends Component {
           <ol>
             {Object.keys(allTimelineEntries).map(keyOuter => {
               return (
-                <li key={keyOuter}><Link to={'#' + keyOuter} >{keyOuter}</Link></li>
+                <li ref={this.myRef}>{keyOuter}</li>
               )
             })}
             <button onClick={() => this.scrollToTop()}>Top</button>
@@ -83,7 +88,7 @@ export class Timeline extends Component {
           {
             Object.keys(allTimelineEntries).map(keyOuter => {
               return (
-                <TimelineYear id={keyOuter} key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]} />
+                <TimelineYear ref={keyOuter} key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]} />
               )
             })
           }
