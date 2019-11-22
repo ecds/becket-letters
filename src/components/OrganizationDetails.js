@@ -55,26 +55,7 @@ class OrganizationDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          {/*<HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />*/}
-          <h1>
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.label}} />
-          {this.state.entityData.attributes.properties ?
-            <span>
-              {this.state.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> : ''}
-              {this.state.entityData.attributes.properties.description ? <span className="comma" dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties.description}} /> : null}
-            </span>
-          : null }
-          </h1>
-          {/*
-          <table className="table table-striped">
-            <tbody className='details-table'>
-              <tr>
-                <td>Description</td>
-                {this.state.entityData.attributes.properties !== null ? <td dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : <td></td>}
-              </tr>
-            </tbody>
-          </table>
-          */}
+          <HeaderBuilder entityData={this.state.entityData} id={this.state.entityData.id} />
           <h2>Mentioned In:</h2>
           <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
         </div >
