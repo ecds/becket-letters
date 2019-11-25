@@ -5,32 +5,32 @@ import { Container } from 'react-bootstrap';
 import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import BrowseLetters from './components/BrowseLetters';
+import EntityDetails from './components/EntityDetails';
 import Landing from './components/Landing';
-import Letters from './components/letters';
 import LetterDetails from './components/LetterDetails';
+import Letters from './components/letters';
 import LettersByAttendanceMentioned from './components/LettersByAttendanceMentioned';
 import LettersByMusicMentioned from './components/LettersByMusicMentioned';
 import LettersByOrganizationsMentioned from './components/LettersByOrganizationsMentioned';
-import LettersByPlacesMentioned from './components/LettersByPlacesMentioned';
 import LettersByPeopleMentioned from './components/LettersByPeopleMentioned';
+import LettersByPlacesMentioned from './components/LettersByPlacesMentioned';
 import LettersByProductionsMentioned from './components/LettersByProductionsMentioned';
-import LettersByPublicationMentioned from './components/LettersByPublicationMentioned';
 import LettersByPublicEventMentioned from './components/LettersByPublicEventMentioned';
+import LettersByPublicationMentioned from './components/LettersByPublicationMentioned';
 import LettersByReadingsMentioned from './components/LettersByReadingsMentioned';
+import LettersByRepository from './components/LettersByRepository';
 import LettersByTranslationsMentioned from './components/LettersByTranslationsMentioned';
 import LettersByWorkOfArtMentioned from './components/LettersByWorkOfArtMentioned';
 import LettersByWritingsMentioned from './components/LettersByWritingsMentioned';
 import People from './components/people';
-import Places from './components/Places';
 import PersonDetails from './components/PersonDetails';
-import Timeline from './components/Timeline';
-import SearchResults from './components/SearchResults';
-import SearchLetters from './components/SearchLetters';
-import Sidebar from './components/utilities/Sidebar';
+import Places from './components/Places';
 import PublicEventDetails from './components/PublicEventDetails';
 import RepositoryDetails from './components/RepositoryDetails';
-import LettersByRepository from './components/LettersByRepository';
-import EntityDetails from './components/EntityDetails';
+import SearchLetters from './components/SearchLetters';
+import SearchResults from './components/SearchResults';
+import Sidebar from './components/utilities/Sidebar';
+import Timeline from './components/Timeline';
 
 library.add(faSpinner, faSearch)
 
@@ -82,7 +82,7 @@ class App extends Component {
             <Route exact path='/browse-letters-translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/browse-letters-works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/browse-letters-writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} />} />
-
+            {/* Entity Details: */}
             <Route exact path='/attendances/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/music/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
@@ -95,18 +95,17 @@ class App extends Component {
             <Route exact path='/translations/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/works-of-art/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/writings/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
-
-            <Route exact path='/timeline' component={Timeline} />
-            <Route exact path="/people" component={People} />
-            <Route exact path="/people/:id" render={(props) => <PersonDetails apiUrl={this.props.apiUrl} {...props} />} />
+            {/* etc: */}
+            <Route exact path="/" component={Landing} />
             <Route exact path="/letters" component={Letters} />
             <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path="/people" component={People} />
+            <Route exact path="/people/:id" render={(props) => <PersonDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/places' component={Places} />
             <Route exact path='/search' component={SearchResults} />
             <Route exact path='/search-letters' component={SearchLetters} />
-            <Route exact path="/" component={Landing} />
+            <Route exact path='/timeline' component={Timeline} />
           </Switch>
-
         </Container>
       </Router>
     );
