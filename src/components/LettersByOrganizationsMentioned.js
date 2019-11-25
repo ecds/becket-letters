@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import { Link } from 'react-router-dom';
-import axios from "axios";
-import Pagination from './utilities/Pagination';
 import BrowseLetters from './BrowseLetters';
+import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
+import Pagination from './utilities/Pagination';
+import React, { Component } from "react";
+import axios from "axios";
+import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 class LettersByOrganizationsMentioned extends Component {
   constructor(props, context) {
@@ -80,7 +80,11 @@ class LettersByOrganizationsMentioned extends Component {
   render() {
     var EntityList = this.state.data.map((entity) =>
       <tr key={entity.id}>
-        <td><Link to={{ pathname: `/organizations/${entity.id}`, state: { id: entity.id } }}><span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /></Link></td>
+        <td>
+          <Link to={{ pathname: `/organizations/${entity.id}`, state: { id: entity.id } }}>
+            <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+          </Link>
+        </td>
       </tr>
 
     );
@@ -125,7 +129,6 @@ class LettersByOrganizationsMentioned extends Component {
           </thead>
           <tbody>
             {!this.state.isLoaded ? <LoadingSpinner /> : EntityList}
-
           </tbody>
         </Table>
       </Container>

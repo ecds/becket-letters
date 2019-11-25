@@ -9,6 +9,7 @@ import EntityDetails from './components/EntityDetails';
 import Landing from './components/Landing';
 import LetterDetails from './components/LetterDetails';
 import Letters from './components/letters';
+import LettersBy from './components/LettersBy';
 import LettersByAttendanceMentioned from './components/LettersByAttendanceMentioned';
 import LettersByMusicMentioned from './components/LettersByMusicMentioned';
 import LettersByOrganizationsMentioned from './components/LettersByOrganizationsMentioned';
@@ -69,9 +70,9 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route exact path="/browse-letters" component={BrowseLetters} />
-            <Route exact path='/browse-letters-attendance' render={(props) => <LettersByAttendanceMentioned apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path='/browse-letters-attendance' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props} entityType={'attendance'} placeholder={"ex. 'Come Back Africa'"} tableHeader={'Attendance Name'} />} />
             <Route exact path='/browse-letters-music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path='/browse-letters-organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} entityType={'organization'} placeholder={"ex. 'University of Toronto'"} tableHeader={'Organization Name'} />} />
             <Route exact path='/browse-letters-people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/browse-letters-places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/browse-letters-productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} />} />
