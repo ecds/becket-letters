@@ -21,7 +21,7 @@ class BrowseLetters extends Component {
   render() {
     return (
       <div className="pt-3">
-        <HeaderBuilder header='Browse Letters Mentioned' />
+        <HeaderBuilder header='Browse Letters Mentioned' type='string' />
         <ul className="nav nav-tabs" id="browse-tabs">
           <li className={this.setActive('by-attendance')}><Link to="/browse-letters-attendance">Attendance</Link></li>
           <li className={this.setActive('by-music')}><Link to="/browse-letters-music">Music</Link></li>
