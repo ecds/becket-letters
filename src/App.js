@@ -70,19 +70,97 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route exact path="/browse-letters" component={BrowseLetters} />
-            <Route exact path='/browse-letters-attendance' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props} entityType={'attendance'} placeholder={"ex. 'Come Back Africa'"} tableHeader={'Attendance Name'} />} />
-            <Route exact path='/browse-letters-music' render={(props) => <LettersByMusicMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-organizations' render={(props) => <LettersByOrganizationsMentioned apiUrl={this.props.apiUrl} {...props} entityType={'organization'} placeholder={"ex. 'University of Toronto'"} tableHeader={'Organization Name'} />} />
-            <Route exact path='/browse-letters-people' render={(props) => <LettersByPeopleMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-places' render={(props) => <LettersByPlacesMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-productions' render={(props) => <LettersByProductionsMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-public_events' render={(props) => <LettersByPublicEventMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-publications' render={(props) => <LettersByPublicationMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-readings' render={(props) => <LettersByReadingsMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path="/browse-letters-repositories" render={(props) => <LettersByRepository apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-translations' render={(props) => <LettersByTranslationsMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-works_of_art' render={(props) => <LettersByWorkOfArtMentioned apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/browse-letters-writings' render={(props) => <LettersByWritingsMentioned apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path='/browse-letters-attendance' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType={'attendance'}
+              placeholder={"ex. 'Come Back Africa'"}
+              tableHeader={'Attendance Name'}
+              metaTitle={'Browse by Attendances'}
+            />}
+            />
+            <Route exact path='/browse-letters-music' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType={'music'}
+              placeholder={"ex. 'Nearer my God'"}
+              tableHeader={'Music Title'}
+              metaTitle={'Browse by Music'}
+            />}
+            />
+            <Route exact path='/browse-letters-organization' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='organization'
+              placeholder={"ex. 'University of Toronto'"}
+              tableHeader={'Organization Name'}
+              metaTitle={'Browse by Organizations'}
+            />}
+            />
+            <Route exact path='/browse-letters-person' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props} 
+              entityType={'person'}
+              placeholder={"ex. 'PERSON NAME HERE'"}
+              tableHeader={'Person Name'}
+              metaTitle={'Browse by Person'}
+            />}
+            />
+            <Route exact path='/browse-letters-place' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType={'place'}
+              placeholder={"ex. 'Paris'"}
+              tableHeader={'Place Name'}
+              metaTitle={'Browse by Places'}
+            />}
+            />
+            <Route exact path='/browse-letters-production' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='production'
+              placeholder={"ex. 'Krapp's Last Tape'"}
+              tableHeader={'Production Name'}
+              metaTitle={'Browse by Productions'}
+            />}
+            />
+            <Route exact path='/browse-letters-public-event' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='public-event'
+              placeholder={"ex. 'Bastille Day'"}
+              tableHeader={'Public Event'}
+              metaTitle={'Browse by Public Events'}
+            />}
+            />
+            <Route exact path='/browse-letters-publication' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='publication'
+              placeholder={"ex. 'Godot'"}
+              tableHeader={'Publication Name'}
+              metaTitle={'Browse By Publication'}
+            />}
+            />
+            <Route exact path='/browse-letters-reading' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='reading'
+              placeholder={"ex. 'The Warden'"}
+              tableHeader={'Reading Name'}
+              metaTitle={'Browse by Reading'}
+            />}
+            />
+            <Route exact path="/browse-letters-repositories" render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='repositories'
+              placeholder={"ex. 'Trinity College'"}
+              tableHeader={'Repository'}
+              metaTitle={'Browse by Repositories'}
+            />}
+            />
+            <Route exact path='/browse-letters-Translating' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='Translating'
+              placeholder={"ex. 'Krapp'"}
+              tableHeader={'Translating Title'}
+              metaTitle={'Browse by Translating'}
+            />}
+            />
+            <Route exact path='/browse-letters-work-of-art' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='work-of-art'
+              placeholder={"ex. 'Divine Comedy'"}
+              tableHeader={'Work of Art Title'}
+              metaTitle={'Browse by Work of Art'}
+            />}
+            />
+            <Route exact path='/browse-letters-writing' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+              entityType='writing'
+              placeholder={"ex. 'Molloy'"}
+              tableHeader={'Writing Title'}
+              metaTitle={'Browse by Writing'}
+            />}
+            />
             {/* Entity Details: */}
             <Route exact path='/attendances/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} />} />

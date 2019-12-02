@@ -53,8 +53,7 @@ class LettersByRepository extends Component {
       axios.get(this.props.apiUrl + '/search-entities?query=' + searchTerms + '&type=reading')])
       .then(axios.spread((getAllData) => {
         const data = getAllData.data.data;
-        const pagination = getAllData.data.meta.pagination;
-        this.setState({ pagination, data, isLoaded: true });
+        this.setState({ data, isLoaded: true });
       }))
       .catch((err) => {
         this.setState({ isLoaded: false, error: err.message });
@@ -104,7 +103,6 @@ class LettersByRepository extends Component {
           </thead>
           <tbody>
             {!this.state.isLoaded ? <LoadingSpinner /> : EntityList}
-
           </tbody>
         </Table>
       </Container>

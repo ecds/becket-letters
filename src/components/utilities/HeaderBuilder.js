@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class HeaderBuilder extends Component {
     render() {
-        console.log(this.props.entityData)
         if (this.props.type === 'string') {
             return (
                 <h1>{this.props.header}</h1>
@@ -54,7 +53,7 @@ class HeaderBuilder extends Component {
                     <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} />
                     {this.props.entityData.attributes.properties ?
                         <span>{this.props.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.props.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key} dangerouslySetInnerHTML={{ __html: entity }} className="list-span"></span>)} </span> : null}
-                            {this.props.entityData.attributes.properties.description && this.props.entityData.attributes.properties.description != "" ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.description }} /> : null}
+                            {this.props.entityData.attributes.properties.description && this.props.entityData.attributes.properties.description !== "" ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.description }} /> : null}
                             {this.props.entityData.attributes.properties['links'].length > 0 ? <span className='comma'>{this.props.entityData.attributes.properties['links'].map((entity, key) => <a target="_new" key={key} href={entity}>{entity}</a>)} </span> : null}
                         </span>
                         : null}
