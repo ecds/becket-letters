@@ -8,15 +8,9 @@ import BrowseLetters from './components/BrowseLetters';
 import EntityDetails from './components/EntityDetails';
 import Landing from './components/Landing';
 import LetterDetails from './components/LetterDetails';
-import Letters from './components/letters';
 import LettersBy from './components/LettersBy';
-import People from './components/people';
 import PersonDetails from './components/PersonDetails';
-import Places from './components/Places';
-import PublicEventDetails from './components/PublicEventDetails';
 import RepositoryDetails from './components/RepositoryDetails';
-import SearchLetters from './components/SearchLetters';
-import SearchResults from './components/SearchResults';
 import Sidebar from './components/utilities/Sidebar';
 import Timeline from './components/Timeline';
 
@@ -37,7 +31,6 @@ class App extends Component {
       '/letters': 'Letters',
       '/letters/letterdetails/:id': 'Letter Details',
       '/timeline': 'Timeline',
-      '/people': 'People',
       '/people/:personId/:name': ':name',
       '/places': 'Places',
       '/places/:placeId': ':d',
@@ -150,7 +143,7 @@ class App extends Component {
             />
             {/* Entity Details: */}
             <Route exact path='/attendances/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/events/:id' render={(props) => <PublicEventDetails apiUrl={this.props.apiUrl} {...props} />} />
+            <Route exact path='/public-events/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/music/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/organizations/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/places/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
@@ -163,13 +156,8 @@ class App extends Component {
             <Route exact path='/writings/:id' render={(props) => <EntityDetails apiUrl={this.props.apiUrl} {...props} />} />
             {/* etc: */}
             <Route exact path="/" component={Landing} />
-            <Route exact path="/letters" component={Letters} />
             <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path="/people" component={People} />
             <Route exact path="/people/:id" render={(props) => <PersonDetails apiUrl={this.props.apiUrl} {...props} />} />
-            <Route exact path='/places' component={Places} />
-            <Route exact path='/search' component={SearchResults} />
-            <Route exact path='/search-letters' component={SearchLetters} />
             <Route exact path='/timeline' component={Timeline} />
           </Switch>
         </Container>
