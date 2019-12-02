@@ -15,16 +15,16 @@ class Sidebar extends Component {
             <NavDropdown.Item href="/browse-letters-attendance">Attendance</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-music">Music</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-organizations">Organizations</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-people">People</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-person">People</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-places">Places</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-productions">Productions</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-public_events">Public Events</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-publications">Publications</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-readings">Reading</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-production">Productions</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-public-event">Public Events</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-publication">Publications</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-reading">Reading</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-repositories">Repository</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-translations">Translations</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-works_of_art">Works of Art</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-writings">Writings</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-Translating">Translations</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-work-of-art">Works of Art</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-writing">Writings</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/timeline">Timeline</Nav.Link>
         </Navbar.Collapse>

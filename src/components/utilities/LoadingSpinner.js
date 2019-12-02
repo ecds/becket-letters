@@ -7,7 +7,7 @@ class LoadingSpinner extends Component {
       <tr>
         <td>
           <div className="text-center">
-            <FontAwesomeIcon icon="spinner" spin  size="6x" />
+            <FontAwesomeIcon icon="spinner" spin size="6x" />
           </div>
         </td>
       </tr>
