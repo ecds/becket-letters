@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from "axios";
 import TimelineYear from './TimelineYear';
 import DocumentMeta from 'react-document-meta';
-import { HashLink as Link } from 'react-router-hash-link';
 
 export class Timeline extends Component {
   constructor(props, context) {

@@ -14,9 +14,9 @@ class Sidebar extends Component {
           <NavDropdown title="Browse Letters By" id="basic-nav-dropdown">
             <NavDropdown.Item href="/browse-letters-attendance">Attendance</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-music">Music</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-organizations">Organizations</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-organization">Organizations</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-person">People</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-places">Places</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-place">Places</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-production">Productions</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-public-event">Public Events</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-publication">Publications</NavDropdown.Item>
