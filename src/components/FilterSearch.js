@@ -18,10 +18,10 @@ class FilterSearch extends Component {
             isSearching: false,
             entityType: ''
         };
-        this.getData = this.getData.bind(this);
-        this.intiateSearch = this.intiateSearch.bind(this);
-        this.searchData = this.searchData.bind(this);
-        this.resetPage = this.resetPage.bind(this);
+        // this.getData = this.getData.bind(this);
+        // this.intiateSearch = this.intiateSearch.bind(this);
+        // this.searchData = this.searchData.bind(this);
+        // this.resetPage = this.resetPage.bind(this);
     }
 
     componentDidMount() {
