@@ -2,6 +2,7 @@ import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
+import FindLetters from './utilities/FindLetters';
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
@@ -28,41 +29,64 @@ class FilterSearch extends Component {
 
     getData = () => {
         this.setState({ isLoaded: false })
-        console.log(this.props.entityType)
-        if (this.props.entityType === 'repositories') {
-            axios.all([
-                axios.get(this.props.apiUrl + '/repositories')])
-                .then(axios.spread((getAllData) => {
-                    const data = getAllData.data.data;
-                    console.log(data)
-                    this.setState({ data, isLoaded: true });
-                }))
-                .catch((err) => {
-                    this.setState({ isLoaded: false, error: err.message });
-                });
-        }
-        else {
-            axios.all([
-                axios.get(this.props.apiUrl + '/entities?entity_type=' + this.props.entityType + '&items=50&page=' + this.state.page)
-            ])
-                .then(axios.spread((getAllData) => {
-                    const data = getAllData.data.data;
-                    this.setState({ data, isLoaded: true });
-
-                    console.log(data)
-                }))
-                .catch((err) => {
-                    this.setState({ isLoaded: false, error: err.message });
-                });
-        }
+        axios.all([
+            axios.get('http://ot-api.ecdsdev.org/entities?search=' + "paris")
+        ])
+            .then(axios.spread((getAllData) => {
+                const data = getAllData.data.data;
+                this.setState({ data, isLoaded: true });
+                console.log(this.state.data)
+            }))
+            .catch((err) => {
+                this.setState({ isLoaded: false, error: err.message });
+            });
     }
 
     render() {
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes.label !== null) {
-                return <tr key={entity.id}>
-                    <td></td>
-                </tr>
+                return <React.Fragment>
+                    <tr key={entity.id}>
+                        <td>
+                            {entity.attributes['type-label'] === 'Person' ?
+                                <Link
+                                    to={{
+                                        pathname: `/people/${entity.id}`,
+                                        state: {
+                                            id: entity.id,
+                                            name: entity.attributes.label
+                                        }
+                                    }}>
+                                    <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                                    {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
+                                </Link>
+                                :
+                                entity.attributes['type-label'] === 'Public Event' ?
+                                    <Link
+                                        to={{
+                                            pathname: `/public-events/${entity.id}`,
+                                            state: {
+                                                id: entity.id
+                                            }
+                                        }}>
+                                        {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                    </Link>
+                                    :
+                                    <Link
+                                        to={{
+                                            pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                            state: {
+                                                id: entity.id
+                                            }
+                                        }}>
+                                        {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                    </Link>
+                            }
+                        </td>
+                        <td>{entity.attributes['type-label']}</td>
+                    </tr>
+                    <FindLetters entity={entity} />
+                </React.Fragment>
             }
             else {
                 return null
@@ -78,8 +102,27 @@ class FilterSearch extends Component {
         return (
             <Container fluid >
                 <DocMetaBuilder {...metaBuild} />
-                <h1>Filter Search</h1>
-                {this.props.query}
+                <Row><h1>Filter Search</h1></Row>
+                <Row>
+                    <Col md={3} className='filterCol'>FILTERS HERE</Col>
+                    <Col md={9}>
+                        {!this.state.isLoaded ?
+                            <LoadingSpinner />
+                            :
+                            <Table striped bordered className="browse-by" id='browse-by'>
+                                <thead>
+                                    <tr>
+                                        <th>Label</th>
+                                        <th>Type-Label</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {EntityList}
+                                </tbody>
+                            </Table>
+                        }
+                    </Col>
+                </Row>
             </Container>
         )
     }
