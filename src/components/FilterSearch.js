@@ -2,7 +2,6 @@ import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
-import FindLetters from './utilities/FindLetters';
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
@@ -17,15 +16,12 @@ class FilterSearch extends Component {
             isSearching: false,
             entityType: ''
         };
-        // this.getData = this.getData.bind(this);
-        // this.intiateSearch = this.intiateSearch.bind(this);
-        // this.searchData = this.searchData.bind(this);
-        // this.resetPage = this.resetPage.bind(this);
     }
 
     componentDidMount() {
         this.getData();
     }
+
 
     getData = () => {
         this.setState({ isLoaded: false })
@@ -84,7 +80,31 @@ class FilterSearch extends Component {
                         </td>
                         <td>{entity.attributes['type-label']}</td>
                     </tr>
-                    <FindLetters entity={entity} />
+                    {entity.attributes['public-letters-hash'].map((letter) => {
+                        if (letter === null) {
+                            return null
+                        }
+                        else {
+                            return <tr>
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/letters/letterdetails/${letter.id}`,
+                                            state: {
+                                                id: letter.recipients[0].id,
+                                                name: letter.recipients[0].name
+                                            }
+                                        }}>
+                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name }} />
+                                    </Link>
+                                </td>
+                                <td>
+                                    {letter.date}
+                                </td>
+                            </tr>
+                        }
+                    }
+                    )}
                 </React.Fragment>
             }
             else {
@@ -102,6 +122,29 @@ class FilterSearch extends Component {
             <Container fluid >
                 <DocMetaBuilder {...metaBuild} />
                 <Row><h1>Filter Search</h1></Row>
+                <Row className="no-gutters pt-3">
+                    <Col md={11} className="no-gutters">
+                        {/* work on search function */}
+                        <Form className="tab-search" onSubmit={this.intiateSearch} ref="form"> 
+                            <Form.Group>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <Button aria-label='submit button' variant="primary" type="submit">
+                                            <FontAwesomeIcon icon="search" />
+                                        </Button>
+                                    </div>
+                                    <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
+                                </div>
+                            </Form.Group>
+                        </Form>
+                    </Col>
+                    <Col md={1} className="no-gutters">
+                        {this.state.isSearching ?
+                            <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
+                            : null
+                        }
+                    </Col>
+                </Row>
                 <Row>
                     <Col md={3} className='filterCol'>FILTERS HERE</Col>
                     <Col md={9}>
@@ -122,7 +165,7 @@ class FilterSearch extends Component {
                         }
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         )
     }
 }
