@@ -13,6 +13,7 @@ import PersonDetails from './components/PersonDetails';
 import RepositoryDetails from './components/RepositoryDetails';
 import Sidebar from './components/utilities/Sidebar';
 import Timeline from './components/Timeline';
+import FilterSearch from './components/FilterSearch';
 
 library.add(faSpinner, faSearch)
 
@@ -159,6 +160,7 @@ class App extends Component {
             <Route exact path="/letters/letterdetails/:id" render={(props) => <LetterDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path="/people/:id" render={(props) => <PersonDetails apiUrl={this.props.apiUrl} {...props} />} />
             <Route exact path='/timeline' component={Timeline} />
+            <Route exact path='/filter-search' component={FilterSearch} />
           </Switch>
         </Container>
       </Router>
