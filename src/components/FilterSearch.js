@@ -35,7 +35,6 @@ class FilterSearch extends Component {
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
                 this.setState({ data, isLoaded: true });
-                console.log(this.state.data)
             }))
             .catch((err) => {
                 this.setState({ isLoaded: false, error: err.message });
@@ -112,8 +111,8 @@ class FilterSearch extends Component {
                             <Table striped bordered className="browse-by" id='browse-by'>
                                 <thead>
                                     <tr>
-                                        <th>Label</th>
-                                        <th>Type-Label</th>
+                                        <th>Label or Recipient</th>
+                                        <th>Type-Label or Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>

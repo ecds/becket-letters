@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 class FindLetters extends Component {
     constructor(props, context) {
@@ -13,10 +14,19 @@ class FindLetters extends Component {
             else {
                 return <tr>
                     <td>
-                        letter
-                        </td>
+                        <Link
+                            to={{
+                                pathname: `/letters/letterdetails/${letter.id}`,
+                                state: {
+                                    id: letter.recipients[0].id,
+                                    name: letter.recipients[0].name
+                                }
+                            }}>
+                            <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name}} />
+                        </Link>
+                    </td>
                     <td>
-                        here
+                        {letter.date}
                             </td>
                 </tr>
             }
