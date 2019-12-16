@@ -13,8 +13,6 @@ class FilterSearch extends Component {
             error: null,
             isLoaded: false,
             data: [],
-            page: '1',
-            pagination: [],
             isSearching: false,
             entityType: ''
         };
@@ -49,8 +47,7 @@ class FilterSearch extends Component {
             ])
                 .then(axios.spread((getAllData) => {
                     const data = getAllData.data.data;
-                    const pagination = getAllData.data.meta.pagination;
-                    this.setState({ pagination, data, isLoaded: true });
+                    this.setState({ data, isLoaded: true });
 
                     console.log(data)
                 }))
@@ -64,32 +61,7 @@ class FilterSearch extends Component {
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes.label !== null) {
                 return <tr key={entity.id}>
-                    <td>
-                        {this.props.entityType === 'person' ?
-                            <Link
-                                to={{
-                                    pathname: `/people/${entity.id}`,
-                                    state: {
-                                        id: entity.id,
-                                        name: entity.attributes.label
-                                    }
-                                }}>
-                                <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                                {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
-                            </Link>
-                            :
-                            <Link
-                                to={{
-                                    pathname: `/${this.props.entityType}s/${entity.id}`,
-                                    state: {
-                                        id: entity.id
-                                    }
-                                }}>
-                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                            </Link>
-                        }
-                    </td>
-                    {this.props.entityType === 'music' ? <td><p>{entity.attributes.properties !== null ? entity.attributes.properties.composer : null}</p></td> : null}
+                    <td></td>
                 </tr>
             }
             else {
@@ -104,9 +76,10 @@ class FilterSearch extends Component {
         };
 
         return (
-            <Container fluid>
+            <Container fluid >
                 <DocMetaBuilder {...metaBuild} />
                 <h1>Filter Search</h1>
+                {this.props.query}
             </Container>
         )
     }
