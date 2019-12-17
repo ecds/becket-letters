@@ -11,22 +11,19 @@ class FilterSearch extends Component {
         super(props, context);
         this.state = {
             error: null,
-            isLoaded: false,
+            isLoaded: true,
             data: [],
             isSearching: false,
+            firstSearched: false,
             entityType: ''
         };
     }
 
-    componentDidMount() {
-        this.getData();
-    }
-
-
-    getData = () => {
+    search(searchTerms) {
+        console.log(this)
         this.setState({ isLoaded: false })
         axios.all([
-            axios.get('http://ot-api.ecdsdev.org/entities?search=' + "paris")
+            axios.get('http://ot-api.ecdsdev.org/entities?search=' + searchTerms)
         ])
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
@@ -35,6 +32,13 @@ class FilterSearch extends Component {
             .catch((err) => {
                 this.setState({ isLoaded: false, error: err.message });
             });
+    }
+
+    intiateSearch = (event) => {
+        this.setState({ firstSearched: true })
+        event.preventDefault()
+        const searchTerms = event.target.elements.query.value;
+        this.search(searchTerms)
     }
 
     render() {
@@ -125,7 +129,7 @@ class FilterSearch extends Component {
                 <Row className="no-gutters pt-3">
                     <Col md={11} className="no-gutters">
                         {/* work on search function */}
-                        <Form className="tab-search" onSubmit={this.intiateSearch} ref="form"> 
+                        <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
                             <Form.Group>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -145,7 +149,7 @@ class FilterSearch extends Component {
                         }
                     </Col>
                 </Row>
-                <Row>
+                {!this.state.firstSearched ? null : <Row>
                     <Col md={3} className='filterCol'>FILTERS HERE</Col>
                     <Col md={9}>
                         {!this.state.isLoaded ?
@@ -165,6 +169,7 @@ class FilterSearch extends Component {
                         }
                     </Col>
                 </Row>
+    }
             </Container >
         )
     }
