@@ -86,7 +86,20 @@ class FilterSearch extends Component {
                             </tr>
                             :
                             entity.attributes['type-label'] === "Work Of Art" ?
-                                <tr>ART HERE</tr>
+                                this.state.areWorkOfArtsHidden ? null : <tr>
+                                    <td>
+                                        <Link
+                                            to={{
+                                                pathname: `/work-of-arts/${entity.id}`,
+                                                state: {
+                                                    id: entity.id
+                                                }
+                                            }}>
+                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                        </Link>
+                                    </td>
+                                    <td>Work of Art</td>
+                                </tr>
                                 :
                                 this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
                                     <td>
