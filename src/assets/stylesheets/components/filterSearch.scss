@@ -20,3 +20,9 @@ svg {
     text-align: center;
     margin: 0px auto
 }
+
+#browse-by {
+    & th:first-child {
+        width: 80%;
+    }
+}

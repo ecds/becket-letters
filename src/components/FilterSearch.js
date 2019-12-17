@@ -134,11 +134,11 @@ class FilterSearch extends Component {
                                                 name: letter.recipients[0].name
                                             }
                                         }}>
-                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name }} />
+                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date}} />
                                     </Link>
                                 </td>
                                 <td>
-                                    {letter.date}
+                                    Letter
                                 </td>
                             </tr>
                         }
@@ -330,8 +330,8 @@ class FilterSearch extends Component {
                             <Table striped bordered className="browse-by" id='browse-by'>
                                 <thead>
                                     <tr>
-                                        <th>Label or Recipient</th>
-                                        <th>Type-Label or Date</th>
+                                        <th>Result</th>
+                                        <th id='typeColumn'>Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
