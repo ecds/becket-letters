@@ -5,6 +5,7 @@ import axios from "axios";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -16,8 +17,6 @@ class FilterSearch extends Component {
             isSearching: false,
             firstSearched: false,
             entityType: '',
-            areLettersHidden: false,
-            arePeopleHidden: false,
         };
     }
 
@@ -43,15 +42,8 @@ class FilterSearch extends Component {
         this.search(searchTerms)
     }
 
-    filterLetterRows = () => {
-        let currentStatus = this.state.areLettersHidden
-        this.setState({ areLettersHidden: !currentStatus })
-        console.log(this.state.areLettersHidden)
-    }
-
-    filterPeopleRows = () => {
-        let currentStatus = this.state.arePeopleHidden
-        this.setState({ arePeopleHidden: !currentStatus })
+    filterRowsByType = (stateType) => {
+        this.setState({ [`${stateType}`]: !this.state[`${stateType}`] })
     }
 
     render() {
@@ -78,7 +70,7 @@ class FilterSearch extends Component {
                         </tr>
                         :
                         entity.attributes['type-label'] === 'Public Event' ?
-                            <tr>
+                            this.state.areEventsHidden ? null : <tr>
                                 <td>
                                     <Link
                                         to={{
@@ -93,28 +85,32 @@ class FilterSearch extends Component {
                                 <td>Public Event</td>
                             </tr>
                             :
-                            <tr>
-                                <td>
-                                    <Link
-                                        to={{
-                                            pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
-                                            state: {
-                                                id: entity.id
-                                            }
-                                        }}>
-                                        {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                    </Link>
-                                </td>
-                                <td>{entity.attributes['type-label']}</td>
-                            </tr>
+                            entity.attributes['type-label'] === "Work Of Art" ?
+                                <tr>ART HERE</tr>
+                                :
+                                this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
+                                    <td>
+                                        <Link
+                                            to={{
+                                                pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                state: {
+                                                    id: entity.id
+                                                }
+                                            }}>
+                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                        </Link>
+                                    </td>
+                                    <td>{entity.attributes['type-label']}</td>
+                                </tr>
                     }
+
                     {/* create row for each public letter of search result */}
                     {entity.attributes['public-letters-hash'].map((letter) => {
                         if (letter === null) {
                             return null
                         }
                         else {
-                            return this.state.areLettersHidden ? null : <tr data-type="letters">
+                            return this.state.areLettersHidden ? null : <tr>
                                 <td>
                                     <Link
                                         to={{
@@ -182,7 +178,15 @@ class FilterSearch extends Component {
                                 <input
                                     type="checkbox"
                                     className="checkbox"
-                                    onChange={this.filterLetterRows}
+                                    onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
+                                />
+                                Attendances
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
                                 />
                                 Letters
                             </label>
@@ -190,10 +194,91 @@ class FilterSearch extends Component {
                                 <input
                                     type="checkbox"
                                     className="checkbox"
-                                    onChange={this.filterPeopleRows}
+                                    onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
+                                />
+                                Music
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
+                                />
+                                Organizations
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
                                 />
                                 People
                             </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
+                                />
+                                Places
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
+                                />
+                                Productions
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
+                                />
+                                Public Events
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
+                                />
+                                Publications
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
+                                />
+                                Readings
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
+                                />
+                                Translations
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
+                                />
+                                Works of Art
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
+                                />
+                                Writings
+                            </label>
+
                         </form>
 
                     </Col>
