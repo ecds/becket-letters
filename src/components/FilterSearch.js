@@ -104,7 +104,17 @@ class FilterSearch extends Component {
                                 :
                                 this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
                                     <td>
-                                        <Link
+                                        {entity.attributes['type-label'] === 'Translating' ? <Link
+                                            to={{
+                                                pathname: `/translations/${entity.id}`,
+                                                state: {
+                                                    id: entity.id
+                                                }
+                                            }}>
+                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                        </Link>
+                                            :
+                                            <Link
                                             to={{
                                                 pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
                                                 state: {
@@ -113,6 +123,16 @@ class FilterSearch extends Component {
                                             }}>
                                             {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                                         </Link>
+                                        }
+                                        {/* <Link
+                                            to={{
+                                                pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                state: {
+                                                    id: entity.id
+                                                }
+                                            }}>
+                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                        </Link> */}
                                     </td>
                                     <td>{entity.attributes['type-label']}</td>
                                 </tr>
@@ -134,7 +154,7 @@ class FilterSearch extends Component {
                                                 name: letter.recipients[0].name
                                             }
                                         }}>
-                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date}} />
+                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date }} />
                                     </Link>
                                 </td>
                                 <td>
