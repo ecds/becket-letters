@@ -6,6 +6,7 @@ import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
+import HeaderBuilder from './utilities/HeaderBuilder';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -158,11 +159,11 @@ class FilterSearch extends Component {
         };
 
         return (
-            <Container fluid >
+            <Container >
                 <DocMetaBuilder {...metaBuild} />
-                <Row><h1>Filter Search</h1></Row>
+                <HeaderBuilder header='Filter Search' type='string' />
                 <Row className="no-gutters pt-3">
-                    <Col md={11} className="no-gutters">
+                    <Col md={12} className="no-gutters">
                         {/* work on search function */}
                         <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
                             <Form.Group>
@@ -184,120 +185,147 @@ class FilterSearch extends Component {
                         }
                     </Col>
                 </Row>
-                {!this.state.firstSearched ? null : <Row>
+                <Row>
                     <Col md={3} className='filterCol'>
-                        <form>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
-                                />
-                                Attendances
+                        <form className='filterByType' >
+                            <ul>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
+                                        />
+                                        Attendances
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
-                                />
-                                Letters
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
+                                        />
+                                        Letters
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
-                                />
-                                Music
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
+                                        />
+                                        Music
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
-                                />
-                                Organizations
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
+                                        />
+                                        Organizations
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
-                                />
-                                People
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
+                                        />
+                                        People
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
-                                />
-                                Places
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
+                                        />
+                                        Places
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
-                                />
-                                Productions
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
+                                        />
+                                        Productions
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
-                                />
-                                Public Events
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
+                                        />
+                                        Public Events
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
-                                />
-                                Publications
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
+                                        />
+                                        Publications
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
-                                />
-                                Readings
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
+                                        />
+                                        Readings
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
-                                />
-                                Translations
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
+                                        />
+                                        Translations
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
-                                />
-                                Works of Art
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
+                                        />
+                                        Works of Art
                             </label>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="checkbox"
-                                    onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
-                                />
-                                Writings
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
+                                        />
+                                        Writings
                             </label>
-
+                                </li>
+                            </ul>
                         </form>
 
                     </Col>
-                    <Col md={9}>
+                    {!this.state.firstSearched ? null : <Col md={9}>
                         {!this.state.isLoaded ?
-                            <LoadingSpinner />
+                            <LoadingSpinner className='centerIcon' />
                             :
                             <Table striped bordered className="browse-by" id='browse-by'>
                                 <thead>
@@ -312,8 +340,8 @@ class FilterSearch extends Component {
                             </Table>
                         }
                     </Col>
+                    }
                 </Row>
-                }
             </Container >
         )
     }

@@ -1,0 +1,22 @@
+.filterByType {
+    border: 1px solid $softBlack;
+    & ul {
+        padding: 5px 10px;
+        margin: 0px;
+        & li {
+            list-style: none;
+            & label {
+                font-size: 1.1em;
+            }
+            & input {
+                margin-top: 0px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+svg {
+    text-align: center;
+    margin: 0px auto
+}
