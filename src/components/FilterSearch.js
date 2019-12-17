@@ -15,7 +15,9 @@ class FilterSearch extends Component {
             data: [],
             isSearching: false,
             firstSearched: false,
-            entityType: ''
+            entityType: '',
+            areLettersHidden: false,
+            arePeopleHidden: false,
         };
     }
 
@@ -41,13 +43,25 @@ class FilterSearch extends Component {
         this.search(searchTerms)
     }
 
+    filterLetterRows = () => {
+        let currentStatus = this.state.areLettersHidden
+        this.setState({ areLettersHidden: !currentStatus })
+        console.log(this.state.areLettersHidden)
+    }
+
+    filterPeopleRows = () => {
+        let currentStatus = this.state.arePeopleHidden
+        this.setState({ arePeopleHidden: !currentStatus })
+    }
+
     render() {
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes.label !== null) {
                 return <React.Fragment>
-                    <tr key={entity.id}>
-                        <td>
-                            {entity.attributes['type-label'] === 'Person' ?
+                    {/* create row for each search result */}
+                    {entity.attributes['type-label'] === 'Person' ?
+                        this.state.arePeopleHidden ? null : <tr key={entity.id} >
+                            <td>
                                 <Link
                                     to={{
                                         pathname: `/people/${entity.id}`,
@@ -59,8 +73,13 @@ class FilterSearch extends Component {
                                     <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
                                     {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
                                 </Link>
-                                :
-                                entity.attributes['type-label'] === 'Public Event' ?
+                            </td>
+                            <td>Person</td>
+                        </tr>
+                        :
+                        entity.attributes['type-label'] === 'Public Event' ?
+                            <tr>
+                                <td>
                                     <Link
                                         to={{
                                             pathname: `/public-events/${entity.id}`,
@@ -70,7 +89,12 @@ class FilterSearch extends Component {
                                         }}>
                                         {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                                     </Link>
-                                    :
+                                </td>
+                                <td>Public Event</td>
+                            </tr>
+                            :
+                            <tr>
+                                <td>
                                     <Link
                                         to={{
                                             pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
@@ -80,16 +104,17 @@ class FilterSearch extends Component {
                                         }}>
                                         {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                                     </Link>
-                            }
-                        </td>
-                        <td>{entity.attributes['type-label']}</td>
-                    </tr>
+                                </td>
+                                <td>{entity.attributes['type-label']}</td>
+                            </tr>
+                    }
+                    {/* create row for each public letter of search result */}
                     {entity.attributes['public-letters-hash'].map((letter) => {
                         if (letter === null) {
                             return null
                         }
                         else {
-                            return <tr>
+                            return this.state.areLettersHidden ? null : <tr data-type="letters">
                                 <td>
                                     <Link
                                         to={{
@@ -108,8 +133,9 @@ class FilterSearch extends Component {
                             </tr>
                         }
                     }
-                    )}
-                </React.Fragment>
+                    )
+                    }
+                </React.Fragment >
             }
             else {
                 return null
@@ -118,8 +144,8 @@ class FilterSearch extends Component {
         );
 
         const metaBuild = {
-            title: this.props.metaTitle,
-            description: `Search and Filter`,
+            title: 'Search and Filter',
+            description: `Search and filter entities and letters`,
         };
 
         return (
@@ -150,7 +176,27 @@ class FilterSearch extends Component {
                     </Col>
                 </Row>
                 {!this.state.firstSearched ? null : <Row>
-                    <Col md={3} className='filterCol'>FILTERS HERE</Col>
+                    <Col md={3} className='filterCol'>
+                        <form>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={this.filterLetterRows}
+                                />
+                                Letters
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={this.filterPeopleRows}
+                                />
+                                People
+                            </label>
+                        </form>
+
+                    </Col>
                     <Col md={9}>
                         {!this.state.isLoaded ?
                             <LoadingSpinner />
@@ -169,7 +215,7 @@ class FilterSearch extends Component {
                         }
                     </Col>
                 </Row>
-    }
+                }
             </Container >
         )
     }
