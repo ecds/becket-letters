@@ -18,7 +18,20 @@ class FilterSearch extends Component {
             isSearching: false,
             firstSearched: false,
             entityType: '',
-            checkbox: true
+            checkbox: true,
+            areAttendancesHidden: false,
+            areLettersHidden: false,
+            areMusicsHidden: false,
+            areOrganizationsHidden: false,
+            arePeopleHidden: false,
+            arePlacesHidden: false,
+            areProductionsHidden: false,
+            areEventsHidden: false,
+            arePublicationsHidden: false,
+            areReadingsHidden: false,
+            areTranslatingsHidden: false,
+            areWorkOfArtsHidden: false,
+            areWritingsHidden: false,
         };
     }
 
@@ -48,8 +61,24 @@ class FilterSearch extends Component {
         this.setState({ [`${stateType}`]: !this.state[`${stateType}`] })
     }
 
-    flipAllFilters = () => {
-
+    flipAllFilters = (direction) => {
+        this.setState({
+            checkbox: direction === 'showAll' ? true : false,
+            areAttendancesHidden: direction === 'showAll' ? false : true,
+            areLettersHidden: direction === 'showAll' ? false : true,
+            areMusicsHidden: direction === 'showAll' ? false : true,
+            areOrganizationsHidden: direction === 'showAll' ? false : true,
+            arePeopleHidden: direction === 'showAll' ? false : true,
+            arePlacesHidden: direction === 'showAll' ? false : true,
+            areProductionsHidden: direction === 'showAll' ? false : true,
+            areEventsHidden: direction === 'showAll' ? false : true,
+            arePublicationsHidden: direction === 'showAll' ? false : true,
+            areReadingsHidden: direction === 'showAll' ? false : true,
+            areTranslatingsHidden: direction === 'showAll' ? false : true,
+            areWorkOfArtsHidden: direction === 'showAll' ? false : true,
+            areWritingsHidden: direction === 'showAll' ? false : true,
+        }
+        )
     }
 
     render() {
@@ -133,7 +162,6 @@ class FilterSearch extends Component {
                                     <td>{entity.attributes['type-label']}</td>
                                 </tr>
                     }
-
                     {/* create row for each public letter of search result */}
                     {entity.attributes['public-letters-hash'].map((letter) => {
                         if (letter === null) {
@@ -211,7 +239,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Attendances
@@ -223,7 +251,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
                                         />
                                         Letters
                             </label>
@@ -234,7 +262,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Music
@@ -246,7 +274,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Organizations
@@ -258,7 +286,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         People
@@ -270,7 +298,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Places
@@ -282,7 +310,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Productions
@@ -294,7 +322,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Public Events
@@ -306,7 +334,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Publications
@@ -318,7 +346,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Readings
@@ -330,7 +358,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Translations
@@ -342,7 +370,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Works of Art
@@ -354,24 +382,17 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
-                                            defaultChecked={this.state.checkbox}
+                                            checked={this.state.checkbox}
 
                                         />
                                         Writings
                             </label>
                                 </li>
                                 <li>
-                                    <label>
-                                        <input
-                                            type="button"
-                                            className="button"
-                                            onClick={(e) => this.filterRowsByType('areWritingsHidden', e)}
-                                        />
-                                        Writings
-                            </label>
+                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters('showAll', e)}>Show All</button>
                                 </li>
                                 <li>
-                                    <a>Hide All</a>
+                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters(e)}>Hide All</button>
                                 </li>
                             </ul>
                         </form>
