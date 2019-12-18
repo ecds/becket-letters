@@ -64,7 +64,6 @@ class FilterSearch extends Component {
 
     flipAllFilters = () => {
         let direction = !this.state.hideAll;
-        console.log(this.state.hideAll)
         this.setState({
             checkbox: direction ? true : false,
             areAttendancesHidden: direction ? false : true,
