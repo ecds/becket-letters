@@ -18,6 +18,7 @@ class FilterSearch extends Component {
             isSearching: false,
             firstSearched: false,
             entityType: '',
+            checkbox: true
         };
     }
 
@@ -45,6 +46,10 @@ class FilterSearch extends Component {
 
     filterRowsByType = (stateType) => {
         this.setState({ [`${stateType}`]: !this.state[`${stateType}`] })
+    }
+
+    flipAllFilters = () => {
+
     }
 
     render() {
@@ -115,24 +120,15 @@ class FilterSearch extends Component {
                                         </Link>
                                             :
                                             <Link
-                                            to={{
-                                                pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
-                                                state: {
-                                                    id: entity.id
-                                                }
-                                            }}>
-                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                        </Link>
+                                                to={{
+                                                    pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                    state: {
+                                                        id: entity.id
+                                                    }
+                                                }}>
+                                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                            </Link>
                                         }
-                                        {/* <Link
-                                            to={{
-                                                pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
-                                                state: {
-                                                    id: entity.id
-                                                }
-                                            }}>
-                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                        </Link> */}
                                     </td>
                                     <td>{entity.attributes['type-label']}</td>
                                 </tr>
@@ -215,6 +211,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Attendances
                             </label>
@@ -225,6 +223,7 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
+                                            defaultChecked={this.state.checkbox}
                                         />
                                         Letters
                             </label>
@@ -235,6 +234,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Music
                             </label>
@@ -245,6 +246,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Organizations
                             </label>
@@ -255,6 +258,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         People
                             </label>
@@ -265,6 +270,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Places
                             </label>
@@ -275,6 +282,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Productions
                             </label>
@@ -285,6 +294,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Public Events
                             </label>
@@ -295,6 +306,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Publications
                             </label>
@@ -305,6 +318,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Readings
                             </label>
@@ -315,6 +330,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Translations
                             </label>
@@ -325,6 +342,8 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Works of Art
                             </label>
@@ -335,9 +354,24 @@ class FilterSearch extends Component {
                                             type="checkbox"
                                             className="checkbox"
                                             onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
+                                            defaultChecked={this.state.checkbox}
+
                                         />
                                         Writings
                             </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input
+                                            type="button"
+                                            className="button"
+                                            onClick={(e) => this.filterRowsByType('areWritingsHidden', e)}
+                                        />
+                                        Writings
+                            </label>
+                                </li>
+                                <li>
+                                    <a>Hide All</a>
                                 </li>
                             </ul>
                         </form>

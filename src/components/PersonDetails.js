@@ -79,7 +79,7 @@ class PersonDetails extends Component {
     } else {
       const metaBuild = {
         title: this.state.entityData.attributes.label,
-        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties.description}`,
+        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties ? this.state.this.state.entityData.attributes.properties.description : null }`,
         id: this.state.entityData.id
       };
       return (
@@ -87,23 +87,23 @@ class PersonDetails extends Component {
         <DocMetaBuilder {...metaBuild} />
         {/* <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} lifedates={this.state.entityData.attributes.properties['life-dates']} />*/}
         <h1>
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['last-name']}} />
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties['first-name']}} className="comma" />
-          {this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> :null}
-          {this.state.entityData.attributes.properties['life-dates']? <span className="comma">{this.state.entityData.attributes.properties['life-dates']}</span> : null}
-          {this.state.entityData.attributes.properties.description ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : null}
+          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null}} />
+          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className="comma" />
+          {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> :null}
+          {this.state.entityData.attributes.properties ? <span className="comma">{this.state.entityData.attributes.properties['life-dates']}</span> : null}
+          {this.state.entityData.attributes.properties ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : null}
 
 
         </h1>
-        {this.state.entityData.attributes.properties.links.length > 0 ?
-          <a href={this.state.entityData.attributes.properties.links[0]} target="_blank" className="btn btn-primary">VIAF</a>
+        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
+          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" className="btn btn-primary">VIAF</a>
            : null }
-        {this.state.entityData.attributes.properties.profile ?
+        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#personProfile" aria-expanded="false" aria-controls="personProfile">
               View Profile
             </button>
            : null }
-        {this.state.entityData.attributes.properties.profile ?
+        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
           <div class="collapse" id="personProfile">
               {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.media && this.state.entityData.attributes.properties.media.images ? this.state.entityData.attributes.properties.media.images.map((image, index) =>
                   <Row><Col md={9}><div dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.profile }}/></Col>
