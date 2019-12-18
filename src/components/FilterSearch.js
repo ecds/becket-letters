@@ -32,6 +32,7 @@ class FilterSearch extends Component {
             areTranslatingsHidden: false,
             areWorkOfArtsHidden: false,
             areWritingsHidden: false,
+            hideAll: true,
         };
     }
 
@@ -61,22 +62,25 @@ class FilterSearch extends Component {
         this.setState({ [`${stateType}`]: !this.state[`${stateType}`] })
     }
 
-    flipAllFilters = (direction) => {
+    flipAllFilters = () => {
+        let direction = !this.state.hideAll;
+        console.log(this.state.hideAll)
         this.setState({
-            checkbox: direction === 'showAll' ? true : false,
-            areAttendancesHidden: direction === 'showAll' ? false : true,
-            areLettersHidden: direction === 'showAll' ? false : true,
-            areMusicsHidden: direction === 'showAll' ? false : true,
-            areOrganizationsHidden: direction === 'showAll' ? false : true,
-            arePeopleHidden: direction === 'showAll' ? false : true,
-            arePlacesHidden: direction === 'showAll' ? false : true,
-            areProductionsHidden: direction === 'showAll' ? false : true,
-            areEventsHidden: direction === 'showAll' ? false : true,
-            arePublicationsHidden: direction === 'showAll' ? false : true,
-            areReadingsHidden: direction === 'showAll' ? false : true,
-            areTranslatingsHidden: direction === 'showAll' ? false : true,
-            areWorkOfArtsHidden: direction === 'showAll' ? false : true,
-            areWritingsHidden: direction === 'showAll' ? false : true,
+            checkbox: direction ? true : false,
+            areAttendancesHidden: direction ? false : true,
+            areLettersHidden: direction ? false : true,
+            areMusicsHidden: direction ? false : true,
+            areOrganizationsHidden: direction ? false : true,
+            arePeopleHidden: direction ? false : true,
+            arePlacesHidden: direction ? false : true,
+            areProductionsHidden: direction ? false : true,
+            areEventsHidden: direction ? false : true,
+            arePublicationsHidden: direction ? false : true,
+            areReadingsHidden: direction ? false : true,
+            areTranslatingsHidden: direction ? false : true,
+            areWorkOfArtsHidden: direction ? false : true,
+            areWritingsHidden: direction ? false : true,
+            hideAll: direction ? true : false,
         }
         )
     }
@@ -389,10 +393,7 @@ class FilterSearch extends Component {
                             </label>
                                 </li>
                                 <li>
-                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters('showAll', e)}>Show All</button>
-                                </li>
-                                <li>
-                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters(e)}>Hide All</button>
+                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters(e)}>{this.state.hideAll ? "Hide All" : "Show All"}</button>
                                 </li>
                             </ul>
                         </form>
