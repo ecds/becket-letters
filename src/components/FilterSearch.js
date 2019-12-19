@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 import HeaderBuilder from './utilities/HeaderBuilder';
 import { counter } from '@fortawesome/fontawesome-svg-core';
+import Moment from 'react-moment';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -34,6 +35,8 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: false,
             areWritingsHidden: false,
             hideAll: true,
+            startDate: "January 1, 1000",
+            endDate: "December 31, 2000",
         };
     }
 
@@ -86,7 +89,19 @@ class FilterSearch extends Component {
         )
     }
 
-    entityTypeCounter = () => {
+    handleStartDateDay = (value) => {
+        let startDay
+        if (value <= 0) {
+            startDay = 1
+        }
+        else if (value > 31) {
+            startDay = 31
+        }
+        else {
+            startDay = value
+        }
+        console.log(startDay)
+        this.setState({ startDay: startDay })
     }
 
     render() {
@@ -227,23 +242,35 @@ class FilterSearch extends Component {
                         }
                         else {
                             lettersCount++
-                            return this.state.areLettersHidden ? null : <tr>
-                                <td>
-                                    <Link
-                                        to={{
-                                            pathname: `/letters/letterdetails/${letter.id}`,
-                                            state: {
-                                                id: letter.recipients[0].id,
-                                                name: letter.recipients[0].name
-                                            }
-                                        }}>
-                                        <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date }} />
-                                    </Link>
-                                </td>
-                                <td>
-                                    Letter
-                                </td>
-                            </tr>
+                            if (this.state.areLettersHidden === true) {
+                                return null
+                            }
+                            else {
+                                let selectedStartDate = new Date(this.state.startDate + "Z")
+                                let selectedEndDate = new Date(this.state.endDate + "Z")
+                                let currentDate = new Date(letter.date.substring(letter.date.length - 4) + "-" + letter.date.substring(3, letter.date.length - 5) + "-" + parseInt(letter.date.substring(0, 2) + "Z"))
+                                console.log(currentDate)
+                                console.log(selectedStartDate)
+                                if (selectedStartDate <= currentDate && currentDate <= selectedEndDate) {
+                                    return <tr>
+                                        <td>
+                                            <Link
+                                                to={{
+                                                    pathname: `/letters/letterdetails/${letter.id}`,
+                                                    state: {
+                                                        id: letter.recipients[0].id,
+                                                        name: letter.recipients[0].name
+                                                    }
+                                                }}>
+                                                <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date }} />
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            Letter
+                                        </td>
+                                    </tr>
+                                }
+                            }
                         }
                     }
                     )
@@ -266,214 +293,230 @@ class FilterSearch extends Component {
         return (
             <Container >
                 <DocMetaBuilder {...metaBuild} />
-                <HeaderBuilder header='Filter Search' type='string' />
-                <Row className="no-gutters pt-3">
-                    <Col md={12} className="no-gutters">
-                        {/* work on search function */}
-                        <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
-                            <Form.Group>
-                                <div className="input-group mb-3">
-                                    <div className="input-group-prepend">
-                                        <Button aria-label='submit button' variant="primary" type="submit">
-                                            <FontAwesomeIcon icon="search" />
-                                        </Button>
+                <div className='pt-3'>
+                    <HeaderBuilder header='Filter Search' type='string' />
+                    <Row className="no-gutters pt-3">
+                        <Col md={12} className="no-gutters">
+                            {/* work on search function */}
+                            <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
+                                <Form.Group>
+                                    <div className="input-group mb-3">
+                                        <div className="input-group-prepend">
+                                            <Button aria-label='submit button' variant="primary" type="submit">
+                                                <FontAwesomeIcon icon="search" />
+                                            </Button>
+                                        </div>
+                                        <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
                                     </div>
-                                    <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
-                                </div>
-                            </Form.Group>
-                        </Form>
-                    </Col>
-                    <Col md={1} className="no-gutters">
-                        {this.state.isSearching ?
-                            <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
-                            : null
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        <Col md={1} className="no-gutters">
+                            {this.state.isSearching ?
+                                <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
+                                : null
+                            }
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={3} className='filterCol'>
+                            <form className='filterBox filterByType' >
+                                <h2>Refine by Type</h2>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
+                                                checked={!this.state.areAttendancesHidden}
+                                            />
+                                            Attendances {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
+                                                checked={!this.state.areLettersHidden}
+                                            />
+                                            Letters {lettersCount !== 0 ? <span className='entityCountDisplay'>{lettersCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
+                                                checked={!this.state.areMusicsHidden}
+
+                                            />
+                                            Music {musicCount !== 0 ? <span className='entityCountDisplay'>{musicCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
+                                                checked={!this.state.areOrganizationsHidden}
+
+                                            />
+                                            Organizations {organizationsCount !== 0 ? <span className='entityCountDisplay'>{organizationsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
+                                                checked={!this.state.arePeopleHidden}
+
+                                            />
+                                            People {peopleCount !== 0 ? <span className='entityCountDisplay'>{peopleCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
+                                                checked={!this.state.arePlacesHidden}
+
+                                            />
+                                            Places {placesCount !== 0 ? <span className='entityCountDisplay'>{placesCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
+                                                checked={!this.state.areProductionsHidden}
+
+                                            />
+                                            Productions {productionsCount !== 0 ? <span className='entityCountDisplay'>{productionsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
+                                                checked={!this.state.areEventsHidden}
+
+                                            />
+                                            Public Events {publicEventsCount !== 0 ? <span className='entityCountDisplay'>{publicEventsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
+                                                checked={!this.state.arePublicationsHidden}
+
+                                            />
+                                            Publications {publicationsCount !== 0 ? <span className='entityCountDisplay'>{publicationsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
+                                                checked={!this.state.areReadingsHidden}
+
+                                            />
+                                            Readings {readingsCount !== 0 ? <span className='entityCountDisplay'>{readingsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
+                                                checked={!this.state.areTranslatingsHidden}
+
+                                            />
+                                            Translations {translationsCount !== 0 ? <span className='entityCountDisplay'>{translationsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
+                                                checked={!this.state.areWorkOfArtsHidden}
+
+                                            />
+                                            Works of Art {worksOfArtCount !== 0 ? <span className='entityCountDisplay'>{worksOfArtCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
+                                                checked={!this.state.areWritingsHidden}
+
+                                            />
+                                            Writings {writingsCount !== 0 ? <span className='entityCountDisplay'>{writingsCount}</span> : null}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters(e)}>{this.state.hideAll ? "Hide All" : "Show All"}</button>
+                                    </li>
+                                </ul>
+                            </form>
+                            <form className='filterBox'>
+                                <h2>Refine by Date</h2>
+                                <ul>
+                                    <li>
+                                        <h3>Start</h3>
+                                        <input type='date' min='1957-01-01' max='1969-12-31' defaultValue="1957-01-01" className='dateInput' value={this.state.value} onInput={(e) => this.setState({ startDate: e.target.value })} />
+                                    </li>
+                                    <li>
+                                        <h3>End</h3>
+                                        <input type='date' min='1957-01-01' max='1969-12-31' defaultValue='1969-12-31' className='dateInput' value={this.state.value} onInput={(e) => this.setState({ endDate: e.target.value })} />
+
+                                    </li>
+                                </ul>
+                            </form>
+                        </Col>
+                        {!this.state.firstSearched ? null : <Col md={9}>
+                            {!this.state.isLoaded ?
+                                <LoadingSpinner className='centerIcon' />
+                                :
+                                <Table striped bordered className="browse-by" id='browse-by'>
+                                    <thead>
+                                        <tr>
+                                            <th>Result</th>
+                                            <th id='typeColumn'>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {EntityList}
+                                    </tbody>
+                                </Table>
+                            }
+                        </Col>
                         }
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={3} className='filterCol'>
-                        <form className='filterByType' >
-                            <ul>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
-                                            checked={!this.state.areAttendancesHidden}
-                                        />
-                                        Attendances {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
-                                            checked={!this.state.areLettersHidden}
-                                        />
-                                        Letters {lettersCount !== 0 ? <span className='entityCountDisplay'>{lettersCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areMusicsHidden', e)}
-                                            checked={!this.state.areMusicsHidden}
-
-                                        />
-                                        Music {musicCount !== 0 ? <span className='entityCountDisplay'>{musicCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areOrganizationsHidden', e)}
-                                            checked={!this.state.areOrganizationsHidden}
-
-                                        />
-                                        Organizations {organizationsCount !== 0 ? <span className='entityCountDisplay'>{organizationsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('arePeopleHidden', e)}
-                                            checked={!this.state.arePeopleHidden}
-
-                                        />
-                                        People {peopleCount !== 0 ? <span className='entityCountDisplay'>{peopleCount}</span> : null}
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('arePlacesHidden', e)}
-                                            checked={!this.state.arePlacesHidden}
-
-                                        />
-                                        Places {placesCount !== 0 ? <span className='entityCountDisplay'>{placesCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areProductionsHidden', e)}
-                                            checked={!this.state.areProductionsHidden}
-
-                                        />
-                                        Productions {productionsCount !== 0 ? <span className='entityCountDisplay'>{productionsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areEventsHidden', e)}
-                                            checked={!this.state.areEventsHidden}
-
-                                        />
-                                        Public Events {publicEventsCount !== 0 ? <span className='entityCountDisplay'>{publicEventsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('arePublicationsHidden', e)}
-                                            checked={!this.state.arePublicationsHidden}
-
-                                        />
-                                        Publications {publicationsCount !== 0 ? <span className='entityCountDisplay'>{publicationsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areReadingsHidden', e)}
-                                            checked={!this.state.areReadingsHidden}
-
-                                        />
-                                        Readings {readingsCount !== 0 ? <span className='entityCountDisplay'>{readingsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areTranslatingsHidden', e)}
-                                            checked={!this.state.areTranslatingsHidden}
-
-                                        />
-                                        Translations {translationsCount !== 0 ? <span className='entityCountDisplay'>{translationsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areWorkOfArtsHidden', e)}
-                                            checked={!this.state.areWorkOfArtsHidden}
-
-                                        />
-                                        Works of Art {worksOfArtCount !== 0 ? <span className='entityCountDisplay'>{worksOfArtCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => this.filterRowsByType('areWritingsHidden', e)}
-                                            checked={!this.state.areWritingsHidden}
-
-                                        />
-                                        Writings {writingsCount !== 0 ? <span className='entityCountDisplay'>{writingsCount}</span> : null}
-                            </label>
-                                </li>
-                                <li>
-                                    <button type="button" className="button btn btn-primary" onClick={(e) => this.flipAllFilters(e)}>{this.state.hideAll ? "Hide All" : "Show All"}</button>
-                                </li>
-                            </ul>
-                        </form>
-
-                    </Col>
-                    {!this.state.firstSearched ? null : <Col md={9}>
-                        {!this.state.isLoaded ?
-                            <LoadingSpinner className='centerIcon' />
-                            :
-                            <Table striped bordered className="browse-by" id='browse-by'>
-                                <thead>
-                                    <tr>
-                                        <th>Result</th>
-                                        <th id='typeColumn'>Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {EntityList}
-                                </tbody>
-                            </Table>
-                        }
-                    </Col>
-                    }
-                </Row>
+                    </Row>
+                </div>
             </Container >
         )
     }
