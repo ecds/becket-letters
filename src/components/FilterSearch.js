@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 import HeaderBuilder from './utilities/HeaderBuilder';
+import { counter } from '@fortawesome/fontawesome-svg-core';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -85,9 +86,62 @@ class FilterSearch extends Component {
         )
     }
 
+    entityTypeCounter = () => {
+    }
+
     render() {
+        let attendancesCount = 0
+        let lettersCount = 0
+        let musicCount = 0
+        let organizationsCount = 0
+        let peopleCount = 0
+        let placesCount = 0
+        let productionsCount = 0
+        let publicEventsCount = 0
+        let publicationsCount = 0
+        let readingsCount = 0
+        let translationsCount = 0
+        let worksOfArtCount = 0
+        let writingsCount = 0
         var EntityList = this.state.data.map((entity) => {
-            if (entity.attributes.label !== null) {
+            if (entity.attributes['type-label'] !== null) {
+                if (entity.attributes['type-label'] === 'Attendance') {
+                    attendancesCount++
+                }
+                if (entity.attributes['type-label'] === 'Music') {
+                    musicCount++
+                }
+                if (entity.attributes['type-label'] === 'Organization') {
+                    organizationsCount++
+                }
+                if (entity.attributes['type-label'] === 'Person') {
+                    peopleCount++
+                }
+                if (entity.attributes['type-label'] === 'Place') {
+                    placesCount++
+                }
+                if (entity.attributes['type-label'] === 'Production') {
+                    productionsCount++
+                }
+                if (entity.attributes['type-label'] === 'Public Event') {
+                    publicEventsCount++
+                }
+                if (entity.attributes['type-label'] === 'Publication') {
+                    publicationsCount++
+                }
+                if (entity.attributes['type-label'] === 'Reading') {
+                    readingsCount++
+                }
+                if (entity.attributes['type-label'] === 'Translating') {
+                    translationsCount++
+                }
+                if (entity.attributes['type-label'] === 'Work Of Art') {
+                    musicCount++
+                }
+                if (entity.attributes['type-label'] === 'Writing') {
+                    writingsCount++
+                }
+                console.log(peopleCount)
                 return <React.Fragment>
                     {/* create row for each search result */}
                     {entity.attributes['type-label'] === 'Person' ?
@@ -172,6 +226,7 @@ class FilterSearch extends Component {
                             return null
                         }
                         else {
+                            lettersCount++
                             return this.state.areLettersHidden ? null : <tr>
                                 <td>
                                     <Link
@@ -195,9 +250,11 @@ class FilterSearch extends Component {
                     }
                 </React.Fragment >
             }
+
             else {
                 return null
             }
+
         }
         );
 
@@ -245,7 +302,7 @@ class FilterSearch extends Component {
                                             onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
                                             checked={!this.state.areAttendancesHidden}
                                         />
-                                        Attendances
+                                        Attendances {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -256,7 +313,7 @@ class FilterSearch extends Component {
                                             onChange={(e) => this.filterRowsByType('areLettersHidden', e)}
                                             checked={!this.state.areLettersHidden}
                                         />
-                                        Letters
+                                        Letters {lettersCount !== 0 ? <span className='entityCountDisplay'>{lettersCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -268,7 +325,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areMusicsHidden}
 
                                         />
-                                        Music
+                                        Music {musicCount !== 0 ? <span className='entityCountDisplay'>{musicCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -280,7 +337,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areOrganizationsHidden}
 
                                         />
-                                        Organizations
+                                        Organizations {organizationsCount !== 0 ? <span className='entityCountDisplay'>{organizationsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -292,8 +349,8 @@ class FilterSearch extends Component {
                                             checked={!this.state.arePeopleHidden}
 
                                         />
-                                        People
-                            </label>
+                                        People {peopleCount !== 0 ? <span className='entityCountDisplay'>{peopleCount}</span> : null}
+                                    </label>
                                 </li>
                                 <li>
                                     <label>
@@ -304,7 +361,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.arePlacesHidden}
 
                                         />
-                                        Places
+                                        Places {placesCount !== 0 ? <span className='entityCountDisplay'>{placesCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -316,7 +373,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areProductionsHidden}
 
                                         />
-                                        Productions
+                                        Productions {productionsCount !== 0 ? <span className='entityCountDisplay'>{productionsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -328,7 +385,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areEventsHidden}
 
                                         />
-                                        Public Events
+                                        Public Events {publicEventsCount !== 0 ? <span className='entityCountDisplay'>{publicEventsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -340,7 +397,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.arePublicationsHidden}
 
                                         />
-                                        Publications
+                                        Publications {publicationsCount !== 0 ? <span className='entityCountDisplay'>{publicationsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -352,7 +409,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areReadingsHidden}
 
                                         />
-                                        Readings
+                                        Readings {readingsCount !== 0 ? <span className='entityCountDisplay'>{readingsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -364,7 +421,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areTranslatingsHidden}
 
                                         />
-                                        Translations
+                                        Translations {translationsCount !== 0 ? <span className='entityCountDisplay'>{translationsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -376,7 +433,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areWorkOfArtsHidden}
 
                                         />
-                                        Works of Art
+                                        Works of Art {worksOfArtCount !== 0 ? <span className='entityCountDisplay'>{worksOfArtCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
@@ -388,7 +445,7 @@ class FilterSearch extends Component {
                                             checked={!this.state.areWritingsHidden}
 
                                         />
-                                        Writings
+                                        Writings {writingsCount !== 0 ? <span className='entityCountDisplay'>{writingsCount}</span> : null}
                             </label>
                                 </li>
                                 <li>
