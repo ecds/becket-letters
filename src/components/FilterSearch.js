@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 import HeaderBuilder from './utilities/HeaderBuilder';
 import { counter } from '@fortawesome/fontawesome-svg-core';
-import Moment from 'react-moment';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -41,7 +40,6 @@ class FilterSearch extends Component {
     }
 
     search(searchTerms) {
-        console.log(this)
         this.setState({ isLoaded: false })
         axios.all([
             axios.get('http://ot-api.ecdsdev.org/entities?search=' + searchTerms)
@@ -156,7 +154,6 @@ class FilterSearch extends Component {
                 if (entity.attributes['type-label'] === 'Writing') {
                     writingsCount++
                 }
-                console.log(peopleCount)
                 return <React.Fragment>
                     {/* create row for each search result */}
                     {entity.attributes['type-label'] === 'Person' ?
@@ -249,8 +246,6 @@ class FilterSearch extends Component {
                                 let selectedStartDate = new Date(this.state.startDate + "Z")
                                 let selectedEndDate = new Date(this.state.endDate + "Z")
                                 let currentDate = new Date(letter.date.substring(letter.date.length - 4) + "-" + letter.date.substring(3, letter.date.length - 5) + "-" + parseInt(letter.date.substring(0, 2) + "Z"))
-                                console.log(currentDate)
-                                console.log(selectedStartDate)
                                 if (selectedStartDate <= currentDate && currentDate <= selectedEndDate) {
                                     return <tr>
                                         <td>
@@ -492,7 +487,6 @@ class FilterSearch extends Component {
                                     <li>
                                         <h3>End</h3>
                                         <input type='date' min='1957-01-01' max='1969-12-31' defaultValue='1969-12-31' className='dateInput' value={this.state.value} onInput={(e) => this.setState({ endDate: e.target.value })} />
-
                                     </li>
                                 </ul>
                             </form>
