@@ -157,11 +157,21 @@ class LettersBy extends Component {
                     }
                 }
                 else if (entity.attributes['type-label'] === 'Reading') {
+                    let currentLabel
+                    if (entity.attributes.label.slice(-1) === '.'){
+                        currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 1)
+                    }
+                    // else if (entity.attributes.label.slice(-1) === '.</i>'){
+                        // currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 10) + "</i>"
+                    // }
+                    else {
+                        currentLabel = entity.attributes.label
+                    }
                     if (entity.attributes.properties && entity.attributes.properties.authors) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.authors[0] }} />
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: currentLabel + " by " + entity.attributes.properties.authors[0] }} />
                     }
                     else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: currentLabel }} />
                     }
                 }
                 else if (entity.attributes['type-label'] === 'Translating') {
@@ -201,6 +211,7 @@ class LettersBy extends Component {
                             </Link>
                         }
                     </td>
+                    {/* adds composer column */}
                     {this.props.entityType === 'music' ? <td><p>{entity.attributes.properties !== null ? entity.attributes.properties.composer : null}</p></td> : null}
                 </tr>
             }
