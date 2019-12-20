@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import HomeJumbotron from './Jumbotron';
-import HomeTiles from './utilities/HomeTiles';
+import HomeTile from './utilities/HomeTile';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
+import { CardGroup, Container } from 'react-bootstrap';
 
 class Landing extends Component {
   render() {
@@ -14,7 +15,17 @@ class Landing extends Component {
       <div className="landing" >
         <DocMetaBuilder {...metaBuild} />
         <HomeJumbotron />
-        <HomeTiles />
+        <Container fluid className="home-tiles">
+          <h2>Browse Letters By</h2>
+          <CardGroup className='landing-group'>
+            <HomeTile type='production' />
+            <HomeTile type='attendance' />
+            <HomeTile type='person' />
+            <HomeTile type='organization' />
+            <HomeTile type='publication' />
+            <HomeTile type='place' />
+          </CardGroup>
+        </Container>
       </div >
     )
   }
