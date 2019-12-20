@@ -153,7 +153,7 @@ class LettersBy extends Component {
                                         id: entity.id
                                     }
                                 }}>
-                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                {entity.attributes.label ? entity.attributes['type-label'] === 'Publication' && entity.attributes.properties && entity.attributes.properties.author ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} /> : <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                             </Link>
                         }
                     </td>
