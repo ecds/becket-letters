@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import HomeJumbotron from './Jumbotron';
-import SearchPage from './SearchPage';
 import HomeTiles from './utilities/HomeTiles';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
 
@@ -15,7 +14,6 @@ class Landing extends Component {
       <div className="landing" >
         <DocMetaBuilder {...metaBuild} />
         <HomeJumbotron />
-        {/* <SearchPage /> */}
         <HomeTiles />
       </div >
     )

@@ -1,0 +1,53 @@
+.filterBox {
+  border: 1px solid $softBlack;
+  margin-bottom: 0.5rem;
+  & h2 {
+    font-size: 1.25em;
+    padding: 4px;
+    margin: 0px;
+  }
+  & h3 {
+    font-size: 1.1em;
+    margin-bottom: 0.25rem;
+  }
+  & ul {
+    padding: 5px 10px;
+    margin: 0px;
+    & li {
+      list-style: none;
+      & label {
+        font-size: 1.1em;
+      }
+      & input {
+        margin-top: 0px;
+        margin-right: 10px;
+      }
+      & button {
+        margin-bottom: 4px;
+      }
+    }
+  }
+  .dateInput {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+}
+
+svg {
+  text-align: center;
+  margin: 0px auto;
+}
+
+#browse-by {
+  & th:first-child {
+    width: 80%;
+  }
+}
+
+.entityCountDisplay {
+  font-size: 0.75em;
+  color: white;
+  background: $darkGray;
+  padding: 0.04rem 0.2rem;
+  border-radius: 4px;
+}

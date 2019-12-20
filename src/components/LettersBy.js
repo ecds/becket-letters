@@ -208,7 +208,6 @@ class LettersBy extends Component {
                     {!this.state.isLoaded ? <LoadingSpinner /> : <tbody>
                         {EntityList}
                     </tbody>}
-
                 </Table>
             </Container>
         )

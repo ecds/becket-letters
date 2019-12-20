@@ -27,6 +27,7 @@ class Sidebar extends Component {
             <NavDropdown.Item href="/browse-letters-writing">Writings</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/timeline">Timeline</Nav.Link>
+          <Nav.Link href='/filter-search'>Search</Nav.Link>
         </Navbar.Collapse>
       </Navbar>
     )
