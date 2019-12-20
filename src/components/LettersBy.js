@@ -131,6 +131,50 @@ class LettersBy extends Component {
     render() {
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes.label !== null) {
+                let entityLabel
+                if (entity.attributes['type-label'] === 'Music') {
+                    if (entity.attributes.properties && entity.attributes.properties.composer) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " composed by " + entity.attributes.properties.composer }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
+                else if (entity.attributes['type-label'] === 'Publication') {
+                    if (entity.attributes.properties && entity.attributes.properties.author) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
+                else if (entity.attributes['type-label'] === 'Production') {
+                    if (entity.attributes.properties && entity.attributes.properties.director) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " directed by " + entity.attributes.properties.director }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
+                else if (entity.attributes['type-label'] === 'Reading') {
+                    if (entity.attributes.properties && entity.attributes.properties.authors) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.authors[0] }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
+                else if (entity.attributes['type-label'] === 'Translating') {
+                    if (entity.attributes.properties && entity.attributes.properties.author) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
+                else {
+                    entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                }
                 return <tr key={entity.id}>
                     <td>
                         {this.props.entityType === 'person' ?
@@ -153,7 +197,7 @@ class LettersBy extends Component {
                                         id: entity.id
                                     }
                                 }}>
-                                {entity.attributes.label ? entity.attributes['type-label'] === 'Publication' && entity.attributes.properties && entity.attributes.properties.author ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} /> : <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                {entityLabel}
                             </Link>
                         }
                     </td>
