@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 import HeaderBuilder from './utilities/HeaderBuilder';
 import { counter } from '@fortawesome/fontawesome-svg-core';
+import DatePicker from 'react-date-picker';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -85,21 +86,6 @@ class FilterSearch extends Component {
             hideAll: direction ? true : false,
         }
         )
-    }
-
-    handleStartDateDay = (value) => {
-        let startDay
-        if (value <= 0) {
-            startDay = 1
-        }
-        else if (value > 31) {
-            startDay = 31
-        }
-        else {
-            startDay = value
-        }
-        console.log(startDay)
-        this.setState({ startDay: startDay })
     }
 
     render() {
@@ -482,11 +468,11 @@ class FilterSearch extends Component {
                                 <ul>
                                     <li>
                                         <h3>Start</h3>
-                                        <input type='date' min='1957-01-01' max='1969-12-31' defaultValue="1957-01-01" className='dateInput' value={this.state.value} onInput={(e) => this.setState({ startDate: e.target.value })} />
+                                        <DatePicker format='dd/MMM/y' disableCalendar={true} minDate={new Date('January 1957')} maxDate={new Date('December 1969')} value={this.state.date} onChange={(date) => this.setState({ startDate: date })} />
                                     </li>
                                     <li>
                                         <h3>End</h3>
-                                        <input type='date' min='1957-01-01' max='1969-12-31' defaultValue='1969-12-31' className='dateInput' value={this.state.value} onInput={(e) => this.setState({ endDate: e.target.value })} />
+                                        <DatePicker format='dd/MMM/y' disableCalendar={true} minDate={new Date('January 1957')} maxDate={new Date('December 1969')} value={this.state.date} onChange={(date) => this.setState({ endDate: date })} />
                                     </li>
                                 </ul>
                             </form>
