@@ -60,7 +60,7 @@ class App extends Component {
             />
             <Route exact path='/browse-letters-music' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
               entityType={'music'}
-              placeholder={"ex. 'Nearer my God'"}
+              placeholder={"ex. 'Violin Sonatas'"}
               tableHeader={'Music Title'}
               metaTitle={'Browse by Music'}
             />}
@@ -74,7 +74,7 @@ class App extends Component {
             />
             <Route exact path='/browse-letters-person' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props} 
               entityType={'person'}
-              placeholder={"ex. 'PERSON NAME HERE'"}
+              placeholder={"ex. 'Kay Boyle'"}
               tableHeader={'Person Name'}
               metaTitle={'Browse by Person'}
             />}

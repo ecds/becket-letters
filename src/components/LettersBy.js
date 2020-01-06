@@ -211,8 +211,6 @@ class LettersBy extends Component {
                             </Link>
                         }
                     </td>
-                    {/* adds composer column */}
-                    {this.props.entityType === 'music' ? <td><p>{entity.attributes.properties !== null ? entity.attributes.properties.composer : null}</p></td> : null}
                 </tr>
             }
             else {
@@ -254,7 +252,6 @@ class LettersBy extends Component {
                     <thead>
                         <tr>
                             <th>{this.props.tableHeader}</th>
-                            {this.props.entityType === 'music' && this.state.isLoaded ? <th>Composer</th> : null}
                         </tr>
                     </thead>
                     {!this.state.isLoaded ? <LoadingSpinner /> : <tbody>
