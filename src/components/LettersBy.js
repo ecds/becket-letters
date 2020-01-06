@@ -158,11 +158,11 @@ class LettersBy extends Component {
                 }
                 else if (entity.attributes['type-label'] === 'Reading') {
                     let currentLabel
-                    if (entity.attributes.label.slice(-1) === '.'){
+                    if (entity.attributes.label.slice(-1) === '.') {
                         currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 1)
                     }
                     // else if (entity.attributes.label.slice(-1) === '.</i>'){
-                        // currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 10) + "</i>"
+                    // currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 10) + "</i>"
                     // }
                     else {
                         currentLabel = entity.attributes.label
@@ -185,7 +185,7 @@ class LettersBy extends Component {
                 else {
                     entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
                 }
-                return <tr key={entity.id}>
+                return entity.attributes.label === ' ' || entity.attributes.label === null ? null : <tr key={entity.id}>
                     <td>
                         {this.props.entityType === 'person' ?
                             <Link
@@ -231,7 +231,7 @@ class LettersBy extends Component {
                 <DocMetaBuilder {...metaBuild} />
                 <BrowseLetters active={'by-' + this.props.entityType} action={this.entityChange} />
                 <Row className="no-gutters pt-3">
-                    <Col md={11} className="no-gutters">
+                    <Col className="no-gutters">
                         <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
                             <Form.Group>
                                 <div className="input-group mb-3">
@@ -245,12 +245,9 @@ class LettersBy extends Component {
                             </Form.Group>
                         </Form>
                     </Col>
-                    <Col md={1} className="no-gutters">
-                        {this.state.isSearching ?
-                            <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
-                            : null
-                        }
-                    </Col>
+                    {this.state.isSearching ? <Col md={1} className="no-gutters">
+                        <Form onSubmit={this.resetPage}><Button variant="secondary" type="submit" className="full-width">Clear</Button></Form>
+                    </Col> : null}
                 </Row>
                 {this.state.isLoaded && this.props.entityType !== 'repositories' ? <Pagination action={this.handler} pagination={this.state.pagination} /> : null}
                 <Table striped bordered className="browse-by" id='browse-by' >
