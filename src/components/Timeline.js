@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import TimelineYear from './TimelineYear';
 import DocumentMeta from 'react-document-meta';
+import ScrollIntoView from 'react-scroll-into-view';
 
 export class Timeline extends Component {
   constructor(props, context) {
@@ -22,15 +23,9 @@ export class Timeline extends Component {
     })
   }
 
-  scrollToMyRef = () => {
-    window.scrollTo({
-      top: this.myRef.offsetTop,
-      // behavior: "smooth" // optional
-    });
-  };
+
 
   componentDidMount() {
-    this.scrollToMyRef();
     axios.all([
       axios.get('http://localhost:3000/beckett-timeline-ver-26-aug.json')])
       .then(axios.spread((getLetterData) => {
@@ -62,32 +57,20 @@ export class Timeline extends Component {
       return (
         <div className="timeline-container">
           <DocumentMeta {...meta} id='docmeta' />
-          {/* <Row>
-            <h1>Timeline</h1>
-          </Row>
-          <Row>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium mollitia, laborum blanditiis, natus rerum distinctio architecto rem atque, aut necessitatibus illum eum veritatis. Mollitia qui similique sit corrupti, atque amet?</p>
-          </Row>
-          <Row className='timelineTitleRow'>
-            <Col md={6} >
-              <h2>Personal events are in <span className="timelineHeaderBlue">blue</span></h2>
-            </Col>
-            <Col md={6} >
-              <h2>Global events are in <span className="timelineHeaderYellow">gold</span></h2>
-            </Col>
-          </Row> */}
-          <ol>
+          <div className='scrollToLinks'>
+            <h3 id='scrollLabelSm'>Jump to:</h3>
+            <ScrollIntoView selector='#div1957' ><button className='btn btn-primary'>Top</button></ScrollIntoView>
             {Object.keys(allTimelineEntries).map(keyOuter => {
               return (
-                <li ref={this.myRef}>{keyOuter}</li>
+                <ScrollIntoView selector={"#div" + keyOuter}><a className='scrollToLink'>{keyOuter}</a></ScrollIntoView>
               )
             })}
-            <button onClick={() => this.scrollToTop()}>Top</button>
-          </ol>
+          </div>
           {
             Object.keys(allTimelineEntries).map(keyOuter => {
+              console.log(keyOuter)
               return (
-                <TimelineYear ref={keyOuter} key={keyOuter} year={keyOuter} events={allTimelineEntries[keyOuter]} />
+                <TimelineYear year={keyOuter} events={allTimelineEntries[keyOuter]} />
               )
             })
           }
