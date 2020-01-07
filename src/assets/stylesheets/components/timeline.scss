@@ -15,18 +15,25 @@
   }
 }
 
-ol {
+.scrollToLinks {
+  font-size: 1.5em;
   position: fixed;
   padding: 6px;
-  border: 1px solid red;
+  border: 1px solid $lightGray;
   background-color: white;
   z-index: 9;
   right: 10px;
-  & li {
-    list-style-type: none;
+  & a {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline !important;
+    }
   }
 }
 
+#scrollLabelSm {
+  display: none;
+}
 
 .timelineHeaderBlue {
   color: $midBlue;
@@ -56,6 +63,7 @@ ol {
 // images
 .timeline-event-image {
   max-height: 280px;
+  max-width: 90%;
   margin: 10px;
 }
 
@@ -129,7 +137,50 @@ ol {
   }
 }
 
+// MEDIA
+// QUERIES
 @media only screen and (max-width: 767px) {
+
+  .year-container:last-of-type {
+    margin-bottom: 5rem !important;
+  }
+
+  .scrollToLinks {
+    font-size: 1.5em;
+    position: fixed;
+    background-color: white;
+    padding: 0.2rem 0.4rem;
+    bottom: 0px;
+    left: 0px;
+    z-index: 9;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border: none;
+    & div {
+      display: inline-block;
+      margin: 0px 0.33rem;
+    }
+    & button {
+      margin-top: -0.25rem;
+    }
+  }
+ 
+  #scrollLabelSm {
+    font-size: .9em;
+    display: block;
+    position: fixed;
+    background-color: white;
+    margin-bottom: 0px;
+    bottom: 2.5rem;
+    z-index: 8;
+    border-top: 1px solid $lightGray;
+    width: 100%;
+    left: 0px;
+    padding-left: .5rem;
+  }
+
   .left-event:before {
     border-right: none;
   }
@@ -144,7 +195,7 @@ ol {
       -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
-      z-index: 9;
+      z-index: 8;
     }
     &:after {
       content: "";
@@ -166,9 +217,4 @@ ol {
       border-right: none;
     }
   }
-}
-
-.timelineTitleRow {
-  border-bottom: 1px solid $lightGray;
-  margin-bottom: 10px;
 }
