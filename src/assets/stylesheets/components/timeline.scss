@@ -23,7 +23,8 @@
   background-color: white;
   z-index: 9;
   right: 10px;
-  & a {
+  & nav {
+    font-family: $serifBody;
     cursor: pointer;
     &:hover {
       text-decoration: underline !important;

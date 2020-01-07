@@ -38,7 +38,6 @@ class LettersBy extends Component {
     }
 
     entityChange = (entityType) => {
-        const page = 1
         this.setState({ entityType, page: 1 }, () => {
             this.getData();
         });

@@ -5,9 +5,7 @@ import axios from "axios";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import FilterSearchCheckbox from './utilities/FilterSearchCheckbox';
 import HeaderBuilder from './utilities/HeaderBuilder';
-import { counter } from '@fortawesome/fontawesome-svg-core';
 import DatePicker from 'react-date-picker';
 
 class FilterSearch extends Component {
@@ -251,6 +249,7 @@ class FilterSearch extends Component {
                                         </td>
                                     </tr>
                                 }
+                                else return null
                             }
                         }
                     }

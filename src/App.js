@@ -27,23 +27,23 @@ class App extends Component {
 
   render() {
 
-    const routes = {
-      '/': 'Home',
-      '/letters': 'Letters',
-      '/letters/letterdetails/:id': 'Letter Details',
-      '/timeline': 'Timeline',
-      '/people/:personId/:name': ':name',
-      '/places': 'Places',
-      '/places/:placeId': ':d',
-      '/search': 'Search Results',
-      '/search-letters': 'Search Letters',
-      '/browse-letters': 'Browse Letters',
-      '/repositories/:id': ':id',
-      '/productions/:id': ':id',
-      '/music/:id': ':id',
-      '/organizations/:id': ':id',
-      '/attendance/:id': ':id'
-    };
+    // const routes = {
+    //   '/': 'Home',
+    //   '/letters': 'Letters',
+    //   '/letters/letterdetails/:id': 'Letter Details',
+    //   '/timeline': 'Timeline',
+    //   '/people/:personId/:name': ':name',
+    //   '/places': 'Places',
+    //   '/places/:placeId': ':d',
+    //   '/search': 'Search Results',
+    //   '/search-letters': 'Search Letters',
+    //   '/browse-letters': 'Browse Letters',
+    //   '/repositories/:id': ':id',
+    //   '/productions/:id': ':id',
+    //   '/music/:id': ':id',
+    //   '/organizations/:id': ':id',
+    //   '/attendance/:id': ':id'
+    // };
 
     return (
       <Router buildname="build">

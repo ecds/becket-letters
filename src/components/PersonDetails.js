@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
-import HeaderBuilder from './utilities/HeaderBuilder';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
@@ -79,24 +78,21 @@ class PersonDetails extends Component {
     } else {
       const metaBuild = {
         title: this.state.entityData.attributes.label,
-        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties ? this.state.this.state.entityData.attributes.properties.description : null }`,
+        description: `View details for ${this.state.entityData.attributes.label}`,
         id: this.state.entityData.id
       };
       return (
         <div className="details">
         <DocMetaBuilder {...metaBuild} />
-        {/* <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} lifedates={this.state.entityData.attributes.properties['life-dates']} />*/}
         <h1>
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null}} />
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className="comma" />
+          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className={this.state.entityData.attributes.properties['first-name'] ? 'comma' : null} />
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> :null}
-          {this.state.entityData.attributes.properties ? <span className="comma">{this.state.entityData.attributes.properties['life-dates']}</span> : null}
-          {this.state.entityData.attributes.properties ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : null}
-
-
+          {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties['life-dates'] ? "comma" : null}>{this.state.entityData.attributes.properties['life-dates']}</span> : null}
+          {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties.description ? "comma" : null} dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description.charAt(this.state.entityData.attributes.properties.description.length - 1) === '.' ? this.state.entityData.attributes.properties.description.slice(0, -1) : this.state.entityData.attributes.properties.description  }} /> : null}
         </h1>
         {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
-          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" className="btn btn-primary">VIAF</a>
+          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
            : null }
         {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#personProfile" aria-expanded="false" aria-controls="personProfile">
