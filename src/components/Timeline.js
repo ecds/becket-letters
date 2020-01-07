@@ -62,7 +62,7 @@ export class Timeline extends Component {
             <ScrollIntoView selector='#div1957' ><button className='btn btn-primary'>Top</button></ScrollIntoView>
             {Object.keys(allTimelineEntries).map(keyOuter => {
               return (
-                <ScrollIntoView selector={"#div" + keyOuter}><a className='scrollToLink'>{keyOuter}</a></ScrollIntoView>
+                <ScrollIntoView selector={"#div" + keyOuter}><nav className='scrollToLink'>{keyOuter}</nav></ScrollIntoView>
               )
             })}
           </div>
