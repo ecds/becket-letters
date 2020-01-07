@@ -86,7 +86,7 @@ class PersonDetails extends Component {
         <DocMetaBuilder {...metaBuild} />
         <h1>
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null}} />
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className="comma" />
+          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className={this.state.entityData.attributes.properties['first-name'] ? 'comma' : null} />
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> :null}
           {this.state.entityData.attributes.properties ? <span className="comma">{this.state.entityData.attributes.properties['life-dates']}</span> : null}
           {this.state.entityData.attributes.properties ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /> : null}
