@@ -78,13 +78,12 @@ class PersonDetails extends Component {
     } else {
       const metaBuild = {
         title: this.state.entityData.attributes.label,
-        description: `${this.state.entityData.attributes.label} ${this.state.entityData.attributes.properties ? this.state.this.state.entityData.attributes.properties.description : null }`,
+        description: `View details for ${this.state.entityData.attributes.label}`,
         id: this.state.entityData.id
       };
       return (
         <div className="details">
         <DocMetaBuilder {...metaBuild} />
-        {/* <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} lifedates={this.state.entityData.attributes.properties['life-dates']} />*/}
         <h1>
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null}} />
           <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className="comma" />
