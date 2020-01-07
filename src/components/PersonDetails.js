@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
-import HeaderBuilder from './utilities/HeaderBuilder';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
@@ -96,7 +95,7 @@ class PersonDetails extends Component {
 
         </h1>
         {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
-          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" className="btn btn-primary">VIAF</a>
+          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
            : null }
         {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#personProfile" aria-expanded="false" aria-controls="personProfile">
