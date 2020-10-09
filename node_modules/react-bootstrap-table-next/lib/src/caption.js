@@ -17,15 +17,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* eslint react/require-default-props: 0 */
 var Caption = function Caption(props) {
   if (!props.children) return null;
-  return _react2.default.createElement(
+
+  var caption = props.bootstrap4 ? _react2.default.createElement(
+    'caption',
+    { style: { captionSide: 'top' } },
+    props.children
+  ) : _react2.default.createElement(
     'caption',
     null,
     props.children
   );
+
+  return caption;
 };
 
 Caption.propTypes = {
-  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.string])
+  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.string]),
+  bootstrap4: _propTypes2.default.bool
 };
 
 exports.default = Caption;

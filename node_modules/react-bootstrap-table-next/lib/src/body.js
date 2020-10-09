@@ -110,7 +110,8 @@ var Body = function (_React$Component) {
           rowStyle = _props.rowStyle,
           rowClasses = _props.rowClasses,
           rowEvents = _props.rowEvents,
-          expandRow = _props.expandRow;
+          expandRow = _props.expandRow,
+          className = _props.className;
 
 
       var content = void 0;
@@ -160,7 +161,7 @@ var Body = function (_React$Component) {
 
       return _react2.default.createElement(
         'tbody',
-        null,
+        { className: className },
         content
       );
     }

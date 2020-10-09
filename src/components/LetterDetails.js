@@ -87,7 +87,7 @@ export class LetterDetails extends Component {
               <tbody>
                 {this.state.letter.attributes['addressed-from'] ? <tr><td>Addressed From:</td><td> <span className="value">{this.state.letter.attributes['addressed-from']}</span></td></tr> : null}
                 {this.state.letter.attributes['addressed-to'] ? <tr><td>Addressed To:</td><td> {this.state.letter.attributes['addressed-to']}</td></tr> : null}
-                {this.state.letter.attributes['envelope'] ? <tr><td>Envelope: </td><td>{this.state.letter.attributes['envelope']}</td></tr> : null}
+                <tr><td>Envelope: </td>{this.state.letter.attributes['envelope'] ? <td>E</td> : <td></td>}</tr>
                 {this.state.letter.attributes['letter-publisher'] ? <tr><td>Letter Publisher:</td><td> {this.state.letter.attributes['letter-publisher']}</td></tr> : null}
                 {this.state.letter.attributes['notes'] ? <tr><td>Notes:</td><td> {this.state.letter.attributes['notes']}</td></tr> : null}
                 <tr><td>Physical Description:</td>

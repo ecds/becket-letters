@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
 import MentionedLetters from './utilities/MentionedLettersTable';
 
@@ -24,7 +24,7 @@ class PersonDetails extends Component {
 
   getData = () => {
     axios.all([
-      axios.get(this.props.apiUrl +'/entities/' +  this.props.match.params.id)])
+      axios.get(this.props.apiUrl + '/entities/' + this.props.match.params.id)])
       .then(axios.spread((getEntityData) => {
         const entityData = getEntityData.data.data;
         console.log(entityData)
@@ -43,7 +43,7 @@ class PersonDetails extends Component {
   getReceivedLetters = (name) => {
     if (name !== " ") {
       axios.all([
-        axios.get(this.props.apiUrl +'/letters?recipients=' +  name)])
+        axios.get(this.props.apiUrl + '/letters?recipients=' + name)])
         .then(axios.spread((getReceivedLetters) => {
           const receivedLetters = getReceivedLetters.data.data;
           this.setState({ receivedLetters });
@@ -57,13 +57,21 @@ class PersonDetails extends Component {
 
   }
 
+  componentDidUpdate() {
+    this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.media && this.state.entityData.attributes.properties.media.images ?
+      this.state.entityData.attributes.properties.media.images.map((image, index) =>
+        console.log(image.link)
+      ) : console.log('no')
+  }
+
 
   render() {
+
 
     const ReceivedLettersList = this.state.receivedLetters.map((letter, index) =>
       <tr key={index}>
         <td>{letter.attributes['formatted-date']}</td>
-        <td><Link to={'/letters/letterdetails/'+letter.id}>Explore Letter</Link></td>
+        <td><Link to={'/letters/letterdetails/' + letter.id}>Explore Letter</Link></td>
       </tr>
     );
 
@@ -83,48 +91,56 @@ class PersonDetails extends Component {
       };
       return (
         <div className="details">
-        <DocMetaBuilder {...metaBuild} />
-        <h1>
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null}} />
-          <span dangerouslySetInnerHTML={{__html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null}} className={this.state.entityData.attributes.properties['first-name'] ? 'comma' : null} />
-          {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key}  dangerouslySetInnerHTML={{__html: entity}} className="list-span"></span>)} </span> :null}
-          {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties['life-dates'] ? "comma" : null}>{this.state.entityData.attributes.properties['life-dates']}</span> : null}
-          {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties.description ? "comma" : null} dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description.charAt(this.state.entityData.attributes.properties.description.length - 1) === '.' ? this.state.entityData.attributes.properties.description.slice(0, -1) : this.state.entityData.attributes.properties.description  }} /> : null}
-        </h1>
-        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
-          <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
-           : null }
-        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#personProfile" aria-expanded="false" aria-controls="personProfile">
-              View Profile
+          <DocMetaBuilder {...metaBuild} />
+          <h1>
+            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['last-name'] : null }} />
+            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties['first-name'] : null }} className={this.state.entityData.attributes.properties['first-name'] ? 'comma' : null} />
+            {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties['alternate-names-spellings'].length > 0 ? <span className='spellings'>{this.state.entityData.attributes.properties['alternate-names-spellings'].map((entity, key) => <span key={key} dangerouslySetInnerHTML={{ __html: entity }} className="list-span"></span>)} </span> : null}
+            {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties['life-dates'] ? "comma" : null}>{this.state.entityData.attributes.properties['life-dates']}</span> : null}
+            {this.state.entityData.attributes.properties ? <span className={this.state.entityData.attributes.properties.description ? "comma" : null} dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description.charAt(this.state.entityData.attributes.properties.description.length - 1) === '.' ? this.state.entityData.attributes.properties.description.slice(0, -1) : this.state.entityData.attributes.properties.description }} /> : null}
+          </h1>
+          <Row>
+            <Col>
+              {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
+                <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
+                : null}
+              {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#personProfile" aria-expanded="false" aria-controls="personProfile">
+                  View Profile
             </button>
-           : null }
-        {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ?
-          <div class="collapse" id="personProfile">
-              {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.media && this.state.entityData.attributes.properties.media.images ? this.state.entityData.attributes.properties.media.images.map((image, index) =>
-                  <Row><Col md={9}><div dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.profile }}/></Col>
-                  <Col md={3}><img src={image.link} alt={'photo of ' + this.state.entityData.attributes.label} className="profile-photo"/></Col></Row>
-              ) : <div dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.profile }}/> }
-            </div>
-              : null }
+                : null}
+            </Col>
+            <Col>
+              <Row>
+                <div id="personProfile">
+                  {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.media && this.state.entityData.attributes.properties.media.images ? this.state.entityData.attributes.properties.media.images.map((image, index) =>
+                    <Col md={6}>
+                      <img src={image.link} alt={'photo of ' + this.state.entityData.attributes.label} className="profile-photo" />
+                    </Col>
+                  ) : null}
+                  {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.profile ? <Col md={6}><div dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.profile }} /></Col> : null}
+                </div>
+              </Row>
+            </Col>
+          </Row>
 
           <h2>Letters Received:</h2>
-          <SearchRecipientOnPage tableId='receivedlettersList' placeHolder='by date'/>
+          <SearchRecipientOnPage tableId='receivedlettersList' placeHolder='by date' />
           <table id="receivedlettersList" className="table table-bordered">
-          <thead>
-            <tr>
-              <th colSpan="2">Date</th>
-            </tr>
-          </thead>
+            <thead>
+              <tr>
+                <th colSpan="2">Date</th>
+              </tr>
+            </thead>
             <tbody>
               {this.state.receivedLetters.length === 0 ? <tr><td>No Letters</td></tr> : ReceivedLettersList}
 
             </tbody>
           </table>
           <div className="panel">
-          <h2>Mentioned in:</h2>
-          <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
-        </div>
+            <h2>Mentioned in:</h2>
+            <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
+          </div>
 
         </div>
       )
