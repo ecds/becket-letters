@@ -201,7 +201,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Writing{this.state.entitiesMentioned['writing'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>Writing Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['writing'].map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
