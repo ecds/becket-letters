@@ -177,6 +177,14 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
+                  <td>Publication{this.state.entitiesMentioned['public-event'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>
+                    {this.state.entitiesMentioned['publication'].map((entity) =>
+                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
+                    )}
+                  </td>
+                </tr>
+                <tr>
                   <td>Reading{this.state.entitiesMentioned['reading'].length > 1 ? 's' : null} Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['reading'].map((entity) =>

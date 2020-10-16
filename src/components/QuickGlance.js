@@ -65,6 +65,9 @@ class QuickGlance extends Component {
     else if (this.state.typeLabel === 'Public Event') {
       this.setState({ localURLExtension: '/events/' + this.state.entityData.id })
     }
+    else if (this.state.typeLabel === 'Publication') {
+      this.setState({ localURLExtension: '/publications/' + this.state.entityData.id })
+    }
     else if (this.state.typeLabel === 'Writing') {
       this.setState({ localURLExtension: '/writings/' + this.state.entityData.id })
     }
