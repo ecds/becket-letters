@@ -109,7 +109,15 @@ class QuickGlance extends Component {
             <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
             {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
             {this.state.typeLabel === 'Production' ?
-              <span dangerouslySetInnerHTML={{ __html: ' (' + this.state.entityData.attributes.properties['city'] + '; ' + this.state.entityData.attributes.properties['date'] + ')' }} />
+              <span dangerouslySetInnerHTML={{
+                __html:
+                  ' ('
+                  + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}; ` : ``}`
+                  + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+                  + `${this.state.entityData.attributes.properties['director'] ? `, dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+                  + `${this.state.entityData.attributes.properties['theatre'] ? `, shown at ${this.state.entityData.attributes.properties['theatre']}f` : ``}`
+                  + ')'
+              }} />
               : null}
           </Link>
         )
