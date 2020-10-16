@@ -18,12 +18,19 @@ class Landing extends Component {
         <Container fluid className="home-tiles">
           <h2>Browse Letters By</h2>
           <CardGroup className='landing-group'>
-            <HomeTile type='production' />
             <HomeTile type='attendance' />
-            <HomeTile type='person' />
+            {/* <HomeTile type='music' /> */}
             <HomeTile type='organization' />
-            <HomeTile type='publication' />
+            <HomeTile type='person' />
             <HomeTile type='place' />
+            <HomeTile type='production' />
+            {/* <HomeTile type='public-event' /> */}
+            <HomeTile type='publication' />
+            {/* <HomeTile type='reading' /> */}
+            {/* <HomeTile type='repository' /> */}
+            {/* <HomeTile type='translating' /> */}
+            {/* <HomeTile type='work-of-art' /> */}
+            {/* <HomeTile type='writing' /> */}
           </CardGroup>
         </Container>
       </div >

@@ -100,7 +100,7 @@ export class LetterDetails extends Component {
                   <td>Recipient{this.state.letter.attributes.recipients.length > 1 ? 's' : null}:</td>
                   <td>
                     {this.state.letter.attributes.recipients.map((entity) =>
-                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
+                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} type='nolink' />
                     )}
                   </td>
                 </tr>
@@ -108,7 +108,7 @@ export class LetterDetails extends Component {
                   <td>Repositor{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
                   <td>
                     {this.state.letter.relationships.repositories.data.map((respository) =>
-                      <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id} />
+                      <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id} type='nolink' />
                     )}
                   </td>
                 </tr>
@@ -116,7 +116,7 @@ export class LetterDetails extends Component {
                   <td>Place{this.state.letter.relationships['places-written'].data.length > 1 ? 's' : null} Written:</td>
                   <td>
                     {this.state.letter.relationships['places-written'].data.map((entity) =>
-                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
+                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} type='nolink' />
                     )}
                   </td>
                 </tr>
@@ -177,6 +177,14 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
+                  <td>Publication{this.state.entitiesMentioned['public-event'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>
+                    {this.state.entitiesMentioned['publication'].map((entity) =>
+                      <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
+                    )}
+                  </td>
+                </tr>
+                <tr>
                   <td>Reading{this.state.entitiesMentioned['reading'].length > 1 ? 's' : null} Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['reading'].map((entity) =>
@@ -201,7 +209,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Writing{this.state.entitiesMentioned['writing'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>Writing Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['writing'].map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
