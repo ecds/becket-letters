@@ -3,12 +3,12 @@ import axios from 'axios';
 
 class RepositoryQuickGlance extends Component {
   constructor(props) {
-      super(props);
-      this.state= {
-        isLoaded: false,
-        error: '',
-        entityData: []
-      }
+    super(props);
+    this.state = {
+      isLoaded: false,
+      error: '',
+      entityData: []
+    }
   }
 
   componentDidMount() {
@@ -17,16 +17,16 @@ class RepositoryQuickGlance extends Component {
 
   getData() {
     axios.all([
-        axios.get(this.props.apiUrl+'/repositories/'+this.props.id)])
-        .then(axios.spread((getData) => {
-            const entityData = getData.data.data;
-            this.setState({ entityData });
-            this.setState({ isLoaded: true })
-        }))
-        .catch((err) => {
-            this.setState({ isLoaded: false });
-            this.setState({ error: err.message });
-        });
+      axios.get(this.props.apiUrl + '/repositories/' + this.props.id)])
+      .then(axios.spread((getData) => {
+        const entityData = getData.data.data;
+        this.setState({ entityData });
+        this.setState({ isLoaded: true })
+      }))
+      .catch((err) => {
+        this.setState({ isLoaded: false });
+        this.setState({ error: err.message });
+      });
   }
 
 
@@ -40,9 +40,18 @@ class RepositoryQuickGlance extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      return (
-        <a href={'/repositories/' + this.state.entityData.id} className="listLink">{this.state.entityData.attributes.label} </a>
-      )
+      if (this.props.type === 'nolink') {
+        return (
+          <p className="listLink">
+            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+          </p>
+        )
+      }
+      else {
+        return (
+          <a href={'/repositories/' + this.state.entityData.id} className="listLink">{this.state.entityData.attributes.label} </a>
+        )
+      }
     }
   }
 }
