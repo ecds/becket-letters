@@ -105,7 +105,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Repositories{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
+                  <td>Repositor{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
                   <td>
                     {this.state.letter.relationships.repositories.data.map((respository) =>
                       <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id} />
