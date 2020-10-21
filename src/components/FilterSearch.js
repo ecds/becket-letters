@@ -255,7 +255,7 @@ class FilterSearch extends Component {
                     }
                     )
                     }
-                </React.Fragment >
+                </React.Fragment>
             }
 
             else {
@@ -311,7 +311,7 @@ class FilterSearch extends Component {
                                                 onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
                                                 checked={!this.state.areAttendancesHidden}
                                             />
-                                            Attendances {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
+                                            Attendance {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>
