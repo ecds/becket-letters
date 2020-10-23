@@ -2,11 +2,21 @@ import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import HeaderBuilder from './utilities/HeaderBuilder';
 import DatePicker from 'react-date-picker';
+
+const renderSearchTooltip = (props) => (
+    <Tooltip id="search-tooltip" {...props}>
+        "Endgame" : results exact match<br />
+        Waiting +Godot : results with Waiting AND Godot<br />
+        Waiting -Godot : results with Waiting but NOT Godot<br />
+        pat* : wildcard does work but with a caveat I’ll explain<br />
+        label:pat* : only searches the label attribute<br />
+    </Tooltip>
+);
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -279,16 +289,22 @@ class FilterSearch extends Component {
                         <Col md={12} className="no-gutters">
                             {/* work on search function */}
                             <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
-                                <Form.Group>
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <Button aria-label='submit button' variant="primary" type="submit">
-                                                <FontAwesomeIcon icon="search" />
-                                            </Button>
+                                <OverlayTrigger
+                                    placement="bottom"
+                                    delay={{ show: 150, hide: 1000 }}
+                                    overlay={renderSearchTooltip}
+                                >
+                                    <Form.Group>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <Button aria-label='submit button' variant="primary" type="submit">
+                                                    <FontAwesomeIcon icon="search" />
+                                                </Button>
+                                            </div>
+                                            <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
                                         </div>
-                                        <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
-                                    </div>
-                                </Form.Group>
+                                    </Form.Group>
+                                </OverlayTrigger>
                             </Form>
                         </Col>
                         <Col md={1} className="no-gutters">
