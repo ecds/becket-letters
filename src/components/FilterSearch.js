@@ -184,7 +184,7 @@ class FilterSearch extends Component {
                                 <td>Public Event</td>
                             </tr>
                             :
-                            entity.attributes['type-label'] === "Work Of Art" ?
+                            entity.attributes['type-label'] === "Work of Art" ?
                                 this.state.areWorkOfArtsHidden ? null : <tr>
                                     <td>
                                         <Link
@@ -200,31 +200,59 @@ class FilterSearch extends Component {
                                     <td>Work of Art</td>
                                 </tr>
                                 :
-                                this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
-                                    <td>
-                                        {entity.attributes['type-label'] === 'Translating' ? <Link
-                                            to={{
-                                                pathname: `/translations/${entity.id}`,
-                                                state: {
-                                                    id: entity.id
-                                                }
-                                            }}>
-                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                        </Link>
-                                            :
+                                entity.attributes['type-label'] === "Production" ?
+                                    this.state.areProductionsHidden ? null : <tr>
+                                        <td>
                                             <Link
                                                 to={{
-                                                    pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                    pathname: `/productions/${entity.id}`,
+                                                    state: {
+                                                        id: entity.id
+                                                    }
+                                                }}>
+                                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{
+                                                    __html:
+                                                        `${entity.attributes.label}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ' (' : ''}`
+                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
+                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
+                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                                                        + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
+                                                        + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
+                                                        + `${entity.attributes.properties['theatre'] ? `shown at ${entity.attributes.properties['theatre']}` : ``}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ')' : ''}`
+                                                }} /> : <span>{entity.id}</span>}
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                    :
+
+                                    this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
+                                        <td>
+                                            {entity.attributes['type-label'] === 'Translating' ? <Link
+                                                to={{
+                                                    pathname: `/translations/${entity.id}`,
                                                     state: {
                                                         id: entity.id
                                                     }
                                                 }}>
                                                 {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                                             </Link>
-                                        }
-                                    </td>
-                                    <td>{entity.attributes['type-label']}</td>
-                                </tr>
+                                                :
+                                                <Link
+                                                    to={{
+                                                        pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                        state: {
+                                                            id: entity.id
+                                                        }
+                                                    }}>
+                                                    {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                                </Link>
+                                            }
+                                        </td>
+                                        <td>{entity.attributes['type-label']}</td>
+                                    </tr>
                     }
                     {/* create row for each public letter of search result */}
                     {entity.attributes['public-letters-hash'].map((letter) => {
