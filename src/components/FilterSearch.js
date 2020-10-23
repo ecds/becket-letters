@@ -14,7 +14,7 @@ const renderSearchTooltip = (props) => (
         Waiting +Godot : results with Waiting AND Godot<br />
         Waiting -Godot : results with Waiting but NOT Godot<br />
         pat* : wildcard does work but with a caveat I’ll explain<br />
-        label:pat* : only searches the label attribute<br />
+        label:pat* : only searches the label attribute
     </Tooltip>
 );
 
