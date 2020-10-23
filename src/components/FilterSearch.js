@@ -301,7 +301,7 @@ class FilterSearch extends Component {
                     <Row>
                         <Col md={3} className='filterCol'>
                             <form className='filterBox filterByType' >
-                                <h2>Refine by Type</h2>
+                                <h2>Refine by Field</h2>
                                 <ul>
                                     <li>
                                         <label>

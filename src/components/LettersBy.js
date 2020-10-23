@@ -149,10 +149,26 @@ class LettersBy extends Component {
                 }
                 else if (entity.attributes['type-label'] === 'Production') {
                     if (entity.attributes.properties && entity.attributes.properties.director) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " directed by " + entity.attributes.properties.director }} />
+                        entityLabel = <span dangerouslySetInnerHTML={{
+                            __html:
+                              ' ('
+                              + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}; ` : ``}`
+                              + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+                              + `${this.state.entityData.attributes.properties['director'] ? `, dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+                              + `${this.state.entityData.attributes.properties['theatre'] ? `, shown at ${this.state.entityData.attributes.properties['theatre']}` : ``}`
+                              + ')'
+                          }} />
                     }
                     else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                        entityLabel = <span dangerouslySetInnerHTML={{
+                            __html:
+                              ' ('
+                              + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}; ` : ``}`
+                              + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+                              + `${this.state.entityData.attributes.properties['director'] ? `, dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+                              + `${this.state.entityData.attributes.properties['theatre'] ? `, shown at ${this.state.entityData.attributes.properties['theatre']}` : ``}`
+                              + ')'
+                          }} />
                     }
                 }
                 else if (entity.attributes['type-label'] === 'Reading') {
