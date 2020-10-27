@@ -148,12 +148,19 @@ class LettersBy extends Component {
                     }
                 }
                 else if (entity.attributes['type-label'] === 'Production') {
-                    if (entity.attributes.properties && entity.attributes.properties.director) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " directed by " + entity.attributes.properties.director }} />
-                    }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                    }
+                    entityLabel = <span dangerouslySetInnerHTML={{
+                        __html:
+                            `${entity.attributes.label}`
+                            + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ' (' : ''}`
+                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
+                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
+                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                            + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
+                            + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
+                            + `${entity.attributes.properties['theatre'] ? `shown at ${entity.attributes.properties['theatre']}` : ``}`
+                            + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ')' : ''}`
+                    }} />
                 }
                 else if (entity.attributes['type-label'] === 'Reading') {
                     let currentLabel

@@ -111,13 +111,16 @@ class QuickGlance extends Component {
             {this.state.typeLabel === 'Production' ?
               <span dangerouslySetInnerHTML={{
                 __html:
-                  ' ('
-                  + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}; ` : ``}`
-                  + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-                  + `${this.state.entityData.attributes.properties['director'] ? `, dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-                  + `${this.state.entityData.attributes.properties['theatre'] ? `, shown at ${this.state.entityData.attributes.properties['theatre']}f` : ``}`
-                  + ')'
-              }} />
+                    `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' (' : ''}`
+                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
+                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                    + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+                    + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
+                    + `${this.state.entityData.attributes.properties['theatre'] ? `shown at ${this.state.entityData.attributes.properties['theatre']}` : ``}`
+                    + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ')' : ''}`
+            }} />
               : null}
           </Link>
         )

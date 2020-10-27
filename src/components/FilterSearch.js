@@ -2,11 +2,21 @@ import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import HeaderBuilder from './utilities/HeaderBuilder';
 import DatePicker from 'react-date-picker';
+
+const renderSearchTooltip = (props) => (
+    <Tooltip id="search-tooltip" {...props}>
+        "Endgame" : results exact match<br />
+        Waiting +Godot : results with Waiting AND Godot<br />
+        Waiting -Godot : results with Waiting but NOT Godot<br />
+        pat* : wildcard does work but with a caveat I’ll explain<br />
+        label:pat* : only searches the label attribute
+    </Tooltip>
+);
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -174,7 +184,7 @@ class FilterSearch extends Component {
                                 <td>Public Event</td>
                             </tr>
                             :
-                            entity.attributes['type-label'] === "Work Of Art" ?
+                            entity.attributes['type-label'] === "Work of Art" ?
                                 this.state.areWorkOfArtsHidden ? null : <tr>
                                     <td>
                                         <Link
@@ -190,31 +200,59 @@ class FilterSearch extends Component {
                                     <td>Work of Art</td>
                                 </tr>
                                 :
-                                this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
-                                    <td>
-                                        {entity.attributes['type-label'] === 'Translating' ? <Link
-                                            to={{
-                                                pathname: `/translations/${entity.id}`,
-                                                state: {
-                                                    id: entity.id
-                                                }
-                                            }}>
-                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                        </Link>
-                                            :
+                                entity.attributes['type-label'] === "Production" ?
+                                    this.state.areProductionsHidden ? null : <tr>
+                                        <td>
                                             <Link
                                                 to={{
-                                                    pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                    pathname: `/productions/${entity.id}`,
+                                                    state: {
+                                                        id: entity.id
+                                                    }
+                                                }}>
+                                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{
+                                                    __html:
+                                                        `${entity.attributes.label}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ' (' : ''}`
+                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
+                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
+                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                                                        + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
+                                                        + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
+                                                        + `${entity.attributes.properties['theatre'] ? `shown at ${entity.attributes.properties['theatre']}` : ``}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ')' : ''}`
+                                                }} /> : <span>{entity.id}</span>}
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                    :
+
+                                    this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
+                                        <td>
+                                            {entity.attributes['type-label'] === 'Translating' ? <Link
+                                                to={{
+                                                    pathname: `/translations/${entity.id}`,
                                                     state: {
                                                         id: entity.id
                                                     }
                                                 }}>
                                                 {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
                                             </Link>
-                                        }
-                                    </td>
-                                    <td>{entity.attributes['type-label']}</td>
-                                </tr>
+                                                :
+                                                <Link
+                                                    to={{
+                                                        pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                        state: {
+                                                            id: entity.id
+                                                        }
+                                                    }}>
+                                                    {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                                </Link>
+                                            }
+                                        </td>
+                                        <td>{entity.attributes['type-label']}</td>
+                                    </tr>
                     }
                     {/* create row for each public letter of search result */}
                     {entity.attributes['public-letters-hash'].map((letter) => {
@@ -255,7 +293,7 @@ class FilterSearch extends Component {
                     }
                     )
                     }
-                </React.Fragment >
+                </React.Fragment>
             }
 
             else {
@@ -279,16 +317,22 @@ class FilterSearch extends Component {
                         <Col md={12} className="no-gutters">
                             {/* work on search function */}
                             <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
-                                <Form.Group>
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <Button aria-label='submit button' variant="primary" type="submit">
-                                                <FontAwesomeIcon icon="search" />
-                                            </Button>
+                                <OverlayTrigger
+                                    placement="bottom"
+                                    delay={{ show: 150, hide: 1000 }}
+                                    overlay={renderSearchTooltip}
+                                >
+                                    <Form.Group>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <Button aria-label='submit button' variant="primary" type="submit">
+                                                    <FontAwesomeIcon icon="search" />
+                                                </Button>
+                                            </div>
+                                            <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
                                         </div>
-                                        <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
-                                    </div>
-                                </Form.Group>
+                                    </Form.Group>
+                                </OverlayTrigger>
                             </Form>
                         </Col>
                         <Col md={1} className="no-gutters">
@@ -301,7 +345,7 @@ class FilterSearch extends Component {
                     <Row>
                         <Col md={3} className='filterCol'>
                             <form className='filterBox filterByType' >
-                                <h2>Refine by Type</h2>
+                                <h2>Refine by Field</h2>
                                 <ul>
                                     <li>
                                         <label>
@@ -311,7 +355,7 @@ class FilterSearch extends Component {
                                                 onChange={(e) => this.filterRowsByType('areAttendancesHidden', e)}
                                                 checked={!this.state.areAttendancesHidden}
                                             />
-                                            Attendances {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
+                                            Attendance {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>

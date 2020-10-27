@@ -42,7 +42,7 @@ class BrowseLetters extends Component {
           <li className={this.setActive('by-public-event')}><Link to="/browse-letters-public-event" id='public-event' onClick={this.changeEntityType}>Public Events</Link></li>
           <li className={this.setActive('by-publication')}><Link to="/browse-letters-publication" id='publication' onClick={this.changeEntityType}>Publications</Link></li>
           <li className={this.setActive('by-reading')}><Link to="/browse-letters-reading" id='reading' onClick={this.changeEntityType}>Readings</Link></li>
-          <li className={this.setActive('by-repository')}><Link to="/browse-letters-repositories" id='repositories' onClick={this.changeEntityType}>Repository</Link></li>
+          <li className={this.setActive('by-repositories')}><Link to="/browse-letters-repositories" id='repositories' onClick={this.changeEntityType}>Repository</Link></li>
           <li className={this.setActive('by-Translating')}><Link to="/browse-letters-Translating" id='Translating' onClick={this.changeEntityType}>Translations</Link></li>
           <li className={this.setActive('by-work-of-art')}><Link to="/browse-letters-work-of-art" id='work-of-art' onClick={this.changeEntityType}>Works of Art</Link></li>
           <li className={this.setActive('by-writing')}><Link to="/browse-letters-writing" id='writing' onClick={this.changeEntityType}>Writings</Link></li>
