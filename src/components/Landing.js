@@ -19,18 +19,18 @@ class Landing extends Component {
           <h2>Browse Letters By</h2>
           <CardGroup className='landing-group'>
             <HomeTile type='attendance' />
-            {/* <HomeTile type='music' /> */}
+            <HomeTile type='music' />
             <HomeTile type='organization' />
             <HomeTile type='person' />
             <HomeTile type='place' />
             <HomeTile type='production' />
-            {/* <HomeTile type='public-event' /> */}
+            <HomeTile type='public-event' />
             <HomeTile type='publication' />
-            {/* <HomeTile type='reading' /> */}
-            {/* <HomeTile type='repository' /> */}
-            {/* <HomeTile type='translating' /> */}
-            {/* <HomeTile type='work-of-art' /> */}
-            {/* <HomeTile type='writing' /> */}
+            <HomeTile type='reading' />
+            <HomeTile type='repository' />
+            <HomeTile type='translating' />
+            <HomeTile type='work-of-art' />
+            <HomeTile type='writing' />
           </CardGroup>
         </Container>
       </div >
