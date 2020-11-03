@@ -8,7 +8,7 @@ node ('jnlp-slave-with-java-build-tools') {
   stage('Building source code') {
     sh 'npm install'
     sh 'yarn run build'
-    sh 'tar -zcvf build.tar.gz build/
+    sh 'tar -zcvf build.tar.gz build/'
   }
   
   stage('Deploy') {
