@@ -5,14 +5,6 @@ node ('jnlp-slave-with-java-build-tools') {
   remote.host = "205.196.209.248"
   remote.allowAnyHosts = true
 
-  stage('Cloning Git') {
-    git(
-      url: 'https://github.service.emory.edu/LITS/beckett-letters',
-      credentialsId: 'integration-github',
-      branch: "master"
-    )
-  }
-
   stage('Building source code') {
     sh 'npm install'
     sh 'yarn run build'
