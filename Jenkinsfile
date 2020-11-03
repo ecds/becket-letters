@@ -6,6 +6,7 @@ node ('jnlp-slave-with-java-build-tools') {
   remote.allowAnyHosts = true
 
   stage('Building source code') {
+    sh 'ls -lrt'
     sh 'npm install'
     sh 'yarn run build'
     sh 'tar -zcvf build.tar.gz build/'
