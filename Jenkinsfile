@@ -8,7 +8,7 @@ node ('jnlp-slave-with-java-build-tools') {
   stage('Cloning Git') {
     git(
       url: 'https://github.service.emory.edu/LITS/beckett-letters',
-      credentialsId: 'appdev-client',
+      credentialsId: 'app-dev-client-github',
       branch: "master"
     )
   }
