@@ -54,7 +54,7 @@ export class OnThisDay extends Component {
                     <Row>
                         <h3>On This Day: <Moment local format='DD MMMM' /></h3>
                         <div>{dailyResult}</div>
-                        <div><p>Daily Result above</p></div>
+                        <div><p>Daily Result</p></div>
                     </Row>
                 </Col>
             </Row>
