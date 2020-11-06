@@ -19,13 +19,15 @@ node ('jnlp-slave-with-java-build-tools') {
     sh 'yarn run build'
     sh 'tar -zcvf build.tar.gz build/'
   }
-  
+
   stage('Deploy') {
     withCredentials([usernamePassword(credentialsId: 'dreamhost-credentials', passwordVariable: 'password', usernameVariable: 'userName')]) {
       remote.user = userName
       remote.password = password
       stage("Copy artifact to remote") {
+        sshRemove remote: remote, path: "build/"
         sshPut remote: remote, from: 'build.tar.gz', into: '.'
+        sshCommand remote: remote, command: "tar -xvf build.tar.gz"
       }
     }
   }
