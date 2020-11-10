@@ -1,21 +1,8 @@
 .home-main {
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: contain;
-  height: 500px;
-  color: white;
-  background-color: #101010;
-  border-radius: 0;
-  h1 {
-    font-size: 5em;
-    max-width: 50%;
-    line-height: 1em;
-  }
-  p {
-    max-width: 50%;
-    font-size: 1.5em;
-    color: white;
-  }
+  padding: 0px;
+  img {
+    width: 100%;
+  };
 }
 
 .jumbotron {
@@ -23,12 +10,13 @@
 }
 
 .landing-group {
-  width: 70rem;
+  max-width: 80rem;
   margin: 0px auto;
   .card {
     margin: 0px .25rem;
   }
 }
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .jumbotron {

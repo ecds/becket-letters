@@ -151,7 +151,7 @@ class HeaderBuilder extends Component {
                 <h1>
                     <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} className="label" />
                     <span className="comma">{this.props.entityData.attributes.properties.date}</span>
-                    <span className="comma">{this.props.entityData.attributes.properties.proposal}</span>
+                    {this.props.entityData.attributes.properties.proposal ? <span className="comma">{this.props.entityData.attributes.properties.proposal}</span> : null}
                     {this.props.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['notes'] }} className="notes" /> : null}
                 </h1>
             )

@@ -24,8 +24,10 @@ class Landing extends Component {
             <HomeTile type='person' />
             <HomeTile type='place' />
             <HomeTile type='production' />
-            <HomeTile type='public-event' />
             <HomeTile type='publication' />
+          </CardGroup>
+          <CardGroup className='landing-group'>
+          <HomeTile type='public-event' />
             <HomeTile type='reading' />
             <HomeTile type='repository' />
             <HomeTile type='translating' />
