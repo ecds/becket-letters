@@ -147,13 +147,28 @@ class HeaderBuilder extends Component {
             )
         }
         else if (this.props.entityData.attributes['type-label'] === 'Writing') {
+            // make title line
+            let labelText = this.props.entityData.attributes.label;
+            let dateText = this.props.entityData.attributes.properties.date ? `, ${this.props.entityData.attributes.properties.date}` : null;
+            let titleText = labelText + dateText + '.';
+            // make subtitle line
+            let proposalText = this.props.entityData.attributes.properties.proposal ? this.props.entityData.attributes.properties.proposal : null;
+            let notesText = this.props.entityData.attributes.properties['notes'] ?
+                this.props.entityData.attributes.properties.proposal ? `, ${this.props.entityData.attributes.properties['notes']}` : this.props.entityData.attributes.properties['notes']
+                :
+                null;
+            let subtitleText = proposalText + notesText + '.'
             return (
-                <h1>
-                    <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} className="label" />
-                    <span className="comma">{this.props.entityData.attributes.properties.date}</span>
-                    {this.props.entityData.attributes.properties.proposal ? <span className="comma">{this.props.entityData.attributes.properties.proposal}</span> : null}
-                    {this.props.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['notes'] }} className="notes" /> : null}
-                </h1>
+                <>
+                    <h1>
+                        <span dangerouslySetInnerHTML={{ __html: titleText }} className="label" />
+                        {/* {this.props.entityData.attributes.properties.proposal ? <span className="comma">{this.props.entityData.attributes.properties.proposal}</span> : null}
+                        {this.props.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['notes'] }} className="notes" /> : null} */}
+                    </h1>
+                    <h2>
+                        <span dangerouslySetInnerHTML={{ __html: subtitleText }} className="label" />
+                    </h2>
+                </>
             )
         }
         else {

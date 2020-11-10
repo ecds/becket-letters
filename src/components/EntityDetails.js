@@ -52,7 +52,7 @@ class EntityDetails extends Component {
                 <div className="details">
                     <DocMetaBuilder {...metaBuild} />
                     <HeaderBuilder entityData={this.state.entityData} />
-                    <h2>Mentioned In:</h2>
+                    <h3>Mentioned In:</h3>
                     <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
                 </div >
             )
