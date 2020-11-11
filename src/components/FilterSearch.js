@@ -189,7 +189,7 @@ class FilterSearch extends Component {
                                     <td>
                                         <Link
                                             to={{
-                                                pathname: `/work-of-arts/${entity.id}`,
+                                                pathname: `/works-of-art/${entity.id}`,
                                                 state: {
                                                     id: entity.id
                                                 }

@@ -188,6 +188,14 @@ class LettersBy extends Component {
                         entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
                     }
                 }
+                else if (entity.attributes['type-label'] === 'Work Of Art') {
+                    if (entity.attributes.properties && entity.attributes.properties.author) {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
+                    }
+                    else {
+                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    }
+                }
                 else {
                     entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
                 }
@@ -208,7 +216,7 @@ class LettersBy extends Component {
                             :
                             <Link
                                 to={{
-                                    pathname: `/${this.props.entityType}s/${entity.id}`,
+                                    pathname: `/${this.props.entityType}/${entity.id}`,
                                     state: {
                                         id: entity.id
                                     }
