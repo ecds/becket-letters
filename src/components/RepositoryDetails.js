@@ -55,7 +55,7 @@ class RepositoryDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <HeaderBuilder header={this.state.entityData.attributes.label} id={this.state.entityData.id} />
+          <HeaderBuilder header={this.state.entityData} id={this.state.entityData.id} />
           <table className='table table-striped'>
             <tbody className='details-table'>
             <tr>

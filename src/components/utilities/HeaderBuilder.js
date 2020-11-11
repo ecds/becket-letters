@@ -2,10 +2,18 @@ import React, { Component } from "react";
 
 class HeaderBuilder extends Component {
     render() {
+        console.log(this.props);
         if (this.props.type === 'string') {
             return (
                 <h1>{this.props.header}</h1>
             )
+        }
+        else if (this.props.header && this.props.header.type === "repositories") {
+            return (
+                <h1>
+                    {this.props.header.attributes.label ? this.props.header.attributes.label : null}
+                </h1>
+            );
         }
         else if (this.props.entityData.attributes['type-label'] === 'Attendance') {
             return (
@@ -48,16 +56,26 @@ class HeaderBuilder extends Component {
             )
         }
         else if (this.props.entityData.attributes['type-label'] === 'Place') {
+            let titleText = this.props.entityData.attributes.label ? this.props.entityData.attributes.label : '';
+            let link = this.props.entityData.attributes.properties.links ? this.props.entityData.attributes.properties.links : '';
             return (
-                <h1>
-                    <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} />
-                    {this.props.entityData.attributes.properties ?
-                        <span>{this.props.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.props.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key} dangerouslySetInnerHTML={{ __html: entity }} className="list-span"></span>)} </span> : null}
-                            {this.props.entityData.attributes.properties.description && this.props.entityData.attributes.properties.description !== "" ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.description }} /> : null}
-                            {this.props.entityData.attributes.properties['links'].length > 0 ? <span className='comma'>{this.props.entityData.attributes.properties['links'].map((entity, key) => <a target="_new" key={key} href={entity}>{entity}</a>)} </span> : null}
-                        </span>
-                        : null}
-                </h1>
+                <>
+                    <h1>
+                        <span dangerouslySetInnerHTML={{ __html: titleText }} />
+                        {this.props.entityData.attributes.properties ?
+                            <span>
+                                {this.props.entityData.attributes.properties['alternate-spellings'].length > 0 ? <span className='spellings'>{this.props.entityData.attributes.properties['alternate-spellings'].map((entity, key) => <span key={key} dangerouslySetInnerHTML={{ __html: entity }} className="list-span"></span>)} </span> : null}
+                                {this.props.entityData.attributes.properties.description && this.props.entityData.attributes.properties.description !== "" ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.description }} /> : null}
+                            </span>
+                            : null}
+                    </h1>
+                    {link !== '' ? 
+                    <h2>
+                        <a target="_new" href={link}>{link}</a>
+                    </h2>
+                    :
+                    null}
+                </>
             )
         }
         else if (this.props.entityData.attributes['type-label'] === 'Production') {
@@ -153,9 +171,9 @@ class HeaderBuilder extends Component {
             let titleText = labelText + dateText + '.';
             // make subtitle line
             let proposalText = this.props.entityData.attributes.properties.proposal ? this.props.entityData.attributes.properties.proposal : '';
-            let notesText = this.props.entityData.attributes.properties['notes'] ? this.props.entityData.attributes.properties['notes'] : '';
+            let notesText = this.props.entityData.attributes.properties['notes'] ? this.props.entityData.attributes.properties['notes'] + '.' : '';
             let subtitleText1 = proposalText
-            let subtitleText2 = notesText + '.'
+            let subtitleText2 = notesText
             return (
                 <>
                     <h1>
