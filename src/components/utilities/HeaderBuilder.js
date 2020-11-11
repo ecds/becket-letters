@@ -149,10 +149,10 @@ class HeaderBuilder extends Component {
         else if (this.props.entityData.attributes['type-label'] === 'Writing') {
             // make title line
             let labelText = this.props.entityData.attributes.label;
-            let dateText = this.props.entityData.attributes.properties.date ? `, ${this.props.entityData.attributes.properties.date}` : null;
+            let dateText = this.props.entityData.attributes.properties.date ? `, ${this.props.entityData.attributes.properties.date}` : '';
             let titleText = labelText + dateText + '.';
             // make subtitle line
-            let proposalText = this.props.entityData.attributes.properties.proposal ? this.props.entityData.attributes.properties.proposal : null;
+            let proposalText = this.props.entityData.attributes.properties.proposal ? this.props.entityData.attributes.properties.proposal : '';
             let notesText = this.props.entityData.attributes.properties['notes'] ?
                 this.props.entityData.attributes.properties.proposal ? `, ${this.props.entityData.attributes.properties['notes']}` : this.props.entityData.attributes.properties['notes']
                 :
