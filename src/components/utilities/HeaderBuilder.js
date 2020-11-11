@@ -155,7 +155,7 @@ class HeaderBuilder extends Component {
             let proposalText = this.props.entityData.attributes.properties.proposal ? this.props.entityData.attributes.properties.proposal : '';
             let notesText = this.props.entityData.attributes.properties['notes'] ? this.props.entityData.attributes.properties['notes'] : '';
             let subtitleText1 = proposalText
-            let subtitleText2 = notesText
+            let subtitleText2 = notesText + '.'
             return (
                 <>
                     <h1>
