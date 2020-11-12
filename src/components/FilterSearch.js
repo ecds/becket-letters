@@ -261,7 +261,6 @@ class FilterSearch extends Component {
                             return null
                         }
                         else {
-                            lettersCount++
                             if (this.state.areLettersHidden === true) {
                                 return null
                             }
@@ -270,6 +269,7 @@ class FilterSearch extends Component {
                                 let selectedEndDate = new Date(this.state.endDate + "Z")
                                 let currentDate = new Date(letter.date.substring(letter.date.length - 4) + "-" + letter.date.substring(3, letter.date.length - 5) + "-" + parseInt(letter.date.substring(0, 2) + "Z"))
                                 if (selectedStartDate <= currentDate && currentDate <= selectedEndDate) {
+                                    lettersCount++
                                     return <tr>
                                         <td>
                                             <Link
