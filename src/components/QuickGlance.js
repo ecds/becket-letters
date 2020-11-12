@@ -44,38 +44,38 @@ class QuickGlance extends Component {
 
   getLocalURLExtender() {
     this.setState({ typeLabel: this.state.entityData.attributes['type-label'] })
-    if (this.state.typeLabel === 'Place') {
-      this.setState({ localURLExtension: '/places/' + this.state.entityData.id })
-    }
-    else if (this.state.typeLabel === 'Production') {
-      this.setState({ localURLExtension: '/productions/' + this.state.entityData.id })
-    }
-    else if (this.state.typeLabel === 'Reading') {
-      this.setState({ localURLExtension: '/readings/' + this.state.entityData.id })
+    if (this.state.typeLabel === 'Attendance') {
+      this.setState({ localURLExtension: '/attendance/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Music') {
       this.setState({ localURLExtension: '/music/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Organization') {
-      this.setState({ localURLExtension: '/organizations/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/organization/' + this.state.entityData.id })
     }
-    else if (this.state.typeLabel === 'Attendance') {
-      this.setState({ localURLExtension: '/attendance/' + this.state.entityData.id })
+    else if (this.state.typeLabel === 'Place') {
+      this.setState({ localURLExtension: '/place/' + this.state.entityData.id })
+    }
+    else if (this.state.typeLabel === 'Production') {
+      this.setState({ localURLExtension: '/production/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Public Event') {
-      this.setState({ localURLExtension: '/events/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/public-event/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Publication') {
-      this.setState({ localURLExtension: '/publications/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/publication/' + this.state.entityData.id })
     }
-    else if (this.state.typeLabel === 'Writing') {
-      this.setState({ localURLExtension: '/writings/' + this.state.entityData.id })
+    else if (this.state.typeLabel === 'Reading') {
+      this.setState({ localURLExtension: '/reading/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Translating') {
       this.setState({ localURLExtension: '/translating/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Work Of Art') {
       this.setState({ localURLExtension: '/work-of-art/' + this.state.entityData.id })
+    }
+    else if (this.state.typeLabel === 'Writing') {
+      this.setState({ localURLExtension: '/writing/' + this.state.entityData.id })
     }
     else {
       this.setState({ localURLExtension: '/people/' + this.state.entityData.id })
