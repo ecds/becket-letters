@@ -143,7 +143,7 @@ class FilterSearch extends Component {
                     translationsCount++
                 }
                 if (entity.attributes['type-label'] === 'Work Of Art') {
-                    musicCount++
+                    worksOfArtCount++
                 }
                 if (entity.attributes['type-label'] === 'Writing') {
                     writingsCount++
@@ -173,7 +173,7 @@ class FilterSearch extends Component {
                                 <td>
                                     <Link
                                         to={{
-                                            pathname: `/public-events/${entity.id}`,
+                                            pathname: `/public-event/${entity.id}`,
                                             state: {
                                                 id: entity.id
                                             }
@@ -184,12 +184,12 @@ class FilterSearch extends Component {
                                 <td>Public Event</td>
                             </tr>
                             :
-                            entity.attributes['type-label'] === "Work of Art" ?
+                            entity.attributes['type-label'] === "Work Of Art" ?
                                 this.state.areWorkOfArtsHidden ? null : <tr>
                                     <td>
                                         <Link
                                             to={{
-                                                pathname: `/works-of-art/${entity.id}`,
+                                                pathname: `/work-of-art/${entity.id}`,
                                                 state: {
                                                     id: entity.id
                                                 }
@@ -205,7 +205,7 @@ class FilterSearch extends Component {
                                         <td>
                                             <Link
                                                 to={{
-                                                    pathname: `/productions/${entity.id}`,
+                                                    pathname: `/production/${entity.id}`,
                                                     state: {
                                                         id: entity.id
                                                     }
@@ -232,7 +232,7 @@ class FilterSearch extends Component {
                                         <td>
                                             {entity.attributes['type-label'] === 'Translating' ? <Link
                                                 to={{
-                                                    pathname: `/translations/${entity.id}`,
+                                                    pathname: `/translation/${entity.id}`,
                                                     state: {
                                                         id: entity.id
                                                     }
@@ -242,7 +242,7 @@ class FilterSearch extends Component {
                                                 :
                                                 <Link
                                                     to={{
-                                                        pathname: `/${entity.attributes["type-label"] + "s"}/${entity.id}`,
+                                                        pathname: `/${entity.attributes["type-label"]}/${entity.id}`,
                                                         state: {
                                                             id: entity.id
                                                         }
