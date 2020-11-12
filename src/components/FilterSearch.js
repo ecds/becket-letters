@@ -225,6 +225,7 @@ class FilterSearch extends Component {
                                                 }} /> : <span>{entity.id}</span>}
                                             </Link>
                                         </td>
+                                        <td>Production</td>
                                     </tr>
                                     :
 
