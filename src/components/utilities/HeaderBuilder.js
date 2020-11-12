@@ -69,12 +69,12 @@ class HeaderBuilder extends Component {
                             </span>
                             : null}
                     </h1>
-                    {link !== '' ? 
-                    <h2>
-                        <a target="_new" href={link}>{link}</a>
-                    </h2>
-                    :
-                    null}
+                    {link !== '' ?
+                        <h2>
+                            <a target="_new" href={link}>{link}</a>
+                        </h2>
+                        :
+                        null}
                 </>
             )
         }
@@ -125,11 +125,14 @@ class HeaderBuilder extends Component {
         }
         else if (this.props.entityData.attributes['type-label'] === 'Reading') {
             return (
-                <h1>
-                    {this.props.entityData.attributes.properties.authors ? <span>{this.props.entityData.attributes.properties.authors}</span> : null}
-                    <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} className="comma" />
-                    {this.props.entityData.attributes.properties.publication ? <span className="comma" dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.publication }} /> : null}
-                </h1>
+                <>
+                    <h1>
+                        {this.props.entityData.attributes.properties.authors ? <span>{this.props.entityData.attributes.properties.authors}</span> : null}
+                        <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.label }} />
+                        .
+                    </h1>
+                    {this.props.entityData.attributes.properties.publication ? <h2 dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.publication }} /> : null}
+                </>
             )
         }
         else if (this.props.entityData.attributes['type-label'] === 'Translating') {
