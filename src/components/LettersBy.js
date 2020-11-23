@@ -159,7 +159,7 @@ class LettersBy extends Component {
                             + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
                             + `${entity.attributes.properties['city'] && entity.attributes.properties['date'] ? ', ' : ``}`
                             + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
-                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? '' : ''}`
+                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? '.' : ''}`
                             + `.`
                     }} />
                 }

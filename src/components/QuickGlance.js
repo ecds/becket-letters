@@ -99,18 +99,18 @@ class QuickGlance extends Component {
 
 
 
-      if (this.state.typeLabel === 'Person') {
+      // if (this.state.typeLabel === 'Person') {
+      //   return (
+      //     <JSXType className="listLink">
+      //     <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />{this.getLifeDates()}
+      //     </JSXType>
+      //   )
+      // }
+      // else {
         return (
-          <JSXType className="listLink">
-          <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />{this.getLifeDates()}
-          </JSXType>
+          <p>Work in Progress</p>
         )
-      }
-      else {
-        return (
-          <p>Other type</p>
-        )
-      }
+      // }
 
         
   //       else if (this.state.typeLabel === 'Production') {
