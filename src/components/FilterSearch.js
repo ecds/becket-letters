@@ -213,15 +213,15 @@ class FilterSearch extends Component {
                                                 {entity.attributes.label ? <span dangerouslySetInnerHTML={{
                                                     __html:
                                                         `${entity.attributes.label}`
-                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ' [' : ''}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ', ' : ''}`
                                                         + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
                                                         + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
                                                         + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
                                                         + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
                                                         + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
                                                         + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
-                                                        + `${entity.attributes.properties['theatre'] ? `shown at ${entity.attributes.properties['theatre']}` : ``}`
-                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ']' : ''}`
+                                                        + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['theatre']}` : ``}`
+                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? '.' : ''}`
                                                 }} /> : <span>{entity.id}</span>}
                                             </Link>
                                         </td>

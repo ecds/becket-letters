@@ -96,7 +96,7 @@ class HeaderBuilder extends Component {
                                 {this.props.entityData.attributes.properties.city ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.city }} className="comma" /> : null}
                                 {this.props.entityData.attributes.properties.date ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties.date }} className="comma" /> : null}
                             </span>
-                            {this.props.entityData.attributes.properties['cast'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['cast'] }} className="cast" /> : null}
+                            {this.props.entityData.attributes.properties['cast'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['cast'] + '.' }} className="cast" /> : null}
                             {this.props.entityData.attributes.properties['notes'] ? <span dangerouslySetInnerHTML={{ __html: this.props.entityData.attributes.properties['notes'] }} className="notes" /> : null}
                             <br />
                             {this.props.entityData.attributes.properties['staging-beckett'] ? <a href={this.props.entityData.attributes.properties['staging-beckett']} className="btn btn-primary" target="_new">Staging Beckett</a> : null}

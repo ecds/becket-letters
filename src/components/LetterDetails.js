@@ -43,6 +43,10 @@ export class LetterDetails extends Component {
     this.getData()
   }
 
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
   getPhysicalDescription() {
     var physicalDescription = '';
     if (this.state.letter.attributes['typed']) {
@@ -105,7 +109,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Repositor{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
+                  <td>Repository:</td>
                   <td>
                     {this.state.letter.relationships.repositories.data.map((respository) =>
                       <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id} type='nolink' />
@@ -113,7 +117,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Place{this.state.letter.relationships['places-written'].data.length > 1 ? 's' : null} Written:</td>
+                  <td>Place Written:</td>
                   <td>
                     {this.state.letter.relationships['places-written'].data.map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} type='nolink' />
@@ -129,7 +133,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Attendance{this.state.entitiesMentioned['attendance'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>Attendance Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['attendance'].map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />

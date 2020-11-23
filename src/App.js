@@ -55,7 +55,7 @@ class App extends Component {
               entityType={'attendance'}
               placeholder={"ex. 'Come Back Africa'"}
               tableHeader={'Attendance Name'}
-              metaTitle={'Browse by Attendances'}
+              metaTitle={'Browse by Attendance'}
             />}
             />
             <Route exact path='/browse-letters-music' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}

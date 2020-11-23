@@ -82,6 +82,8 @@ class QuickGlance extends Component {
     }
   }
 
+  
+
   render() {
     const { error, isLoaded } = this.state;
     // if there is an error
@@ -92,39 +94,73 @@ class QuickGlance extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      if (this.props.type === 'nolink') {
+      const JSXType = this.props.type === 'nolink' ? `p` : `Link  to={this.state.localURLExtension}`;
+
+
+
+
+      if (this.state.typeLabel === 'Person') {
         return (
-          <p className="listLink">
-            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-            {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
-            {this.state.typeLabel === 'Production' ?
-              <span dangerouslySetInnerHTML={{ __html: ' (' + this.state.entityData.attributes.properties['city'] + '; ' + this.state.entityData.attributes.properties['date'] + ')' }} />
-              : null}
-          </p>
+          <JSXType className="listLink">
+          <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />{this.getLifeDates()}
+          </JSXType>
         )
       }
       else {
         return (
-          <Link to={this.state.localURLExtension} className="listLink">
-            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-            {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
-            {this.state.typeLabel === 'Production' ?
-              <span dangerouslySetInnerHTML={{
-                __html:
-                    `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
-                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                    + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
-                    + `${this.state.entityData.attributes.properties['theatre'] ? `shown at ${this.state.entityData.attributes.properties['theatre']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
-            }} />
-              : null}
-          </Link>
+          <p>Other type</p>
         )
       }
+
+        
+  //       else if (this.state.typeLabel === 'Production') {
+  //         return (
+  //           <p className="listLink">
+  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /><span dangerouslySetInnerHTML={{
+  //               __html:
+  //                 // dir, theater, city, date
+  //                 `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
+  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
+  //                 + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
+  //             }} />
+  //         </p>
+  //         )
+  //       }
+  //       else return (
+  //         <p className="listLink">
+  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+  //         </p>
+  //       )
+  //     }
+  //     else {
+  //       return (
+  //         <Link to={this.state.localURLExtension} className="listLink">
+  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
+  //           {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
+  //           {this.state.typeLabel === 'Production' ?
+  //             <span dangerouslySetInnerHTML={{
+  //               __html:
+  //                 // dir, theater, city, date
+  //                 `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
+  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
+  //                 + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
+  //                 + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
+  //             }} />
+  //             : null}
+  //         </Link>
+  //       )
+  //     }
     }
   }
 }
