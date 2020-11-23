@@ -80,11 +80,21 @@ class QuickGlance extends Component {
     else {
       this.setState({ localURLExtension: '/people/' + this.state.entityData.id })
     }
-  }
+  };
 
   
 
   render() {
+    if (this.state.typeLabel === 'Production') {
+      const productionLabel = [
+      this.state.entityData.attributes.properties['city'],
+      this.state.entityData.attributes.properties['date'],
+      this.state.entityData.attributes.properties['director'],
+      this.state.entityData.attributes.properties['theatre']
+    ];
+    let productionLabelString = productionLabel.join(', ');
+    console.log(productionLabelString)
+  }
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -95,8 +105,6 @@ class QuickGlance extends Component {
       // return now that component has value
     } else {
       const JSXType = this.props.type === 'nolink' ? `p` : `Link  to={this.state.localURLExtension}`;
-
-
 
 
       // if (this.state.typeLabel === 'Person') {
@@ -116,19 +124,19 @@ class QuickGlance extends Component {
   //       else if (this.state.typeLabel === 'Production') {
   //         return (
   //           <p className="listLink">
-  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /><span dangerouslySetInnerHTML={{
-  //               __html:
-  //                 // dir, theater, city, date
-  //                 `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
-  //                 + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
-  //             }} />
+            // <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /><span dangerouslySetInnerHTML={{
+            //     __html:
+            //       // dir, theater, city, date
+            //       `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ', ' : ''}`
+            //       + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
+            //       + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
+            //       + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? '.' : ''}`
+            //   }} />
   //         </p>
   //         )
   //       }

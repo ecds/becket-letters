@@ -1,11 +1,11 @@
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import LoadingSpinner from './utilities/LoadingSpinner';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import LoadingSpinner from '../utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import HeaderBuilder from './utilities/HeaderBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
 import DatePicker from 'react-date-picker';
 
 const renderSearchTooltip = (props) => (

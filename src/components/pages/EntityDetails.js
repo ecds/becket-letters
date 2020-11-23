@@ -1,7 +1,7 @@
 import axios from 'axios';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import HeaderBuilder from './utilities/HeaderBuilder';
-import MentionedLetters from './utilities/MentionedLettersTable';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
+import MentionedLetters from '../utilities/MentionedLettersTable';
 import React, { Component } from 'react';
 
 class EntityDetails extends Component {

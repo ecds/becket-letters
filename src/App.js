@@ -4,16 +4,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import BrowseLetters from './components/BrowseLetters';
-import EntityDetails from './components/EntityDetails';
-import Landing from './components/Landing';
-import LetterDetails from './components/LetterDetails';
+import BrowseLetters from './components/pages/BrowseLetters';
+import EntityDetails from './components/pages/EntityDetails';
+import Landing from './components/pages/Landing';
+import LetterDetails from './components/pages/LetterDetails';
 import LettersBy from './components/LettersBy';
-import PersonDetails from './components/PersonDetails';
-import RepositoryDetails from './components/RepositoryDetails';
+import PersonDetails from './components/pages/PersonDetails';
+import RepositoryDetails from './components/pages/RepositoryDetails';
 import Sidebar from './components/utilities/Sidebar';
-import Timeline from './components/Timeline';
-import FilterSearch from './components/FilterSearch';
+import Timeline from './components/pages/Timeline';
+import FilterSearch from './components/pages/FilterSearch';
 
 library.add(faSpinner, faSearch)
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import HeaderBuilder from './utilities/HeaderBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
 import React, { Component } from "react";
 
 class BrowseLetters extends Component {

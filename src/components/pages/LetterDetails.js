@@ -1,8 +1,8 @@
 import axios from "axios";
-import DocMetaBuilder from './utilities/DocMetaBuilder';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import React, { Component } from "react";
-import RepositoryQuickGlance from './RepositoryQuickGlance';
-import QuickGlance from './QuickGlance';
+import RepositoryQuickGlance from '../RepositoryQuickGlance';
+import QuickGlance from '../QuickGlance';
 
 
 export class LetterDetails extends Component {

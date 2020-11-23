@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import HeaderBuilder from './utilities/HeaderBuilder';
+import SearchRecipientOnPage from '../utilities/SearchRecipientOnPage';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
 
 class RepositoryDetails extends Component {
 

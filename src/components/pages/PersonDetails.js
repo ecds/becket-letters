@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import SearchRecipientOnPage from './utilities/SearchRecipientOnPage';
-import MentionedLetters from './utilities/MentionedLettersTable';
+import SearchRecipientOnPage from '../utilities/SearchRecipientOnPage';
+import MentionedLetters from '../utilities/MentionedLettersTable';
 
 class PersonDetails extends Component {
   constructor(props) {

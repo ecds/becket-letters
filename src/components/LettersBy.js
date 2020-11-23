@@ -1,4 +1,4 @@
-import BrowseLetters from './BrowseLetters';
+import BrowseLetters from './pages/BrowseLetters';
 import DocMetaBuilder from './utilities/DocMetaBuilder';
 import LoadingSpinner from './utilities/LoadingSpinner';
 import Pagination from './utilities/Pagination';
