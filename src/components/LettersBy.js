@@ -151,15 +151,16 @@ class LettersBy extends Component {
                     entityLabel = <span dangerouslySetInnerHTML={{
                         __html:
                             `${entity.attributes.label}`
-                            + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ' [' : ''}`
-                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
-                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
-                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
+                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? ', ' : ''}`
                             + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
-                            + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
-                            + `${entity.attributes.properties['theatre'] ? `shown at ${entity.attributes.properties['theatre']}` : ``}`
-                            + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ']' : ''}`
+                            + `${entity.attributes.properties['director'] ? `${entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? `, ` : ``}` : ``}`
+                            + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['theatre']}` : ``}`
+                            + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['city'] || entity.attributes.properties['date'] ? `, ` : ``}` : ``}`
+                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
+                            + `${entity.attributes.properties['city'] && entity.attributes.properties['date'] ? ', ' : ``}`
+                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
+                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? '.' : ''}`
+                            + `.`
                     }} />
                 }
                 else if (entity.attributes['type-label'] === 'Reading') {
@@ -167,9 +168,6 @@ class LettersBy extends Component {
                     if (entity.attributes.label.slice(-1) === '.') {
                         currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 1)
                     }
-                    // else if (entity.attributes.label.slice(-1) === '.</i>'){
-                    // currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 10) + "</i>"
-                    // }
                     else {
                         currentLabel = entity.attributes.label
                     }
