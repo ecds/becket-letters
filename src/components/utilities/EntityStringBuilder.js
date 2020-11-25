@@ -110,7 +110,17 @@ export function setReadingLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        let authorsListString = null;
+        if (entity.attributes.properties.authors.length !== 0) {
+            authorsListString = ' by ' + entity.attributes.properties.authors.join(', ')
+        }
+        const readingLabel = [
+            entity.attributes.label,
+            authorsListString,
+            entity.attributes.properties.publication
+        ]
+        let readingLabelString = readingLabel.join(', ');
+        return <span dangerouslySetInnerHTML={{ __html: `${readingLabelString}` }} />;
     }
 };
 
