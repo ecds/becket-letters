@@ -1,8 +1,8 @@
 import axios from "axios";
-import DocMetaBuilder from './utilities/DocMetaBuilder';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import React, { Component } from "react";
-import RepositoryQuickGlance from './RepositoryQuickGlance';
-import QuickGlance from './QuickGlance';
+import RepositoryQuickGlance from '../RepositoryQuickGlance';
+import QuickGlance from '../QuickGlance';
 
 
 export class LetterDetails extends Component {
@@ -23,7 +23,6 @@ export class LetterDetails extends Component {
       axios.get(this.props.apiUrl + '/letters/' + this.props.match.params.id)])
       .then(axios.spread((getEntityList) => {
         const letter = getEntityList.data.data;
-        console.log(letter)
         const placesWritten = getEntityList.data.data.relationships['places-written'].data
         const letterRecipients = getEntityList.data.data.attributes.recipients
         const entitiesMentioned = getEntityList.data.data.attributes['entities-mentioned-list']
@@ -44,7 +43,6 @@ export class LetterDetails extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state)
   }
 
   getPhysicalDescription() {

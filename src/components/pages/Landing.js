@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import HomeJumbotron from './Jumbotron';
-import HomeTile from './utilities/HomeTile';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
+import HomeJumbotron from '../Jumbotron';
+import HomeTile from '../utilities/HomeTile';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import { CardGroup, Container } from 'react-bootstrap';
 
 class Landing extends Component {

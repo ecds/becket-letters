@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setRepositoryLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from './utilities/EntityStringBuilder.js';
+
 
 class QuickGlance extends Component {
   constructor(props) {
@@ -80,11 +82,10 @@ class QuickGlance extends Component {
     else {
       this.setState({ localURLExtension: '/people/' + this.state.entityData.id })
     }
-  }
-
-  
+  };
 
   render() {
+
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -94,73 +95,176 @@ class QuickGlance extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      const JSXType = this.props.type === 'nolink' ? `p` : `Link  to={this.state.localURLExtension}`;
-
-
-
-
-      // if (this.state.typeLabel === 'Person') {
-      //   return (
-      //     <JSXType className="listLink">
-      //     <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />{this.getLifeDates()}
-      //     </JSXType>
-      //   )
-      // }
-      // else {
+      if (this.state.entityData.attributes['type-label'] === 'Attendance') {
+        let label = setAttendanceLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (<p className="listLink">{label}</p>)
+        }
+        else {
+          return (<Link to={this.state.localURLExtension} className="listLink">{label}</Link>)
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Music') {
+        let label = setMusicLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Organization') {
+        let label = setOrganizationLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        };
+      };
+      if (this.state.entityData.attributes['type-label'] === 'Person') {
+        let label = setPersonLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Place') {
+        let label = setPlaceLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Production') {
+        let label = setProductionLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Public Event') {
+        let label = setEventLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Publication') {
+        let label = setPublicationLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Reading') {
+        let label = setReadingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Repository') {
+        let label = setRepositoryLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Translating') {
+        let label = setTranslatingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Work-of-Art') {
+        let label = setWorkOfArtLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Writing') {
+        let label = setWritingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      else {
         return (
-          <p>Work in Progress</p>
+          'no fx yet'
         )
-      // }
-
-        
-  //       else if (this.state.typeLabel === 'Production') {
-  //         return (
-  //           <p className="listLink">
-  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} /><span dangerouslySetInnerHTML={{
-  //               __html:
-  //                 // dir, theater, city, date
-  //                 `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
-  //                 + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
-  //             }} />
-  //         </p>
-  //         )
-  //       }
-  //       else return (
-  //         <p className="listLink">
-  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-  //         </p>
-  //       )
-  //     }
-  //     else {
-  //       return (
-  //         <Link to={this.state.localURLExtension} className="listLink">
-  //           <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-  //           {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
-  //           {this.state.typeLabel === 'Production' ?
-  //             <span dangerouslySetInnerHTML={{
-  //               __html:
-  //                 // dir, theater, city, date
-  //                 `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
-  //                 + `${this.state.entityData.attributes.properties['theatre'] ? `${this.state.entityData.attributes.properties['theatre']}` : ``}`
-  //                 + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
-  //             }} />
-  //             : null}
-  //         </Link>
-  //       )
-  //     }
+      }
     }
   }
 }

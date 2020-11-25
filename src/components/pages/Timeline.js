@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import TimelineYear from './TimelineYear';
+import TimelineYear from '../TimelineYear';
 import DocumentMeta from 'react-document-meta';
 import ScrollIntoView from 'react-scroll-into-view';
 

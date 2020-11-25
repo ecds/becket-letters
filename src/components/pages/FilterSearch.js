@@ -1,12 +1,15 @@
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import LoadingSpinner from './utilities/LoadingSpinner';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import LoadingSpinner from '../utilities/LoadingSpinner';
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import HeaderBuilder from './utilities/HeaderBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
 import DatePicker from 'react-date-picker';
+import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setRepositoryLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
+
+
 
 const renderSearchTooltip = (props) => (
     <Tooltip id="search-tooltip" {...props}>
@@ -107,203 +110,331 @@ class FilterSearch extends Component {
         let publicEventsCount = 0
         let publicationsCount = 0
         let readingsCount = 0
-        let translationsCount = 0
+        let translatingsCount = 0
         let worksOfArtCount = 0
         let writingsCount = 0
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes['type-label'] !== null) {
+                let entityLabel
+                if (entity.attributes['type-label'] === 'Person') {
+                    peopleCount++
+                    entityLabel = setPersonLabel(entity)
+                    if (this.state.arePeopleHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/people/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Person</td>
+                            </tr>
+                        )
+                    }
+
+                }
                 if (entity.attributes['type-label'] === 'Attendance') {
                     attendancesCount++
+                    entityLabel = setAttendanceLabel(entity)
+                    if (this.state.areAttendancesHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/Attendance/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Attendance</td>
+                            </tr>
+                        )
+                    }
                 }
                 if (entity.attributes['type-label'] === 'Music') {
                     musicCount++
+                    entityLabel = setMusicLabel(entity)
+                    if (this.state.areMusicsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/music/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Music</td>
+                            </tr>
+                        )
+                    }
                 }
                 if (entity.attributes['type-label'] === 'Organization') {
                     organizationsCount++
-                }
-                if (entity.attributes['type-label'] === 'Person') {
-                    peopleCount++
+                    entityLabel = setOrganizationLabel(entity)
+                    if (this.state.areOrganizationsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/organization/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Organization</td>
+                            </tr>
+                        )
+                    }
                 }
                 if (entity.attributes['type-label'] === 'Place') {
                     placesCount++
+                    entityLabel = setPlaceLabel(entity)
+                    if (this.state.arePlacesHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/place/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Place</td>
+                            </tr>
+                        )
+                    }
                 }
                 if (entity.attributes['type-label'] === 'Production') {
                     productionsCount++
+                    entityLabel = setProductionLabel(entity)
+                    if (this.state.areProductionsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/production/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Production</td>
+                            </tr>
+                        )
+                    }
                 }
                 if (entity.attributes['type-label'] === 'Public Event') {
                     publicEventsCount++
-                }
-                if (entity.attributes['type-label'] === 'Publication') {
-                    publicationsCount++
-                }
-                if (entity.attributes['type-label'] === 'Reading') {
-                    readingsCount++
-                }
-                if (entity.attributes['type-label'] === 'Translating') {
-                    translationsCount++
-                }
-                if (entity.attributes['type-label'] === 'Work Of Art') {
-                    worksOfArtCount++
-                }
-                if (entity.attributes['type-label'] === 'Writing') {
-                    writingsCount++
-                }
-                return <React.Fragment>
-                    {/* create row for each search result */}
-                    {entity.attributes['type-label'] === 'Person' ?
-                        this.state.arePeopleHidden ? null : <tr key={entity.id} >
-                            <td>
-                                <Link
-                                    to={{
-                                        pathname: `/people/${entity.id}`,
-                                        state: {
-                                            id: entity.id,
-                                            name: entity.attributes.label
-                                        }
-                                    }}>
-                                    <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                                    {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
-                                </Link>
-                            </td>
-                            <td>Person</td>
-                        </tr>
-                        :
-                        entity.attributes['type-label'] === 'Public Event' ?
-                            this.state.areEventsHidden ? null : <tr>
+                    entityLabel = setEventLabel(entity)
+                    if (this.state.areEventsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
                                 <td>
                                     <Link
                                         to={{
                                             pathname: `/public-event/${entity.id}`,
                                             state: {
-                                                id: entity.id
+                                                id: entity.id,
+                                                name: entity.attributes.label
                                             }
                                         }}>
-                                        {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
+                                        {entityLabel}
                                     </Link>
                                 </td>
-                                <td>Public Event</td>
+                                <td>Event</td>
                             </tr>
-                            :
-                            entity.attributes['type-label'] === "Work Of Art" ?
-                                this.state.areWorkOfArtsHidden ? null : <tr>
-                                    <td>
-                                        <Link
-                                            to={{
-                                                pathname: `/work-of-art/${entity.id}`,
-                                                state: {
-                                                    id: entity.id
-                                                }
-                                            }}>
-                                            {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                        </Link>
-                                    </td>
-                                    <td>Work of Art</td>
-                                </tr>
-                                :
-                                entity.attributes['type-label'] === "Production" ?
-                                    this.state.areProductionsHidden ? null : <tr>
-                                        <td>
-                                            <Link
-                                                to={{
-                                                    pathname: `/production/${entity.id}`,
-                                                    state: {
-                                                        id: entity.id
-                                                    }
-                                                }}>
-                                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{
-                                                    __html:
-                                                        `${entity.attributes.label}`
-                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? ', ' : ''}`
-                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
-                                                        + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
-                                                        + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                                                        + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
-                                                        + `${entity.attributes.properties['director'] && entity.attributes.properties['theatre'] ? ', ' : ``}`
-                                                        + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['theatre']}` : ``}`
-                                                        + `${entity.attributes.properties['city'] || entity.attributes.properties['date'] || entity.attributes.properties['director'] || entity.attributes.properties['theatre'] ? '.' : ''}`
-                                                }} /> : <span>{entity.id}</span>}
-                                            </Link>
-                                        </td>
-                                        <td>Production</td>
-                                    </tr>
-                                    :
-
-                                    this.state[`are${entity.attributes["type-label"]}sHidden`] ? null : <tr>
-                                        <td>
-                                            {entity.attributes['type-label'] === 'Translating' ? <Link
-                                                to={{
-                                                    pathname: `/translation/${entity.id}`,
-                                                    state: {
-                                                        id: entity.id
-                                                    }
-                                                }}>
-                                                {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                            </Link>
-                                                :
-                                                <Link
-                                                    to={{
-                                                        pathname: `/${entity.attributes["type-label"]}/${entity.id}`,
-                                                        state: {
-                                                            id: entity.id
-                                                        }
-                                                    }}>
-                                                    {entity.attributes.label ? <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} /> : <span>{entity.id}</span>}
-                                                </Link>
+                        )
+                    }
+                }
+                if (entity.attributes['type-label'] === 'Publication') {
+                    publicationsCount++
+                    entityLabel = setPublicationLabel(entity)
+                    if (this.state.arePublicationsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/publication/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
                                             }
-                                        </td>
-                                        <td>{entity.attributes['type-label']}</td>
-                                    </tr>
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Publication</td>
+                            </tr>
+                        )
                     }
-                    {/* create row for each public letter of search result */}
-                    {entity.attributes['public-letters-hash'].map((letter) => {
-                        if (letter === null) {
-                            return null
-                        }
-                        else {
-                            if (this.state.areLettersHidden === true) {
-                                return null
-                            }
-                            else {
-                                let selectedStartDate = new Date(this.state.startDate + "Z")
-                                let selectedEndDate = new Date(this.state.endDate + "Z")
-                                let currentDate = new Date(letter.date.substring(letter.date.length - 4) + "-" + letter.date.substring(3, letter.date.length - 5) + "-" + parseInt(letter.date.substring(0, 2) + "Z"))
-                                if (selectedStartDate <= currentDate && currentDate <= selectedEndDate) {
-                                    lettersCount++
-                                    return <tr>
-                                        <td>
-                                            <Link
-                                                to={{
-                                                    pathname: `/letters/letterdetails/${letter.id}`,
-                                                    state: {
-                                                        id: letter.recipients[0].id,
-                                                        name: letter.recipients[0].name
-                                                    }
-                                                }}>
-                                                <span dangerouslySetInnerHTML={{ __html: "Letter to " + letter.recipients[0].name + " on " + letter.date }} />
-                                            </Link>
-                                        </td>
-                                        <td>
-                                            Letter
-                                        </td>
-                                    </tr>
-                                }
-                                else return null
-                            }
-                        }
+                }
+                if (entity.attributes['type-label'] === 'Reading') {
+                    readingsCount++
+                    entityLabel = setReadingLabel(entity)
+                    if (this.state.areReadingsHidden) {
+                        return null
                     }
-                    )
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/reading/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Reading</td>
+                            </tr>
+                        )
                     }
-                </React.Fragment>
+                }
+                if (entity.attributes['type-label'] === 'Translating') {
+                    translatingsCount++
+                    entityLabel = setTranslatingLabel(entity)
+                    if (this.state.areTranslatingsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/translating/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Translating</td>
+                            </tr>
+                        )
+                    }
+                }
+                if (entity.attributes['type-label'] === 'Work Of Art') {
+                    worksOfArtCount++
+                    entityLabel = setWorkOfArtLabel(entity)
+                    if (this.state.areWorksOfArtHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/work-of-art/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Work of Art</td>
+                            </tr>
+                        )
+                    }
+                }
+                if (entity.attributes['type-label'] === 'Writing') {
+                    writingsCount++
+                    entityLabel = setWritingLabel(entity)
+                    if (this.state.areWritingsHidden) {
+                        return null
+                    }
+                    else {
+                        return (
+                            <tr key={entity.id} >
+                                <td>
+                                    <Link
+                                        to={{
+                                            pathname: `/writing/${entity.id}`,
+                                            state: {
+                                                id: entity.id,
+                                                name: entity.attributes.label
+                                            }
+                                        }}>
+                                        {entityLabel}
+                                    </Link>
+                                </td>
+                                <td>Writing</td>
+                            </tr>
+                        )
+                    }
+                }
             }
-
             else {
-                return null
+                return 'uh oh'
             }
-
-        }
-        );
-
+        })
+        
         const metaBuild = {
             title: 'Search and Filter',
             description: `Search and filter entities and letters`,
@@ -475,7 +606,7 @@ class FilterSearch extends Component {
                                                 checked={!this.state.areTranslatingsHidden}
 
                                             />
-                                            Translations {translationsCount !== 0 ? <span className='entityCountDisplay'>{translationsCount}</span> : null}
+                                            Translatings {translatingsCount !== 0 ? <span className='entityCountDisplay'>{translatingsCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>
