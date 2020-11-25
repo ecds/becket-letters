@@ -1,6 +1,7 @@
 import axios from 'axios';
 import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import HeaderBuilder from '../utilities/HeaderBuilder';
+import SubheaderBuilder from '../utilities/SubheaderBuilder';
 import MentionedLetters from '../utilities/MentionedLettersTable';
 import React, { Component } from 'react';
 
@@ -52,6 +53,7 @@ class EntityDetails extends Component {
                 <div className="details">
                     <DocMetaBuilder {...metaBuild} />
                     <HeaderBuilder entityData={this.state.entityData} />
+                    <SubheaderBuilder entityData={this.state.entityData} />
                     <h3>Mentioned In:</h3>
                     <MentionedLetters letters={this.state.entityData.attributes['public-letters-hash']} />
                 </div >
