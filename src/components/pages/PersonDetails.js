@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import HeaderBuilder from '../utilities/HeaderBuilder';
+import SubheaderBuilder from '../utilities/SubheaderBuilder';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchRecipientOnPage from '../utilities/SearchRecipientOnPage';
@@ -86,7 +88,8 @@ class PersonDetails extends Component {
       return (
         <div className="details">
           <DocMetaBuilder {...metaBuild} />
-          <h1>{setPersonLabel(this.state.entityData)}</h1>
+          <HeaderBuilder entityData={this.state.entityData} />
+          <SubheaderBuilder entityData={this.state.entityData} />
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.description ? <h2><span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /></h2> : null}
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
             <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
