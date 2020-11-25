@@ -1,12 +1,14 @@
-import BrowseLetters from './pages/BrowseLetters';
-import DocMetaBuilder from './utilities/DocMetaBuilder';
-import LoadingSpinner from './utilities/LoadingSpinner';
-import Pagination from './utilities/Pagination';
+import BrowseLettersTabs from '../utilities/BrowseLettersTabs';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
+import LoadingSpinner from '../utilities/LoadingSpinner';
+import Pagination from '../utilities/Pagination';
 import React, { Component } from "react";
 import axios from "axios";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setRepositoryLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
+
 
 class LettersBy extends Component {
     constructor(props, context) {
@@ -116,8 +118,6 @@ class LettersBy extends Component {
                     const data = getAllData.data.data;
                     const pagination = getAllData.data.meta.pagination;
                     this.setState({ pagination, data, isLoaded: true });
-
-                    console.log(data)
                 }))
                 .catch((err) => {
                     this.setState({ isLoaded: false, error: err.message });
@@ -131,99 +131,76 @@ class LettersBy extends Component {
         var EntityList = this.state.data.map((entity) => {
             if (entity.attributes.label !== null) {
                 let entityLabel
-                if (entity.attributes['type-label'] === 'Music') {
-                    if (entity.attributes.properties && entity.attributes.properties.composer) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " composed by " + entity.attributes.properties.composer }} />
-                    }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                    }
+                if (entity.attributes['type-label'] === 'Person') {
+                    return (
+                        <tr key={entity.id}>
+                            <td>
+                                <Link
+                                    to={{
+                                        pathname: `/people/${entity.id}`,
+                                        state: {
+                                            id: entity.id
+                                        }
+                                    }}>
+                                    {setPersonLabel(entity)}
+                                </Link>
+                            </td>
+                        </tr>
+                    )
                 }
-                else if (entity.attributes['type-label'] === 'Publication') {
-                    if (entity.attributes.properties && entity.attributes.properties.author) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
+                else if (entity.attributes['type-label'] !== 'Person') {
+                    if (entity.attributes['type-label'] === 'Attendance') {
+                        entityLabel = setAttendanceLabel(entity);
                     }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                    else if (entity.attributes['type-label'] === 'Music') {
+                        entityLabel = setMusicLabel(entity);
                     }
+                    else if (entity.attributes['type-label'] === 'Organization') {
+                        entityLabel = setOrganizationLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Place') {
+                        entityLabel = setPlaceLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Production') {
+                        entityLabel = setProductionLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Public Event') {
+                        entityLabel = setEventLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Publication') {
+                        entityLabel = setPublicationLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Reading') {
+                        entityLabel = setReadingLabel(entity);
+                    }
+                    else if (entity.type === 'repositories') {
+                        entityLabel = setRepositoryLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Translating') {
+                        entityLabel = setTranslatingLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Work Of Art') {
+                        entityLabel = setWorkOfArtLabel(entity);
+                    }
+                    else if (entity.attributes['type-label'] === 'Writing') {
+                        entityLabel = setWritingLabel(entity);
+                    }
+                    return (
+                        <tr key={entity.id}>
+                            <td>
+                                <Link
+                                    to={{
+                                        pathname: `/${this.props.entityType}/${entity.id}`,
+                                        state: {
+                                            id: entity.id
+                                        }
+                                    }}>
+                                    {entityLabel}
+                                </Link>
+                            </td>
+                        </tr>
+                    )
                 }
-                else if (entity.attributes['type-label'] === 'Production') {
-                    entityLabel = <span dangerouslySetInnerHTML={{
-                        __html:
-                            `${entity.attributes.label}`
-                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? ', ' : ''}`
-                            + `${entity.attributes.properties['director'] ? `dir. ${entity.attributes.properties['director']}` : ``}`
-                            + `${entity.attributes.properties['director'] ? `${entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? `, ` : ``}` : ``}`
-                            + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['theatre']}` : ``}`
-                            + `${entity.attributes.properties['theatre'] ? `${entity.attributes.properties['city'] || entity.attributes.properties['date'] ? `, ` : ``}` : ``}`
-                            + `${entity.attributes.properties['city'] ? `${entity.attributes.properties['city']}` : ``}`
-                            + `${entity.attributes.properties['city'] && entity.attributes.properties['date'] ? ', ' : ``}`
-                            + `${entity.attributes.properties['date'] ? `${entity.attributes.properties['date']}` : ``}`
-                            + `${entity.attributes.properties['director'] || entity.attributes.properties['theatre'] || entity.attributes.properties['city'] || entity.attributes.properties['date'] ? '.' : ''}`
-                            + `.`
-                    }} />
-                }
-                else if (entity.attributes['type-label'] === 'Reading') {
-                    let currentLabel
-                    if (entity.attributes.label.slice(-1) === '.') {
-                        currentLabel = entity.attributes.label.substring(0, entity.attributes.label.length - 1)
-                    }
-                    else {
-                        currentLabel = entity.attributes.label
-                    }
-                    if (entity.attributes.properties && entity.attributes.properties.authors) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: currentLabel + " by " + entity.attributes.properties.authors[0] }} />
-                    }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: currentLabel }} />
-                    }
-                }
-                else if (entity.attributes['type-label'] === 'Translating') {
-                    if (entity.attributes.properties && entity.attributes.properties.author) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
-                    }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                    }
-                }
-                else if (entity.attributes['type-label'] === 'Work Of Art') {
-                    if (entity.attributes.properties && entity.attributes.properties.author) {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label + " by " + entity.attributes.properties.author }} />
-                    }
-                    else {
-                        entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                    }
-                }
-                else {
-                    entityLabel = <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                }
-                return entity.attributes.label === ' ' || entity.attributes.label === null ? null : <tr key={entity.id}>
-                    <td>
-                        {this.props.entityType === 'person' ?
-                            <Link
-                                to={{
-                                    pathname: `/people/${entity.id}`,
-                                    state: {
-                                        id: entity.id,
-                                        name: entity.attributes.label
-                                    }
-                                }}>
-                                <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                                {entity.attributes.properties && entity.attributes.properties['life-dates'] ? ' (' + entity.attributes.properties['life-dates'] + ')' : null}
-                            </Link>
-                            :
-                            <Link
-                                to={{
-                                    pathname: `/${this.props.entityType}/${entity.id}`,
-                                    state: {
-                                        id: entity.id
-                                    }
-                                }}>
-                                {entityLabel}
-                            </Link>
-                        }
-                    </td>
-                </tr>
             }
             else {
                 return null
@@ -239,7 +216,7 @@ class LettersBy extends Component {
         return (
             <Container fluid>
                 <DocMetaBuilder {...metaBuild} />
-                <BrowseLetters active={'by-' + this.props.entityType} action={this.entityChange} />
+                <BrowseLettersTabs active={'by-' + this.props.entityType} action={this.entityChange} />
                 <Row className="no-gutters pt-3">
                     <Col className="no-gutters">
                         <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">

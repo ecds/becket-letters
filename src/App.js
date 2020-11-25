@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import { faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import BrowseLetters from './components/pages/BrowseLetters';
+import BrowseLettersTabs from './components/utilities/BrowseLettersTabs';
 import EntityDetails from './components/pages/EntityDetails';
 import Landing from './components/pages/Landing';
 import LetterDetails from './components/pages/LetterDetails';
-import LettersBy from './components/LettersBy';
+import LettersBy from './components/pages/LettersBy';
 import PersonDetails from './components/pages/PersonDetails';
 import RepositoryDetails from './components/pages/RepositoryDetails';
 import Sidebar from './components/utilities/Sidebar';
@@ -27,30 +27,12 @@ class App extends Component {
 
   render() {
 
-    // const routes = {
-    //   '/': 'Home',
-    //   '/letters': 'Letters',
-    //   '/letters/letterdetails/:id': 'Letter Details',
-    //   '/timeline': 'Timeline',
-    //   '/people/:personId/:name': ':name',
-    //   '/places': 'Places',
-    //   '/places/:placeId': ':d',
-    //   '/search': 'Search Results',
-    //   '/search-letters': 'Search Letters',
-    //   '/browse-letters': 'Browse Letters',
-    //   '/repositories/:id': ':id',
-    //   '/productions/:id': ':id',
-    //   '/music/:id': ':id',
-    //   '/organizations/:id': ':id',
-    //   '/attendance/:id': ':id'
-    // };
-
     return (
       <Router buildname="build">
         <Container fluid className="p-0">
           <Sidebar />
           <Switch>
-            <Route exact path="/browse-letters" component={BrowseLetters} />
+            <Route exact path="/browse-letters" component={BrowseLettersTabs} />
             <Route exact path='/browse-letters-attendance' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
               entityType={'attendance'}
               placeholder={"ex. 'Come Back Africa'"}
@@ -121,7 +103,7 @@ class App extends Component {
               metaTitle={'Browse by Repositories'}
             />}
             />
-            <Route exact path='/browse-letters-Translating' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
+            <Route exact path='/browse-letters-translating' render={(props) => <LettersBy apiUrl={this.props.apiUrl} {...props}
               entityType='Translating'
               placeholder={"ex. 'Krapp'"}
               tableHeader={'Translating Title'}
