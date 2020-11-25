@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import HeaderBuilder from './utilities/HeaderBuilder';
+import HeaderBuilder from './HeaderBuilder';
 import React, { Component } from "react";
 
-class BrowseLetters extends Component {
+class BrowseLettersTabs extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -45,7 +45,7 @@ class BrowseLetters extends Component {
           <li className={this.setActive('by-repositories')}><Link to="/browse-letters-repositories" id='repositories' onClick={this.changeEntityType}>Repository</Link></li>
           <li className={this.setActive('by-Translating')}><Link to="/browse-letters-Translating" id='Translating' onClick={this.changeEntityType}>Translations</Link></li>
           <li className={this.setActive('by-work-of-art')}><Link to="/browse-letters-work-of-art" id='work-of-art' onClick={this.changeEntityType}>Works of Art</Link></li>
-          <li className={this.setActive('by-writing')}><Link to="/browse-letters-writing" id='writing' onClick={this.changeEntityType}>Writings</Link></li>
+          <li className={this.setActive('by-writing')}><Link to="/browse-letters-writing" id='writing' onClick={this.changeEntityType}>Writing</Link></li>
         </ul>
 
       </div>
@@ -53,4 +53,4 @@ class BrowseLetters extends Component {
   }
 }
 
-export default BrowseLetters;
+export default BrowseLettersTabs;

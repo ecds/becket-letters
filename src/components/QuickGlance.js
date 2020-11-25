@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setRepositoryLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from './utilities/EntityStringBuilder.js';
+
 
 class QuickGlance extends Component {
   constructor(props) {
@@ -44,32 +46,29 @@ class QuickGlance extends Component {
 
   getLocalURLExtender() {
     this.setState({ typeLabel: this.state.entityData.attributes['type-label'] })
-    if (this.state.typeLabel === 'Place') {
-      this.setState({ localURLExtension: '/places/' + this.state.entityData.id })
-    }
-    else if (this.state.typeLabel === 'Production') {
-      this.setState({ localURLExtension: '/productions/' + this.state.entityData.id })
-    }
-    else if (this.state.typeLabel === 'Reading') {
-      this.setState({ localURLExtension: '/readings/' + this.state.entityData.id })
+    if (this.state.typeLabel === 'Attendance') {
+      this.setState({ localURLExtension: '/attendance/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Music') {
       this.setState({ localURLExtension: '/music/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Organization') {
-      this.setState({ localURLExtension: '/organizations/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/organization/' + this.state.entityData.id })
     }
-    else if (this.state.typeLabel === 'Attendance') {
-      this.setState({ localURLExtension: '/attendance/' + this.state.entityData.id })
+    else if (this.state.typeLabel === 'Place') {
+      this.setState({ localURLExtension: '/place/' + this.state.entityData.id })
+    }
+    else if (this.state.typeLabel === 'Production') {
+      this.setState({ localURLExtension: '/production/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Public Event') {
-      this.setState({ localURLExtension: '/events/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/public-event/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Publication') {
-      this.setState({ localURLExtension: '/publications/' + this.state.entityData.id })
+      this.setState({ localURLExtension: '/publication/' + this.state.entityData.id })
     }
-    else if (this.state.typeLabel === 'Writing') {
-      this.setState({ localURLExtension: '/writings/' + this.state.entityData.id })
+    else if (this.state.typeLabel === 'Reading') {
+      this.setState({ localURLExtension: '/reading/' + this.state.entityData.id })
     }
     else if (this.state.typeLabel === 'Translating') {
       this.setState({ localURLExtension: '/translating/' + this.state.entityData.id })
@@ -77,12 +76,16 @@ class QuickGlance extends Component {
     else if (this.state.typeLabel === 'Work Of Art') {
       this.setState({ localURLExtension: '/work-of-art/' + this.state.entityData.id })
     }
+    else if (this.state.typeLabel === 'Writing') {
+      this.setState({ localURLExtension: '/writing/' + this.state.entityData.id })
+    }
     else {
       this.setState({ localURLExtension: '/people/' + this.state.entityData.id })
     }
-  }
+  };
 
   render() {
+
     const { error, isLoaded } = this.state;
     // if there is an error
     if (error) {
@@ -92,37 +95,174 @@ class QuickGlance extends Component {
       return <div>Loading...</div>;
       // return now that component has value
     } else {
-      if (this.props.type === 'nolink') {
-        return (
-          <p className="listLink">
-            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-            {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
-            {this.state.typeLabel === 'Production' ?
-              <span dangerouslySetInnerHTML={{ __html: ' (' + this.state.entityData.attributes.properties['city'] + '; ' + this.state.entityData.attributes.properties['date'] + ')' }} />
-              : null}
-          </p>
-        )
+      if (this.state.entityData.attributes['type-label'] === 'Attendance') {
+        let label = setAttendanceLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (<p className="listLink">{label}</p>)
+        }
+        else {
+          return (<Link to={this.state.localURLExtension} className="listLink">{label}</Link>)
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Music') {
+        let label = setMusicLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Organization') {
+        let label = setOrganizationLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        };
+      };
+      if (this.state.entityData.attributes['type-label'] === 'Person') {
+        let label = setPersonLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Place') {
+        let label = setPlaceLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Production') {
+        let label = setProductionLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Public Event') {
+        let label = setEventLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Publication') {
+        let label = setPublicationLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Reading') {
+        let label = setReadingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Repository') {
+        let label = setRepositoryLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Translating') {
+        let label = setTranslatingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Work-of-Art') {
+        let label = setWorkOfArtLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
+      }
+      if (this.state.entityData.attributes['type-label'] === 'Writing') {
+        let label = setWritingLabel(this.state.entityData);
+        if (this.props.typeLabel === 'nolink') {
+          return (
+            <p className="listLink">{label}</p>
+          )
+        }
+        else {
+          return (
+            <Link to={this.state.localURLExtension} className="listLink">{label}</Link>
+          )
+        }
       }
       else {
         return (
-          <Link to={this.state.localURLExtension} className="listLink">
-            <span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.label }} />
-            {this.state.typeLabel === 'Person' ? this.getLifeDates() : null}
-            {this.state.typeLabel === 'Production' ?
-              <span dangerouslySetInnerHTML={{
-                __html:
-                    `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ' [' : ''}`
-                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['city']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['city'] ? `${this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['date']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['date'] ? `${this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? `, ` : ``}` : ``}`
-                    + `${this.state.entityData.attributes.properties['director'] ? `dir. ${this.state.entityData.attributes.properties['director']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['director'] && this.state.entityData.attributes.properties['theatre'] ? ', ' : ``}`
-                    + `${this.state.entityData.attributes.properties['theatre'] ? `shown at ${this.state.entityData.attributes.properties['theatre']}` : ``}`
-                    + `${this.state.entityData.attributes.properties['city'] || this.state.entityData.attributes.properties['date'] || this.state.entityData.attributes.properties['director'] || this.state.entityData.attributes.properties['theatre'] ? ']' : ''}`
-            }} />
-              : null}
-          </Link>
+          'no fx yet'
         )
       }
     }

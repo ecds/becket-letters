@@ -1,8 +1,8 @@
 import axios from "axios";
-import DocMetaBuilder from './utilities/DocMetaBuilder';
+import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import React, { Component } from "react";
-import RepositoryQuickGlance from './RepositoryQuickGlance';
-import QuickGlance from './QuickGlance';
+import RepositoryQuickGlance from '../RepositoryQuickGlance';
+import QuickGlance from '../QuickGlance';
 
 
 export class LetterDetails extends Component {
@@ -23,7 +23,6 @@ export class LetterDetails extends Component {
       axios.get(this.props.apiUrl + '/letters/' + this.props.match.params.id)])
       .then(axios.spread((getEntityList) => {
         const letter = getEntityList.data.data;
-        console.log(letter)
         const placesWritten = getEntityList.data.data.relationships['places-written'].data
         const letterRecipients = getEntityList.data.data.attributes.recipients
         const entitiesMentioned = getEntityList.data.data.attributes['entities-mentioned-list']
@@ -41,6 +40,9 @@ export class LetterDetails extends Component {
 
   componentDidMount() {
     this.getData()
+  }
+
+  componentDidUpdate() {
   }
 
   getPhysicalDescription() {
@@ -86,7 +88,7 @@ export class LetterDetails extends Component {
             <table className="table table-striped">
               <tbody>
                 {this.state.letter.attributes['addressed-from'] ? <tr><td>Addressed From:</td><td> <span className="value">{this.state.letter.attributes['addressed-from']}</span></td></tr> : null}
-                {this.state.letter.attributes['addressed-to'] ? <tr><td>Addressed To:</td><td> {this.state.letter.attributes['addressed-to']}</td></tr> : null}
+                {this.state.letter.attributes['addressed-to'] ? <tr><td>Addressed To:</td><td><span dangerouslySetInnerHTML={{ __html: this.state.letter.attributes['addressed-to'] }} /></td></tr> : null}
                 <tr><td>Envelope: </td>{this.state.letter.attributes['envelope'] ? <td>E</td> : <td></td>}</tr>
                 {this.state.letter.attributes['letter-publisher'] ? <tr><td>Letter Publisher:</td><td> {this.state.letter.attributes['letter-publisher']}</td></tr> : null}
                 {this.state.letter.attributes['notes'] ? <tr><td>Notes:</td><td> {this.state.letter.attributes['notes']}</td></tr> : null}
@@ -105,7 +107,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Repositor{this.state.letter.relationships.repositories.data.length > 1 ? 'ies' : 'y'}:</td>
+                  <td>Repository:</td>
                   <td>
                     {this.state.letter.relationships.repositories.data.map((respository) =>
                       <RepositoryQuickGlance apiUrl={this.props.apiUrl} id={respository.id} key={respository.id} type='nolink' />
@@ -113,7 +115,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Place{this.state.letter.relationships['places-written'].data.length > 1 ? 's' : null} Written:</td>
+                  <td>Place Written:</td>
                   <td>
                     {this.state.letter.relationships['places-written'].data.map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} type='nolink' />
@@ -129,7 +131,7 @@ export class LetterDetails extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Attendance{this.state.entitiesMentioned['attendance'].length > 1 ? 's' : null} Mentioned:</td>
+                  <td>Attendance Mentioned:</td>
                   <td>
                     {this.state.entitiesMentioned['attendance'].map((entity) =>
                       <QuickGlance apiUrl={this.props.apiUrl} id={entity.id} apiUrlExtender='entities' key={entity.id} />
