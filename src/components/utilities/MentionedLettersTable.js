@@ -23,7 +23,7 @@ class MentionedLetters extends Component {
                         <tbody>
                             {this.props.letters.map((letter) =>
                                 <tr key={letter.id}>
-                                    <td>{letter['recipients'].map((this_recipient) => <a key={this_recipient.id} href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                                    <td>{letter['recipients'].map((this_recipient) => <a key={this_recipient.id} href={'/people/' + this_recipient.id + '/'}>{this_recipient.name}</a>)}</td>
                                     <td>{letter.date}</td>
                                     <td className="actions"><Link to={'/letters/letterdetails/' + letter.id}>View Letter Details</Link></td>
                                 </tr>
