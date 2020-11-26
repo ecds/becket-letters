@@ -50,7 +50,7 @@ class EntityDetails extends Component {
                 id: this.state.entityData.id
             }
             return (
-                <div className="details">
+                <div className="details entity-header">
                     <DocMetaBuilder {...metaBuild} />
                     <HeaderBuilder entityData={this.state.entityData} />
                     <SubheaderBuilder entityData={this.state.entityData} />

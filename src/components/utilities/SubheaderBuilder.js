@@ -69,24 +69,26 @@ class SubheaderBuilder extends Component {
         if (this.props.entityData.attributes['type-label'] === 'Translating') {
             return (
                 null
-            )
+            );
         }
         if (this.props.entityData.attributes['type-label'] === 'Work Of Art') {
-            subheaderText = setWorkOfArtSubheader(this.props.entityData)
-            if (subheaderText = null) {
-                return (
-                    null
-                )
-            }
-            else {
-                return (
-                    <h2 className="listLink">{subheaderText}</h2>
-                )
-            }
+            subheaderText = setWorkOfArtSubheader(this.props.entityData);
+            return (
+                <>
+                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
+                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                </>
+            )
         }
         if (this.props.entityData.attributes['type-label'] === 'Writing') {
+            subheaderText = setWritingSubheader(this.props.entityData);
             return (
-                null
+                <>
+                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
+                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                </>
             )
         }
     }

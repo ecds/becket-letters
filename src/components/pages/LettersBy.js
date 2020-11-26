@@ -97,7 +97,6 @@ class LettersBy extends Component {
 
     getData = () => {
         this.setState({ isLoaded: false })
-        console.log(this.props.entityType)
         if (this.props.entityType === 'repositories') {
             axios.all([
                 axios.get(this.props.apiUrl + '/repositories')])

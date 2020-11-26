@@ -46,27 +46,16 @@ export class LetterDetails extends Component {
   }
 
   getPhysicalDescription() {
-    var physicalDescription = '';
-    if (this.state.letter.attributes['typed']) {
-      physicalDescription += 'T'
-    }
-    else {
-      physicalDescription += 'A'
-    }
-    physicalDescription += this.state.letter.attributes['physical-desc'];
-    if (this.state.letter.attributes['signed']) {
-      physicalDescription += 'S'
-    }
-    else {
-      physicalDescription += 'I'
-    }
-    physicalDescription += '; '
-    if (this.state.letter.attributes['leaves']) {
-      physicalDescription += this.state.letter.attributes['leaves'] + ' leaf,'
-    }
-    if (this.state.letter.attributes['sides']) {
-      physicalDescription += this.state.letter.attributes['sides'] + ' side'
-    }
+    let descriptionList = [
+      this.state.letter.attributes.typed ? 'T' : 'A',
+      this.state.letter.attributes['physical-desc'],
+      this.state.letter.attributes.signed ? 'S' : 'I',
+      '; ',
+      this.state.letter.attributes.leaves ? this.state.letter.attributes.leaves + ' leaf,' : null,
+      this.state.letter.attributes.sides ? this.state.letter.attributes.sides + ' side' : null,
+    ];
+
+    let physicalDescription = descriptionList.join('')
 
     return physicalDescription;
   }
