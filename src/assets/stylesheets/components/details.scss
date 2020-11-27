@@ -1,3 +1,14 @@
+.entity-header {
+  h2 {
+    &:first-of-type {
+      margin-top: 1em;
+    }
+  }
+  h3 {
+    margin-top: 1em;
+  }
+}
+
 .details-table {
   border: 1px solid #ccc;
   border-collapse: collapse;
