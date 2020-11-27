@@ -12,7 +12,6 @@ export function setAttendanceLabel(entity) {
 
 // create Music label string
 export function setMusicLabel(entity) {
-    console.log(entity)
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -21,7 +20,14 @@ export function setMusicLabel(entity) {
             entity.attributes.label,
             entity.attributes.properties.composer
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let musicLabelString = musicLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: musicLabelString }} />;
@@ -70,7 +76,14 @@ export function setProductionLabel(entity) {
             entity.attributes.properties['director'],
             entity.attributes.properties['theatre']
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let productionLabelString = productionLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}, ${productionLabelString}.` }} />;
@@ -79,7 +92,6 @@ export function setProductionLabel(entity) {
 
 // create Event label string
 export function setEventLabel(entity) {
-    console.log(entity);
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -88,7 +100,14 @@ export function setEventLabel(entity) {
             entity.attributes.label,
             entity.attributes.properties.date
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let publicEventLabelString = publicEventLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${publicEventLabelString}.` }} />;
@@ -105,7 +124,14 @@ export function setPublicationLabel(entity) {
             entity.attributes.label,
             entity.attributes.properties.author
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let publicationLabelString = publicationLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: `${publicationLabelString}` }} />;
@@ -123,14 +149,21 @@ export function setReadingLabel(entity) {
             authorsListString = ' by ' + entity.attributes.properties.authors.join(', ');
         }
         else {
-            // authorsListString = 'fkds';
+            authorsListString = '';
         }
         const readingLabel = [
             entity.attributes.label,
             authorsListString ? authorsListString : null,
             entity.attributes.properties.publication
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let readingLabelString = readingLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${readingLabelString}` }} />;
@@ -139,7 +172,6 @@ export function setReadingLabel(entity) {
 
 // create Repository label string
 export function setRepositoryLabel(entity) {
-    console.log(entity)
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -158,7 +190,14 @@ export function setTranslatingLabel(entity) {
             entity.attributes.label,
             entity.attributes.properties.author
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let translatingLabelString = translatingLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: translatingLabelString }} />;
@@ -175,7 +214,14 @@ export function setWorkOfArtLabel(entity) {
             entity.attributes.label,
             entity.attributes.properties.artist
         ].filter(function (element) {
-            return element != null;
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
         });
         let workOfArtLabelString = workOfArtLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: workOfArtLabelString }} />;

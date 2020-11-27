@@ -48,7 +48,6 @@ class HeaderBuilder extends Component {
             )
         }
         if (this.props.entityData.attributes['type-label'] === 'Public Event') {
-            console.log(this.props)
             return (
                 <h1 className="listLink">{setEventLabel(this.props.entityData)}</h1>
             )

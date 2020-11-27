@@ -102,7 +102,6 @@ class LettersBy extends Component {
                 axios.get(this.props.apiUrl + '/repositories')])
                 .then(axios.spread((getAllData) => {
                     const data = getAllData.data.data;
-                    console.log(data)
                     this.setState({ data, isLoaded: true });
                 }))
                 .catch((err) => {
@@ -200,6 +199,11 @@ class LettersBy extends Component {
                         </tr>
                     )
                 }
+                else {
+                    return (
+                        null
+                    )
+                }
             }
             else {
                 return null
@@ -242,7 +246,7 @@ class LettersBy extends Component {
                             <th>{this.props.tableHeader}</th>
                         </tr>
                     </thead>
-                    {!this.state.isLoaded ? <LoadingSpinner /> : <tbody>
+                    {!this.state.isLoaded ? <tbody><tr><td><LoadingSpinner /></td></tr></tbody> : <tbody>
                         {EntityList}
                     </tbody>}
                 </Table>

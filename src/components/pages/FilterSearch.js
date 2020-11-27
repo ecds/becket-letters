@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import HeaderBuilder from '../utilities/HeaderBuilder';
 import DatePicker from 'react-date-picker';
-import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setRepositoryLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
+import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
 
 
 
@@ -141,7 +141,6 @@ class FilterSearch extends Component {
                             </tr>
                         )
                     }
-
                 }
                 if (entity.attributes['type-label'] === 'Attendance') {
                     attendancesCount++
@@ -429,9 +428,14 @@ class FilterSearch extends Component {
                         )
                     }
                 }
+                else {
+                    return (
+                        null
+                    )
+                }
             }
             else {
-                return 'uh oh'
+                return null
             }
         })
         

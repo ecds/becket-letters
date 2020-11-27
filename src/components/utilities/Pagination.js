@@ -10,15 +10,18 @@ class Pagination extends Component {
   }
 
   componentDidMount() {
-    // this.createPagination();
   }
 
   changePageNumber = (e) => {
     var page = e.target.id
     this.props.action(page)
-    this.setState(() => {
-      return { page: page }
+    console.log(page)
+    // ERROR IS HERE
+    // is the component reloading entirely and reinitializing state when the page changes?
+    this.setState({
+      page: page
     })
+    console.log(this.state.page)
   }
 
   createPrevBtn = () => {
