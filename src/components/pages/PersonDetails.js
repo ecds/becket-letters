@@ -7,7 +7,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchRecipientOnPage from '../utilities/SearchRecipientOnPage';
 import MentionedLetters from '../utilities/MentionedLettersTable';
-import { setPersonLabel } from '../utilities/EntityStringBuilder.js';
 
 
 class PersonDetails extends Component {

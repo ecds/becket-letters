@@ -12,7 +12,6 @@ export function setAttendanceLabel(entity) {
 
 // create Music label string
 export function setMusicLabel(entity) {
-    console.log(entity)
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -20,7 +19,16 @@ export function setMusicLabel(entity) {
         const musicLabel = [
             entity.attributes.label,
             entity.attributes.properties.composer
-        ]
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let musicLabelString = musicLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: musicLabelString }} />;
     }
@@ -67,7 +75,16 @@ export function setProductionLabel(entity) {
             entity.attributes.properties['date'],
             entity.attributes.properties['director'],
             entity.attributes.properties['theatre']
-        ];
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let productionLabelString = productionLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}, ${productionLabelString}.` }} />;
     }
@@ -75,7 +92,6 @@ export function setProductionLabel(entity) {
 
 // create Event label string
 export function setEventLabel(entity) {
-    console.log(entity);
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -83,7 +99,16 @@ export function setEventLabel(entity) {
         const publicEventLabel = [
             entity.attributes.label,
             entity.attributes.properties.date
-        ];
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let publicEventLabelString = publicEventLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${publicEventLabelString}.` }} />;
     }
@@ -98,7 +123,16 @@ export function setPublicationLabel(entity) {
         const publicationLabel = [
             entity.attributes.label,
             entity.attributes.properties.author
-        ]
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let publicationLabelString = publicationLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: `${publicationLabelString}` }} />;
     }
@@ -112,13 +146,25 @@ export function setReadingLabel(entity) {
     else {
         let authorsListString = null;
         if (entity.attributes.properties.authors.length !== 0) {
-            authorsListString = ' by ' + entity.attributes.properties.authors.join(', ')
+            authorsListString = ' by ' + entity.attributes.properties.authors.join(', ');
+        }
+        else {
+            authorsListString = '';
         }
         const readingLabel = [
             entity.attributes.label,
-            authorsListString,
+            authorsListString ? authorsListString : null,
             entity.attributes.properties.publication
-        ]
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let readingLabelString = readingLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${readingLabelString}` }} />;
     }
@@ -126,7 +172,6 @@ export function setReadingLabel(entity) {
 
 // create Repository label string
 export function setRepositoryLabel(entity) {
-    console.log(entity)
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -137,7 +182,6 @@ export function setRepositoryLabel(entity) {
 
 // create Translating label string
 export function setTranslatingLabel(entity) {
-    console.log(entity)
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
@@ -145,10 +189,18 @@ export function setTranslatingLabel(entity) {
         const translatingLabel = [
             entity.attributes.label,
             entity.attributes.properties.author
-        ]
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let translatingLabelString = translatingLabel.join(', ')
-        console.log(translatingLabelString)
-        return <span dangerouslySetInnerHTML={{ __html: translatingLabelString  }} />;
+        return <span dangerouslySetInnerHTML={{ __html: translatingLabelString }} />;
     }
 };
 
@@ -161,7 +213,16 @@ export function setWorkOfArtLabel(entity) {
         const workOfArtLabel = [
             entity.attributes.label,
             entity.attributes.properties.artist
-        ]
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
         let workOfArtLabelString = workOfArtLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: workOfArtLabelString }} />;
     }
