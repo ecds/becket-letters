@@ -1204,12 +1204,6 @@
           "additional": "none"
         },
         {
-          "date": "4 April",
-          "event": "Assassination of Martin Luther King Jr. in Memphis.",
-          "type": "global",
-          "additional": "https://www.twincities.com/wp-content/uploads/2018/04/mlk-page-11.jpg"
-        },
-        {
           "date": "7 April",
           "event": "Play opens at the National Theatre, Old Vic, on a double bill with Sophocles’ Philoctetes.",
           "type": "personal",
@@ -1523,6 +1517,14 @@
           "event": "Beckett has completed manuscript of <i>Come and Go</i> and sends it to Barbara Bray.",
           "type": "personal",
           "additional": "none"
+        }
+      ],
+      "1968": [
+        {
+          "date": "4 April",
+          "event": "Assassination of Martin Luther King Jr. in Memphis.",
+          "type": "global",
+          "additional": "https://www.twincities.com/wp-content/uploads/2018/04/mlk-page-11.jpg"
         }
       ]
     }
