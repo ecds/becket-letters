@@ -234,7 +234,7 @@ class QuickGlance extends Component {
           )
         }
       }
-      if (this.state.entityData.attributes['type-label'] === 'Work-of-Art') {
+      if (this.state.entityData.attributes['type-label'] === 'Work Of Art') {
         let label = setWorkOfArtLabel(this.state.entityData);
         if (this.props.typeLabel === 'nolink') {
           return (
