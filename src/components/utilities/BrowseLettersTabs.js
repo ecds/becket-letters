@@ -44,7 +44,7 @@ class BrowseLettersTabs extends Component {
           <li className={this.setActive('by-reading')}><Link to="/browse-letters-reading" id='reading' onClick={this.changeEntityType}>Reading</Link></li>
           <li className={this.setActive('by-repositories')}><Link to="/browse-letters-repositories" id='repositories' onClick={this.changeEntityType}>Repository</Link></li>
           <li className={this.setActive('by-Translating')}><Link to="/browse-letters-Translating" id='Translating' onClick={this.changeEntityType}>Translating</Link></li>
-          <li className={this.setActive('by-work-of-art')}><Link to="/browse-letters-work-of-art" id='work-of-art' onClick={this.changeEntityType}>Works of Art</Link></li>
+          <li className={this.setActive('by-work-of-art')}><Link to="/browse-letters-work-of-art" id='work-of-art' onClick={this.changeEntityType}>Work of Art</Link></li>
           <li className={this.setActive('by-writing')}><Link to="/browse-letters-writing" id='writing' onClick={this.changeEntityType}>Writing</Link></li>
         </ul>
 
