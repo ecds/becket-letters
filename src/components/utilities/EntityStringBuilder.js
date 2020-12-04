@@ -50,7 +50,7 @@ export function setPersonLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label} (${entity.attributes.properties['life-dates']})` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label} (${entity.attributes.properties['life-dates']}) ${entity.attributes.properties.description}` }} />;
     }
 };
 
