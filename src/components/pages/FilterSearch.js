@@ -33,7 +33,7 @@ class FilterSearch extends Component {
             entityType: '',
             checkbox: true,
             areAttendancesHidden: false,
-            areLettersHidden: false,
+            // areLettersHidden: false,
             areMusicsHidden: false,
             areOrganizationsHidden: false,
             arePeopleHidden: false,
@@ -46,8 +46,8 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: false,
             areWritingsHidden: false,
             hideAll: true,
-            startDate: "January 1, 1000",
-            endDate: "December 31, 2000",
+            // startDate: "January 1, 1000",
+            // endDate: "December 31, 2000",
         };
     }
 
@@ -59,6 +59,7 @@ class FilterSearch extends Component {
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
                 this.setState({ data, isLoaded: true });
+                console.log(data)
             }))
             .catch((err) => {
                 this.setState({ isLoaded: false, error: err.message });
@@ -82,7 +83,7 @@ class FilterSearch extends Component {
         let direction = !this.state.hideAll;
         this.setState({
             areAttendancesHidden: direction ? false : true,
-            areLettersHidden: direction ? false : true,
+            // areLettersHidden: direction ? false : true,
             areMusicsHidden: direction ? false : true,
             areOrganizationsHidden: direction ? false : true,
             arePeopleHidden: direction ? false : true,
@@ -100,8 +101,8 @@ class FilterSearch extends Component {
     }
 
     render() {
+        // move to state
         let attendancesCount = 0
-        let lettersCount = 0
         let musicCount = 0
         let organizationsCount = 0
         let peopleCount = 0
@@ -441,7 +442,7 @@ class FilterSearch extends Component {
         
         const metaBuild = {
             title: 'Search and Filter',
-            description: `Search and filter entities and letters`,
+            description: `Search and filter all entities`,
         };
 
         return (
@@ -454,7 +455,7 @@ class FilterSearch extends Component {
                             {/* work on search function */}
                             <Form className="tab-search" onSubmit={this.intiateSearch} ref="form">
                                 <OverlayTrigger
-                                    placement="bottom"
+                                    placement="top"
                                     delay={{ show: 150, hide: 1000 }}
                                     overlay={renderSearchTooltip}
                                 >
@@ -494,7 +495,7 @@ class FilterSearch extends Component {
                                             Attendance {attendancesCount !== 0 ? <span className='entityCountDisplay'>{attendancesCount}</span> : null}
                                         </label>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -504,7 +505,7 @@ class FilterSearch extends Component {
                                             />
                                             Letters {lettersCount !== 0 ? <span className='entityCountDisplay'>{lettersCount}</span> : null}
                                         </label>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <label>
                                             <input
@@ -642,7 +643,7 @@ class FilterSearch extends Component {
                                     </li>
                                 </ul>
                             </form>
-                            <form className='filterBox'>
+                            {/* <form className='filterBox'>
                                 <h2>Refine by Date</h2>
                                 <ul>
                                     <li>
@@ -654,7 +655,7 @@ class FilterSearch extends Component {
                                         <DatePicker format='dd/MMM/y' disableCalendar={true} minDate={new Date('January 1957')} maxDate={new Date('December 1969')} value={this.state.date} onChange={(date) => this.setState({ endDate: date })} />
                                     </li>
                                 </ul>
-                            </form>
+                            </form> */}
                         </Col>
                         {!this.state.firstSearched ? null : <Col md={9}>
                             {!this.state.isLoaded ?

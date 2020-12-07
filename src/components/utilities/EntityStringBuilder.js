@@ -6,7 +6,22 @@ export function setAttendanceLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        const productionLabel = [
+            entity.attributes.label,
+            entity.attributes.properties['event-type'],
+            entity.attributes.properties['place-date'],
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        let attendanceLabelString = productionLabel.join('. ');
+        return <span dangerouslySetInnerHTML={{ __html: `${attendanceLabelString}.` }} />;
     }
 };
 
@@ -17,8 +32,9 @@ export function setMusicLabel(entity) {
     }
     else {
         const musicLabel = [
+            entity.attributes.properties.composer,
             entity.attributes.label,
-            entity.attributes.properties.composer
+            entity.attributes.description
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -40,17 +56,28 @@ export function setOrganizationLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        return (
+            <>
+                <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                {entity.attributes.description ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.description}` }} /> : null}
+                .
+            </>
+        );
     }
 };
 
 // create Person label string
 export function setPersonLabel(entity) {
-    if (!entity.attributes.label) {
+    if (entity.attributes.label === null || entity.attributes.label === '' || entity.attributes.label === ' ') {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label} (${entity.attributes.properties['life-dates']})` }} />;
+        return <>
+            <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label} ` }} />
+            {entity.attributes.properties['life-dates'] ? <span dangerouslySetInnerHTML={{ __html: ` (${entity.attributes.properties['life-dates']})` }} /> : null}
+            {entity.attributes.properties.description ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.properties.description}` }} /> : null}
+            .
+        </>;
     }
 };
 
@@ -60,7 +87,13 @@ export function setPlaceLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        return (
+            <>
+                <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
+                {entity.attributes.description ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.description}` }} /> : null}
+                .
+            </>
+        );
     }
 }
 
@@ -71,10 +104,9 @@ export function setProductionLabel(entity) {
     }
     else {
         const productionLabel = [
-            entity.attributes.properties['city'],
-            entity.attributes.properties['date'],
             entity.attributes.properties['director'],
-            entity.attributes.properties['theatre']
+            entity.attributes.properties['theatre'],
+            entity.attributes.properties['date'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -86,7 +118,14 @@ export function setProductionLabel(entity) {
             }
         });
         let productionLabelString = productionLabel.join(', ');
-        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}, ${productionLabelString}.` }} />;
+        return (
+            <>
+                <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />
+                {productionLabelString ? <span dangerouslySetInnerHTML={{ __html: `, ${productionLabelString}` }} /> : null}
+                .
+            </>
+        )
+            ;
     }
 };
 
@@ -146,27 +185,18 @@ export function setReadingLabel(entity) {
     else {
         let authorsListString = null;
         if (entity.attributes.properties.authors.length !== 0) {
-            authorsListString = ' by ' + entity.attributes.properties.authors.join(', ');
+            authorsListString = entity.attributes.properties.authors.join(', ');
         }
         else {
             authorsListString = '';
         }
-        const readingLabel = [
-            entity.attributes.label,
-            authorsListString ? authorsListString : null,
-            entity.attributes.properties.publication
-        ].filter(function (element) {
-            if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-            else {
-                return (
-                    null
-                )
-            }
-        });
-        let readingLabelString = readingLabel.join(', ');
-        return <span dangerouslySetInnerHTML={{ __html: `${readingLabelString}` }} />;
+        return (
+            <>
+                {authorsListString ? <span dangerouslySetInnerHTML={{ __html: `${authorsListString}, ` }} /> : null}
+                <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />
+                {entity.attributes.properties.publication ? <span dangerouslySetInnerHTML={{ __html: ` ${entity.attributes.properties.publication}` }} /> : null}
+            </>
+        )
     }
 };
 
@@ -188,7 +218,10 @@ export function setTranslatingLabel(entity) {
     else {
         const translatingLabel = [
             entity.attributes.label,
-            entity.attributes.properties.author
+            entity.attributes.properties.author,
+            entity.attributes.properties['translated-into'],
+            entity.attributes.properties.translator,
+            entity.attributes.properties['translated-title'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -211,8 +244,10 @@ export function setWorkOfArtLabel(entity) {
     }
     else {
         const workOfArtLabel = [
+            entity.attributes.properties.artist,
             entity.attributes.label,
-            entity.attributes.properties.artist
+            entity.attributes.description,
+            entity.attributes.properties['owner-location-accession-number-current'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -234,6 +269,22 @@ export function setWritingLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        let writingLabel = [
+            entity.attributes.label,
+            entity.attributes.properties.proposal,
+            entity.attributes.properties.date,
+            entity.attributes.description
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        let writingLabelString = writingLabel.join(', ')
+        return <span dangerouslySetInnerHTML={{ __html: writingLabelString }} />;
     }
 };
