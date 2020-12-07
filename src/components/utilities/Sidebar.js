@@ -17,17 +17,17 @@ class Sidebar extends Component {
             <NavDropdown.Item href="/browse-letters-organization">Organization</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-person">Person</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-place">Place</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-production">Productions</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-production">Production</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-public-event">Public Event</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-publication">Publication</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-reading">Reading</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-repositories">Repository</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-Translating">Translating</NavDropdown.Item>
-            <NavDropdown.Item href="/browse-letters-work-of-art">Works of Art</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-work-of-art">Work of Art</NavDropdown.Item>
             <NavDropdown.Item href="/browse-letters-writing">Writing</NavDropdown.Item>
+            <NavDropdown.Item href="/browse-letters-repositories">Repository</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/timeline">Timeline</Nav.Link>
-          <Nav.Link href='/filter-search'>Search</Nav.Link>
+          <Nav.Link href='/filter-search'>Advanced Search</Nav.Link>
         </Navbar.Collapse>
       </Navbar>
     )

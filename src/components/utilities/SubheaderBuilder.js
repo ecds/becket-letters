@@ -32,9 +32,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setMusicSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                    {subheaderText.performers ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.performers }} /></h2> : null}
+                    {subheaderText.spellings ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.spellings}]` }} /></h2> : null}
                 </>
             )
         }
@@ -56,6 +55,7 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.description }} /></h2> : null}
+                    {subheaderText.links ? <a href={subheaderText.links}><h2 dangerouslySetInnerHTML={{ __html: subheaderText.links }}/></a> : null}
                 </>
             )
         }
@@ -63,18 +63,19 @@ class SubheaderBuilder extends Component {
             subheaderText = setProductionSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                    {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.cast }} /></h2> : null}
+                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.notes }} /></h2> : null}
+                    {subheaderText.stagingLink ? <a href={subheaderText.stagingLink}><h2><span dangerouslySetInnerHTML={{ __html: subheaderText.stagingLink }} /></h2></a> : null}
                 </>
             )
         }
         if (this.props.entityData.attributes['type-label'] === 'Public Event') {
             subheaderText = setEventSubheader(this.props.entityData);
             return (
-                <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                </>
+                // <>
+                //     {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                // </>
+                null
             )
         }
         if (this.props.entityData.attributes['type-label'] === 'Publication') {
@@ -99,16 +100,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setTranslatingSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.translatedInto || subheaderText.translatedTitle ?
-                        <h2>
-                            Translated
-                            {subheaderText.translatedInto ? <span dangerouslySetInnerHTML={{ __html: ' into ' + subheaderText.translatedInto }} /> : null}
-                            {subheaderText.translator ? <span dangerouslySetInnerHTML={{ __html: ' by ' + subheaderText.translator }} /> : null}
-                        </h2>
-                        :
-                        null}
-                    {subheaderText.translatedTitle ? <h2><span dangerouslySetInnerHTML={{ __html: 'Translated Title: ' + subheaderText.translatedTitle }} /></h2> : null}
-
+                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.description}` }} /></h2> : null}
                 </>
             )
         }
@@ -116,9 +108,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setWorkOfArtSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                    {subheaderText.altSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.altSpelling }} /></h2> : null}
+                    {subheaderText.location ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.location }} /></h2> : null}
                 </>
             )
         }
@@ -127,8 +118,6 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
                 </>
             )
         }

@@ -2,40 +2,33 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.properties['event-type'],
-        entity.attributes.properties['place-date']
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    // const subheaderLines = [
+    //     entity.attributes.properties['event-type'],
+    //     entity.attributes.properties['place-date']
+    // ].filter(function (element) {
+    //     if (element !== null || element !== '' || element !== ' ') {
+    //             return element
+    //         }
+    //     else {
+    //         return (
+    //             null
+    //         )
+    //     }
+    // });
     return (
-        subheaderLines
+        null
     )
 };
 
 // create Music sub-header string
 export function setMusicSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.properties.description,
-        entity.attributes.properties.notes,
-        entity.attributes.properties['performed-by']
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const performers = entity.attributes.properties['performed-by'];
+    const altSpellings = entity.attributes.properties['alternative-titles'].join(', ');
+    console.log(altSpellings)
+    const subheaderLines = {
+        performers: performers,
+        spellings: altSpellings
+    }
     return (
         subheaderLines
     )
@@ -43,20 +36,20 @@ export function setMusicSubheader(entity) {
 
 // create Organization sub-header string
 export function setOrganizationSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.properties.description,
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    // const subheaderLines = [
+    //     entity.attributes.properties.description,
+    // ].filter(function (element) {
+    //     if (element !== null || element !== '' || element !== ' ') {
+    //         return element
+    //     }
+    //     else {
+    //         return (
+    //             null
+    //         )
+    //     }
+    // });
     return (
-        subheaderLines
+        null
     )
 };
 
@@ -68,7 +61,7 @@ export function setPersonSubheader(entity) {
 export function setPlaceSubheader(entity) {
     const subheaderLines = {
         description: entity.attributes.properties.description,
-        // links: entity.attributes.properties.links
+        links: entity.attributes.properties.links
     }
     return (
         subheaderLines
@@ -77,16 +70,21 @@ export function setPlaceSubheader(entity) {
 
 // create Production sub-header string
 export function setProductionSubheader(entity) {
-    const subheaderLines = entity.attributes.properties.cast.filter(function (element) {
+    const prodCast = entity.attributes.properties.cast.filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
+            return element
+        }
         else {
             return (
                 null
             )
         }
     });
+    const subheaderLines = {
+        cast: prodCast,
+        notes: entity.attributes.properties.notes,
+        stagingLink: entity.attributes.properties['staging-beckett']
+    }
     return (
         subheaderLines
     )
@@ -98,8 +96,8 @@ export function setEventSubheader(entity) {
         entity.attributes.properties.description,
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
+            return element
+        }
         else {
             return (
                 null
@@ -114,13 +112,11 @@ export function setEventSubheader(entity) {
 // create Publication sub-header string
 export function setPublicationSubheader(entity) {
     const subheaderLines = [
-        entity.attributes.properties.place,
-        entity.attributes.properties.notes,
         entity.attributes.properties['publication-information']
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
+            return element
+        }
         else {
             return (
                 null
@@ -135,11 +131,11 @@ export function setPublicationSubheader(entity) {
 // create Reading sub-header string
 export function setReadingSubheader(entity) {
     const subheaderLines = [
-        entity.attributes.properties.publication
+        entity.attributes.description
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
+            return element
+        }
         else {
             return (
                 null
@@ -158,9 +154,7 @@ export function setReadingSubheader(entity) {
 // create Translating sub-header string
 export function setTranslatingSubheader(entity) {
     const subheaderLines = {
-        translatedInto: entity.attributes.properties['translated-into'],
-        translatedTitle: entity.attributes.properties['translated-title'],
-        translator: entity.attributes.properties.translator,
+        description: entity.attributes.description
     }
     return (
         subheaderLines
@@ -169,20 +163,10 @@ export function setTranslatingSubheader(entity) {
 
 // create Work of Art sub-header string
 export function setWorkOfArtSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.description,
-        entity.attributes.properties.description,
-        entity.attributes.properties.location
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const subheaderLines = {
+        altSpelling: entity.attributes.properties['alternate-spellings'],
+        location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
+    };
     return (
         subheaderLines
     )
@@ -191,13 +175,12 @@ export function setWorkOfArtSubheader(entity) {
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
     const subheaderLines = [
-        entity.attributes.properties.date,
-        entity.attributes.properties.notes,
-        entity.attributes.properties.proposal
+        null
+        // will be URL
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
+            return element
+        }
         else {
             return (
                 null
