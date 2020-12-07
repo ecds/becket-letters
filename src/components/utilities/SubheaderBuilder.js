@@ -22,10 +22,11 @@ class SubheaderBuilder extends Component {
         if (this.props.entityData.attributes['type-label'] === 'Attendance') {
             subheaderText = setAttendanceSubheader(this.props.entityData);
             return (
-                <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                </>
+                // <>
+                //     {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                //     {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
+                // </>
+                null
             )
         }
         if (this.props.entityData.attributes['type-label'] === 'Music') {
