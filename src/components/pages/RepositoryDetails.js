@@ -83,7 +83,7 @@ class RepositoryDetails extends Component {
                 <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
               </tr>
             )}
-            {this.state.entityData.attributes['public-letters-hash'].length === 0 ? <tr><td colspan='2'>No Letters</td></tr>:null}
+            {this.state.entityData.attributes['public-letters-hash'].length === 0 ? <tr><td colSpan='2'>No Letters</td></tr>:null}
           </table>
         </div>
       )

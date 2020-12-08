@@ -9,6 +9,7 @@ export function setAttendanceLabel(entity) {
         const attendanceLabel = [
             entity.attributes.label,
             entity.attributes.properties['event-type'],
+            entity.attributes.properties['director'],
             entity.attributes.properties['place-date'],
             entity.attributes.properties['attended-with']
         ].filter(function (element) {
