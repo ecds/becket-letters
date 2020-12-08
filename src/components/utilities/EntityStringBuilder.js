@@ -6,10 +6,11 @@ export function setAttendanceLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        const productionLabel = [
+        const attendanceLabel = [
             entity.attributes.label,
             entity.attributes.properties['event-type'],
             entity.attributes.properties['place-date'],
+            entity.attributes.properties['attended-with']
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -20,7 +21,7 @@ export function setAttendanceLabel(entity) {
                 )
             }
         });
-        let attendanceLabelString = productionLabel.join('. ');
+        let attendanceLabelString = attendanceLabel.join(', ');
         return <span dangerouslySetInnerHTML={{ __html: `${attendanceLabelString}.` }} />;
     }
 };
@@ -106,6 +107,7 @@ export function setProductionLabel(entity) {
         const productionLabel = [
             entity.attributes.properties['director'],
             entity.attributes.properties['theatre'],
+            entity.attributes.properties['city'],
             entity.attributes.properties['date'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {

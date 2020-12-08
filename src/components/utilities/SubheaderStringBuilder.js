@@ -55,6 +55,10 @@ export function setOrganizationSubheader(entity) {
 
 // create Person sub-header string
 export function setPersonSubheader(entity) {
+    if (entity.attributes.properties['alternate-names-spellings'].length !== 0) {
+        let altNames = '[' + entity.attributes.properties['alternate-names-spellings'].join(', ') + ']';
+        return altNames
+    }
 };
 
 // create Place sub-header string

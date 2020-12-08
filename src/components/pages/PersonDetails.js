@@ -89,7 +89,6 @@ class PersonDetails extends Component {
           <DocMetaBuilder {...metaBuild} />
           <HeaderBuilder entityData={this.state.entityData} />
           <SubheaderBuilder entityData={this.state.entityData} />
-          {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.description ? <h2><span dangerouslySetInnerHTML={{ __html: this.state.entityData.attributes.properties.description }} /></h2> : null}
           {this.state.entityData.attributes.properties && this.state.entityData.attributes.properties.links && this.state.entityData.attributes.properties.links.length > 0 ?
             <a href={this.state.entityData.attributes.properties ? this.state.entityData.attributes.properties.links[0] : null} target="_blank" rel="noopener noreferrer" className="btn btn-primary">VIAF</a>
             : null}
