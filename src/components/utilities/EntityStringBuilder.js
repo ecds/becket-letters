@@ -11,7 +11,6 @@ export function setAttendanceLabel(entity) {
             entity.attributes.properties['event-type'],
             entity.attributes.properties['director'],
             entity.attributes.properties['place-date'],
-            entity.attributes.properties['attended-with']
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -22,7 +21,23 @@ export function setAttendanceLabel(entity) {
                 )
             }
         });
+
         let attendanceLabelString = attendanceLabel.join(', ');
+        const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+        if (attendeesString) {
+            attendanceLabelString += ', ' + attendeesString;
+            console.log(attendeesString)
+
+        }
         return <span dangerouslySetInnerHTML={{ __html: `${attendanceLabelString}.` }} />;
     }
 };
