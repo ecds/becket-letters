@@ -119,7 +119,6 @@ export function setProductionLabel(entity) {
     }
     else {
         const productionLabel = [
-            entity.attributes.properties['director'],
             entity.attributes.properties['theatre'],
             entity.attributes.properties['city'],
             entity.attributes.properties['date'],
@@ -137,6 +136,7 @@ export function setProductionLabel(entity) {
         return (
             <>
                 <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />
+                {entity.attributes.properties['director'] ? <span dangerouslySetInnerHTML={{ __html: `, dir. ${entity.attributes.properties['director']}` }} /> : null}
                 {productionLabelString ? <span dangerouslySetInnerHTML={{ __html: `, ${productionLabelString}` }} /> : null}
                 .
             </>

@@ -68,8 +68,6 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.cast}.` }} /></h2> : null}
-                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}` }} /></h2> : null}
-                    {subheaderText.stagingLink ? <a href={subheaderText.stagingLink} target="_blank" ><h2><span dangerouslySetInnerHTML={{ __html: subheaderText.stagingLink }} /></h2></a> : null}
                 </>
             )
         }
@@ -112,7 +110,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setWorkOfArtSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.altSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.altSpelling}]` }} /></h2> : null}
+                    {subheaderText.workAltSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.workAltSpelling}]` }} /></h2> : null}
+                    {subheaderText.artistAltSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.artistAltSpelling}]` }} /></h2> : null}
                     {subheaderText.location ? <h2><span dangerouslySetInnerHTML={{ __html: `Contemporaneous location: ${subheaderText.location}` }} /></h2> : null}
                 </>
             )

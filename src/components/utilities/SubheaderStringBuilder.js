@@ -86,8 +86,8 @@ export function setProductionSubheader(entity) {
     });
     const subheaderLines = {
         cast: prodCast,
-        notes: entity.attributes.properties.notes,
-        stagingLink: entity.attributes.properties['staging-beckett']
+        // notes: entity.attributes.properties.notes,
+        // stagingLink: entity.attributes.properties['staging-beckett']
     }
     return (
         subheaderLines
@@ -167,24 +167,29 @@ export function setTranslatingSubheader(entity) {
 
 // create Work of Art sub-header string
 export function setWorkOfArtSubheader(entity) {
-    let spellings
-    if (typeof entity.attributes.properties['alternative-spellings'] !== "string") {
-        spellings = entity.attributes.properties['alternative-spellings'].filter(function (element) {
-            if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-            else {
-                return (
-                    null
-                )
-            }
-        }).join(', ')
-    }
-    else {
-        spellings = entity.attributes.properties['alternative-spellings']
-    }
+    const workSpellings = entity.attributes.properties['alternate-spellings'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    let artistSpellings= entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
     const subheaderLines = {
-        altSpelling: spellings,
+        workAltSpelling: workSpellings,
+        artistAltSpelling: artistSpellings,
         location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
     };
     return (
