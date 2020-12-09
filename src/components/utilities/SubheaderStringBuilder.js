@@ -140,18 +140,9 @@ export function setProductionSubheader(entity) {
 
 // create Event sub-header string
 export function setEventSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.properties.description,
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const subheaderLines = {
+        description: entity.attributes.properties.description,
+    }
     return (
         subheaderLines
     )
@@ -160,7 +151,7 @@ export function setEventSubheader(entity) {
 // create Publication sub-header string
 export function setPublicationSubheader(entity) {
     const subheaderLines = [
-        entity.attributes.properties['publication-information']
+        entity.attributes.properties.notes
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
@@ -205,7 +196,10 @@ export function setReadingSubheader(entity) {
 // create Translating sub-header string
 export function setTranslatingSubheader(entity) {
     const subheaderLines = {
-        description: entity.attributes.description
+        translatedInto: entity.attributes.properties['translated-into'],
+        translator: entity.attributes.properties['translator'],
+        translatedTitle: entity.attributes.properties['translated-title'],
+        comments: entity.attributes.properties.comments,
     }
     return (
         subheaderLines
@@ -248,7 +242,7 @@ export function setWorkOfArtSubheader(entity) {
 export function setWritingSubheader(entity) {
     const subheaderLines = {
         date: entity.attributes.properties.date,
-        proposalResponse : entity.attributes.properties.proposal,
+        proposalResponse: entity.attributes.properties.proposal,
         notes: entity.attributes.properties.notes
     }
     return (

@@ -149,21 +149,11 @@ export function setEventLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        const publicEventLabel = [
-            entity.attributes.label,
-            entity.attributes.properties.date
-        ].filter(function (element) {
-            if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-            else {
-                return (
-                    null
-                )
-            }
-        });
-        let publicEventLabelString = publicEventLabel.join(', ');
-        return <span dangerouslySetInnerHTML={{ __html: `${publicEventLabelString}.` }} />;
+        let eventDate
+        if (entity.attributes.properties.date) {
+            eventDate = ` (${entity.attributes.properties.date})`
+        }
+        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}${eventDate}.` }} />;
     }
 };
 
@@ -173,9 +163,25 @@ export function setPublicationLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
+        const publicationLabelPart2 = [
+            entity.attributes.properties.place,
+            entity.attributes.properties['publication-information'],
+            entity.attributes.properties.date,
+        ].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join('/');
         const publicationLabel = [
+            entity.attributes.properties.author,
             entity.attributes.label,
-            entity.attributes.properties.author
+            entity.attributes.properties.translator,
+            publicationLabelPart2
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -229,11 +235,8 @@ export function setTranslatingLabel(entity) {
     }
     else {
         const translatingLabel = [
-            entity.attributes.label,
             entity.attributes.properties.author,
-            entity.attributes.properties['translated-into'],
-            entity.attributes.properties.translator,
-            entity.attributes.properties['translated-title'],
+            entity.attributes.label,
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -245,7 +248,7 @@ export function setTranslatingLabel(entity) {
             }
         });
         let translatingLabelString = translatingLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: `${translatingLabelString}` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${translatingLabelString}.` }} />;
     }
 };
 
