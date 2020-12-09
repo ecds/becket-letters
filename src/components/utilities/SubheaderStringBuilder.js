@@ -2,21 +2,47 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    // const subheaderLines = [
-    //     entity.attributes.properties['event-type'],
-    //     entity.attributes.properties['place-date']
-    // ].filter(function (element) {
-    //     if (element !== null || element !== '' || element !== ' ') {
-    //             return element
-    //         }
-    //     else {
-    //         return (
-    //             null
-    //         )
-    //     }
-    // });
+    const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    const performers = entity.attributes.properties['performed-by'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    let altSpellings = null;
+    if (typeof entity.attributes.properties['alternative-spellings'] !== 'string') {
+        altSpellings = entity.attributes.properties['alternative-spellings'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+    }
+    const subheaderText = {
+        attendees: attendeesString,
+        notes: null,
+        performedBy: performers,
+        spellings: altSpellings
+    }
     return (
-        null
+        subheaderText
     )
 };
 
@@ -58,6 +84,11 @@ export function setPersonSubheader(entity) {
     if (entity.attributes.properties['alternate-names-spellings'].length !== 0) {
         let altNames = '[' + entity.attributes.properties['alternate-names-spellings'].join(', ') + ']';
         return altNames
+    }
+    else {
+        return (
+            null
+        )
     }
 };
 
@@ -134,20 +165,23 @@ export function setPublicationSubheader(entity) {
 
 // create Reading sub-header string
 export function setReadingSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.description
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    // const subheaderLines = [
+    //     entity.attributes.properties.comment
+    // ].filter(function (element) {
+    //     if (element !== null || element !== '' || element !== ' ') {
+    //         return element
+    //     }
+    //     else {
+    //         return (
+    //             null
+    //         )
+    //     }
+    // });
+    const subheaderText = {
+        comment: entity.attributes.properties.comment
+    }
     return (
-        subheaderLines
+        subheaderText
     )
 };
 

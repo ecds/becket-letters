@@ -50,7 +50,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setPersonSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText}.` }} /></h2> : null}
+                    {subheaderText ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText}` }} /></h2> : null}
                 </>
             )
         }
@@ -59,7 +59,7 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.description}.` }} /></h2> : null}
-                    {subheaderText.links ? <a href={subheaderText.links} target="_blank" ><h2 dangerouslySetInnerHTML={{ __html: subheaderText.links }} /></a> : null}
+                    {subheaderText.links ? <a href={subheaderText.links} target="_blank" rel="noopener noreferrer" ><h2 dangerouslySetInnerHTML={{ __html: subheaderText.links }} /></a> : null}
                 </>
             )
         }
@@ -94,7 +94,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setReadingSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                    {subheaderText.comment ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.comment }} /></h2> : null}
                 </>
             )
         }
