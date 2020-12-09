@@ -50,7 +50,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setPersonSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText}.` }} /></h2> : null}
+                    {subheaderText ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText}` }} /></h2> : null}
                 </>
             )
         }

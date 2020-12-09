@@ -59,6 +59,11 @@ export function setPersonSubheader(entity) {
         let altNames = '[' + entity.attributes.properties['alternate-names-spellings'].join(', ') + ']';
         return altNames
     }
+    else {
+        return (
+            null
+        )
+    }
 };
 
 // create Place sub-header string
