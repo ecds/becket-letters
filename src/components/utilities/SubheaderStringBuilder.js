@@ -48,12 +48,25 @@ export function setAttendanceSubheader(entity) {
 
 // create Music sub-header string
 export function setMusicSubheader(entity) {
-    const performers = entity.attributes.properties['performed-by'];
-    const altSpellings = entity.attributes.properties['alternative-titles'].join(', ');
-    console.log(altSpellings)
+    let performers = null
+    if (typeof entity.attributes.properties['performed-by'] !== 'string') {
+        performers = entity.attributes.properties['performed-by'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+    }
+    else {
+        performers = entity.attributes.properties['performed-by'];
+    }
     const subheaderLines = {
+        description: entity.attributes.description,
         performers: performers,
-        spellings: altSpellings
     }
     return (
         subheaderLines
@@ -211,7 +224,7 @@ export function setWorkOfArtSubheader(entity) {
             )
         }
     }).join(', ');
-    let artistSpellings= entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
+    let artistSpellings = entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
         }
@@ -233,19 +246,11 @@ export function setWorkOfArtSubheader(entity) {
 
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
-    const subheaderLines = [
-        null
-        // will be URL
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const subheaderLines = {
+        date: entity.attributes.properties.date,
+        proposalResponse : entity.attributes.properties.proposal,
+        notes: entity.attributes.properties.notes
+    }
     return (
         subheaderLines
     )

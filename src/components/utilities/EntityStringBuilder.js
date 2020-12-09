@@ -31,10 +31,23 @@ export function setMusicLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
+        const altSpellings = entity.attributes.properties['alternative-titles'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+        let altSpellingsString = ''
+        if (altSpellings) {
+            altSpellingsString = ` [${altSpellings}]`
+        }
         const musicLabel = [
             entity.attributes.properties.composer,
             entity.attributes.label,
-            entity.attributes.description
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -46,7 +59,7 @@ export function setMusicLabel(entity) {
             }
         });
         let musicLabelString = musicLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: `${musicLabelString}` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${musicLabelString}${altSpellingsString}.` }} />;
     }
 };
 
@@ -275,9 +288,6 @@ export function setWritingLabel(entity) {
     else {
         let writingLabel = [
             entity.attributes.label,
-            entity.attributes.properties.proposal,
-            entity.attributes.properties.date,
-            entity.attributes.description
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
