@@ -136,7 +136,6 @@ export function setProductionSubheader(entity) {
         // notes: entity.attributes.properties.notes,
         // stagingLink: entity.attributes.properties['staging-beckett']
     }
-    console.log(subheaderLines)
     return (
         subheaderLines
     )
