@@ -74,10 +74,9 @@ class SubheaderBuilder extends Component {
         if (this.props.entityData.attributes['type-label'] === 'Public Event') {
             subheaderText = setEventSubheader(this.props.entityData);
             return (
-                // <>
-                //     {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                // </>
-                null
+                <>
+                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.description }} /></h2> : null}
+                </>
             )
         }
         if (this.props.entityData.attributes['type-label'] === 'Publication') {
@@ -85,8 +84,6 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[0]}` }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[1]}.` }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[2]}` }} /></h2> : null}
                 </>
             )
         }
@@ -102,6 +99,10 @@ class SubheaderBuilder extends Component {
             subheaderText = setTranslatingSubheader(this.props.entityData);
             return (
                 <>
+                    {subheaderText.translatedInto && subheaderText.translator ? <h2><span dangerouslySetInnerHTML={{ __html: `Translated into ${subheaderText.translatedInto} by ${subheaderText.translator}.` }} /></h2> : null}
+                    {subheaderText.translatedInto && !subheaderText.translator ? <h2><span dangerouslySetInnerHTML={{ __html: `Translated into ${subheaderText.translatedInto}.` }} /></h2> : null}
+                    {!subheaderText.translatedInto && subheaderText.translator ? <h2><span dangerouslySetInnerHTML={{ __html: `Translated by ${subheaderText.translator}.` }} /></h2> : null}
+                    {subheaderText.translatedTitle ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.translatedTitle}.` }} /></h2> : null}
                     {subheaderText.comments ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.comments}` }} /></h2> : null}
                 </>
             )
