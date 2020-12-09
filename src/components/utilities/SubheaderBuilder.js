@@ -94,7 +94,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setReadingSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
+                    {subheaderText.comment ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.comment }} /></h2> : null}
                 </>
             )
         }

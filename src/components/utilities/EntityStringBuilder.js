@@ -203,14 +203,12 @@ export function setReadingLabel(entity) {
         if (entity.attributes.properties.authors.length !== 0) {
             authorsListString = entity.attributes.properties.authors.join(', ');
         }
-        else {
-            authorsListString = '';
-        }
         return (
             <>
                 {authorsListString ? <span dangerouslySetInnerHTML={{ __html: `${authorsListString}, ` }} /> : null}
                 <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />
-                {entity.attributes.properties.publication ? <span dangerouslySetInnerHTML={{ __html: ` ${entity.attributes.properties.publication}` }} /> : null}
+                {entity.attributes.properties.publication ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.properties.publication}` }} /> : null}
+                .
             </>
         )
     }

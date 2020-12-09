@@ -134,20 +134,23 @@ export function setPublicationSubheader(entity) {
 
 // create Reading sub-header string
 export function setReadingSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.description
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    // const subheaderLines = [
+    //     entity.attributes.properties.comment
+    // ].filter(function (element) {
+    //     if (element !== null || element !== '' || element !== ' ') {
+    //         return element
+    //     }
+    //     else {
+    //         return (
+    //             null
+    //         )
+    //     }
+    // });
+    const subheaderText = {
+        comment: entity.attributes.properties.comment
+    }
     return (
-        subheaderLines
+        subheaderText
     )
 };
 
