@@ -58,7 +58,6 @@ export function setMusicLabel(entity) {
                 )
             }
         });
-        console.log(musicLabel)
         let musicLabelString = musicLabel.join(', ')
         return <span dangerouslySetInnerHTML={{ __html: `${musicLabelString}${altSpellingsString}.` }} />;
     }
@@ -289,9 +288,6 @@ export function setWritingLabel(entity) {
     else {
         let writingLabel = [
             entity.attributes.label,
-            entity.attributes.properties.proposal,
-            entity.attributes.properties.date,
-            entity.attributes.description
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
