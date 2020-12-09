@@ -167,8 +167,24 @@ export function setTranslatingSubheader(entity) {
 
 // create Work of Art sub-header string
 export function setWorkOfArtSubheader(entity) {
+    let spellings
+    if (typeof entity.attributes.properties['alternative-spellings'] !== "string") {
+        spellings = entity.attributes.properties['alternative-spellings'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ')
+    }
+    else {
+        spellings = entity.attributes.properties['alternative-spellings']
+    }
     const subheaderLines = {
-        altSpelling: entity.attributes.properties['alternate-spellings'],
+        altSpelling: spellings,
         location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
     };
     return (

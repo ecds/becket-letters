@@ -21,7 +21,6 @@ export function setAttendanceLabel(entity) {
                 )
             }
         });
-
         let attendanceLabelString = attendanceLabel.join(', ');
         const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
@@ -35,7 +34,6 @@ export function setAttendanceLabel(entity) {
         }).join(', ');
         if (attendeesString) {
             attendanceLabelString += ', ' + attendeesString;
-            console.log(attendeesString)
 
         }
         return <span dangerouslySetInnerHTML={{ __html: `${attendanceLabelString}.` }} />;
@@ -63,7 +61,7 @@ export function setMusicLabel(entity) {
             }
         });
         let musicLabelString = musicLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: musicLabelString }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${musicLabelString}` }} />;
     }
 };
 
@@ -224,7 +222,7 @@ export function setRepositoryLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        return <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />;
     }
 };
 
@@ -251,7 +249,7 @@ export function setTranslatingLabel(entity) {
             }
         });
         let translatingLabelString = translatingLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: translatingLabelString }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${translatingLabelString}` }} />;
     }
 };
 
@@ -265,7 +263,6 @@ export function setWorkOfArtLabel(entity) {
             entity.attributes.properties.artist,
             entity.attributes.label,
             entity.attributes.description,
-            entity.attributes.properties['owner-location-accession-number-current'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -277,7 +274,13 @@ export function setWorkOfArtLabel(entity) {
             }
         });
         let workOfArtLabelString = workOfArtLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: workOfArtLabelString }} />;
+        return (
+            <>
+                <span dangerouslySetInnerHTML={{ __html: `${workOfArtLabelString}.` }} />
+                {entity.attributes.properties['owner-location-accession-number-current'] ? <span dangerouslySetInnerHTML={{ __html: ` Current location: ${entity.attributes.properties['owner-location-accession-number-current']}.` }} /> : null}
+            </>
+        )
+
     }
 };
 
@@ -303,6 +306,6 @@ export function setWritingLabel(entity) {
             }
         });
         let writingLabelString = writingLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: writingLabelString }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${writingLabelString}` }} />;
     }
 };

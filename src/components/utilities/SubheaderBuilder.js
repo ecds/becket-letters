@@ -42,7 +42,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setOrganizationSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[0]}.` }} /></h2> : null}
+                    {/* {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[0]}.` }} /></h2> : null} */}
                 </>
             )
         }
@@ -58,9 +58,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setPlaceSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.description }} /></h2> : null}
-                    {/* open in new tab */}
-                    {subheaderText.links ? <a href={subheaderText.links}><h2 dangerouslySetInnerHTML={{ __html: subheaderText.links }} /></a> : null}
+                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.description}.` }} /></h2> : null}
+                    {subheaderText.links ? <a href={subheaderText.links} target="_blank" ><h2 dangerouslySetInnerHTML={{ __html: subheaderText.links }} /></a> : null}
                 </>
             )
         }
@@ -68,10 +67,9 @@ class SubheaderBuilder extends Component {
             subheaderText = setProductionSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.cast }} /></h2> : null}
-                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.notes }} /></h2> : null}
-                    {/* open in new tab */}
-                    {subheaderText.stagingLink ? <a href={subheaderText.stagingLink}><h2><span dangerouslySetInnerHTML={{ __html: subheaderText.stagingLink }} /></h2></a> : null}
+                    {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.cast}.` }} /></h2> : null}
+                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}` }} /></h2> : null}
+                    {subheaderText.stagingLink ? <a href={subheaderText.stagingLink} target="_blank" ><h2><span dangerouslySetInnerHTML={{ __html: subheaderText.stagingLink }} /></h2></a> : null}
                 </>
             )
         }
@@ -88,9 +86,9 @@ class SubheaderBuilder extends Component {
             subheaderText = setPublicationSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[0] }} /></h2> : null}
-                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[1] }} /></h2> : null}
-                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText[2] }} /></h2> : null}
+                    {subheaderText[0] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[0]}` }} /></h2> : null}
+                    {subheaderText[1] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[1]}.` }} /></h2> : null}
+                    {subheaderText[2] ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText[2]}` }} /></h2> : null}
                 </>
             )
         }
@@ -114,8 +112,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setWorkOfArtSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.altSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.altSpelling }} /></h2> : null}
-                    {subheaderText.location ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.location }} /></h2> : null}
+                    {subheaderText.altSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.altSpelling}]` }} /></h2> : null}
+                    {subheaderText.location ? <h2><span dangerouslySetInnerHTML={{ __html: `Contemporaneous location: ${subheaderText.location}` }} /></h2> : null}
                 </>
             )
         }
