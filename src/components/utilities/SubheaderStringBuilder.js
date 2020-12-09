@@ -118,16 +118,19 @@ export function setPlaceSubheader(entity) {
 
 // create Production sub-header string
 export function setProductionSubheader(entity) {
-    const prodCast = entity.attributes.properties.cast.filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    let prodCast = null;
+    if (entity.attributes.properties.cast.length !== 0) {
+        prodCast = entity.attributes.properties.cast.filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+    }
     const subheaderLines = {
         cast: prodCast,
         // notes: entity.attributes.properties.notes,
