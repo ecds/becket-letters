@@ -48,13 +48,21 @@ export function setAttendanceSubheader(entity) {
 
 // create Music sub-header string
 export function setMusicSubheader(entity) {
-    const performers = entity.attributes.properties['performed-by'];
-    const altSpellings = entity.attributes.properties['alternative-titles'].join(', ');
-    console.log(altSpellings)
+    const performers = entity.attributes.properties['performed-by'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
     const subheaderLines = {
+        description: entity.attributes.description,
         performers: performers,
-        spellings: altSpellings
     }
+    console.log(subheaderLines)
     return (
         subheaderLines
     )
@@ -211,7 +219,7 @@ export function setWorkOfArtSubheader(entity) {
             )
         }
     }).join(', ');
-    let artistSpellings= entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
+    let artistSpellings = entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
         }

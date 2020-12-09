@@ -33,8 +33,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setMusicSubheader(this.props.entityData);
             return (
                 <>
+                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.description}` }} /></h2> : null}
                     {subheaderText.performers ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.performers}.` }} /></h2> : null}
-                    {subheaderText.spellings ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.spellings}]` }} /></h2> : null}
                 </>
             )
         }
