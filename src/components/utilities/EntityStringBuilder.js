@@ -6,7 +6,7 @@ export function setAttendanceLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        const attendanceLabel = [
+        const attendanceLabelString = [
             entity.attributes.label,
             entity.attributes.properties['event-type'],
             entity.attributes.properties['director'],
@@ -20,22 +20,7 @@ export function setAttendanceLabel(entity) {
                     null
                 )
             }
-        });
-        let attendanceLabelString = attendanceLabel.join(', ');
-        const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
-            if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-            else {
-                return (
-                    null
-                )
-            }
         }).join(', ');
-        if (attendeesString) {
-            attendanceLabelString += ', ' + attendeesString;
-
-        }
         return <span dangerouslySetInnerHTML={{ __html: `${attendanceLabelString}.` }} />;
     }
 };

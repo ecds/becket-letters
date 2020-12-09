@@ -2,21 +2,47 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    // const subheaderLines = [
-    //     entity.attributes.properties['event-type'],
-    //     entity.attributes.properties['place-date']
-    // ].filter(function (element) {
-    //     if (element !== null || element !== '' || element !== ' ') {
-    //             return element
-    //         }
-    //     else {
-    //         return (
-    //             null
-    //         )
-    //     }
-    // });
+    const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    const performers = entity.attributes.properties['performed-by'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    let altSpellings = null;
+    if (typeof entity.attributes.properties['alternative-spellings'] !== 'string') {
+        altSpellings = entity.attributes.properties['alternative-spellings'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+    }
+    const subheaderText = {
+        attendees: attendeesString,
+        notes: null,
+        performedBy: performers,
+        spellings: altSpellings
+    }
     return (
-        null
+        subheaderText
     )
 };
 
