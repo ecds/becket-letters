@@ -59,10 +59,6 @@ class RepositoryDetails extends Component {
           <table className='table table-striped'>
             <tbody className='details-table'>
             <tr>
-              <td>American</td>
-              <td>{this.state.entityData.attributes.american ? 'Yes' : 'No'}</td>
-            </tr>
-            <tr>
               <td>Letter Count</td>
               <td>{this.state.entityData.attributes['letter-count']}</td>
             </tr>
