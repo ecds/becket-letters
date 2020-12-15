@@ -74,7 +74,10 @@ class RepositoryDetails extends Component {
             </thead>
             {this.state.entityData.attributes['public-letters-hash'].map((letter, index) =>
               <tr>
-                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                <td>{letter['recipients'].map((this_recipient, i) => [
+                                        i > 0 && ", ",
+                                        <a href={'/people/' + this_recipient.id + '/'} key={i} tag={this_recipient}>{this_recipient.name}</a>
+                                    ])}</td>
                 <td>{letter['date']}</td>
                 <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
               </tr>
