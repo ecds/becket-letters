@@ -59,10 +59,6 @@ class RepositoryDetails extends Component {
           <table className='table table-striped'>
             <tbody className='details-table'>
             <tr>
-              <td>American</td>
-              <td>{this.state.entityData.attributes.american ? 'Yes' : 'No'}</td>
-            </tr>
-            <tr>
               <td>Letter Count</td>
               <td>{this.state.entityData.attributes['letter-count']}</td>
             </tr>
@@ -78,12 +74,15 @@ class RepositoryDetails extends Component {
             </thead>
             {this.state.entityData.attributes['public-letters-hash'].map((letter, index) =>
               <tr>
-                <td>{letter['recipients'].map((this_recipient) => <a href={'/people/' + this_recipient.id + '/' + this_recipient.name}>{this_recipient.name}</a>)}</td>
+                <td>{letter['recipients'].map((this_recipient, i) => [
+                                        i > 0 && ", ",
+                                        <a href={'/people/' + this_recipient.id + '/'} key={i} tag={this_recipient}>{this_recipient.name}</a>
+                                    ])}</td>
                 <td>{letter['date']}</td>
                 <td className="actions"><a href={'/letters/letterdetails/' + letter.id}>Explore Letter</a></td>
               </tr>
             )}
-            {this.state.entityData.attributes['public-letters-hash'].length === 0 ? <tr><td colspan='2'>No Letters</td></tr>:null}
+            {this.state.entityData.attributes['public-letters-hash'].length === 0 ? <tr><td colSpan='2'>No Letters</td></tr>:null}
           </table>
         </div>
       )

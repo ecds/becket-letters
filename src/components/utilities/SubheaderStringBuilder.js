@@ -2,32 +2,71 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    // const subheaderLines = [
-    //     entity.attributes.properties['event-type'],
-    //     entity.attributes.properties['place-date']
-    // ].filter(function (element) {
-    //     if (element !== null || element !== '' || element !== ' ') {
-    //             return element
-    //         }
-    //     else {
-    //         return (
-    //             null
-    //         )
-    //     }
-    // });
+    const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    const performers = entity.attributes.properties['performed-by'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    let altSpellings = null;
+    if (typeof entity.attributes.properties['alternative-spellings'] !== 'string') {
+        altSpellings = entity.attributes.properties['alternative-spellings'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+    }
+    const subheaderText = {
+        attendees: attendeesString,
+        notes: null,
+        performedBy: performers,
+        spellings: altSpellings
+    }
     return (
-        null
+        subheaderText
     )
 };
 
 // create Music sub-header string
 export function setMusicSubheader(entity) {
-    const performers = entity.attributes.properties['performed-by'];
-    const altSpellings = entity.attributes.properties['alternative-titles'].join(', ');
-    console.log(altSpellings)
+    let performers = null
+    if (typeof entity.attributes.properties['performed-by'] !== 'string') {
+        performers = entity.attributes.properties['performed-by'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+    }
+    else {
+        performers = entity.attributes.properties['performed-by'];
+    }
     const subheaderLines = {
+        description: entity.attributes.description,
         performers: performers,
-        spellings: altSpellings
     }
     return (
         subheaderLines
@@ -55,6 +94,15 @@ export function setOrganizationSubheader(entity) {
 
 // create Person sub-header string
 export function setPersonSubheader(entity) {
+    if (entity.attributes.properties['alternate-names-spellings'].length !== 0) {
+        let altNames = '[' + entity.attributes.properties['alternate-names-spellings'].join(', ') + ']';
+        return altNames
+    }
+    else {
+        return (
+            null
+        )
+    }
 };
 
 // create Place sub-header string
@@ -70,20 +118,23 @@ export function setPlaceSubheader(entity) {
 
 // create Production sub-header string
 export function setProductionSubheader(entity) {
-    const prodCast = entity.attributes.properties.cast.filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    let prodCast = null;
+    if (entity.attributes.properties.cast.length !== 0) {
+        prodCast = entity.attributes.properties.cast.filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+    }
     const subheaderLines = {
         cast: prodCast,
-        notes: entity.attributes.properties.notes,
-        stagingLink: entity.attributes.properties['staging-beckett']
+        // notes: entity.attributes.properties.notes,
+        // stagingLink: entity.attributes.properties['staging-beckett']
     }
     return (
         subheaderLines
@@ -92,18 +143,9 @@ export function setProductionSubheader(entity) {
 
 // create Event sub-header string
 export function setEventSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.properties.description,
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const subheaderLines = {
+        description: entity.attributes.properties.description,
+    }
     return (
         subheaderLines
     )
@@ -112,7 +154,7 @@ export function setEventSubheader(entity) {
 // create Publication sub-header string
 export function setPublicationSubheader(entity) {
     const subheaderLines = [
-        entity.attributes.properties['publication-information']
+        entity.attributes.properties.notes
     ].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
@@ -130,20 +172,23 @@ export function setPublicationSubheader(entity) {
 
 // create Reading sub-header string
 export function setReadingSubheader(entity) {
-    const subheaderLines = [
-        entity.attributes.description
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    // const subheaderLines = [
+    //     entity.attributes.properties.comment
+    // ].filter(function (element) {
+    //     if (element !== null || element !== '' || element !== ' ') {
+    //         return element
+    //     }
+    //     else {
+    //         return (
+    //             null
+    //         )
+    //     }
+    // });
+    const subheaderText = {
+        comment: entity.attributes.properties.comment
+    }
     return (
-        subheaderLines
+        subheaderText
     )
 };
 
@@ -154,7 +199,10 @@ export function setReadingSubheader(entity) {
 // create Translating sub-header string
 export function setTranslatingSubheader(entity) {
     const subheaderLines = {
-        description: entity.attributes.description
+        translatedInto: entity.attributes.properties['translated-into'],
+        translator: entity.attributes.properties['translator'],
+        translatedTitle: entity.attributes.properties['translated-title'],
+        comments: entity.attributes.properties.comments,
     }
     return (
         subheaderLines
@@ -163,8 +211,29 @@ export function setTranslatingSubheader(entity) {
 
 // create Work of Art sub-header string
 export function setWorkOfArtSubheader(entity) {
+    const workSpellings = entity.attributes.properties['alternate-spellings'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
+    let artistSpellings = entity.attributes.properties['artist-alternate-spellings'].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join(', ');
     const subheaderLines = {
-        altSpelling: entity.attributes.properties['alternate-spellings'],
+        workAltSpelling: workSpellings,
+        artistAltSpelling: artistSpellings,
         location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
     };
     return (
@@ -174,19 +243,11 @@ export function setWorkOfArtSubheader(entity) {
 
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
-    const subheaderLines = [
-        null
-        // will be URL
-    ].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    });
+    const subheaderLines = {
+        date: entity.attributes.properties.date,
+        proposalResponse: entity.attributes.properties.proposal,
+        notes: entity.attributes.properties.notes
+    }
     return (
         subheaderLines
     )
