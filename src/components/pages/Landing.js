@@ -29,7 +29,7 @@ class Landing extends Component {
           <CardGroup className='landing-group'>
           <HomeTile type='public-event' />
             <HomeTile type='reading' />
-            <HomeTile type='repository' />
+            <HomeTile type='repositories' />
             <HomeTile type='translating' />
             <HomeTile type='work-of-art' />
             <HomeTile type='writing' />
