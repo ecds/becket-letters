@@ -153,8 +153,6 @@ export function setEventLabel(entity) {
         if (entity.attributes.properties.date) {
             eventDate = ` (${entity.attributes.properties.date})`
         }
-        console.log('sdfads')
-        console.log(eventDate)
         return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}${eventDate}.` }} />;
     }
 };
