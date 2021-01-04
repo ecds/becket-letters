@@ -149,7 +149,7 @@ export function setEventLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        let eventDate
+        let eventDate = ''
         if (entity.attributes.properties.date) {
             eventDate = ` (${entity.attributes.properties.date})`
         }
