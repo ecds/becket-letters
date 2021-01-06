@@ -113,7 +113,7 @@ class SubheaderBuilder extends Component {
                 <>
                     {subheaderText.workAltSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.workAltSpelling}]` }} /></h2> : null}
                     {subheaderText.artistAltSpelling ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.artistAltSpelling}]` }} /></h2> : null}
-                    {subheaderText.location ? <h2><span dangerouslySetInnerHTML={{ __html: `Contemporaneous location: ${subheaderText.location}` }} /></h2> : null}
+                    {subheaderText.current || subheaderText.contemporaneous ? <h2>{subheaderText.current ? <span dangerouslySetInnerHTML={{ __html: `Current location: ${subheaderText.current}.` }} /> : null} {subheaderText.contemporaneous ? <span dangerouslySetInnerHTML={{ __html: `Contemporaneous location: ${subheaderText.contemporaneous}.` }} /> : null}</h2> : null}
                 </>
             )
         }

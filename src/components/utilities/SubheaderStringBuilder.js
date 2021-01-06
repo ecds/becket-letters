@@ -234,7 +234,8 @@ export function setWorkOfArtSubheader(entity) {
     const subheaderLines = {
         workAltSpelling: workSpellings,
         artistAltSpelling: artistSpellings,
-        location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
+        current: entity.attributes.properties['owner-location-accession-number-current'],
+        contemporaneous: entity.attributes.properties['owner-location-accession-number-contemporaneous']
     };
     return (
         subheaderLines
