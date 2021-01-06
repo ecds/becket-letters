@@ -259,7 +259,6 @@ export function setWorkOfArtLabel(entity) {
     }
     else {
         const workOfArtLabel = [
-            entity.attributes.properties.artist,
             entity.attributes.label,
             entity.attributes.description,
         ].filter(function (element) {
@@ -275,8 +274,9 @@ export function setWorkOfArtLabel(entity) {
         let workOfArtLabelString = workOfArtLabel.join(', ')
         return (
             <>
-                <span dangerouslySetInnerHTML={{ __html: `${workOfArtLabelString}.` }} />
-                {entity.attributes.properties['owner-location-accession-number-current'] ? <span dangerouslySetInnerHTML={{ __html: ` Current location: ${entity.attributes.properties['owner-location-accession-number-current']}.` }} /> : null}
+                {entity.attributes.properties.artist ? <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.properties.artist}` }} /> : null}
+                {entity.attributes.properties.artist && workOfArtLabelString ? ', ' : null}
+                {workOfArtLabelString ? <span dangerouslySetInnerHTML={{ __html: `${workOfArtLabelString} ` }} /> : null}
             </>
         )
 
