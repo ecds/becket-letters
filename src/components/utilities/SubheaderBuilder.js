@@ -79,7 +79,8 @@ class SubheaderBuilder extends Component {
             subheaderText = setEventSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.description }} /></h2> : null}
+                    {subheaderText.label ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.label }} /></h2> : null}
+                    {subheaderText.date ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.date }} /></h2> : null}
                 </>
             )
         }

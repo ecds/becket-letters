@@ -145,7 +145,7 @@ export function setProductionLabel(entity) {
 
 // Event
 export function setEventLabel(entity) {
-    if (!entity.attributes.label) {
+    if (!entity.attributes.properties.description) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
@@ -153,7 +153,7 @@ export function setEventLabel(entity) {
         if (entity.attributes.properties.date) {
             eventDate = ` (${entity.attributes.properties.date})`
         }
-        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}${eventDate}.` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.properties.description}${eventDate}.` }} />;
     }
 };
 
