@@ -236,8 +236,6 @@ export function setReadingSubheader(entity) {
 // create Translating sub-header string
 export function setTranslatingSubheader(entity) {
     const subheaderLines = {
-        translatedInto: entity.attributes.properties['translated-into'],
-        translator: entity.attributes.properties['translator'],
         translatedTitle: entity.attributes.properties['translated-title'],
         comments: entity.attributes.properties.comments,
     }

@@ -247,8 +247,12 @@ export function setTranslatingLabel(entity) {
                 )
             }
         });
-        let translatingLabelString = translatingLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: `${translatingLabelString}.` }} />;
+        let translatingLabelString = translatingLabel.join(', ') + '.';
+        let translatedIntoString
+        if (entity.attributes.properties['translated-into'] || entity.attributes.properties.translator) {
+            translatedIntoString = `Translated ${entity.attributes.properties['translated-into'] ? `${entity.attributes.properties['translated-into']}` : null} ${entity.attributes.properties.translator ? ` by ${entity.attributes.properties.translator}` : null}.`
+        }
+        return <span dangerouslySetInnerHTML={{ __html: `${translatingLabelString} ${translatedIntoString}` }} />;
     }
 };
 
