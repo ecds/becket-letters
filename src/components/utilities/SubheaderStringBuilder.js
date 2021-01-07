@@ -65,8 +65,9 @@ export function setMusicSubheader(entity) {
         performers = entity.attributes.properties['performed-by'];
     }
     const subheaderLines = {
-        description: entity.attributes.description,
+        description: entity.attributes.properties.description,
         performers: performers,
+        notes: entity.attributes.properties.notes,
     }
     return (
         subheaderLines
@@ -130,11 +131,46 @@ export function setProductionSubheader(entity) {
                 )
             }
         });
+        prodCast = prodCast.join(', ')
+    }
+    let proposalString
+    if (entity.attributes.properties.proposal) {
+        proposalString = entity.attributes.properties.proposal
+    }
+    let responseReason
+    if (entity.attributes.properties.response || entity.attributes.properties.reason) {
+        let responseReasonArray = [entity.attributes.properties.response, entity.attributes.properties.reason].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        responseReason = responseReasonArray.join(', ')
+    }
+    let stagingLinks
+    if (entity.attributes.properties.links.length !== 0) {
+        stagingLinks = entity.attributes.properties.links.filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return `<a href={${element}}>{${element}}</a>`
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        stagingLinks = stagingLinks.join(', ')
     }
     const subheaderLines = {
+        proposal: proposalString,
+        responseReason: responseReason,
         cast: prodCast,
-        // notes: entity.attributes.properties.notes,
-        // stagingLink: entity.attributes.properties['staging-beckett']
+        notes: entity.attributes.properties.notes,
+        stagingLinks: stagingLinks 
     }
     return (
         subheaderLines

@@ -35,6 +35,7 @@ class SubheaderBuilder extends Component {
                 <>
                     {subheaderText.description ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.description}` }} /></h2> : null}
                     {subheaderText.performers ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.performers}.` }} /></h2> : null}
+                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}` }} /></h2> : null}
                 </>
             )
         }
@@ -67,7 +68,10 @@ class SubheaderBuilder extends Component {
             subheaderText = setProductionSubheader(this.props.entityData);
             return (
                 <>
+                    {subheaderText.proposal || subheaderText.responseReason ? <h2>{subheaderText.proposal ? <span dangerouslySetInnerHTML={{ __html: `${subheaderText.proposal}` }} /> : null}{subheaderText.proposal && subheaderText.responseReason ? ', response: ' : null}{subheaderText.responseReason ? <span dangerouslySetInnerHTML={{ __html: `${subheaderText.responseReason}` }} /> : null}.</h2> : null}
                     {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.cast}.` }} /></h2> : null}
+                    {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}.` }} /></h2> : null}
+                    {subheaderText.stagingLinks ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.stagingLinks}` }} /></h2> : null}
                 </>
             )
         }

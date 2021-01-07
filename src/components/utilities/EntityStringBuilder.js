@@ -1,6 +1,6 @@
 import React from 'react';
 
-// create Attendance label string
+// Attendance
 export function setAttendanceLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -25,7 +25,7 @@ export function setAttendanceLabel(entity) {
     }
 };
 
-// create Music label string
+// Music
 export function setMusicLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -63,7 +63,7 @@ export function setMusicLabel(entity) {
     }
 };
 
-// create Organization label string
+// Organization
 export function setOrganizationLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -79,7 +79,7 @@ export function setOrganizationLabel(entity) {
     }
 };
 
-// create Person label string
+// Person
 export function setPersonLabel(entity) {
     if (entity.attributes.label === null || entity.attributes.label === '' || entity.attributes.label === ' ') {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -94,7 +94,7 @@ export function setPersonLabel(entity) {
     }
 };
 
-// create Place label string
+// Place
 export function setPlaceLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -110,7 +110,7 @@ export function setPlaceLabel(entity) {
     }
 }
 
-// create Production label string
+// Production
 export function setProductionLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -143,7 +143,7 @@ export function setProductionLabel(entity) {
     }
 };
 
-// create Event label string
+// Event
 export function setEventLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -157,7 +157,7 @@ export function setEventLabel(entity) {
     }
 };
 
-// create Publication label string
+// Publication
 export function setPublicationLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -197,7 +197,7 @@ export function setPublicationLabel(entity) {
     }
 };
 
-// create Reading label string
+// Reading
 export function setReadingLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -218,7 +218,7 @@ export function setReadingLabel(entity) {
     }
 };
 
-// create Repository label string
+// Repository
 export function setRepositoryLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -228,7 +228,7 @@ export function setRepositoryLabel(entity) {
     }
 };
 
-// create Translating label string
+// Translating
 export function setTranslatingLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -252,7 +252,7 @@ export function setTranslatingLabel(entity) {
     }
 };
 
-// create Work of Art label string
+// Work of Art
 export function setWorkOfArtLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
@@ -283,7 +283,7 @@ export function setWorkOfArtLabel(entity) {
     }
 };
 
-// create Writing label string
+// Writing
 export function setWritingLabel(entity) {
     if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
