@@ -180,7 +180,7 @@ export function setProductionSubheader(entity) {
 // create Event sub-header string
 export function setEventSubheader(entity) {
     const subheaderLines = {
-        label: entity.attributes.label,
+        label: entity.attributes.properties.description,
         date: entity.attributes.properties.date,
     }
     return (

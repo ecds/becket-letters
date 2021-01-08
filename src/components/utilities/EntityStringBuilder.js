@@ -145,7 +145,7 @@ export function setProductionLabel(entity) {
 
 // Event
 export function setEventLabel(entity) {
-    if (!entity.attributes.properties.description) {
+    if (!entity.attributes.label) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
@@ -153,7 +153,7 @@ export function setEventLabel(entity) {
         if (entity.attributes.properties.date) {
             eventDate = ` (${entity.attributes.properties.date})`
         }
-        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.properties.description}${eventDate}.` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}${eventDate}.` }} />;
     }
 };
 
@@ -163,25 +163,10 @@ export function setPublicationLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        const publicationLabelPart2 = [
-            entity.attributes.properties.place,
-            entity.attributes.properties['publication-information'],
-            entity.attributes.properties.date,
-        ].filter(function (element) {
-            if (element !== null || element !== '' || element !== ' ') {
-                return element
-            }
-            else {
-                return (
-                    null
-                )
-            }
-        }).join('/');
-        const publicationLabel = [
+        const authorTitleTranslator = [
             entity.attributes.properties.author,
             entity.attributes.label,
-            entity.attributes.properties.translator,
-            publicationLabelPart2
+            entity.attributes.properties.translator
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
                 return element
@@ -192,7 +177,11 @@ export function setPublicationLabel(entity) {
                 )
             }
         });
-        let publicationLabelString = publicationLabel.join(', ')
+        let publicationInfo = '';
+        if (entity.attributes.properties['publication-information']) {
+            publicationInfo = ` ${entity.attributes.properties['publication-information']}`
+        };
+        let publicationLabelString = authorTitleTranslator.join(', ') + publicationInfo;
         return <span dangerouslySetInnerHTML={{ __html: `${publicationLabelString}` }} />;
     }
 };
