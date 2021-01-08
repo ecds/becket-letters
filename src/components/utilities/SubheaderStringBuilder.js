@@ -76,20 +76,11 @@ export function setMusicSubheader(entity) {
 
 // create Organization sub-header string
 export function setOrganizationSubheader(entity) {
-    // const subheaderLines = [
-    //     entity.attributes.properties.description,
-    // ].filter(function (element) {
-    //     if (element !== null || element !== '' || element !== ' ') {
-    //         return element
-    //     }
-    //     else {
-    //         return (
-    //             null
-    //         )
-    //     }
-    // });
+    const subheaderText = {
+        description: entity.attributes.properties.description,
+    };
     return (
-        null
+        subheaderText
     )
 };
 

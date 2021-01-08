@@ -69,10 +69,24 @@ export function setOrganizationLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
+        const altSpellings = entity.attributes.properties['alternate-spellings'].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+        let altSpellingsString = ''
+        if (altSpellings) {
+            altSpellingsString = ` [${altSpellings}]`
+        }
+        let headerString = `${entity.attributes.label}${altSpellingsString}`
         return (
             <>
-                <span dangerouslySetInnerHTML={{ __html: entity.attributes.label }} />
-                {entity.attributes.description ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.description}` }} /> : null}
+                <span dangerouslySetInnerHTML={{ __html: headerString }} />
                 .
             </>
         );
