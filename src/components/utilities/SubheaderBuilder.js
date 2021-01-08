@@ -23,7 +23,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setAttendanceSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.attendedWith ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.attendedWith}.` }} /></h2> : null}
+                    {subheaderText.attendedWithAndNotes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.attendedWithAndNotes}.` }} /></h2> : null}
                     {subheaderText.performedBy ? <h2><span dangerouslySetInnerHTML={{ __html: `Performed by ${subheaderText.performedBy}.` }} /></h2> : null}
                     {subheaderText.spellings ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.spellings}]` }} /></h2> : null}
                 </>
@@ -123,7 +123,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setWritingSubheader(this.props.entityData);
             return (
                 <>
-                {subheaderText.proposalResponse ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.proposalResponse}.` }} /></h2> : null}
+                    {subheaderText.proposalResponse ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.proposalResponse}.` }} /></h2> : null}
                     {subheaderText.date ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.date}.` }} /></h2> : null}
                     {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}.` }} /></h2> : null}
                 </>
