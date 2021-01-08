@@ -8,8 +8,7 @@ export function setAttendanceLabel(entity) {
     else {
         const attendanceLabelString = [
             entity.attributes.label,
-            entity.attributes.properties['event-type'],
-            entity.attributes.properties['director'],
+            entity.attributes.properties.description,
             entity.attributes.properties['place-date'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
@@ -99,11 +98,17 @@ export function setPersonLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
+        let lifeDatesString;
+        if (entity.attributes.properties['life-dates']) {
+            lifeDatesString = ` ${entity.attributes.properties['life-dates']}`;
+        };
+        let descriptionString;
+        if (entity.attributes.properties.description) {
+            descriptionString = ` ${entity.attributes.properties.description}.`;
+        }
+        let headerString = `${entity.attributes.label}${lifeDatesString}.${descriptionString}`
         return <>
-            <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label} ` }} />
-            {entity.attributes.properties['life-dates'] ? <span dangerouslySetInnerHTML={{ __html: ` (${entity.attributes.properties['life-dates']})` }} /> : null}
-            {entity.attributes.properties.description ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.properties.description}` }} /> : null}
-            .
+            <span dangerouslySetInnerHTML={{ __html: `${headerString} ` }} />
         </>;
     }
 };
