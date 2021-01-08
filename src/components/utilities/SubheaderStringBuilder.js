@@ -270,8 +270,8 @@ export function setWorkOfArtSubheader(entity) {
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
     const subheaderLines = {
-        date: entity.attributes.properties.date,
         proposalResponse: entity.attributes.properties.proposal,
+        date: entity.attributes.properties.date,
         notes: entity.attributes.properties.notes
     }
     return (
