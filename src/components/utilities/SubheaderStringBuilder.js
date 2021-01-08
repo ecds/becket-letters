@@ -65,8 +65,9 @@ export function setMusicSubheader(entity) {
         performers = entity.attributes.properties['performed-by'];
     }
     const subheaderLines = {
-        description: entity.attributes.description,
+        description: entity.attributes.properties.description,
         performers: performers,
+        notes: entity.attributes.properties.notes,
     }
     return (
         subheaderLines
@@ -75,20 +76,11 @@ export function setMusicSubheader(entity) {
 
 // create Organization sub-header string
 export function setOrganizationSubheader(entity) {
-    // const subheaderLines = [
-    //     entity.attributes.properties.description,
-    // ].filter(function (element) {
-    //     if (element !== null || element !== '' || element !== ' ') {
-    //         return element
-    //     }
-    //     else {
-    //         return (
-    //             null
-    //         )
-    //     }
-    // });
+    const subheaderText = {
+        description: entity.attributes.properties.description,
+    };
     return (
-        null
+        subheaderText
     )
 };
 
@@ -130,11 +122,46 @@ export function setProductionSubheader(entity) {
                 )
             }
         });
+        prodCast = prodCast.join(', ')
+    }
+    let proposalString
+    if (entity.attributes.properties.proposal) {
+        proposalString = entity.attributes.properties.proposal
+    }
+    let responseReason
+    if (entity.attributes.properties.response || entity.attributes.properties.reason) {
+        let responseReasonArray = [entity.attributes.properties.response, entity.attributes.properties.reason].filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        responseReason = responseReasonArray.join(', ')
+    }
+    let stagingLinks
+    if (entity.attributes.properties.links.length !== 0) {
+        stagingLinks = entity.attributes.properties.links.filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return `<a href={${element}}>{${element}}</a>`
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        });
+        stagingLinks = stagingLinks.join(', ')
     }
     const subheaderLines = {
+        proposal: proposalString,
+        responseReason: responseReason,
         cast: prodCast,
-        // notes: entity.attributes.properties.notes,
-        // stagingLink: entity.attributes.properties['staging-beckett']
+        notes: entity.attributes.properties.notes,
+        stagingLinks: stagingLinks 
     }
     return (
         subheaderLines
@@ -144,7 +171,8 @@ export function setProductionSubheader(entity) {
 // create Event sub-header string
 export function setEventSubheader(entity) {
     const subheaderLines = {
-        description: entity.attributes.properties.description,
+        label: entity.attributes.properties.description,
+        date: entity.attributes.properties.date,
     }
     return (
         subheaderLines
@@ -199,8 +227,6 @@ export function setReadingSubheader(entity) {
 // create Translating sub-header string
 export function setTranslatingSubheader(entity) {
     const subheaderLines = {
-        translatedInto: entity.attributes.properties['translated-into'],
-        translator: entity.attributes.properties['translator'],
         translatedTitle: entity.attributes.properties['translated-title'],
         comments: entity.attributes.properties.comments,
     }
@@ -234,7 +260,8 @@ export function setWorkOfArtSubheader(entity) {
     const subheaderLines = {
         workAltSpelling: workSpellings,
         artistAltSpelling: artistSpellings,
-        location: entity.attributes.properties['owner-location-accession-number-contemporaneous']
+        current: entity.attributes.properties['owner-location-accession-number-current'],
+        contemporaneous: entity.attributes.properties['owner-location-accession-number-contemporaneous']
     };
     return (
         subheaderLines
