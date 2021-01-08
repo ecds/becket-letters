@@ -206,16 +206,28 @@ export function setReadingLabel(entity) {
         return <span dangerouslySetInnerHTML={{ __html: entity.id }} />
     }
     else {
-        let authorsListString = null;
-        if (entity.attributes.properties.authors.length !== 0) {
-            authorsListString = entity.attributes.properties.authors.join(', ');
+        const authorsList = entity.attributes.properties.authors.filter(function (element) {
+            if (element !== null || element !== '' || element !== ' ') {
+                return element
+            }
+            else {
+                return (
+                    null
+                )
+            }
+        }).join(', ');
+        let authorsString = ''
+        if (authorsList) {
+            authorsString = `${authorsList}, `
+        };
+        let publicationString = '';
+        if (publicationString) {
+            publicationString = ` ${entity.attributes.properties.publication}`
         }
+        let headerString = `${authorsString}${entity.attributes.label}${publicationString}`
         return (
             <>
-                {authorsListString ? <span dangerouslySetInnerHTML={{ __html: `${authorsListString}, ` }} /> : null}
-                <span dangerouslySetInnerHTML={{ __html: `${entity.attributes.label}` }} />
-                {entity.attributes.properties.publication ? <span dangerouslySetInnerHTML={{ __html: `, ${entity.attributes.properties.publication}` }} /> : null}
-                .
+                <span dangerouslySetInnerHTML={{ __html: `${headerString}, ` }} />
             </>
         )
     }
