@@ -12,6 +12,18 @@ export function setAttendanceSubheader(entity) {
             )
         }
     }).join(', ');
+    console.log(attendedWithString)
+    let attendedWithAndNotes = [attendedWithString, entity.attributes.properties.notes].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join('/');
+    console.log(attendedWithAndNotes)
     const performers = entity.attributes.properties['performed-by'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
@@ -36,7 +48,7 @@ export function setAttendanceSubheader(entity) {
         }).join(', ');
     }
     const subheaderText = {
-        attendedWith: attendedWithString,
+        attendedWithAndNotes: attendedWithAndNotes,
         performedBy: performers,
         spellings: altSpellings
     }
@@ -269,8 +281,18 @@ export function setWorkOfArtSubheader(entity) {
 
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
+    let proposalResponse = [entity.attributes.properties.proposal, entity.attributes.properties.response].filter(function (element) {
+        if (element !== null || element !== '' || element !== ' ') {
+            return element
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }).join('/');
     const subheaderLines = {
-        proposalResponse: entity.attributes.properties.proposal,
+        proposalResponse: proposalResponse,
         date: entity.attributes.properties.date,
         notes: entity.attributes.properties.notes
     }
