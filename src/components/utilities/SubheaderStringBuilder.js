@@ -2,7 +2,7 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    const attendeesString = entity.attributes.properties['attended-with'].filter(function (element) {
+    const attendedWithString = entity.attributes.properties['attended-with'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
         }
@@ -36,8 +36,7 @@ export function setAttendanceSubheader(entity) {
         }).join(', ');
     }
     const subheaderText = {
-        attendees: attendeesString,
-        notes: null,
+        attendedWith: attendedWithString,
         performedBy: performers,
         spellings: altSpellings
     }
@@ -271,8 +270,8 @@ export function setWorkOfArtSubheader(entity) {
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
     const subheaderLines = {
-        date: entity.attributes.properties.date,
         proposalResponse: entity.attributes.properties.proposal,
+        date: entity.attributes.properties.date,
         notes: entity.attributes.properties.notes
     }
     return (
