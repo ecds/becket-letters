@@ -232,7 +232,7 @@ export function setReadingLabel(entity) {
         let headerString = `${authorsString}${entity.attributes.label}${publicationString}`
         return (
             <>
-                <span dangerouslySetInnerHTML={{ __html: `${headerString}` }} />
+                <span dangerouslySetInnerHTML={{ __html: `${headerString}.` }} />
             </>
         )
     }
