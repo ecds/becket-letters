@@ -226,7 +226,7 @@ export function setReadingLabel(entity) {
             authorsString = `${authorsList}, `
         };
         let publicationString = '';
-        if (publicationString) {
+        if (entity.attributes.properties.publication) {
             publicationString = ` ${entity.attributes.properties.publication}`
         }
         let headerString = `${authorsString}${entity.attributes.label}${publicationString}`
