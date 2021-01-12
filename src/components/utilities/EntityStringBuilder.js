@@ -201,7 +201,7 @@ export function setPublicationLabel(entity) {
             publicationInfo = ` ${entity.attributes.properties['publication-information']}`
         };
         let publicationLabelString = authorTitleTranslator.join(', ') + publicationInfo;
-        return <span dangerouslySetInnerHTML={{ __html: `${publicationLabelString}` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${publicationLabelString}.` }} />;
     }
 };
 
