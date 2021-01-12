@@ -326,6 +326,6 @@ export function setWritingLabel(entity) {
             }
         });
         let writingLabelString = writingLabel.join(', ')
-        return <span dangerouslySetInnerHTML={{ __html: `${writingLabelString}` }} />;
+        return <span dangerouslySetInnerHTML={{ __html: `${writingLabelString}.` }} />;
     }
 };
