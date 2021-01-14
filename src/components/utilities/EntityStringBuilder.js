@@ -7,8 +7,8 @@ export function setAttendanceLabel(entity) {
     }
     else {
         const attendanceLabelString = [
+            entity.attributes.properties['event-type'],
             entity.attributes.label,
-            entity.attributes.properties.description,
             entity.attributes.properties['place-date'],
         ].filter(function (element) {
             if (element !== null || element !== '' || element !== ' ') {
