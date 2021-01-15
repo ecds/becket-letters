@@ -2,7 +2,7 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    let attendedWithString === '';
+    let attendedWithString = '';
     if (entity.attributes.properties['attended-with'].length !== 0) {
         attendedWithString = 'Attended with ' + entity.attributes.properties['attended-with'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
