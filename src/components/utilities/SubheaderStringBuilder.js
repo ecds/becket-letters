@@ -77,6 +77,9 @@ export function setMusicSubheader(entity) {
     else {
         performers = entity.attributes.properties['performed-by'];
     }
+    if (performers) {
+        performers = 'Performed by ' + performers
+    }
     const subheaderLines = {
         description: entity.attributes.properties.description,
         performers: performers,
