@@ -80,7 +80,6 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText.label ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.label }} /></h2> : null}
-                    {subheaderText.date ? <h2><span dangerouslySetInnerHTML={{ __html: subheaderText.date }} /></h2> : null}
                 </>
             )
         }

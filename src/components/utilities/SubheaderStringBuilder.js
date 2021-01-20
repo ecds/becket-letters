@@ -2,7 +2,9 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
-    const attendedWithString = entity.attributes.properties['attended-with'].filter(function (element) {
+    let attendedWithString = '';
+    if (entity.attributes.properties['attended-with'].length !== 0) {
+        attendedWithString = 'Attended with ' + entity.attributes.properties['attended-with'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
         }
@@ -12,7 +14,7 @@ export function setAttendanceSubheader(entity) {
             )
         }
     }).join(', ');
-    console.log(attendedWithString)
+    }
     let attendedWithAndNotes = [attendedWithString, entity.attributes.properties.notes].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
@@ -74,6 +76,9 @@ export function setMusicSubheader(entity) {
     }
     else {
         performers = entity.attributes.properties['performed-by'];
+    }
+    if (performers) {
+        performers = 'Performed by ' + performers
     }
     const subheaderLines = {
         description: entity.attributes.properties.description,
