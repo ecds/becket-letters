@@ -68,8 +68,10 @@ class SubheaderBuilder extends Component {
             subheaderText = setProductionSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.proposal || subheaderText.responseReason ? <h2>{subheaderText.proposal ? <span dangerouslySetInnerHTML={{ __html: `${subheaderText.proposal}` }} /> : null}{subheaderText.proposal && subheaderText.responseReason ? ', response: ' : null}{subheaderText.responseReason ? <span dangerouslySetInnerHTML={{ __html: `${subheaderText.responseReason}` }} /> : null}.</h2> : null}
-                    {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.cast}.` }} /></h2> : null}
+                    {subheaderText.proposal && subheaderText.responseReason ? <h2><span dangerouslySetInnerHTML={{ __html: `Proposed: ${subheaderText.proposal}; Response: ${subheaderText.responseReason}.` }} /></h2> : null}
+                    {subheaderText.proposal && !subheaderText.responseReason ? <h2><span dangerouslySetInnerHTML={{ __html: `Proposed: ${subheaderText.proposal}.` }} /></h2> : null}
+                    {!subheaderText.proposal && subheaderText.responseReason ? <h2><span dangerouslySetInnerHTML={{ __html: `Response: ${subheaderText.responseReason}.` }} /></h2> : null}
+                    {subheaderText.cast ? <h2><span dangerouslySetInnerHTML={{ __html: `Cast: ${subheaderText.cast}.` }} /></h2> : null}
                     {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}.` }} /></h2> : null}
                     {subheaderText.stagingLinks ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.stagingLinks}` }} /></h2> : null}
                 </>
@@ -122,7 +124,7 @@ class SubheaderBuilder extends Component {
             subheaderText = setWritingSubheader(this.props.entityData);
             return (
                 <>
-                    {subheaderText.proposalResponse ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.proposalResponse}.` }} /></h2> : null}
+                    {subheaderText.proposalResponse ? <h2><span dangerouslySetInnerHTML={{ __html: `Response: ${subheaderText.proposalResponse}.` }} /></h2> : null}
                     {subheaderText.date ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.date}.` }} /></h2> : null}
                     {subheaderText.notes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.notes}.` }} /></h2> : null}
                 </>
