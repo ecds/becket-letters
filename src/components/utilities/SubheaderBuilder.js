@@ -24,6 +24,7 @@ class SubheaderBuilder extends Component {
             return (
                 <>
                     {subheaderText.attendedWithAndNotes ? <h2><span dangerouslySetInnerHTML={{ __html: `${subheaderText.attendedWithAndNotes}.` }} /></h2> : null}
+                    {subheaderText.director ? <h2><span dangerouslySetInnerHTML={{ __html: `Directed by ${subheaderText.director}.` }} /></h2> : null}
                     {subheaderText.performedBy ? <h2><span dangerouslySetInnerHTML={{ __html: `Performed by ${subheaderText.performedBy}.` }} /></h2> : null}
                     {subheaderText.spellings ? <h2><span dangerouslySetInnerHTML={{ __html: `[${subheaderText.spellings}]` }} /></h2> : null}
                 </>

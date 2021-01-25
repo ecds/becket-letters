@@ -2,6 +2,10 @@
 
 // create Attendance sub-header string
 export function setAttendanceSubheader(entity) {
+    let directorString = '';
+    if (entity.attributes.properties.director) {
+        directorString = entity.attributes.properties.director
+    }
     let attendedWithString = '';
     if (entity.attributes.properties['attended-with'].length !== 0) {
         attendedWithString = 'Attended with ' + entity.attributes.properties['attended-with'].filter(function (element) {
@@ -25,7 +29,6 @@ export function setAttendanceSubheader(entity) {
             )
         }
     }).join('/');
-    console.log(attendedWithAndNotes)
     const performers = entity.attributes.properties['performed-by'].filter(function (element) {
         if (element !== null || element !== '' || element !== ' ') {
             return element
@@ -51,6 +54,7 @@ export function setAttendanceSubheader(entity) {
     }
     const subheaderText = {
         attendedWithAndNotes: attendedWithAndNotes,
+        director: directorString,
         performedBy: performers,
         spellings: altSpellings
     }
