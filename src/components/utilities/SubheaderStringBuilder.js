@@ -290,18 +290,9 @@ export function setWorkOfArtSubheader(entity) {
 
 // create Writing sub-header string
 export function setWritingSubheader(entity) {
-    let proposalResponse = [entity.attributes.properties.proposal, entity.attributes.properties.response].filter(function (element) {
-        if (element !== null || element !== '' || element !== ' ') {
-            return element
-        }
-        else {
-            return (
-                null
-            )
-        }
-    }).join('/');
     const subheaderLines = {
-        proposalResponse: proposalResponse,
+        proposal: entity.attributes.properties.proposal,
+        response: entity.attributes.properties.response,
         date: entity.attributes.properties.date,
         notes: entity.attributes.properties.notes
     }
