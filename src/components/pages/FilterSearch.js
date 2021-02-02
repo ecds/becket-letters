@@ -6,7 +6,6 @@ import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } fro
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import HeaderBuilder from '../utilities/HeaderBuilder';
-import DatePicker from 'react-date-picker';
 import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
 
 
