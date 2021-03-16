@@ -598,7 +598,7 @@ class FilterSearch extends Component {
                                                 checked={!this.state.areReadingsHidden}
 
                                             />
-                                            Readings {readingsCount !== 0 ? <span className='entityCountDisplay'>{readingsCount}</span> : null}
+                                            Reading {readingsCount !== 0 ? <span className='entityCountDisplay'>{readingsCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>
@@ -610,7 +610,7 @@ class FilterSearch extends Component {
                                                 checked={!this.state.areTranslatingsHidden}
 
                                             />
-                                            Translatings {translatingsCount !== 0 ? <span className='entityCountDisplay'>{translatingsCount}</span> : null}
+                                            Translating {translatingsCount !== 0 ? <span className='entityCountDisplay'>{translatingsCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>
@@ -634,7 +634,7 @@ class FilterSearch extends Component {
                                                 checked={!this.state.areWritingsHidden}
 
                                             />
-                                            Writings {writingsCount !== 0 ? <span className='entityCountDisplay'>{writingsCount}</span> : null}
+                                            Writing {writingsCount !== 0 ? <span className='entityCountDisplay'>{writingsCount}</span> : null}
                                         </label>
                                     </li>
                                     <li>
