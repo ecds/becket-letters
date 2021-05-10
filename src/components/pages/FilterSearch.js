@@ -1,12 +1,12 @@
 import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import LoadingSpinner from '../utilities/LoadingSpinner';
 import React, { Component } from "react";
+import { parse, stringify } from 'query-string';
 import axios from "axios";
 import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import HeaderBuilder from '../utilities/HeaderBuilder';
-import DatePicker from 'react-date-picker';
 import { setAttendanceLabel, setMusicLabel, setOrganizationLabel, setPersonLabel, setPlaceLabel, setProductionLabel, setEventLabel, setPublicationLabel, setReadingLabel, setTranslatingLabel, setWorkOfArtLabel, setWritingLabel } from '../utilities/EntityStringBuilder.js';
 
 
@@ -46,24 +46,64 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: false,
             areWritingsHidden: false,
             hideAll: true,
-            // startDate: "January 1, 1000",
-            // endDate: "December 31, 2000",
+            hiddenStates: [
+                'areAttendancesHidden',
+                'areMusicsHidden',
+                'areOrganizationsHidden',
+                'arePeopleHidden',
+                'arePlacesHidden',
+                'areProductionsHidden',
+                'areEventsHidden',
+                'arePublicationsHidden',
+                'areReadingsHidden',
+                'areTranslatingsHidden',
+                'areWorkOfArtsHidden',
+                'areWritingsHidden'
+            ]
         };
+    }
+
+    async componentDidMount() {
+        const { query, hide } = parse(this.props.location.search);
+
+        this.state.hiddenStates.forEach((hiddenState) => {
+            if (hide && hide instanceof Array) {
+                hide.forEach((hidden) => {
+                    this._hideCategory(hiddenState, hidden);
+                })
+            } else if (hide) {
+                this._hideCategory(hiddenState, hide);
+            }
+        })
+
+        if (query) {
+            this.resumeSearch(query);
+        }
+    }
+
+    _hideCategory(hiddenState, toHide) {
+        if (hiddenState.toLocaleLowerCase().includes(toHide.toLocaleLowerCase())) {
+            this.setState({ [hiddenState]: true });
+        }
     }
 
     search(searchTerms) {
         this.setState({ isLoaded: false })
         axios.all([
-            axios.get('http://ot-api.ecdsdev.org/entities?search=' + searchTerms)
+            axios.get('https://ot-api.ecdsdev.org/entities?search=' + searchTerms)
         ])
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
                 this.setState({ data, isLoaded: true });
-                console.log(data)
             }))
             .catch((err) => {
                 this.setState({ isLoaded: false, error: err.message });
             });
+    }
+
+    resumeSearch(searchTerms) {
+        this.setState({ firstSearched: true });
+        this.search(searchTerms);
     }
 
     intiateSearch = (event) => {
@@ -73,10 +113,67 @@ class FilterSearch extends Component {
         this.search(searchTerms)
     }
 
+    updateQueryHistory = (event) => {
+        const params = parse(this.props.location.search);
+        params.query = event.target.value;
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
+    }
+
+    updateHiddenHistory = (hiddenState) => {
+        const categories = [
+            'attendance', 'music', 'organizations', 'people', 'places', 'productions', 'events',
+            'publications', 'readings', 'translating', 'workofart', 'writings'
+        ]
+
+        const params = parse(this.props.location.search);
+
+        categories.forEach((category) => {
+            if (hiddenState.toLocaleLowerCase().includes(category)) {
+                console.log("🚀 ~ file: FilterSearch.js ~ line 144 ~ FilterSearch ~ categories.forEach ~ category", category, params.hide)
+                console.log("🚀 ~ file: FilterSearch.js ~ line 147 ~ FilterSearch ~ categories.forEach ~ params.hide instanceof Array", params.hide instanceof Array, params.hide)
+                if (params.hide && params.hide instanceof Array) {
+                    console.log('it is an array', params.hide)
+                    const index = params.hide.indexOf(category);
+                    if (index > -1) {
+                        console.log('remove from array')
+                        params.hide.splice(index, 1)
+                    } else {
+                        console.log('add to array')
+                        params.hide.push(category)
+                    }
+                } else if (params.hide) {
+                    console.log('it is a string', params.hide)
+                    if (params.hide !== category) {
+                        console.log('add string')
+                        params.hide = [params.hide, category];
+                    } else {
+                        console.log('delete key')
+                        delete params.hide;
+                    }
+                } else {
+                    console.log('set string')
+                    params.hide = [category];
+                }
+
+            }
+        });
+
+        console.log("🚀 ~ file: FilterSearch.js ~ line 178 ~ FilterSearch ~ params", params, stringify(params))
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
+    }
+
     filterRowsByType = (stateType) => {
         this.setState({
-            [`${stateType}`]: !this.state[`${stateType}`],
-        })
+            [`${stateType}`]: !this.state[`${stateType}`]
+        });
+
+        this.updateHiddenHistory(stateType);
     }
 
     flipAllFilters = () => {
@@ -439,7 +536,7 @@ class FilterSearch extends Component {
                 return null
             }
         })
-        
+
         const metaBuild = {
             title: 'Search and Filter',
             description: `Search and filter all entities`,
@@ -466,7 +563,7 @@ class FilterSearch extends Component {
                                                     <FontAwesomeIcon icon="search" />
                                                 </Button>
                                             </div>
-                                            <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
+                                            <Form.Control id="query" name="query" type="query" aria-label='query' onChange={this.updateQueryHistory} placeholder={this.props.placeholder} />
                                         </div>
                                     </Form.Group>
                                 </OverlayTrigger>

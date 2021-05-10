@@ -3,6 +3,7 @@ import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import LoadingSpinner from '../utilities/LoadingSpinner';
 import Pagination from '../utilities/Pagination';
 import React, { Component } from "react";
+import { parse, stringify } from 'query-string';
 import axios from "axios";
 import { Container, Table, Form, Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,10 +27,26 @@ class LettersBy extends Component {
         this.intiateSearch = this.intiateSearch.bind(this);
         this.searchData = this.searchData.bind(this);
         this.resetPage = this.resetPage.bind(this);
+        this.updateHistory = this.updateHistory.bind(this);
     }
 
     componentDidMount() {
-        this.getData();
+        const { query } = parse(this.props.location.search);
+
+        if (query) {
+            this.searchData(query);
+        } else {
+            this.getData();
+        }
+    }
+
+    updateHistory(event) {
+        const params = parse(this.props.location.search);
+        params.query = event.target.value;
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
     }
 
     handler = (pageValue) => {
@@ -230,7 +247,7 @@ class LettersBy extends Component {
                                             <FontAwesomeIcon icon="search" />
                                         </Button>
                                     </div>
-                                    <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
+                                    <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} onChange={this.updateHistory} />
                                 </div>
                             </Form.Group>
                         </Form>
