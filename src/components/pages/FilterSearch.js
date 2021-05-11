@@ -59,7 +59,9 @@ class FilterSearch extends Component {
                 'areTranslatingsHidden',
                 'areWorkOfArtsHidden',
                 'areWritingsHidden'
-            ]
+            ],
+            categories: ['attendance', 'music', 'organizations', 'people', 'places', 'productions', 'events',
+                'publications', 'readings', 'translating', 'workofart', 'writings']
         };
     }
 
@@ -123,45 +125,30 @@ class FilterSearch extends Component {
     }
 
     updateHiddenHistory = (hiddenState) => {
-        const categories = [
-            'attendance', 'music', 'organizations', 'people', 'places', 'productions', 'events',
-            'publications', 'readings', 'translating', 'workofart', 'writings'
-        ]
-
         const params = parse(this.props.location.search);
 
-        categories.forEach((category) => {
+        this.state.categories.forEach((category) => {
             if (hiddenState.toLocaleLowerCase().includes(category)) {
-                console.log("🚀 ~ file: FilterSearch.js ~ line 144 ~ FilterSearch ~ categories.forEach ~ category", category, params.hide)
-                console.log("🚀 ~ file: FilterSearch.js ~ line 147 ~ FilterSearch ~ categories.forEach ~ params.hide instanceof Array", params.hide instanceof Array, params.hide)
                 if (params.hide && params.hide instanceof Array) {
-                    console.log('it is an array', params.hide)
                     const index = params.hide.indexOf(category);
                     if (index > -1) {
-                        console.log('remove from array')
                         params.hide.splice(index, 1)
                     } else {
-                        console.log('add to array')
                         params.hide.push(category)
                     }
                 } else if (params.hide) {
-                    console.log('it is a string', params.hide)
                     if (params.hide !== category) {
-                        console.log('add string')
                         params.hide = [params.hide, category];
                     } else {
-                        console.log('delete key')
                         delete params.hide;
                     }
                 } else {
-                    console.log('set string')
                     params.hide = [category];
                 }
 
             }
         });
 
-        console.log("🚀 ~ file: FilterSearch.js ~ line 178 ~ FilterSearch ~ params", params, stringify(params))
         this.props.history.replace(
             `${this.props.location.pathname}?${stringify(params)}`,
             'letter search'
@@ -193,8 +180,19 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: direction ? false : true,
             areWritingsHidden: direction ? false : true,
             hideAll: direction ? true : false,
+        });
+
+        const params = parse(this.props.location.search);
+        if (direction) {
+            delete params.hide;
+        } else {
+            params.hide = this.state.categories;
         }
-        )
+
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
     }
 
     render() {
