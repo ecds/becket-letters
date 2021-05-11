@@ -1,6 +1,7 @@
 import DocMetaBuilder from '../utilities/DocMetaBuilder';
 import LoadingSpinner from '../utilities/LoadingSpinner';
 import React, { Component } from "react";
+import { parse, stringify } from 'query-string';
 import axios from "axios";
 import { Button, Col, Container, Form, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,24 +46,66 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: false,
             areWritingsHidden: false,
             hideAll: true,
-            // startDate: "January 1, 1000",
-            // endDate: "December 31, 2000",
+            hiddenStates: [
+                'areAttendancesHidden',
+                'areMusicsHidden',
+                'areOrganizationsHidden',
+                'arePeopleHidden',
+                'arePlacesHidden',
+                'areProductionsHidden',
+                'areEventsHidden',
+                'arePublicationsHidden',
+                'areReadingsHidden',
+                'areTranslatingsHidden',
+                'areWorkOfArtsHidden',
+                'areWritingsHidden'
+            ],
+            categories: ['attendance', 'music', 'organizations', 'people', 'places', 'productions', 'events',
+                'publications', 'readings', 'translating', 'workofart', 'writings']
         };
+    }
+
+    async componentDidMount() {
+        const { query, hide } = parse(this.props.location.search);
+
+        this.state.hiddenStates.forEach((hiddenState) => {
+            if (hide && hide instanceof Array) {
+                hide.forEach((hidden) => {
+                    this._hideCategory(hiddenState, hidden);
+                })
+            } else if (hide) {
+                this._hideCategory(hiddenState, hide);
+            }
+        })
+
+        if (query) {
+            this.resumeSearch(query);
+        }
+    }
+
+    _hideCategory(hiddenState, toHide) {
+        if (hiddenState.toLocaleLowerCase().includes(toHide.toLocaleLowerCase())) {
+            this.setState({ [hiddenState]: true });
+        }
     }
 
     search(searchTerms) {
         this.setState({ isLoaded: false })
         axios.all([
-            axios.get('http://ot-api.ecdsdev.org/entities?search=' + searchTerms)
+            axios.get('https://ot-api.ecdsdev.org/entities?search=' + searchTerms)
         ])
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
                 this.setState({ data, isLoaded: true });
-                console.log(data)
             }))
             .catch((err) => {
                 this.setState({ isLoaded: false, error: err.message });
             });
+    }
+
+    resumeSearch(searchTerms) {
+        this.setState({ firstSearched: true });
+        this.search(searchTerms);
     }
 
     intiateSearch = (event) => {
@@ -72,10 +115,52 @@ class FilterSearch extends Component {
         this.search(searchTerms)
     }
 
+    updateQueryHistory = (event) => {
+        const params = parse(this.props.location.search);
+        params.query = event.target.value;
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
+    }
+
+    updateHiddenHistory = (hiddenState) => {
+        const params = parse(this.props.location.search);
+
+        this.state.categories.forEach((category) => {
+            if (hiddenState.toLocaleLowerCase().includes(category)) {
+                if (params.hide && params.hide instanceof Array) {
+                    const index = params.hide.indexOf(category);
+                    if (index > -1) {
+                        params.hide.splice(index, 1)
+                    } else {
+                        params.hide.push(category)
+                    }
+                } else if (params.hide) {
+                    if (params.hide !== category) {
+                        params.hide = [params.hide, category];
+                    } else {
+                        delete params.hide;
+                    }
+                } else {
+                    params.hide = [category];
+                }
+
+            }
+        });
+
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
+    }
+
     filterRowsByType = (stateType) => {
         this.setState({
-            [`${stateType}`]: !this.state[`${stateType}`],
-        })
+            [`${stateType}`]: !this.state[`${stateType}`]
+        });
+
+        this.updateHiddenHistory(stateType);
     }
 
     flipAllFilters = () => {
@@ -95,8 +180,19 @@ class FilterSearch extends Component {
             areWorkOfArtsHidden: direction ? false : true,
             areWritingsHidden: direction ? false : true,
             hideAll: direction ? true : false,
+        });
+
+        const params = parse(this.props.location.search);
+        if (direction) {
+            delete params.hide;
+        } else {
+            params.hide = this.state.categories;
         }
-        )
+
+        this.props.history.replace(
+            `${this.props.location.pathname}?${stringify(params)}`,
+            'letter search'
+        );
     }
 
     render() {
@@ -438,7 +534,7 @@ class FilterSearch extends Component {
                 return null
             }
         })
-        
+
         const metaBuild = {
             title: 'Search and Filter',
             description: `Search and filter all entities`,
@@ -465,7 +561,7 @@ class FilterSearch extends Component {
                                                     <FontAwesomeIcon icon="search" />
                                                 </Button>
                                             </div>
-                                            <Form.Control id="query" name="query" type="query" aria-label='query' placeholder={this.props.placeholder} />
+                                            <Form.Control id="query" name="query" type="query" aria-label='query' onChange={this.updateQueryHistory} placeholder={this.props.placeholder} />
                                         </div>
                                     </Form.Group>
                                 </OverlayTrigger>
