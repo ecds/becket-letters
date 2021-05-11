@@ -92,7 +92,7 @@ class FilterSearch extends Component {
     search(searchTerms) {
         this.setState({ isLoaded: false })
         axios.all([
-            axios.get('https://ot-api.ecdsdev.org/entities?search=' + searchTerms)
+            axios.get('http://ot-api.ecdsdev.org/entities?search=' + searchTerms)
         ])
             .then(axios.spread((getAllData) => {
                 const data = getAllData.data.data;
